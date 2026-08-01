@@ -8,6 +8,8 @@ const elements = {
   debugShowIds: document.querySelector("#debug-show-ids"),
   debugShowDistances: document.querySelector("#debug-show-distances"),
   debugDistances: document.querySelector("#debug-distances"),
+  debugShowData: document.querySelector("#debug-show-data"),
+  debugData: document.querySelector("#debug-data"),
   map: document.querySelector("#map"),
   media: document.querySelector("#encounter-media"),
   retrace: document.querySelector("#retrace"),
@@ -66,6 +68,13 @@ async function start() {
     elements.debugDistances.replaceChildren(table);
   }
 
+  function renderDataDebug(current) {
+    elements.debugData.hidden = !elements.debugShowData.checked;
+    elements.debugData.textContent = elements.debugShowData.checked
+      ? JSON.stringify({ geometry: current.geometry, ...current.properties }, null, 2)
+      : "";
+  }
+
   function render(announcement = "") {
     const current = encounterById.get(currentId);
     const dimensions = selectedDimensions();
@@ -77,6 +86,7 @@ async function start() {
       settings,
     });
     renderEncounter(current, elements);
+    renderDataDebug(current);
     map.render(current, neighbors, encounterById, {
       showAllNodes: elements.debugShowAll.checked,
       showNodeIds: elements.debugShowIds.checked,
@@ -120,6 +130,10 @@ async function start() {
 
   elements.debugShowDistances.addEventListener("change", () => {
     render(elements.debugShowDistances.checked ? "Distances are visible." : "Distances are hidden.");
+  });
+
+  elements.debugShowData.addEventListener("change", () => {
+    render(elements.debugShowData.checked ? "Current node data is visible." : "Current node data is hidden.");
   });
 
   render();
