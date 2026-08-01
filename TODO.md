@@ -2,14 +2,6 @@
 
 # DESIRE PATH Next Steps
 
-Build one tiny vertical slice, specifically:
-* 5 encounters
-* 1 HTML page
-* 1 map
-* checkboxes work
-* retrace works
-* dynamic paths work
-
 Milestone #1
 * Repository
 * Documentation
