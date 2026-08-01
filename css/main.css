@@ -95,9 +95,34 @@ input {
   background: var(--paper);
 }
 
+.encounter-marker--debug {
+  opacity: 0.24;
+}
+
+.encounter-marker--debug span {
+  width: 50%;
+  height: 50%;
+  border: 0;
+  background: var(--ink-soft);
+  box-shadow: none;
+}
+
 .encounter-marker:focus {
   outline: 1px solid var(--focus);
   outline-offset: 3px;
+}
+
+.leaflet-tooltip.node-id {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ink-soft);
+  font: 0.62rem/1 ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.leaflet-tooltip.node-id::before {
+  display: none;
 }
 
 .interface {
@@ -164,6 +189,24 @@ input[type="checkbox"] {
   height: 0.85rem;
   margin: 0;
   accent-color: var(--focus);
+}
+
+.debug {
+  margin-top: -1.5rem;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+}
+
+.debug summary {
+  width: fit-content;
+  cursor: pointer;
+  list-style-position: outside;
+  text-transform: lowercase;
+}
+
+.debug label {
+  display: flex;
+  margin-top: 0.75rem;
 }
 
 .encounter {

@@ -4,6 +4,8 @@ import { visibleNeighborhood } from "./navigation.js";
 
 const elements = {
   form: document.querySelector("#explore-form"),
+  debugShowAll: document.querySelector("#debug-show-all"),
+  debugShowIds: document.querySelector("#debug-show-ids"),
   map: document.querySelector("#map"),
   media: document.querySelector("#encounter-media"),
   retrace: document.querySelector("#retrace"),
@@ -43,7 +45,10 @@ async function start() {
       settings,
     });
     renderEncounter(current, elements);
-    map.render(current, neighbors, encounterById);
+    map.render(current, neighbors, encounterById, {
+      showAllNodes: elements.debugShowAll.checked,
+      showNodeIds: elements.debugShowIds.checked,
+    });
     elements.retrace.disabled = history.length < 2;
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
   }
@@ -70,6 +75,14 @@ async function start() {
     history.pop();
     currentId = history.at(-1);
     render(`Retraced to ${encounterById.get(currentId).properties.title}.`);
+  });
+
+  elements.debugShowAll.addEventListener("change", () => {
+    render(elements.debugShowAll.checked ? "All node positions are visible." : "Only near node positions are visible.");
+  });
+
+  elements.debugShowIds.addEventListener("change", () => {
+    render(elements.debugShowIds.checked ? "Node IDs are visible." : "Node IDs are hidden.");
   });
 
   render();

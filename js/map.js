@@ -13,6 +13,16 @@ function markerIcon(kind) {
   });
 }
 
+function addNodeId(marker, id, visible) {
+  if (!visible) return;
+  marker.bindTooltip(id, {
+    className: "node-id",
+    direction: "top",
+    offset: [0, -8],
+    permanent: true,
+  });
+}
+
 export function createEncounterMap(element, settings, onNavigate) {
   element.querySelector(".map-fallback")?.remove();
   const map = L.map(element, { zoomControl: false, attributionControl: false, maxZoom: settings.map.maximum_zoom });
@@ -31,10 +41,25 @@ export function createEncounterMap(element, settings, onNavigate) {
   const layer = L.layerGroup().addTo(map);
   let hasFit = false;
 
-  function render(current, neighbors, encounterById) {
+  function render(current, neighbors, encounterById, debug = {}) {
     layer.clearLayers();
     const currentLatLng = L.latLng(current.geometry.coordinates[1], current.geometry.coordinates[0]);
     const visibleLatLngs = [currentLatLng];
+    const visibleIds = new Set([current.properties.id, ...neighbors.map(({ id }) => id)]);
+
+    if (debug.showAllNodes) {
+      encounterById.forEach((encounter, id) => {
+        if (visibleIds.has(id)) return;
+        const latLng = L.latLng(encounter.geometry.coordinates[1], encounter.geometry.coordinates[0]);
+        const marker = L.marker(latLng, {
+          icon: markerIcon("debug"),
+          interactive: false,
+          keyboard: false,
+          alt: "",
+        }).addTo(layer);
+        addNodeId(marker, id, debug.showNodeIds);
+      });
+    }
 
     neighbors.forEach(({ id, bridge }) => {
       const neighbor = encounterById.get(id);
@@ -49,15 +74,17 @@ export function createEncounterMap(element, settings, onNavigate) {
       });
       marker.on("click", () => onNavigate(id));
       marker.addTo(layer);
+      addNodeId(marker, id, debug.showNodeIds);
     });
 
-    L.marker(currentLatLng, {
+    const currentMarker = L.marker(currentLatLng, {
       icon: markerIcon("current"),
       keyboard: true,
       title: `Current encounter: ${current.properties.title}`,
       alt: `Current encounter: ${current.properties.title}`,
       zIndexOffset: 1000,
     }).addTo(layer);
+    addNodeId(currentMarker, current.properties.id, debug.showNodeIds);
 
     const bounds = L.latLngBounds(visibleLatLngs);
     if (!hasFit) {

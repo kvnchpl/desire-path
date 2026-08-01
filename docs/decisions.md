@@ -79,6 +79,27 @@ Describe how this decision affects future development.
 
 ### Decision
 
+A collapsed debug section may expose diagnostic views that are unavailable in ordinary exploration. Its initial options reveal faint non-navigable encounter positions and node IDs without revealing the complete path network.
+
+### Reasoning
+
+Diagnostic visibility helps evaluate geographic distribution and generated neighborhoods while keeping implementation controls outside the primary interface.
+
+### Alternatives Considered
+
+- Keeping diagnostic tools entirely outside the public page.
+- Revealing every node and every path together.
+
+### Implications
+
+Debug controls remain collapsed by default. Debug-only nodes must be visually subordinate and cannot be used to bypass generated navigation.
+
+---
+
+## 2026-08-01
+
+### Decision
+
 Time, Feeling, and Knowing are selected by default. Place remains available but begins unselected. The public map uses a local coastline outline instead of raster tiles, and the interface uses a simpler monospace typographic system.
 
 ### Reasoning

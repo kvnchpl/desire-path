@@ -22,5 +22,8 @@ assert.match(interfaceHtml, /value="place">/);
 for (const dimension of ["time", "feeling", "knowing"]) {
   assert.match(interfaceHtml, new RegExp(`value="${dimension}" checked`));
 }
+assert.match(interfaceHtml, /<details class="debug">/);
+assert.match(interfaceHtml, /id="debug-show-all"/);
+assert.match(interfaceHtml, /id="debug-show-ids"/);
 
 console.log("DESIRE PATH navigation is valid.");
