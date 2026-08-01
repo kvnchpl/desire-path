@@ -73,6 +73,18 @@ Describe how this decision affects future development.
 
 ---
 
+# Notes
+
+This document is intentionally cumulative.
+
+Earlier decisions should not be rewritten unless they are superseded.
+
+If a decision changes, add a new entry explaining why the previous decision was revised.
+
+The evolution of the project's thinking is itself part of the project's history.
+
+---
+
 # Initial Decisions
 
 ## 2026-08-01
@@ -391,13 +403,3 @@ It also ensures that GIS remains central to the project's methodology.
 Future interfaces should derive from the underlying cartographic model rather than replacing it.
 
 ---
-
-# Notes
-
-This document is intentionally cumulative.
-
-Earlier decisions should not be rewritten unless they are superseded.
-
-If a decision changes, add a new entry explaining why the previous decision was revised.
-
-The evolution of the project's thinking is itself part of the project's history.
