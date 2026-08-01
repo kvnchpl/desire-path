@@ -56,6 +56,47 @@ input {
   min-height: 100vh;
 }
 
+.quiet-tiles {
+  filter: grayscale(1) sepia(0.12) contrast(0.82) brightness(1.08);
+  opacity: 0.72;
+}
+
+.leaflet-container {
+  background: #d8dad2;
+  font-family: inherit;
+}
+
+.leaflet-control-attribution {
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+.encounter-marker {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.encounter-marker span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--paper);
+  border-radius: 50%;
+  background: #59665d;
+  box-shadow: 0 0 0 1px rgba(37, 39, 34, 0.4);
+}
+
+.encounter-marker--reachable span {
+  background: var(--paper);
+}
+
+.encounter-marker:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
 .map {
   display: grid;
   place-items: center;
@@ -145,6 +186,28 @@ input[type="checkbox"] {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.encounter-media img,
+.encounter-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.encounter-media audio {
+  width: 100%;
+}
+
+.encounter-media figure {
+  margin: 0;
+}
+
+.encounter-media figcaption {
+  margin-top: 0.5rem;
+  color: var(--ink-soft);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
 }
 
 .retrace {
