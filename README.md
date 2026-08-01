@@ -19,7 +19,7 @@ Before contributing, read:
 
 Prototype.
 
-The code and data files currently form an implementation scaffold. The first vertical slice uses fictional placeholder encounters that will later be replaced with contributed content.
+The first working vertical slice uses fictional placeholder encounters that will later be replaced with contributed content.
 
 Current goal:
 
@@ -52,3 +52,5 @@ npm test
 Author encounters in [`qgis/desire-path.qgz`](qgis/desire-path.qgz), export the public GeoJSON, regenerate pairwise distances, and validate before committing. Detailed steps are in [`docs/navigation.md`](docs/navigation.md).
 
 The five current encounters and their coordinates are fictional placeholders.
+
+The project itself does not yet declare a license. The locally vendored Leaflet dependency retains its BSD-2-Clause license in `vendor/leaflet/LICENSE`.
