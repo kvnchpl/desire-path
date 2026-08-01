@@ -10,7 +10,7 @@ from itertools import combinations
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-AFFECT_CLOSENESS_PATH = ROOT / "data" / "affect-closeness.json"
+AFFECT_DISTANCES_PATH = ROOT / "data" / "affect-distances.json"
 
 TIME_POSITIONS = [
     "DISTANT_PAST",
@@ -30,19 +30,18 @@ def haversine(a: list[float], b: list[float]) -> float:
     return 6371.0088 * 2 * math.asin(math.sqrt(value))
 
 
-def affect_closeness() -> dict:
-    source = json.loads(AFFECT_CLOSENESS_PATH.read_text(encoding="utf-8"))
-    pairs = {tuple(sorted((pair["a"], pair["b"]))): pair["closeness"] for pair in source["pairs"]}
+def affect_distances() -> dict:
+    source = json.loads(AFFECT_DISTANCES_PATH.read_text(encoding="utf-8"))
+    pairs = {tuple(sorted((pair["a"], pair["b"]))): pair["distance"] for pair in source["pairs"]}
     return {"identical": source["identical"], "default": source["default"], "pairs": pairs}
 
 
-def feeling_distance(left: str, right: str, closeness: dict) -> float:
-    similarity = closeness["identical"] if left == right else closeness["pairs"].get(tuple(sorted((left, right))), closeness["default"])
-    return 1 - similarity
+def feeling_distance(left: str, right: str, distances: dict) -> float:
+    return distances["identical"] if left == right else distances["pairs"].get(tuple(sorted((left, right))), distances["default"])
 
 
 def calculate(features: list[dict]) -> list[dict]:
-    feelings = affect_closeness()
+    feelings = affect_distances()
     raw_places = {
         (a["properties"]["id"], b["properties"]["id"]): haversine(a["geometry"]["coordinates"], b["geometry"]["coordinates"])
         for a, b in combinations(features, 2)

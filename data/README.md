@@ -1,6 +1,6 @@
 # Public data
 
-`encounters.geojson` and `distances.json` are generated public files. Do not edit them by hand. `affect-closeness.json` and `settings.json` are authored configuration and may be edited directly.
+`encounters.geojson` and `distances.json` are generated public files. Do not edit them by hand. `affect-distances.json` and `settings.json` are authored configuration and may be edited directly.
 
 The authoritative encounter layer is `qgis/encounters.gpkg`. After editing it in QGIS, regenerate both public files from the repository root:
 

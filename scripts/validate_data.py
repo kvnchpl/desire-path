@@ -31,11 +31,11 @@ def validate() -> list[str]:
     encounters = load("data/encounters.geojson")
     distances = load("data/distances.json")
     settings = load("data/settings.json")
-    affect_closeness = load("data/affect-closeness.json")
+    affect_distances = load("data/affect-distances.json")
     if encounters.get("type") != "FeatureCollection":
         errors.append("encounters.geojson must be a FeatureCollection")
     versions = {
-        encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version"), affect_closeness.get("schema_version"),
+        encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version"), affect_distances.get("schema_version"),
     }
     if len(versions) != 1 or None in versions:
         errors.append("all public data files must share a schema_version")
@@ -81,20 +81,20 @@ def validate() -> list[str]:
 
     affect_types = ENUMS["af_primary"]
     for field in ("identical", "default"):
-        value = affect_closeness.get(field)
+        value = affect_distances.get(field)
         if not isinstance(value, (int, float)) or not 0 <= value <= 1:
-            errors.append(f"affect-closeness.{field} must be between 0 and 1")
+            errors.append(f"affect-distances.{field} must be between 0 and 1")
     affect_pairs = set()
-    for index, pair in enumerate(affect_closeness.get("pairs", [])):
+    for index, pair in enumerate(affect_distances.get("pairs", [])):
         key = tuple(sorted((pair.get("a"), pair.get("b"))))
         if key[0] not in affect_types or key[1] not in affect_types or key[0] == key[1]:
-            errors.append(f"affect closeness pair {index + 1} contains invalid affect types")
+            errors.append(f"affect distance pair {index + 1} contains invalid affect types")
         if key in affect_pairs:
-            errors.append(f"duplicate affect closeness pair {key}")
+            errors.append(f"duplicate affect distance pair {key}")
         affect_pairs.add(key)
-        value = pair.get("closeness")
+        value = pair.get("distance")
         if not isinstance(value, (int, float)) or not 0 <= value <= 1:
-            errors.append(f"affect closeness pair {key} must be between 0 and 1")
+            errors.append(f"affect distance pair {key} must be between 0 and 1")
     if settings.get("initial_encounter") not in ids:
         errors.append("settings.initial_encounter must reference an encounter")
     percentile = settings.get("visibility_percentile")

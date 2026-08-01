@@ -33,13 +33,13 @@ assert.match(interfaceHtml, /id="debug-data" hidden/);
 const encounters = JSON.parse(await readFile(new URL("../data/encounters.geojson", import.meta.url), "utf8"));
 const generatedDistances = JSON.parse(await readFile(new URL("../data/distances.json", import.meta.url), "utf8"));
 const generatedSettings = JSON.parse(await readFile(new URL("../data/settings.json", import.meta.url), "utf8"));
-const affectCloseness = JSON.parse(await readFile(new URL("../data/affect-closeness.json", import.meta.url), "utf8"));
+const affectDistances = JSON.parse(await readFile(new URL("../data/affect-distances.json", import.meta.url), "utf8"));
 const encounterIds = encounters.features.map(({ properties }) => properties.id);
 assert.equal(encounterIds.length, 15);
 assert.equal(generatedDistances.pairs.length, 105);
 assert.equal(generatedDistances.schema_version, 2);
 assert.equal(generatedSettings.schema_version, 2);
-assert.equal(affectCloseness.schema_version, 2);
+assert.equal(affectDistances.schema_version, 2);
 const firstGeneratedPair = generatedDistances.pairs.find(({ a, b }) => a === "E001" && b === "E002");
 assert.equal(firstGeneratedPair.time, 0.166667);
 assert.equal(firstGeneratedPair.feeling, 0.45);
@@ -64,8 +64,9 @@ const removedFields = [
   "af_intensity", "af_secondary", "kn_secondary",
 ];
 encounterProperties.forEach((properties) => removedFields.forEach((field) => assert.ok(!(field in properties))));
-assert.equal(affectCloseness.placeholder, true);
-assert.ok(affectCloseness.pairs.length > 0);
+assert.equal(affectDistances.placeholder, true);
+assert.equal(affectDistances.identical, 0);
+assert.ok(affectDistances.pairs.length > 0);
 const mediaTypes = [...new Set(encounterProperties.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
 

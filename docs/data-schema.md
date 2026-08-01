@@ -57,7 +57,7 @@ Every committed geometry is public. Private coordinates must be generalized, dis
 - `NUMBNESS`
 - `AMBIVALENCE`
 
-`data/affect-closeness.json` contains provisional closeness values between affect types. A value of `1` is nearest and `0` is farthest. Identical types use the configured `identical` value, listed pairs use their explicit value, and all other combinations use `default`. These values are placeholders intended for later revision.
+`data/affect-distances.json` contains provisional distances between affect types. As in every other dimension, `0` is nearest and `1` is farthest. Identical types use the configured `identical` value, listed pairs use their explicit distance, and all other combinations use `default`. These values are placeholders intended for later revision.
 
 ## Knowing
 
@@ -101,7 +101,7 @@ The export derives four normalized pairwise distances:
 
 - **Place:** great-circle distance between public representative points, divided by the greatest pairwise Place distance in the export.
 - **Time:** ordinal distance between `tm_position` values.
-- **Feeling:** `1 − closeness` using `data/affect-closeness.json`.
+- **Feeling:** configured distance using `data/affect-distances.json`.
 - **Knowing:** `0` when `kn_primary` matches and `1` when it differs.
 
 All results are rounded to six decimal places. Missing values fail validation rather than being silently interpreted as maximum distance.
@@ -110,7 +110,7 @@ All results are rounded to six decimal places. Missing values fail validation ra
 
 - `data/encounters.geojson` is the generated public encounter and media export.
 - `data/distances.json` contains every generated unique unordered pair once.
-- `data/affect-closeness.json` contains authored provisional Feeling relationships.
+- `data/affect-distances.json` contains authored provisional Feeling distances.
 - `data/settings.json` contains authored presentation and neighborhood settings.
 
 All versioned public files use `schema_version: 2`.
