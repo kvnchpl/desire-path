@@ -315,6 +315,8 @@ The map should always communicate two simultaneous systems:
 
 ## 2026-08-01
 
+> Superseded later on 2026-08-01: Time, Feeling, and Knowing now begin selected, while Place begins unselected.
+
 ### Decision
 
 Visitors may select any combination of Place, Time, Feeling, and Knowing when determining nearness.

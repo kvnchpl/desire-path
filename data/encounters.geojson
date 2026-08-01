@@ -208,7 +208,7 @@
           },
           {
             "type": "image",
-            "src": "assets/media/placeholder-horizon.svg",
+            "src": "assets/media/placeholders/placeholder-horizon.svg",
             "text": null,
             "caption": "Fictional placeholder image",
             "alt": "A thin horizontal line crossing a pale field."
@@ -250,7 +250,7 @@
           },
           {
             "type": "audio",
-            "src": "assets/media/placeholder-tone.mp3",
+            "src": "assets/media/placeholders/placeholder-tone.mp3",
             "text": null,
             "caption": "Fictional placeholder tone",
             "alt": null
@@ -292,7 +292,7 @@
           },
           {
             "type": "video",
-            "src": "assets/media/placeholder-field.mp4",
+            "src": "assets/media/placeholders/placeholder-field.mp4",
             "text": null,
             "caption": "Fictional placeholder video",
             "alt": null
