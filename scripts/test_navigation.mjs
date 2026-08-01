@@ -48,7 +48,7 @@ const firstGeneratedPair = generatedDistances.pairs.find(({ a, b }) => a === "E0
 const encounterRecords = encounters.encounters;
 const valuesFor = (field) => [...new Set(encounterRecords.map((encounter) => encounter[field]).filter(Boolean))].sort();
 
-if (encounterRecords.every(({ placeholder }) => placeholder)) {
+if (encounterIds.length === 15 && encounterRecords.every(({ placeholder }) => placeholder)) {
   assert.equal(encounterIds.length, 15);
   assert.equal(firstGeneratedPair.time, 0.166667);
   assert.equal(firstGeneratedPair.feeling, 0.45);
@@ -89,6 +89,7 @@ assert.equal(knowingDistance.get("DOCUMENTED|INFERRED"), 0.25);
 assert.equal(knowingDistance.get("DREAMED|IMAGINED"), 0.2);
 assert.equal(knowingDistance.get("ANTICIPATED|IMAGINED"), 0.3);
 assert.equal(knowingDistance.get("IMAGINED|WITNESSED"), 0.8);
+assert.ok(encounterRecords.every(({ media }) => Array.isArray(media) && media.length > 0));
 const mediaTypes = [...new Set(encounterRecords.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.ok(mediaTypes.every((type) => ["audio", "image", "text", "video"].includes(type)));
 
