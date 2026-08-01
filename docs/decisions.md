@@ -93,7 +93,7 @@ The evolution of the project's thinking is itself part of the project's history.
 
 The encounter schema uses one coordinate for each navigational dimension: public point geometry for Place, `tm_position` for Time, `af_primary` for Feeling, and `kn_primary` for Knowing. Earlier spatial descriptors, temporal extent and form, affect intensity and secondary affect, and secondary knowing are removed.
 
-Feeling distance uses provisional authored distances between affect types. Like every other dimension, `0` is nearest and `1` is farthest. Identical affects use zero, explicitly related pairs use their configured distance, and unlisted pairs use a shared default. Supported media types are limited to text, image, audio, and video.
+Feeling and Knowing use provisional authored semantic distances between their categorical values. Like every other dimension, `0` is nearest and `1` is farthest. Identical categories use zero and different categories use their configured pairwise distance. Supported media types are limited to text, image, audio, and video.
 
 ### Reasoning
 
@@ -107,7 +107,7 @@ Every retained dimensional field now has a direct, legible effect on generated p
 
 ### Implications
 
-This introduces public schema version 2. Affect distances remain provisional and must be revisited with the final content. QGIS stores only retained encounter fields, and generated exports reject removed fields.
+This introduces public schema version 2. Affect and Knowing distances remain provisional and must be revisited with the final content. QGIS stores only retained encounter fields, and generated exports reject removed fields.
 
 ---
 

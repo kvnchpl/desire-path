@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 AFFECT_DISTANCES_PATH = ROOT / "data" / "affect-distances.json"
+KNOWING_DISTANCES_PATH = ROOT / "data" / "knowing-distances.json"
 
 TIME_POSITIONS = [
     "DISTANT_PAST",
@@ -30,18 +31,19 @@ def haversine(a: list[float], b: list[float]) -> float:
     return 6371.0088 * 2 * math.asin(math.sqrt(value))
 
 
-def affect_distances() -> dict:
-    source = json.loads(AFFECT_DISTANCES_PATH.read_text(encoding="utf-8"))
+def categorical_distances(path: Path) -> dict:
+    source = json.loads(path.read_text(encoding="utf-8"))
     pairs = {tuple(sorted((pair["a"], pair["b"]))): pair["distance"] for pair in source["pairs"]}
     return {"identical": source["identical"], "default": source["default"], "pairs": pairs}
 
 
-def feeling_distance(left: str, right: str, distances: dict) -> float:
+def categorical_distance(left: str, right: str, distances: dict) -> float:
     return distances["identical"] if left == right else distances["pairs"].get(tuple(sorted((left, right))), distances["default"])
 
 
 def calculate(features: list[dict]) -> list[dict]:
-    feelings = affect_distances()
+    feelings = categorical_distances(AFFECT_DISTANCES_PATH)
+    knowings = categorical_distances(KNOWING_DISTANCES_PATH)
     raw_places = {
         (a["properties"]["id"], b["properties"]["id"]): haversine(a["geometry"]["coordinates"], b["geometry"]["coordinates"])
         for a, b in combinations(features, 2)
@@ -58,8 +60,8 @@ def calculate(features: list[dict]) -> list[dict]:
                 "b": pair_id[1],
                 "place": round(raw_places[pair_id] / maximum_place, 6),
                 "time": round(time_position, 6),
-                "feeling": round(feeling_distance(props_a["af_primary"], props_b["af_primary"], feelings), 6),
-                "knowing": 0.0 if props_a["kn_primary"] == props_b["kn_primary"] else 1.0,
+                "feeling": round(categorical_distance(props_a["af_primary"], props_b["af_primary"], feelings), 6),
+                "knowing": round(categorical_distance(props_a["kn_primary"], props_b["kn_primary"], knowings), 6),
             }
         )
     return pairs

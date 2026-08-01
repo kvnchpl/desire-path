@@ -14,10 +14,14 @@ AFFECT_TYPES = (
     "JOY", "TENDERNESS", "DESIRE", "WONDER", "SERENITY", "NOSTALGIA", "MELANCHOLY", "GRIEF", "LONELINESS",
     "ANXIETY", "FEAR", "ANGER", "DISGUST", "ESTRANGEMENT", "EERINESS", "NUMBNESS", "AMBIVALENCE",
 )
+KNOWING_TYPES = (
+    "WITNESSED", "REMEMBERED", "INHERITED", "DOCUMENTED", "DREAMED", "IMAGINED", "ANTICIPATED", "INFERRED",
+    "GENERATED", "UNRESOLVED",
+)
 ENUMS = {
     "tm_position": {"DISTANT_PAST", "RECENT_PAST", "PRESENT", "NEAR_FUTURE", "DISTANT_FUTURE", "INDETERMINATE", "ATEMPORAL"},
     "af_primary": set(AFFECT_TYPES),
-    "kn_primary": {"WITNESSED", "REMEMBERED", "INHERITED", "DOCUMENTED", "DREAMED", "IMAGINED", "ANTICIPATED", "INFERRED", "GENERATED", "UNRESOLVED"},
+    "kn_primary": set(KNOWING_TYPES),
 }
 REMOVED_FIELDS = {
     "sp_geometry", "sp_status", "tm_extent", "tm_form_primary", "tm_form_secondary",
@@ -36,10 +40,12 @@ def validate() -> list[str]:
     distances = load("data/distances.json")
     settings = load("data/settings.json")
     affect_distances = load("data/affect-distances.json")
+    knowing_distances = load("data/knowing-distances.json")
     if encounters.get("type") != "FeatureCollection":
         errors.append("encounters.geojson must be a FeatureCollection")
     versions = {
-        encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version"), affect_distances.get("schema_version"),
+        encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version"),
+        affect_distances.get("schema_version"), knowing_distances.get("schema_version"),
     }
     if len(versions) != 1 or None in versions:
         errors.append("all public data files must share a schema_version")
@@ -83,26 +89,30 @@ def validate() -> list[str]:
             if media.get("type") == "image" and not media.get("alt"):
                 errors.append(f"{media_context}: image media requires alt text")
 
-    affect_types = ENUMS["af_primary"]
-    for field in ("identical", "default"):
-        value = affect_distances.get(field)
-        if not isinstance(value, (int, float)) or not 0 <= value <= 1:
-            errors.append(f"affect-distances.{field} must be between 0 and 1")
-    affect_pairs = set()
-    ordered_affect_pairs = []
-    for index, pair in enumerate(affect_distances.get("pairs", [])):
-        ordered_affect_pairs.append((pair.get("a"), pair.get("b")))
-        key = tuple(sorted((pair.get("a"), pair.get("b"))))
-        if key[0] not in affect_types or key[1] not in affect_types or key[0] == key[1]:
-            errors.append(f"affect distance pair {index + 1} contains invalid affect types")
-        if key in affect_pairs:
-            errors.append(f"duplicate affect distance pair {key}")
-        affect_pairs.add(key)
-        value = pair.get("distance")
-        if not isinstance(value, (int, float)) or not 0 <= value <= 1:
-            errors.append(f"affect distance pair {key} must be between 0 and 1")
-    if ordered_affect_pairs != list(combinations(AFFECT_TYPES, 2)):
-        errors.append("affect-distances.pairs must contain all 136 unique pairs in canonical affect order")
+    for label, source, categories in (
+        ("affect", affect_distances, AFFECT_TYPES),
+        ("knowing", knowing_distances, KNOWING_TYPES),
+    ):
+        for field in ("identical", "default"):
+            value = source.get(field)
+            if not isinstance(value, (int, float)) or not 0 <= value <= 1:
+                errors.append(f"{label}-distances.{field} must be between 0 and 1")
+        seen_pairs = set()
+        ordered_pairs = []
+        for index, pair in enumerate(source.get("pairs", [])):
+            ordered_pairs.append((pair.get("a"), pair.get("b")))
+            key = tuple(sorted((pair.get("a"), pair.get("b"))))
+            if key[0] not in categories or key[1] not in categories or key[0] == key[1]:
+                errors.append(f"{label} distance pair {index + 1} contains invalid categories")
+            if key in seen_pairs:
+                errors.append(f"duplicate {label} distance pair {key}")
+            seen_pairs.add(key)
+            value = pair.get("distance")
+            if not isinstance(value, (int, float)) or not 0 <= value <= 1:
+                errors.append(f"{label} distance pair {key} must be between 0 and 1")
+        expected_pairs = list(combinations(categories, 2))
+        if ordered_pairs != expected_pairs:
+            errors.append(f"{label}-distances.pairs must contain all {len(expected_pairs)} unique pairs in canonical order")
     if settings.get("initial_encounter") not in ids:
         errors.append("settings.initial_encounter must reference an encounter")
     percentile = settings.get("visibility_percentile")

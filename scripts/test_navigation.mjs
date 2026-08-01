@@ -34,16 +34,18 @@ const encounters = JSON.parse(await readFile(new URL("../data/encounters.geojson
 const generatedDistances = JSON.parse(await readFile(new URL("../data/distances.json", import.meta.url), "utf8"));
 const generatedSettings = JSON.parse(await readFile(new URL("../data/settings.json", import.meta.url), "utf8"));
 const affectDistances = JSON.parse(await readFile(new URL("../data/affect-distances.json", import.meta.url), "utf8"));
+const knowingDistances = JSON.parse(await readFile(new URL("../data/knowing-distances.json", import.meta.url), "utf8"));
 const encounterIds = encounters.features.map(({ properties }) => properties.id);
 assert.equal(encounterIds.length, 15);
 assert.equal(generatedDistances.pairs.length, 105);
 assert.equal(generatedDistances.schema_version, 2);
 assert.equal(generatedSettings.schema_version, 2);
 assert.equal(affectDistances.schema_version, 2);
+assert.equal(knowingDistances.schema_version, 2);
 const firstGeneratedPair = generatedDistances.pairs.find(({ a, b }) => a === "E001" && b === "E002");
 assert.equal(firstGeneratedPair.time, 0.166667);
 assert.equal(firstGeneratedPair.feeling, 0.45);
-assert.equal(firstGeneratedPair.knowing, 1);
+assert.equal(firstGeneratedPair.knowing, 0.8);
 
 const encounterProperties = encounters.features.map(({ properties }) => properties);
 const valuesFor = (field) => [...new Set(encounterProperties.map((properties) => properties[field]).filter(Boolean))].sort();
@@ -73,6 +75,15 @@ assert.equal(affectDistance.get("JOY|WONDER"), 0.15);
 assert.equal(affectDistance.get("GRIEF|MELANCHOLY"), 0.2);
 assert.equal(affectDistance.get("EERINESS|ESTRANGEMENT"), 0.2);
 assert.equal(affectDistance.get("FEAR|JOY"), 1);
+assert.equal(knowingDistances.placeholder, true);
+assert.equal(knowingDistances.identical, 0);
+assert.equal(knowingDistances.pairs.length, 45);
+const knowingDistance = new Map(knowingDistances.pairs.map(({ a, b, distance }) => [[a, b].sort().join("|"), distance]));
+assert.equal(knowingDistance.get("REMEMBERED|WITNESSED"), 0.2);
+assert.equal(knowingDistance.get("DOCUMENTED|INFERRED"), 0.25);
+assert.equal(knowingDistance.get("DREAMED|IMAGINED"), 0.2);
+assert.equal(knowingDistance.get("ANTICIPATED|IMAGINED"), 0.3);
+assert.equal(knowingDistance.get("IMAGINED|WITNESSED"), 0.8);
 const mediaTypes = [...new Set(encounterProperties.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
 

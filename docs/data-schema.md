@@ -74,6 +74,8 @@ Every committed geometry is public. Private coordinates must be generalized, dis
 - `GENERATED`
 - `UNRESOLVED`
 
+`data/knowing-distances.json` contains all 45 unique pairwise distances between ways of knowing in the canonical order shown above. Values consider directness of evidence, transmission, construction, and temporal orientation. They use the same `0`-nearest and `1`-farthest convention and remain placeholders intended for later revision.
+
 ## Media
 
 An encounter may contain any number of media objects in display order. The four supported types are:
@@ -102,7 +104,7 @@ The export derives four normalized pairwise distances:
 - **Place:** great-circle distance between public representative points, divided by the greatest pairwise Place distance in the export.
 - **Time:** ordinal distance between `tm_position` values.
 - **Feeling:** configured distance using `data/affect-distances.json`.
-- **Knowing:** `0` when `kn_primary` matches and `1` when it differs.
+- **Knowing:** configured distance using `data/knowing-distances.json`.
 
 All results are rounded to six decimal places. Missing values fail validation rather than being silently interpreted as maximum distance.
 
@@ -111,6 +113,7 @@ All results are rounded to six decimal places. Missing values fail validation ra
 - `data/encounters.geojson` is the generated public encounter and media export.
 - `data/distances.json` contains every generated unique unordered pair once.
 - `data/affect-distances.json` contains authored provisional Feeling distances.
+- `data/knowing-distances.json` contains authored provisional Knowing distances.
 - `data/settings.json` contains authored presentation and neighborhood settings.
 
 All versioned public files use `schema_version: 2`.
