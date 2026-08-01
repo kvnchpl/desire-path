@@ -29,6 +29,7 @@ KNOWING_VALUES = [
 ]
 
 FIELDS = [
+    ("fid", "", "Hidden", None),
     ("id", "ID", "TextEdit", None),
     ("title", "Title", "TextEdit", None),
     ("placeholder", "Placeholder content", "CheckBox", None),
@@ -97,7 +98,10 @@ def configure(xml: bytes) -> bytes:
     label_on_top = replace(layer, "labelOnTop")
     reuse_last = replace(layer, "reuseLastValue")
 
-    required = {"id", "title", "time", "feeling", "knowing", "media"}
+    # Media remains required by the public-data validator. QGIS's form-level
+    # Not NULL check incorrectly treats the populated multiline JSON editor as
+    # null, so enforcing it here prevents otherwise valid features from saving.
+    required = {"id", "title", "time", "feeling", "knowing"}
     for index, (name, alias, widget_type, values) in enumerate(FIELDS):
         field = ET.SubElement(field_configuration, "field", {"name": name, "configurationFlags": "None"})
         widget(field, widget_type, values)
@@ -119,7 +123,7 @@ def configure(xml: bytes) -> bytes:
             "exp_strength": "0",
         })
         ET.SubElement(expressions, "constraint", {"field": name, "exp": "", "desc": ""})
-        ET.SubElement(editable, "field", {"name": name, "editable": "1"})
+        ET.SubElement(editable, "field", {"name": name, "editable": "0" if name == "fid" else "1"})
         ET.SubElement(label_on_top, "field", {"name": name, "labelOnTop": "0"})
         ET.SubElement(reuse_last, "field", {"name": name, "reuseLastValue": "0"})
 
