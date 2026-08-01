@@ -147,7 +147,7 @@ DESIRE PATH
 
 Explore
 
-☑ Place
+☐ Place
 
 ☑ Time
 

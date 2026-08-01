@@ -1,12 +1,11 @@
 :root {
   color-scheme: light;
-  --paper: #eeeae1;
-  --paper-soft: rgba(238, 234, 225, 0.92);
-  --ink: #252722;
-  --ink-soft: #66685f;
-  --line: rgba(37, 39, 34, 0.24);
-  --focus: #486858;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --paper: #f1efe9;
+  --ink: #252724;
+  --ink-soft: #696c66;
+  --line: rgba(37, 39, 36, 0.2);
+  --focus: #465d51;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-synthesis: none;
 }
 
@@ -23,6 +22,7 @@ body {
 body {
   background: var(--paper);
   color: var(--ink);
+  font-size: 13px;
 }
 
 button,
@@ -33,12 +33,12 @@ input {
 .skip-link {
   position: fixed;
   z-index: 10000;
-  top: 0.75rem;
-  left: 0.75rem;
-  padding: 0.55rem 0.75rem;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.5rem;
   background: var(--ink);
   color: var(--paper);
-  transform: translateY(-200%);
+  transform: translateY(-250%);
 }
 
 .skip-link:focus {
@@ -47,7 +47,7 @@ input {
 
 .landscape {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(17rem, 26vw, 23rem);
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, 20rem);
   min-height: 100vh;
 }
 
@@ -56,19 +56,21 @@ input {
   min-height: 100vh;
 }
 
-.quiet-tiles {
-  filter: grayscale(1) sepia(0.12) contrast(0.82) brightness(1.08);
-  opacity: 0.72;
-}
-
+.map,
 .leaflet-container {
-  background: #d8dad2;
+  background: var(--paper);
   font-family: inherit;
 }
 
-.leaflet-control-attribution {
+.map {
+  display: grid;
+  place-items: center;
+}
+
+.map-fallback,
+.status {
   color: var(--ink-soft);
-  opacity: 0.7;
+  font-size: 0.7rem;
 }
 
 .encounter-marker {
@@ -84,8 +86,8 @@ input {
   height: 100%;
   border: 1px solid var(--paper);
   border-radius: 50%;
-  background: #59665d;
-  box-shadow: 0 0 0 1px rgba(37, 39, 34, 0.4);
+  background: var(--ink);
+  box-shadow: 0 0 0 1px rgba(37, 39, 36, 0.35);
 }
 
 .encounter-marker--reachable span {
@@ -93,23 +95,8 @@ input {
 }
 
 .encounter-marker:focus {
-  outline: 2px solid var(--focus);
+  outline: 1px solid var(--focus);
   outline-offset: 3px;
-}
-
-.map {
-  display: grid;
-  place-items: center;
-  background: #d8dad2;
-}
-
-.map-fallback,
-.status,
-.eyebrow {
-  color: var(--ink-soft);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .interface {
@@ -117,11 +104,11 @@ input {
   z-index: 500;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.25rem;
   min-width: 0;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: 1.5rem;
   border-left: 1px solid var(--line);
-  background: var(--paper-soft);
+  background: var(--paper);
 }
 
 h1,
@@ -132,60 +119,56 @@ p {
 
 h1 {
   margin-bottom: 0;
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
 }
 
 h2 {
-  margin-bottom: 1rem;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.65rem, 3vw, 2.4rem);
-  font-weight: 400;
-  line-height: 1.08;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 fieldset {
   display: grid;
-  gap: 0.72rem;
+  gap: 0.55rem;
   margin: 0;
-  padding: 1.6rem 0 0;
+  padding: 0;
   border: 0;
-  border-top: 1px solid var(--line);
 }
 
 legend {
-  padding: 0 0 1rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  padding: 0;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
 }
 
 label {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
   width: fit-content;
   cursor: pointer;
 }
 
 input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
+  width: 0.85rem;
+  height: 0.85rem;
   margin: 0;
   accent-color: var(--focus);
 }
 
 .encounter {
-  padding-top: 1.6rem;
-  border-top: 1px solid var(--line);
   outline: none;
 }
 
 .encounter-media {
   color: var(--ink-soft);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.8rem;
+  line-height: 1.55;
 }
 
 .encounter-media img,
@@ -206,16 +189,14 @@ input[type="checkbox"] {
 .encounter-media figcaption {
   margin-top: 0.5rem;
   color: var(--ink-soft);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
 }
 
 .retrace {
   width: fit-content;
   margin-top: auto;
-  padding: 0.55rem 0;
+  padding: 0;
   border: 0;
-  border-bottom: 1px solid currentcolor;
   background: transparent;
   color: var(--ink);
   cursor: pointer;
@@ -224,18 +205,23 @@ input[type="checkbox"] {
 .retrace:disabled {
   color: var(--ink-soft);
   cursor: default;
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
 :focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 4px;
+  outline: 1px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .status {
-  min-height: 1em;
-  margin-bottom: 0;
-  text-transform: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .noscript {
@@ -248,19 +234,19 @@ input[type="checkbox"] {
   background: var(--paper);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 720px) {
   .landscape {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(48vh, 28rem) auto;
+    grid-template-rows: minmax(50vh, 26rem) auto;
   }
 
   .map-region,
   .map {
-    min-height: 48vh;
+    min-height: 50vh;
   }
 
   .interface {
-    min-height: 52vh;
+    min-height: 50vh;
     border-top: 1px solid var(--line);
     border-left: 0;
   }

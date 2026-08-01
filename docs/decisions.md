@@ -79,6 +79,28 @@ Describe how this decision affects future development.
 
 ### Decision
 
+Time, Feeling, and Knowing are selected by default. Place remains available but begins unselected. The public map uses a local coastline outline instead of raster tiles, and the interface uses a simpler monospace typographic system.
+
+### Reasoning
+
+Beginning without Place makes the project's alternative forms of nearness immediately perceptible. Removing detailed tiles allows geography to remain present without visually dominating paths and encounters. Monospace typography and fewer visible divisions further quiet the interface.
+
+### Alternatives Considered
+
+- Keeping all four dimensions selected by default.
+- Retaining raster tiles at lower opacity.
+- Keeping separate serif and sans-serif interface typography.
+
+### Implications
+
+This supersedes the earlier default-selection decision while retaining equal weighting for every selected dimension. Geographic coordinates remain fixed, Place can still be selected at any time, and coastline data is served locally as static GeoJSON.
+
+---
+
+## 2026-08-01
+
+### Decision
+
 The first public prototype will use five clearly fictional placeholder encounters. Their coordinates are generalized and their media are replaceable.
 
 ### Reasoning

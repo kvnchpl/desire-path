@@ -5,8 +5,7 @@
   "minimum_neighbors": 3,
   "maximum_neighbors": 6,
   "map": {
-    "tiles": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    "attribution": "&copy; OpenStreetMap contributors",
+    "coastline": "data/coastline.geojson",
     "maximum_zoom": 15
   }
 }

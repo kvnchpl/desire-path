@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { compositeDistance, visibleNeighborhood } from "../js/navigation.js";
 
 const pairs = [
@@ -15,5 +16,11 @@ assert.equal(compositeDistance(pairs[0], ["place", "time"]), 0.5);
 const placeNeighbors = visibleNeighborhood({ currentId: "A", encounterIds: ["A", "B", "C", "D"], pairs, dimensions: ["place"], settings });
 assert.deepEqual(placeNeighbors.map(({ id }) => id).sort(), ["B", "C", "D"]);
 assert.throws(() => visibleNeighborhood({ currentId: "A", encounterIds: ["A"], pairs: [], dimensions: [], settings }));
+
+const interfaceHtml = await readFile(new URL("../index.html", import.meta.url), "utf8");
+assert.match(interfaceHtml, /value="place">/);
+for (const dimension of ["time", "feeling", "knowing"]) {
+  assert.match(interfaceHtml, new RegExp(`value="${dimension}" checked`));
+}
 
 console.log("DESIRE PATH navigation is valid.");

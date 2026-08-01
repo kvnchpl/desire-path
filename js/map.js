@@ -14,13 +14,20 @@ function markerIcon(kind) {
 }
 
 export function createEncounterMap(element, settings, onNavigate) {
-  const map = L.map(element, { zoomControl: false, attributionControl: true });
-  L.control.zoom({ position: "bottomleft" }).addTo(map);
-  L.tileLayer(settings.map.tiles, {
-    attribution: settings.map.attribution,
-    maxZoom: settings.map.maximum_zoom,
-    className: "quiet-tiles",
-  }).addTo(map);
+  element.querySelector(".map-fallback")?.remove();
+  const map = L.map(element, { zoomControl: false, attributionControl: false, maxZoom: settings.map.maximum_zoom });
+  fetch(settings.map.coastline)
+    .then((response) => {
+      if (!response.ok) throw new Error("Could not load the coastline");
+      return response.json();
+    })
+    .then((coastline) => {
+      L.geoJSON(coastline, {
+        interactive: false,
+        style: { color: "#6e736d", opacity: 0.28, weight: 0.8 },
+      }).addTo(map).bringToBack();
+    })
+    .catch((error) => console.warn(error));
   const layer = L.layerGroup().addTo(map);
   let hasFit = false;
 

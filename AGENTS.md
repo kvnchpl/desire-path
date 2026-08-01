@@ -129,7 +129,7 @@ DESIRE PATH
 
 Explore
 
-☑ Place
+☐ Place
 
 ☑ Time
 
@@ -142,7 +142,7 @@ Explore
 Retrace
 ```
 
-All four dimensions are selected by default.
+Time, Feeling, and Knowing are selected by default. Place remains available but begins unselected.
 
 The selected dimensions determine how nearness is calculated.
 

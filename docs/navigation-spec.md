@@ -26,7 +26,7 @@ Navigation therefore consists of moving from one encounter to another through vi
 
 The visitor may choose any combination of the following dimensions:
 
-☑ Place
+☐ Place
 
 ☑ Time
 
@@ -34,7 +34,7 @@ The visitor may choose any combination of the following dimensions:
 
 ☑ Knowing
 
-All four dimensions are selected by default.
+Time, Feeling, and Knowing are selected by default. Place remains available but begins unselected.
 
 At least one dimension must always remain selected.
 
