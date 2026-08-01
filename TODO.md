@@ -11,7 +11,7 @@ Milestone #2 — complete
 * Map renders
 
 Milestone #3 — complete with placeholders
-* Five encounters
+* Fifteen fictional encounters
 
 Milestone #4 — complete
 * Checkboxes
@@ -32,10 +32,12 @@ Milestone #9 — complete for the vertical slice
 * QGIS export pipeline
 
 Milestone #10 — in progress
+* Configure the QGIS authoring form
+* Verify the deployed GitHub Pages URL
 * Replace fictional encounters with reviewed content
 * Test real image, audio, and video media
-* Test the QGIS public-export action with real encounter media
+* Author and review the first real encounter through the QGIS export workflow
+* Revisit provisional feeling and knowing distances with real material
 * Choose a project license
-* Verify the deployed GitHub Pages URL
 
 Every milestone commit must load as a working static site, produce no browser console errors, and pass the repository data validator.

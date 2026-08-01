@@ -37,31 +37,34 @@ const generatedSettings = JSON.parse(await readFile(new URL("../data/settings.js
 const feelingDistances = JSON.parse(await readFile(new URL("../data/feeling-distances.json", import.meta.url), "utf8"));
 const knowingDistances = JSON.parse(await readFile(new URL("../data/knowing-distances.json", import.meta.url), "utf8"));
 const encounterIds = encounters.encounters.map(({ id }) => id);
-assert.equal(encounterIds.length, 15);
-assert.equal(generatedDistances.pairs.length, 105);
+assert.ok(encounterIds.length >= 1);
+assert.equal(generatedDistances.pairs.length, encounterIds.length * (encounterIds.length - 1) / 2);
 assert.equal(generatedDistances.schema_version, 3);
 assert.equal(generatedSettings.schema_version, 3);
 assert.equal(feelingDistances.schema_version, 3);
 assert.equal(knowingDistances.schema_version, 3);
 const firstGeneratedPair = generatedDistances.pairs.find(({ a, b }) => a === "E001" && b === "E002");
-assert.equal(firstGeneratedPair.time, 0.166667);
-assert.equal(firstGeneratedPair.feeling, 0.45);
-assert.equal(firstGeneratedPair.knowing, 0.8);
 
 const encounterRecords = encounters.encounters;
 const valuesFor = (field) => [...new Set(encounterRecords.map((encounter) => encounter[field]).filter(Boolean))].sort();
 
-assert.deepEqual(valuesFor("time"), [
-  "ATEMPORAL", "DISTANT_FUTURE", "DISTANT_PAST", "INDETERMINATE", "NEAR_FUTURE", "PRESENT", "RECENT_PAST",
-]);
-assert.deepEqual(valuesFor("feeling"), [
-  "AMBIVALENCE", "ANGER", "ANXIETY", "DESIRE", "EERINESS", "ESTRANGEMENT", "FEAR", "GRIEF", "JOY",
-  "LONELINESS", "MELANCHOLY", "NOSTALGIA", "SERENITY", "TENDERNESS", "WONDER",
-]);
-assert.deepEqual(valuesFor("knowing"), [
-  "ANTICIPATED", "DOCUMENTED", "DREAMED", "GENERATED", "IMAGINED", "INFERRED", "INHERITED", "REMEMBERED",
-  "UNRESOLVED", "WITNESSED",
-]);
+if (encounterRecords.every(({ placeholder }) => placeholder)) {
+  assert.equal(encounterIds.length, 15);
+  assert.equal(firstGeneratedPair.time, 0.166667);
+  assert.equal(firstGeneratedPair.feeling, 0.45);
+  assert.equal(firstGeneratedPair.knowing, 0.8);
+  assert.deepEqual(valuesFor("time"), [
+    "ATEMPORAL", "DISTANT_FUTURE", "DISTANT_PAST", "INDETERMINATE", "NEAR_FUTURE", "PRESENT", "RECENT_PAST",
+  ]);
+  assert.deepEqual(valuesFor("feeling"), [
+    "AMBIVALENCE", "ANGER", "ANXIETY", "DESIRE", "EERINESS", "ESTRANGEMENT", "FEAR", "GRIEF", "JOY",
+    "LONELINESS", "MELANCHOLY", "NOSTALGIA", "SERENITY", "TENDERNESS", "WONDER",
+  ]);
+  assert.deepEqual(valuesFor("knowing"), [
+    "ANTICIPATED", "DOCUMENTED", "DREAMED", "GENERATED", "IMAGINED", "INFERRED", "INHERITED", "REMEMBERED",
+    "UNRESOLVED", "WITNESSED",
+  ]);
+}
 const removedFields = [
   "sp_geometry", "sp_status", "tm_extent", "tm_form_primary", "tm_form_secondary",
   "af_intensity", "af_secondary", "kn_secondary", "tm_position", "af_primary", "kn_primary",
@@ -87,7 +90,7 @@ assert.equal(knowingDistance.get("DREAMED|IMAGINED"), 0.2);
 assert.equal(knowingDistance.get("ANTICIPATED|IMAGINED"), 0.3);
 assert.equal(knowingDistance.get("IMAGINED|WITNESSED"), 0.8);
 const mediaTypes = [...new Set(encounterRecords.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
-assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
+assert.ok(mediaTypes.every((type) => ["audio", "image", "text", "video"].includes(type)));
 
 const dimensions = ["place", "time", "feeling", "knowing"];
 for (let mask = 1; mask < 2 ** dimensions.length; mask += 1) {
