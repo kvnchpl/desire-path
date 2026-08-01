@@ -22,13 +22,13 @@ assert.match(interfaceHtml, /value="place">/);
 for (const dimension of ["time", "feeling", "knowing"]) {
   assert.match(interfaceHtml, new RegExp(`value="${dimension}" checked`));
 }
-assert.match(interfaceHtml, /<details class="debug">/);
+assert.match(interfaceHtml, /<details class="settings">/);
 assert.match(interfaceHtml, /<details class="explore" open>/);
-assert.match(interfaceHtml, /id="debug-show-all"/);
-assert.match(interfaceHtml, /id="debug-show-ids"/);
-assert.match(interfaceHtml, /id="debug-show-distances"/);
-assert.match(interfaceHtml, /id="debug-show-data"/);
-assert.match(interfaceHtml, /id="debug-data" hidden/);
+assert.match(interfaceHtml, /id="settings-show-all"/);
+assert.match(interfaceHtml, /id="settings-show-ids"/);
+assert.match(interfaceHtml, /id="settings-show-distances"/);
+assert.match(interfaceHtml, /id="settings-show-details"/);
+assert.match(interfaceHtml, /id="settings-data" hidden/);
 
 const encounters = JSON.parse(await readFile(new URL("../data/encounters.json", import.meta.url), "utf8"));
 const generatedDistances = JSON.parse(await readFile(new URL("../data/distances.json", import.meta.url), "utf8"));

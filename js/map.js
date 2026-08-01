@@ -41,23 +41,23 @@ export function createEncounterMap(element, settings, onNavigate) {
   const layer = L.layerGroup().addTo(map);
   let hasFit = false;
 
-  function render(current, neighbors, encounterById, debug = {}) {
+  function render(current, neighbors, encounterById, options = {}) {
     layer.clearLayers();
     const currentLatLng = L.latLng(current.place[1], current.place[0]);
     const visibleLatLngs = [currentLatLng];
     const visibleIds = new Set([current.id, ...neighbors.map(({ id }) => id)]);
 
-    if (debug.showAllNodes) {
+    if (options.showAllNodes) {
       encounterById.forEach((encounter, id) => {
         if (visibleIds.has(id)) return;
         const latLng = L.latLng(encounter.place[1], encounter.place[0]);
         const marker = L.marker(latLng, {
-          icon: markerIcon("debug"),
+          icon: markerIcon("context"),
           interactive: false,
           keyboard: false,
           alt: "",
         }).addTo(layer);
-        addNodeId(marker, id, debug.showNodeIds);
+        addNodeId(marker, id, options.showNodeIds);
       });
     }
 
@@ -74,7 +74,7 @@ export function createEncounterMap(element, settings, onNavigate) {
       });
       marker.on("click", () => onNavigate(id));
       marker.addTo(layer);
-      addNodeId(marker, id, debug.showNodeIds);
+      addNodeId(marker, id, options.showNodeIds);
     });
 
     const currentMarker = L.marker(currentLatLng, {
@@ -84,7 +84,7 @@ export function createEncounterMap(element, settings, onNavigate) {
       alt: `current: ${current.title.toUpperCase()}`,
       zIndexOffset: 1000,
     }).addTo(layer);
-    addNodeId(currentMarker, current.id, debug.showNodeIds);
+    addNodeId(currentMarker, current.id, options.showNodeIds);
 
     const bounds = L.latLngBounds(visibleLatLngs);
     if (!hasFit) {

@@ -91,6 +91,22 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+The collapsed Debug panel becomes Settings. Its controls use visitor-facing Encounter and distance language, the comparison view explains that `0` is near and `1` is far, and current Encounter information is presented as readable labeled details instead of raw JSON.
+
+### Reasoning
+
+These views are useful for exploration as well as development. Presenting them as diagnostics unnecessarily exposes implementation framing and makes otherwise meaningful information harder to interpret.
+
+### Implications
+
+Settings remains collapsed by default. Optional context stays visually subordinate, and the ordinary map never reveals the complete path network.
+
+---
+
+## 2026-08-01
+
+### Decision
+
 The public encounter schema uses the plain sibling fields `place`, `time`, `feeling`, and `knowing`. QGIS retains point geometry for authoring, while export converts it to `place: [longitude, latitude]`. The public encounter collection is plain JSON rather than GeoJSON, avoiding duplicate geometry while giving all four navigational dimensions the same structural level. `affect-distances.json` is renamed `feeling-distances.json` to match public terminology.
 
 ### Reasoning
@@ -105,7 +121,7 @@ The public data now mirrors the language and conceptual symmetry of the interfac
 
 ### Implications
 
-This introduces public schema version 3. QGIS geometry remains authoritative, while the browser, distance generator, validator, and debug panel consume the simplified JSON record.
+This introduces public schema version 3. QGIS geometry remains authoritative, while the browser, distance generator, validator, and Settings panel consume the simplified JSON record.
 
 ---
 

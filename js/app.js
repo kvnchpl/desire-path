@@ -4,12 +4,12 @@ import { compositeDistance, createDistanceIndex, pairKey, visibleNeighborhood } 
 
 const elements = {
   form: document.querySelector("#explore-form"),
-  debugShowAll: document.querySelector("#debug-show-all"),
-  debugShowIds: document.querySelector("#debug-show-ids"),
-  debugShowDistances: document.querySelector("#debug-show-distances"),
-  debugDistances: document.querySelector("#debug-distances"),
-  debugShowData: document.querySelector("#debug-show-data"),
-  debugData: document.querySelector("#debug-data"),
+  settingsShowAll: document.querySelector("#settings-show-all"),
+  settingsShowIds: document.querySelector("#settings-show-ids"),
+  settingsShowDistances: document.querySelector("#settings-show-distances"),
+  settingsDistances: document.querySelector("#settings-distances"),
+  settingsShowDetails: document.querySelector("#settings-show-details"),
+  settingsData: document.querySelector("#settings-data"),
   map: document.querySelector("#map"),
   media: document.querySelector("#encounter-media"),
   retrace: document.querySelector("#retrace"),
@@ -27,6 +27,16 @@ function selectedDimensions() {
   return [...elements.form.elements.dimension].filter((input) => input.checked).map((input) => input.value);
 }
 
+function readableCategory(value) {
+  return value.replaceAll("_", " ").toLowerCase();
+}
+
+function readablePlace([longitude, latitude]) {
+  const northSouth = latitude >= 0 ? "n" : "s";
+  const eastWest = longitude >= 0 ? "e" : "w";
+  return `${Math.abs(latitude).toFixed(3)}° ${northSouth}, ${Math.abs(longitude).toFixed(3)}° ${eastWest}`;
+}
+
 async function start() {
   const [encounters, distances, settings] = await Promise.all([
     loadJson("data/encounters.json"),
@@ -40,16 +50,18 @@ async function start() {
   let currentId = settings.initial_encounter;
   const map = createEncounterMap(elements.map, settings, navigate);
 
-  function renderDistanceDebug(dimensions) {
-    elements.debugDistances.hidden = !elements.debugShowDistances.checked;
-    if (!elements.debugShowDistances.checked) {
-      elements.debugDistances.replaceChildren();
+  function renderDistanceSettings(dimensions) {
+    elements.settingsDistances.hidden = !elements.settingsShowDistances.checked;
+    if (!elements.settingsShowDistances.checked) {
+      elements.settingsDistances.replaceChildren();
       return;
     }
 
     const table = document.createElement("table");
+    const caption = table.createCaption();
+    caption.textContent = `distance from ${encounterById.get(currentId).title.toUpperCase()}; 0 is near, 1 is far`;
     const header = table.createTHead().insertRow();
-    ["node", "place", "time", "feeling", "knowing", "composite"].forEach((label) => {
+    ["encounter", "place", "time", "feeling", "knowing", "combined"].forEach((label) => {
       const cell = document.createElement("th");
       cell.scope = "col";
       cell.textContent = label;
@@ -59,20 +71,44 @@ async function start() {
     encounterIds.filter((id) => id !== currentId).forEach((id) => {
       const pair = distanceByPair.get(pairKey(currentId, id));
       const row = body.insertRow();
-      const values = [id, pair.place, pair.time, pair.feeling, pair.knowing, compositeDistance(pair, dimensions)];
+      const values = [encounterById.get(id).title.toUpperCase(), pair.place, pair.time, pair.feeling, pair.knowing, compositeDistance(pair, dimensions)];
       values.forEach((value, index) => {
         const cell = row.insertCell();
         cell.textContent = index === 0 ? value : value.toFixed(3);
       });
     });
-    elements.debugDistances.replaceChildren(table);
+    elements.settingsDistances.replaceChildren(table);
   }
 
-  function renderDataDebug(current) {
-    elements.debugData.hidden = !elements.debugShowData.checked;
-    elements.debugData.textContent = elements.debugShowData.checked
-      ? JSON.stringify(current, null, 2)
-      : "";
+  function renderEncounterDetails(current) {
+    elements.settingsData.hidden = !elements.settingsShowDetails.checked;
+    if (!elements.settingsShowDetails.checked) {
+      elements.settingsData.replaceChildren();
+      return;
+    }
+
+    const table = document.createElement("table");
+    const body = table.createTBody();
+    const mediaTypes = [...new Set(current.media.map(({ type }) => type))].join(", ");
+    const rows = [
+      ["title", current.title.toUpperCase()],
+      ["id", current.id],
+      ["place", readablePlace(current.place)],
+      ["time", readableCategory(current.time)],
+      ["feeling", readableCategory(current.feeling)],
+      ["knowing", readableCategory(current.knowing)],
+      ["media", mediaTypes],
+      ["sample", current.placeholder ? "yes" : "no"],
+    ];
+    rows.forEach(([label, value]) => {
+      const row = body.insertRow();
+      const heading = document.createElement("th");
+      heading.scope = "row";
+      heading.textContent = label;
+      row.append(heading);
+      row.insertCell().textContent = value;
+    });
+    elements.settingsData.replaceChildren(table);
   }
 
   function render(announcement = "") {
@@ -86,12 +122,12 @@ async function start() {
       settings,
     });
     renderEncounter(current, elements);
-    renderDataDebug(current);
+    renderEncounterDetails(current);
     map.render(current, neighbors, encounterById, {
-      showAllNodes: elements.debugShowAll.checked,
-      showNodeIds: elements.debugShowIds.checked,
+      showAllNodes: elements.settingsShowAll.checked,
+      showNodeIds: elements.settingsShowIds.checked,
     });
-    renderDistanceDebug(dimensions);
+    renderDistanceSettings(dimensions);
     elements.retrace.disabled = history.length < 2;
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
   }
@@ -120,20 +156,20 @@ async function start() {
     render(`Retraced to ${encounterById.get(currentId).title}.`);
   });
 
-  elements.debugShowAll.addEventListener("change", () => {
-    render(elements.debugShowAll.checked ? "All node positions are visible." : "Only near node positions are visible.");
+  elements.settingsShowAll.addEventListener("change", () => {
+    render(elements.settingsShowAll.checked ? "Every encounter position is visible." : "Only nearby encounter positions are visible.");
   });
 
-  elements.debugShowIds.addEventListener("change", () => {
-    render(elements.debugShowIds.checked ? "Node IDs are visible." : "Node IDs are hidden.");
+  elements.settingsShowIds.addEventListener("change", () => {
+    render(elements.settingsShowIds.checked ? "Encounter IDs are visible." : "Encounter IDs are hidden.");
   });
 
-  elements.debugShowDistances.addEventListener("change", () => {
-    render(elements.debugShowDistances.checked ? "Distances are visible." : "Distances are hidden.");
+  elements.settingsShowDistances.addEventListener("change", () => {
+    render(elements.settingsShowDistances.checked ? "Distance comparison is visible." : "Distance comparison is hidden.");
   });
 
-  elements.debugShowData.addEventListener("change", () => {
-    render(elements.debugShowData.checked ? "Current node data is visible." : "Current node data is hidden.");
+  elements.settingsShowDetails.addEventListener("change", () => {
+    render(elements.settingsShowDetails.checked ? "Current encounter details are visible." : "Current encounter details are hidden.");
   });
 
   render();
