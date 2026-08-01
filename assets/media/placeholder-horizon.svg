@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title description">
+  <title id="title">Placeholder horizon</title>
+  <desc id="description">A thin horizontal line crossing a pale field.</desc>
+  <rect width="800" height="500" fill="#f1efe9"/>
+  <path d="M80 266H720" fill="none" stroke="#696c66" stroke-width="2"/>
+</svg>

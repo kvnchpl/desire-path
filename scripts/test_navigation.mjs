@@ -35,6 +35,32 @@ const encounterIds = encounters.features.map(({ properties }) => properties.id);
 assert.equal(encounterIds.length, 15);
 assert.equal(generatedDistances.pairs.length, 105);
 
+const encounterProperties = encounters.features.map(({ properties }) => properties);
+const valuesFor = (field) => [...new Set(encounterProperties.map((properties) => properties[field]).filter(Boolean))].sort();
+const combinedValuesFor = (...fields) => [
+  ...new Set(encounterProperties.flatMap((properties) => fields.map((field) => properties[field])).filter(Boolean)),
+].sort();
+
+assert.deepEqual(valuesFor("sp_geometry"), ["AREA", "MULTIPLE", "NONE", "POINT", "ROUTE"]);
+assert.deepEqual(valuesFor("sp_status"), ["APPROXIMATE", "PRECISE", "RECONSTRUCTED", "UNLOCATABLE", "WITHHELD"]);
+assert.deepEqual(valuesFor("tm_position"), [
+  "ATEMPORAL", "DISTANT_FUTURE", "DISTANT_PAST", "INDETERMINATE", "NEAR_FUTURE", "PRESENT", "RECENT_PAST",
+]);
+assert.deepEqual(valuesFor("tm_extent"), ["DURATIONAL", "MOMENTARY", "ONGOING"]);
+const temporalForms = ["ANACHRONIC", "COMPOSITE", "CYCLICAL", "LINEAR", "RECURSIVE"];
+assert.deepEqual(valuesFor("tm_form_primary"), temporalForms);
+assert.deepEqual(valuesFor("tm_form_secondary"), temporalForms);
+assert.deepEqual(combinedValuesFor("af_primary", "af_secondary"), [
+  "AMBIVALENCE", "ANGER", "ANXIETY", "DESIRE", "DISGUST", "EERINESS", "ESTRANGEMENT", "FEAR", "GRIEF",
+  "JOY", "LONELINESS", "MELANCHOLY", "NOSTALGIA", "NUMBNESS", "SERENITY", "TENDERNESS", "WONDER",
+]);
+assert.deepEqual(combinedValuesFor("kn_primary", "kn_secondary"), [
+  "ANTICIPATED", "DOCUMENTED", "DREAMED", "GENERATED", "IMAGINED", "INFERRED", "INHERITED", "REMEMBERED",
+  "UNRESOLVED", "WITNESSED",
+]);
+const mediaTypes = [...new Set(encounterProperties.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
+assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
+
 const dimensions = ["place", "time", "feeling", "knowing"];
 for (let mask = 1; mask < 2 ** dimensions.length; mask += 1) {
   const selected = dimensions.filter((_, index) => mask & (1 << index));
