@@ -57,7 +57,7 @@ Every committed geometry is public. Private coordinates must be generalized, dis
 - `NUMBNESS`
 - `AMBIVALENCE`
 
-`data/affect-distances.json` contains all 136 unique pairwise distances between affect types in the canonical order shown above. As in every other dimension, `0` is nearest and `1` is farthest. Identical types use the configured `identical` value. The `default` value documents the provisional value assigned to otherwise unspecified relationships during initial authoring. These values are placeholders intended for later revision.
+`data/affect-distances.json` contains all 136 unique pairwise distances between affect types in the canonical order shown above. As in every other dimension, `0` is nearest and `1` is farthest. Identical types use the configured `identical` value. The provisional semantic values consider valence, activation, and relational orientation, with editorial adjustments where those broad qualities would collapse distinct affect families. They remain placeholders intended for later revision.
 
 ## Knowing
 

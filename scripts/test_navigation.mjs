@@ -67,6 +67,12 @@ encounterProperties.forEach((properties) => removedFields.forEach((field) => ass
 assert.equal(affectDistances.placeholder, true);
 assert.equal(affectDistances.identical, 0);
 assert.equal(affectDistances.pairs.length, 136);
+const affectDistance = new Map(affectDistances.pairs.map(({ a, b, distance }) => [[a, b].sort().join("|"), distance]));
+assert.equal(affectDistance.get("ANXIETY|FEAR"), 0.1);
+assert.equal(affectDistance.get("JOY|WONDER"), 0.15);
+assert.equal(affectDistance.get("GRIEF|MELANCHOLY"), 0.2);
+assert.equal(affectDistance.get("EERINESS|ESTRANGEMENT"), 0.2);
+assert.equal(affectDistance.get("FEAR|JOY"), 1);
 const mediaTypes = [...new Set(encounterProperties.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
 

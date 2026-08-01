@@ -22,7 +22,7 @@
       "b": "E003",
       "place": 0.543687,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.6,
       "knowing": 1.0
     },
     {
@@ -30,7 +30,7 @@
       "b": "E004",
       "place": 0.339074,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -46,7 +46,7 @@
       "b": "E006",
       "place": 0.254885,
       "time": 0.0,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -54,7 +54,7 @@
       "b": "E007",
       "place": 0.234711,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.25,
       "knowing": 1.0
     },
     {
@@ -62,7 +62,7 @@
       "b": "E008",
       "place": 0.191773,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.65,
       "knowing": 1.0
     },
     {
@@ -70,7 +70,7 @@
       "b": "E009",
       "place": 0.225506,
       "time": 0.0,
-      "feeling": 0.9,
+      "feeling": 0.6,
       "knowing": 1.0
     },
     {
@@ -86,7 +86,7 @@
       "b": "E011",
       "place": 0.748529,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -94,7 +94,7 @@
       "b": "E012",
       "place": 0.43659,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.8,
       "knowing": 1.0
     },
     {
@@ -110,7 +110,7 @@
       "b": "E014",
       "place": 0.552028,
       "time": 0.0,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -118,7 +118,7 @@
       "b": "E015",
       "place": 0.366094,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 0.7,
       "knowing": 1.0
     },
     {
@@ -126,7 +126,7 @@
       "b": "E003",
       "place": 0.38237,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.8,
       "knowing": 1.0
     },
     {
@@ -134,7 +134,7 @@
       "b": "E004",
       "place": 0.478855,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.4,
       "knowing": 1.0
     },
     {
@@ -142,7 +142,7 @@
       "b": "E005",
       "place": 0.424844,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.7,
       "knowing": 1.0
     },
     {
@@ -150,7 +150,7 @@
       "b": "E006",
       "place": 0.33138,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.85,
       "knowing": 1.0
     },
     {
@@ -166,7 +166,7 @@
       "b": "E008",
       "place": 0.181751,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -174,7 +174,7 @@
       "b": "E009",
       "place": 0.52576,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.7,
       "knowing": 1.0
     },
     {
@@ -190,7 +190,7 @@
       "b": "E011",
       "place": 0.587389,
       "time": 0.0,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -198,7 +198,7 @@
       "b": "E012",
       "place": 0.252872,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.95,
       "knowing": 0.0
     },
     {
@@ -206,7 +206,7 @@
       "b": "E013",
       "place": 0.639731,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -222,7 +222,7 @@
       "b": "E015",
       "place": 0.499005,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.85,
       "knowing": 1.0
     },
     {
@@ -230,7 +230,7 @@
       "b": "E004",
       "place": 0.418356,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.55,
       "knowing": 1.0
     },
     {
@@ -246,7 +246,7 @@
       "b": "E006",
       "place": 0.686299,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.3,
       "knowing": 1.0
     },
     {
@@ -254,7 +254,7 @@
       "b": "E007",
       "place": 0.563215,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -262,7 +262,7 @@
       "b": "E008",
       "place": 0.358705,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.3,
       "knowing": 0.0
     },
     {
@@ -270,7 +270,7 @@
       "b": "E009",
       "place": 0.649992,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.35,
       "knowing": 1.0
     },
     {
@@ -278,7 +278,7 @@
       "b": "E010",
       "place": 0.480752,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.8,
       "knowing": 1.0
     },
     {
@@ -286,7 +286,7 @@
       "b": "E011",
       "place": 0.211523,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.4,
       "knowing": 1.0
     },
     {
@@ -302,7 +302,7 @@
       "b": "E013",
       "place": 0.381005,
       "time": 0.0,
-      "feeling": 0.9,
+      "feeling": 0.65,
       "knowing": 1.0
     },
     {
@@ -310,7 +310,7 @@
       "b": "E014",
       "place": 0.429745,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.4,
       "knowing": 1.0
     },
     {
@@ -326,7 +326,7 @@
       "b": "E005",
       "place": 0.662918,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 0.55,
       "knowing": 1.0
     },
     {
@@ -350,7 +350,7 @@
       "b": "E008",
       "place": 0.303292,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -366,7 +366,7 @@
       "b": "E010",
       "place": 0.852813,
       "time": 0.0,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -374,7 +374,7 @@
       "b": "E011",
       "place": 0.56553,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.35,
       "knowing": 1.0
     },
     {
@@ -382,7 +382,7 @@
       "b": "E012",
       "place": 0.700321,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 0.6,
       "knowing": 1.0
     },
     {
@@ -390,7 +390,7 @@
       "b": "E013",
       "place": 0.279293,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.55,
       "knowing": 1.0
     },
     {
@@ -406,7 +406,7 @@
       "b": "E015",
       "place": 0.02703,
       "time": 1.0,
-      "feeling": 0.9,
+      "feeling": 0.5,
       "knowing": 1.0
     },
     {
@@ -414,7 +414,7 @@
       "b": "E006",
       "place": 0.755396,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.5,
       "knowing": 1.0
     },
     {
@@ -422,7 +422,7 @@
       "b": "E007",
       "place": 0.780512,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -438,7 +438,7 @@
       "b": "E009",
       "place": 0.853214,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.3,
       "knowing": 1.0
     },
     {
@@ -446,7 +446,7 @@
       "b": "E010",
       "place": 0.228388,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -470,7 +470,7 @@
       "b": "E013",
       "place": 0.638116,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.65,
       "knowing": 1.0
     },
     {
@@ -478,7 +478,7 @@
       "b": "E014",
       "place": 0.315611,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.5,
       "knowing": 1.0
     },
     {
@@ -486,7 +486,7 @@
       "b": "E015",
       "place": 0.666939,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -502,7 +502,7 @@
       "b": "E008",
       "place": 0.347307,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.1,
       "knowing": 1.0
     },
     {
@@ -518,7 +518,7 @@
       "b": "E010",
       "place": 0.799192,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.95,
       "knowing": 1.0
     },
     {
@@ -526,7 +526,7 @@
       "b": "E011",
       "place": 0.897612,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -534,7 +534,7 @@
       "b": "E012",
       "place": 0.271252,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -542,7 +542,7 @@
       "b": "E013",
       "place": 0.835741,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.85,
       "knowing": 1.0
     },
     {
@@ -558,7 +558,7 @@
       "b": "E015",
       "place": 0.614878,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 0.55,
       "knowing": 1.0
     },
     {
@@ -566,7 +566,7 @@
       "b": "E008",
       "place": 0.315307,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.85,
       "knowing": 1.0
     },
     {
@@ -574,7 +574,7 @@
       "b": "E009",
       "place": 0.102363,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.7,
       "knowing": 1.0
     },
     {
@@ -590,7 +590,7 @@
       "b": "E011",
       "place": 0.73531,
       "time": 0.0,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -598,7 +598,7 @@
       "b": "E012",
       "place": 0.662762,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.95,
       "knowing": 0.0
     },
     {
@@ -622,7 +622,7 @@
       "b": "E015",
       "place": 0.209374,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -630,7 +630,7 @@
       "b": "E009",
       "place": 0.362515,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.25,
       "knowing": 1.0
     },
     {
@@ -654,7 +654,7 @@
       "b": "E012",
       "place": 0.399081,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -662,7 +662,7 @@
       "b": "E013",
       "place": 0.503346,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.8,
       "knowing": 1.0
     },
     {
@@ -670,7 +670,7 @@
       "b": "E014",
       "place": 0.406969,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.5,
       "knowing": 1.0
     },
     {
@@ -678,7 +678,7 @@
       "b": "E015",
       "place": 0.3256,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.55,
       "knowing": 1.0
     },
     {
@@ -686,7 +686,7 @@
       "b": "E010",
       "place": 1.0,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.75,
       "knowing": 1.0
     },
     {
@@ -694,7 +694,7 @@
       "b": "E011",
       "place": 0.830041,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.3,
       "knowing": 1.0
     },
     {
@@ -702,7 +702,7 @@
       "b": "E012",
       "place": 0.661166,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.35,
       "knowing": 1.0
     },
     {
@@ -710,7 +710,7 @@
       "b": "E013",
       "place": 0.564891,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.65,
       "knowing": 1.0
     },
     {
@@ -726,7 +726,7 @@
       "b": "E015",
       "place": 0.311637,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 0.6,
       "knowing": 1.0
     },
     {
@@ -734,7 +734,7 @@
       "b": "E011",
       "place": 0.533928,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.5,
       "knowing": 1.0
     },
     {
@@ -742,7 +742,7 @@
       "b": "E012",
       "place": 0.576298,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 1,
       "knowing": 1.0
     },
     {
@@ -758,7 +758,7 @@
       "b": "E014",
       "place": 0.28896,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.95,
       "knowing": 1.0
     },
     {
@@ -766,7 +766,7 @@
       "b": "E015",
       "place": 0.861141,
       "time": 1.0,
-      "feeling": 0.9,
+      "feeling": 0.8,
       "knowing": 1.0
     },
     {
@@ -774,7 +774,7 @@
       "b": "E012",
       "place": 0.81987,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.6,
       "knowing": 1.0
     },
     {
@@ -790,7 +790,7 @@
       "b": "E014",
       "place": 0.586504,
       "time": 0.166667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 0.0
     },
     {
@@ -798,7 +798,7 @@
       "b": "E015",
       "place": 0.556537,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.45,
       "knowing": 1.0
     },
     {
@@ -806,7 +806,7 @@
       "b": "E013",
       "place": 0.888844,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.85,
       "knowing": 1.0
     },
     {
@@ -814,7 +814,7 @@
       "b": "E014",
       "place": 0.295503,
       "time": 0.666667,
-      "feeling": 0.9,
+      "feeling": 0.35,
       "knowing": 1.0
     },
     {
@@ -830,7 +830,7 @@
       "b": "E014",
       "place": 0.777633,
       "time": 0.333333,
-      "feeling": 0.9,
+      "feeling": 0.8,
       "knowing": 1.0
     },
     {
@@ -838,7 +838,7 @@
       "b": "E015",
       "place": 0.254993,
       "time": 0.5,
-      "feeling": 0.9,
+      "feeling": 0.65,
       "knowing": 1.0
     },
     {
@@ -846,7 +846,7 @@
       "b": "E015",
       "place": 0.695313,
       "time": 0.833333,
-      "feeling": 0.9,
+      "feeling": 0.5,
       "knowing": 1.0
     }
   ]
