@@ -9,7 +9,7 @@ QGIS is the place where encounters are authored and reviewed. The browser reads 
 1. Open `qgis/desire-path.qgz` in QGIS.
 2. Select the **Encounters — PUBLIC LOCATIONS** layer and make edits in its form view.
 3. Confirm that every geometry is already safe to publish. Generalize or displace withheld locations before export. **Coordinates in this layer are public.**
-4. Save the QGIS project and its encounter layer.
+4. Save the encounter layer edits. Do not save the QGIS project unless you intentionally changed its configuration; ordinary encounter edits do not require it.
 5. From the repository root, run `npm run export:data`.
 6. Run `npm test` before publishing.
 
@@ -25,7 +25,7 @@ Use a new stable ID, such as `E016`, so the fictional encounters remain availabl
 2. Add a point in the **Encounters — PUBLIC LOCATIONS** layer at a location that is safe to publish.
 3. Enter a title, clear **Placeholder content**, and choose time, feeling, and knowing values from the dropdowns.
 4. Enter media as a JSON array. Keep paths relative to the repository root.
-5. Save the feature and project, run `npm run export:data`, then run `npm test`.
+5. Save the layer edits, run `npm run export:data`, then run `npm test`.
 6. Review the encounter locally before committing or publishing it.
 
 Minimal media examples:
