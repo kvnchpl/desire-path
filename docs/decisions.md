@@ -91,6 +91,30 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+The encounter schema uses one coordinate for each navigational dimension: public point geometry for Place, `tm_position` for Time, `af_primary` for Feeling, and `kn_primary` for Knowing. Earlier spatial descriptors, temporal extent and form, affect intensity and secondary affect, and secondary knowing are removed.
+
+Feeling distance uses provisional authored closeness values between affect types. Identical affects are nearest, explicitly related pairs use their configured closeness, and unlisted pairs use a shared default. Supported media types are limited to text, image, audio, and video.
+
+### Reasoning
+
+Every retained dimensional field now has a direct, legible effect on generated paths. The placeholder Feeling relationships preserve variation without requiring unused secondary fields or intensity values.
+
+### Alternatives Considered
+
+- Retaining descriptive fields that did not affect navigation.
+- Treating all different affects as equally distant.
+- Supporting media types without corresponding browser renderers.
+
+### Implications
+
+This introduces public schema version 2. Affect closeness remains provisional and must be revisited with the final content. QGIS stores only retained encounter fields, and generated exports reject removed fields.
+
+---
+
+## 2026-08-01
+
+### Decision
+
 A collapsed debug section may expose diagnostic views that are unavailable in ordinary exploration. Its initial options reveal faint non-navigable encounter positions, node IDs, and the four source distances plus active composite distance without revealing the complete path network.
 
 ### Reasoning

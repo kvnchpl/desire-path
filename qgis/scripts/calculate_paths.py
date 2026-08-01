@@ -9,6 +9,9 @@ import math
 from itertools import combinations
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[2]
+AFFECT_CLOSENESS_PATH = ROOT / "data" / "affect-closeness.json"
+
 TIME_POSITIONS = [
     "DISTANT_PAST",
     "RECENT_PAST",
@@ -27,21 +30,19 @@ def haversine(a: list[float], b: list[float]) -> float:
     return 6371.0088 * 2 * math.asin(math.sqrt(value))
 
 
-def mismatch(left: object, right: object) -> float:
-    return 0.0 if left == right else 1.0
+def affect_closeness() -> dict:
+    source = json.loads(AFFECT_CLOSENESS_PATH.read_text(encoding="utf-8"))
+    pairs = {tuple(sorted((pair["a"], pair["b"]))): pair["closeness"] for pair in source["pairs"]}
+    return {"identical": source["identical"], "default": source["default"], "pairs": pairs}
 
 
-def label_distance(properties_a: dict, properties_b: dict, prefix: str) -> float:
-    labels_a = {properties_a[f"{prefix}_primary"]}
-    labels_b = {properties_b[f"{prefix}_primary"]}
-    if properties_a.get(f"{prefix}_secondary"):
-        labels_a.add(properties_a[f"{prefix}_secondary"])
-    if properties_b.get(f"{prefix}_secondary"):
-        labels_b.add(properties_b[f"{prefix}_secondary"])
-    return 1 - len(labels_a & labels_b) / len(labels_a | labels_b)
+def feeling_distance(left: str, right: str, closeness: dict) -> float:
+    similarity = closeness["identical"] if left == right else closeness["pairs"].get(tuple(sorted((left, right))), closeness["default"])
+    return 1 - similarity
 
 
 def calculate(features: list[dict]) -> list[dict]:
+    feelings = affect_closeness()
     raw_places = {
         (a["properties"]["id"], b["properties"]["id"]): haversine(a["geometry"]["coordinates"], b["geometry"]["coordinates"])
         for a, b in combinations(features, 2)
@@ -57,12 +58,9 @@ def calculate(features: list[dict]) -> list[dict]:
                 "a": pair_id[0],
                 "b": pair_id[1],
                 "place": round(raw_places[pair_id] / maximum_place, 6),
-                "time": round(
-                    (time_position + mismatch(props_a["tm_extent"], props_b["tm_extent"]) + mismatch(props_a["tm_form_primary"], props_b["tm_form_primary"])) / 3,
-                    6,
-                ),
-                "feeling": round((abs(props_a["af_intensity"] - props_b["af_intensity"]) + label_distance(props_a, props_b, "af")) / 2, 6),
-                "knowing": round(label_distance(props_a, props_b, "kn"), 6),
+                "time": round(time_position, 6),
+                "feeling": round(feeling_distance(props_a["af_primary"], props_b["af_primary"], feelings), 6),
+                "knowing": 0.0 if props_a["kn_primary"] == props_b["kn_primary"] else 1.0,
             }
         )
     return pairs

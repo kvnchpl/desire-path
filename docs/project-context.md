@@ -63,7 +63,7 @@ An encounter may consist of:
 
 Each encounter is multimedia.
 
-Rather than limiting an encounter to a single artifact, it may contain text, images, audio, video, drawings, maps, recordings, or other media.
+Rather than limiting an encounter to a single artifact, it may contain any combination of the four supported media types: text, image, audio, and video.
 
 An encounter is not merely an object.
 

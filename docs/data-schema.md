@@ -1,104 +1,31 @@
-# Data schema
-
 # DESIRE PATH Data Schema
 
-This document defines the canonical data model for DESIRE PATH.
+This document defines the canonical data model for DESIRE PATH. QGIS and its GeoPackage are the authoritative encounter store; the website reads generated public files.
 
-The schema is implementation-independent. While the current project uses QGIS and GeoPackage as its primary data store, these concepts should remain stable regardless of future storage format.
+The fundamental unit is an **Encounter**.
 
-The fundamental unit of the project is an **Encounter**.
+## Encounter
 
----
+Each encounter has these fields:
 
-# Encounter
+| Field | Type | Purpose |
+|---|---|---|
+| `id` | Text | Stable unique identifier, such as `E001` |
+| `title` | Text | Human-readable title |
+| `placeholder` | Boolean | Marks temporary sample content |
+| `tm_position` | Text | Time category |
+| `af_primary` | Text | Feeling category |
+| `kn_primary` | Text | Knowing category |
+| `media` | JSON array | Ordered encounter content |
+| feature geometry | Point | Public representative location |
 
-Each encounter represents a single point of entry into the cartography.
+An identifier must never change once assigned. Titles do not need to be unique.
 
-An encounter may consist of one or more media objects and occupies one position within each of the project's dimensions.
+Every committed geometry is public. Private coordinates must be generalized, displaced, or omitted before they enter this repository.
 
----
+## Time
 
-## Identity
-
-### `id`
-
-Unique identifier.
-
-Example:
-
-```text
-E001
-```
-
-This identifier should never change once assigned.
-
----
-
-### `title`
-
-Human-readable title.
-
-Example:
-
-```text
-The Sound of Cicadas
-```
-
-Titles are not required to be unique.
-
----
-
-# Spatial (Where)
-
-## `sp_geometry`
-
-Possible values:
-
-- `POINT`
-- `ROUTE`
-- `AREA`
-- `MULTIPLE`
-- `NONE`
-
-Describes the geometric form of the encounter.
-
----
-
-## `sp_location`
-
-The encounter's public geographic geometry.
-
-Depending on `sp_geometry`, this may be:
-
-- point
-- line
-- polygon
-- multi-geometry
-- null
-
-Private geometries should never be committed to this repository.
-
----
-
-## `sp_status`
-
-Possible values:
-
-- `PRECISE`
-- `APPROXIMATE`
-- `RECONSTRUCTED`
-- `WITHHELD`
-- `UNLOCATABLE`
-
-Describes the relationship between the encounter and its geographic representation.
-
----
-
-# Temporal (When)
-
-## `tm_position`
-
-Possible values:
+`tm_position` accepts:
 
 - `DISTANT_PAST`
 - `RECENT_PAST`
@@ -108,60 +35,9 @@ Possible values:
 - `INDETERMINATE`
 - `ATEMPORAL`
 
----
+## Feeling
 
-## `tm_extent`
-
-Possible values:
-
-- `MOMENTARY`
-- `DURATIONAL`
-- `ONGOING`
-
----
-
-## `tm_form_primary`
-
-Possible values:
-
-- `LINEAR`
-- `CYCLICAL`
-- `RECURSIVE`
-- `COMPOSITE`
-- `ANACHRONIC`
-
----
-
-## `tm_form_secondary`
-
-Optional.
-
-Uses the same vocabulary as `tm_form_primary`.
-
----
-
-# Affective (Feeling)
-
-## `af_intensity`
-
-Continuous value.
-
-Range:
-
-```text
-0.0 → 1.0
-```
-
-Where:
-
-- 0.0 = barely perceptible
-- 1.0 = overwhelming
-
----
-
-## `af_primary`
-
-Possible values:
+`af_primary` accepts:
 
 - `JOY`
 - `TENDERNESS`
@@ -181,21 +57,11 @@ Possible values:
 - `NUMBNESS`
 - `AMBIVALENCE`
 
----
+`data/affect-closeness.json` contains provisional closeness values between affect types. A value of `1` is nearest and `0` is farthest. Identical types use the configured `identical` value, listed pairs use their explicit value, and all other combinations use `default`. These values are placeholders intended for later revision.
 
-## `af_secondary`
+## Knowing
 
-Optional.
-
-Uses the same vocabulary.
-
----
-
-# Knowing
-
-## `kn_primary`
-
-Possible values:
+`kn_primary` accepts:
 
 - `WITNESSED`
 - `REMEMBERED`
@@ -208,135 +74,43 @@ Possible values:
 - `GENERATED`
 - `UNRESOLVED`
 
----
+## Media
 
-## `kn_secondary`
+An encounter may contain any number of media objects in display order. The four supported types are:
 
-Optional.
+- `text`
+- `image`
+- `audio`
+- `video`
 
-Uses the same vocabulary.
+Media objects use only the fields relevant to their type:
 
----
+| Field | Purpose |
+|---|---|
+| `type` | One of the four supported types |
+| `src` | Safe relative path for image, audio, or video |
+| `text` | Inline content for text media |
+| `caption` | Optional contextual caption |
+| `alt` | Required alternative text for informative images |
 
-# Media
+Media paths must be relative and must resolve to committed public files. Real media should be grouped by encounter ID under `media/`.
 
-Each encounter may contain any number of media objects.
+## Distance model
 
-Media are stored separately from the encounter itself.
+The export derives four normalized pairwise distances:
 
-An encounter is not limited to a single medium.
+- **Place:** great-circle distance between public representative points, divided by the greatest pairwise Place distance in the export.
+- **Time:** ordinal distance between `tm_position` values.
+- **Feeling:** `1 − closeness` using `data/affect-closeness.json`.
+- **Knowing:** `0` when `kn_primary` matches and `1` when it differs.
 
-Examples include:
+All results are rounded to six decimal places. Missing values fail validation rather than being silently interpreted as maximum distance.
 
-- text
-- image
-- audio
-- video
-- drawing
-- map
-- scan
-- website
-- document
+## Public files
 
-Future implementations may support additional media types.
-
----
-
-# QGIS Implementation
-
-The current QGIS layer contains one feature per encounter.
-
-Each feature contains:
-
-| Field | Type |
-|--------|------|
-| id | Text |
-| title | Text |
-| sp_geometry | Text |
-| sp_status | Text |
-| tm_position | Text |
-| tm_extent | Text |
-| tm_form_primary | Text |
-| tm_form_secondary | Text |
-| af_intensity | Decimal |
-| af_primary | Text |
-| af_secondary | Text |
-| kn_primary | Text |
-| kn_secondary | Text |
-
-The feature geometry stores `sp_location`.
-
-For web display, every encounter must also have a stable representative point. Point encounters use their geometry directly. Routes, areas, and multiple geometries use a representative point authored in QGIS rather than an automatically exposed private centroid. Encounters with `WITHHELD` or `UNLOCATABLE` status must use an intentionally generalized public point or remain absent from public exports.
-
----
-
-# Public Export
-
-The website consumes derived GeoJSON and JSON files exported from the authoritative QGIS project. Each export includes a schema version. Generated files may be replaced without changing application code as long as the versioned contract remains compatible.
-
-Missing dimensional values are validation errors in the first prototype. They are never silently converted to maximum distance.
-
----
-
-# Media Object
-
-Public media are listed on an encounter in display order. Each media object contains:
-
-| Field | Type | Purpose |
-|-------|------|---------|
-| type | Text | `text`, `image`, `audio`, or `video` |
-| src | Text or null | Relative public asset path for file-based media |
-| text | Text or null | Inline text for textual media |
-| caption | Text or null | Optional quiet contextual caption |
-| alt | Text or null | Required text alternative for informative images |
-
-Media paths must be relative. A public export must never reference private or local-only files.
-
----
-
-# Future Crowdsourced Implementation
-
-The logical schema should remain stable even if encounters are submitted through a web form.
-
-The form should not expose backend terminology directly.
-
-Instead, it should translate human-readable questions into the fields defined above.
-
-The backend schema should therefore remain independent of the user interface.
-
----
-
-# Design Principles
-
-Every field should satisfy the following criteria:
-
-1. It represents a meaningful coordinate along which encounters may become adjacent.
-
-2. It can be understood independently of every other field.
-
-3. It can be extended without breaking existing data.
-
-4. It contributes to navigation rather than merely describing metadata.
-
-Fields that do not participate in the cartography should be considered metadata rather than dimensions and should remain outside the core schema.
-
----
-
-# Prototype Distance Model
-
-The first vertical slice derives four normalized pairwise distances:
-
-- **Place:** great-circle distance between public representative points, divided by the greatest pairwise place distance in the current export.
-- **Time:** the mean of normalized temporal-position difference, temporal-extent mismatch, and primary temporal-form mismatch. Categorical matches are `0`; mismatches are `1`.
-- **Feeling:** the mean of intensity difference and Jaccard distance between each encounter's set of primary and optional secondary feelings.
-- **Knowing:** Jaccard distance between each encounter's set of primary and optional secondary ways of knowing.
-
-All results are rounded to six decimal places. Missing dimensional values fail validation instead of being interpreted as distance. These formulas are provisional analytical choices and may be revised through the decision log.
-
-## Public Files
-
-- `data/encounters.geojson` contains the generated public encounter and media export.
+- `data/encounters.geojson` is the generated public encounter and media export.
 - `data/distances.json` contains every generated unique unordered pair once.
+- `data/affect-closeness.json` contains authored provisional Feeling relationships.
 - `data/settings.json` contains authored presentation and neighborhood settings.
 
-All three files share `schema_version: 1`.
+All versioned public files use `schema_version: 2`.

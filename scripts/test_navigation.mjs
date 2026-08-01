@@ -33,33 +33,39 @@ assert.match(interfaceHtml, /id="debug-data" hidden/);
 const encounters = JSON.parse(await readFile(new URL("../data/encounters.geojson", import.meta.url), "utf8"));
 const generatedDistances = JSON.parse(await readFile(new URL("../data/distances.json", import.meta.url), "utf8"));
 const generatedSettings = JSON.parse(await readFile(new URL("../data/settings.json", import.meta.url), "utf8"));
+const affectCloseness = JSON.parse(await readFile(new URL("../data/affect-closeness.json", import.meta.url), "utf8"));
 const encounterIds = encounters.features.map(({ properties }) => properties.id);
 assert.equal(encounterIds.length, 15);
 assert.equal(generatedDistances.pairs.length, 105);
+assert.equal(generatedDistances.schema_version, 2);
+assert.equal(generatedSettings.schema_version, 2);
+assert.equal(affectCloseness.schema_version, 2);
+const firstGeneratedPair = generatedDistances.pairs.find(({ a, b }) => a === "E001" && b === "E002");
+assert.equal(firstGeneratedPair.time, 0.166667);
+assert.equal(firstGeneratedPair.feeling, 0.45);
+assert.equal(firstGeneratedPair.knowing, 1);
 
 const encounterProperties = encounters.features.map(({ properties }) => properties);
 const valuesFor = (field) => [...new Set(encounterProperties.map((properties) => properties[field]).filter(Boolean))].sort();
-const combinedValuesFor = (...fields) => [
-  ...new Set(encounterProperties.flatMap((properties) => fields.map((field) => properties[field])).filter(Boolean)),
-].sort();
 
-assert.deepEqual(valuesFor("sp_geometry"), ["AREA", "MULTIPLE", "NONE", "POINT", "ROUTE"]);
-assert.deepEqual(valuesFor("sp_status"), ["APPROXIMATE", "PRECISE", "RECONSTRUCTED", "UNLOCATABLE", "WITHHELD"]);
 assert.deepEqual(valuesFor("tm_position"), [
   "ATEMPORAL", "DISTANT_FUTURE", "DISTANT_PAST", "INDETERMINATE", "NEAR_FUTURE", "PRESENT", "RECENT_PAST",
 ]);
-assert.deepEqual(valuesFor("tm_extent"), ["DURATIONAL", "MOMENTARY", "ONGOING"]);
-const temporalForms = ["ANACHRONIC", "COMPOSITE", "CYCLICAL", "LINEAR", "RECURSIVE"];
-assert.deepEqual(valuesFor("tm_form_primary"), temporalForms);
-assert.deepEqual(valuesFor("tm_form_secondary"), temporalForms);
-assert.deepEqual(combinedValuesFor("af_primary", "af_secondary"), [
-  "AMBIVALENCE", "ANGER", "ANXIETY", "DESIRE", "DISGUST", "EERINESS", "ESTRANGEMENT", "FEAR", "GRIEF",
-  "JOY", "LONELINESS", "MELANCHOLY", "NOSTALGIA", "NUMBNESS", "SERENITY", "TENDERNESS", "WONDER",
+assert.deepEqual(valuesFor("af_primary"), [
+  "AMBIVALENCE", "ANGER", "ANXIETY", "DESIRE", "EERINESS", "ESTRANGEMENT", "FEAR", "GRIEF", "JOY",
+  "LONELINESS", "MELANCHOLY", "NOSTALGIA", "SERENITY", "TENDERNESS", "WONDER",
 ]);
-assert.deepEqual(combinedValuesFor("kn_primary", "kn_secondary"), [
+assert.deepEqual(valuesFor("kn_primary"), [
   "ANTICIPATED", "DOCUMENTED", "DREAMED", "GENERATED", "IMAGINED", "INFERRED", "INHERITED", "REMEMBERED",
   "UNRESOLVED", "WITNESSED",
 ]);
+const removedFields = [
+  "sp_geometry", "sp_status", "tm_extent", "tm_form_primary", "tm_form_secondary",
+  "af_intensity", "af_secondary", "kn_secondary",
+];
+encounterProperties.forEach((properties) => removedFields.forEach((field) => assert.ok(!(field in properties))));
+assert.equal(affectCloseness.placeholder, true);
+assert.ok(affectCloseness.pairs.length > 0);
 const mediaTypes = [...new Set(encounterProperties.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
 

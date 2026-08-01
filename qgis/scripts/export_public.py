@@ -72,7 +72,7 @@ def export_encounters() -> dict:
         exported.pop("notice", None)
     public_export = {
         "type": "FeatureCollection",
-        "schema_version": 1,
+        "schema_version": 2,
         "generated": True,
         "generated_from": "qgis/encounters.gpkg",
         "placeholder": exported["placeholder"],

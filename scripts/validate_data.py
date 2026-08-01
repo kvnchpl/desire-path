@@ -11,13 +11,13 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[1]
 DIMENSIONS = {"place", "time", "feeling", "knowing"}
 ENUMS = {
-    "sp_geometry": {"POINT", "ROUTE", "AREA", "MULTIPLE", "NONE"},
-    "sp_status": {"PRECISE", "APPROXIMATE", "RECONSTRUCTED", "WITHHELD", "UNLOCATABLE"},
     "tm_position": {"DISTANT_PAST", "RECENT_PAST", "PRESENT", "NEAR_FUTURE", "DISTANT_FUTURE", "INDETERMINATE", "ATEMPORAL"},
-    "tm_extent": {"MOMENTARY", "DURATIONAL", "ONGOING"},
-    "tm_form_primary": {"LINEAR", "CYCLICAL", "RECURSIVE", "COMPOSITE", "ANACHRONIC"},
     "af_primary": {"JOY", "TENDERNESS", "DESIRE", "WONDER", "SERENITY", "NOSTALGIA", "MELANCHOLY", "GRIEF", "LONELINESS", "ANXIETY", "FEAR", "ANGER", "DISGUST", "ESTRANGEMENT", "EERINESS", "NUMBNESS", "AMBIVALENCE"},
     "kn_primary": {"WITNESSED", "REMEMBERED", "INHERITED", "DOCUMENTED", "DREAMED", "IMAGINED", "ANTICIPATED", "INFERRED", "GENERATED", "UNRESOLVED"},
+}
+REMOVED_FIELDS = {
+    "sp_geometry", "sp_status", "tm_extent", "tm_form_primary", "tm_form_secondary",
+    "af_intensity", "af_secondary", "kn_secondary",
 }
 
 
@@ -31,9 +31,12 @@ def validate() -> list[str]:
     encounters = load("data/encounters.geojson")
     distances = load("data/distances.json")
     settings = load("data/settings.json")
+    affect_closeness = load("data/affect-closeness.json")
     if encounters.get("type") != "FeatureCollection":
         errors.append("encounters.geojson must be a FeatureCollection")
-    versions = {encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version")}
+    versions = {
+        encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version"), affect_closeness.get("schema_version"),
+    }
     if len(versions) != 1 or None in versions:
         errors.append("all public data files must share a schema_version")
     if encounters.get("generated") is not True or distances.get("generated") is not True:
@@ -58,14 +61,8 @@ def validate() -> list[str]:
         for field, allowed in ENUMS.items():
             if props.get(field) not in allowed:
                 errors.append(f"{context}: invalid {field}")
-        if props.get("tm_form_secondary") is not None and props["tm_form_secondary"] not in ENUMS["tm_form_primary"]:
-            errors.append(f"{context}: invalid tm_form_secondary")
-        if props.get("af_secondary") is not None and props["af_secondary"] not in ENUMS["af_primary"]:
-            errors.append(f"{context}: invalid af_secondary")
-        if props.get("kn_secondary") is not None and props["kn_secondary"] not in ENUMS["kn_primary"]:
-            errors.append(f"{context}: invalid kn_secondary")
-        if not isinstance(props.get("af_intensity"), (int, float)) or not 0 <= props["af_intensity"] <= 1:
-            errors.append(f"{context}: af_intensity must be between 0 and 1")
+        for field in REMOVED_FIELDS & props.keys():
+            errors.append(f"{context}: removed field {field} must not be exported")
         for media_index, media in enumerate(props.get("media", [])):
             media_context = f"{context}, media {media_index + 1}"
             if media.get("type") not in {"text", "image", "audio", "video"}:
@@ -81,6 +78,23 @@ def validate() -> list[str]:
                 errors.append(f"{media_context}: text media requires text")
             if media.get("type") == "image" and not media.get("alt"):
                 errors.append(f"{media_context}: image media requires alt text")
+
+    affect_types = ENUMS["af_primary"]
+    for field in ("identical", "default"):
+        value = affect_closeness.get(field)
+        if not isinstance(value, (int, float)) or not 0 <= value <= 1:
+            errors.append(f"affect-closeness.{field} must be between 0 and 1")
+    affect_pairs = set()
+    for index, pair in enumerate(affect_closeness.get("pairs", [])):
+        key = tuple(sorted((pair.get("a"), pair.get("b"))))
+        if key[0] not in affect_types or key[1] not in affect_types or key[0] == key[1]:
+            errors.append(f"affect closeness pair {index + 1} contains invalid affect types")
+        if key in affect_pairs:
+            errors.append(f"duplicate affect closeness pair {key}")
+        affect_pairs.add(key)
+        value = pair.get("closeness")
+        if not isinstance(value, (int, float)) or not 0 <= value <= 1:
+            errors.append(f"affect closeness pair {key} must be between 0 and 1")
     if settings.get("initial_encounter") not in ids:
         errors.append("settings.initial_encounter must reference an encounter")
     percentile = settings.get("visibility_percentile")
