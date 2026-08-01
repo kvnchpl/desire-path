@@ -10,9 +10,13 @@ from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 DIMENSIONS = {"place", "time", "feeling", "knowing"}
+AFFECT_TYPES = (
+    "JOY", "TENDERNESS", "DESIRE", "WONDER", "SERENITY", "NOSTALGIA", "MELANCHOLY", "GRIEF", "LONELINESS",
+    "ANXIETY", "FEAR", "ANGER", "DISGUST", "ESTRANGEMENT", "EERINESS", "NUMBNESS", "AMBIVALENCE",
+)
 ENUMS = {
     "tm_position": {"DISTANT_PAST", "RECENT_PAST", "PRESENT", "NEAR_FUTURE", "DISTANT_FUTURE", "INDETERMINATE", "ATEMPORAL"},
-    "af_primary": {"JOY", "TENDERNESS", "DESIRE", "WONDER", "SERENITY", "NOSTALGIA", "MELANCHOLY", "GRIEF", "LONELINESS", "ANXIETY", "FEAR", "ANGER", "DISGUST", "ESTRANGEMENT", "EERINESS", "NUMBNESS", "AMBIVALENCE"},
+    "af_primary": set(AFFECT_TYPES),
     "kn_primary": {"WITNESSED", "REMEMBERED", "INHERITED", "DOCUMENTED", "DREAMED", "IMAGINED", "ANTICIPATED", "INFERRED", "GENERATED", "UNRESOLVED"},
 }
 REMOVED_FIELDS = {
@@ -85,7 +89,9 @@ def validate() -> list[str]:
         if not isinstance(value, (int, float)) or not 0 <= value <= 1:
             errors.append(f"affect-distances.{field} must be between 0 and 1")
     affect_pairs = set()
+    ordered_affect_pairs = []
     for index, pair in enumerate(affect_distances.get("pairs", [])):
+        ordered_affect_pairs.append((pair.get("a"), pair.get("b")))
         key = tuple(sorted((pair.get("a"), pair.get("b"))))
         if key[0] not in affect_types or key[1] not in affect_types or key[0] == key[1]:
             errors.append(f"affect distance pair {index + 1} contains invalid affect types")
@@ -95,6 +101,8 @@ def validate() -> list[str]:
         value = pair.get("distance")
         if not isinstance(value, (int, float)) or not 0 <= value <= 1:
             errors.append(f"affect distance pair {key} must be between 0 and 1")
+    if ordered_affect_pairs != list(combinations(AFFECT_TYPES, 2)):
+        errors.append("affect-distances.pairs must contain all 136 unique pairs in canonical affect order")
     if settings.get("initial_encounter") not in ids:
         errors.append("settings.initial_encounter must reference an encounter")
     percentile = settings.get("visibility_percentile")

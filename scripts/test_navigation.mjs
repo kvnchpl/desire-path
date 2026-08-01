@@ -66,7 +66,7 @@ const removedFields = [
 encounterProperties.forEach((properties) => removedFields.forEach((field) => assert.ok(!(field in properties))));
 assert.equal(affectDistances.placeholder, true);
 assert.equal(affectDistances.identical, 0);
-assert.ok(affectDistances.pairs.length > 0);
+assert.equal(affectDistances.pairs.length, 136);
 const mediaTypes = [...new Set(encounterProperties.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
 
