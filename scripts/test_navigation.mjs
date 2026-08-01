@@ -26,4 +26,42 @@ assert.match(interfaceHtml, /<details class="debug">/);
 assert.match(interfaceHtml, /id="debug-show-all"/);
 assert.match(interfaceHtml, /id="debug-show-ids"/);
 
+const encounters = JSON.parse(await readFile(new URL("../data/encounters.geojson", import.meta.url), "utf8"));
+const generatedDistances = JSON.parse(await readFile(new URL("../data/distances.json", import.meta.url), "utf8"));
+const generatedSettings = JSON.parse(await readFile(new URL("../data/settings.json", import.meta.url), "utf8"));
+const encounterIds = encounters.features.map(({ properties }) => properties.id);
+assert.equal(encounterIds.length, 15);
+assert.equal(generatedDistances.pairs.length, 105);
+
+const dimensions = ["place", "time", "feeling", "knowing"];
+for (let mask = 1; mask < 2 ** dimensions.length; mask += 1) {
+  const selected = dimensions.filter((_, index) => mask & (1 << index));
+  const reachable = new Map(encounterIds.map((id) => [id, new Set()]));
+  encounterIds.forEach((currentId) => {
+    const neighborhood = visibleNeighborhood({
+      currentId,
+      encounterIds,
+      pairs: generatedDistances.pairs,
+      dimensions: selected,
+      settings: generatedSettings,
+    });
+    assert.ok(neighborhood.length >= 3 && neighborhood.length <= 6);
+    neighborhood.forEach(({ id }) => {
+      reachable.get(currentId).add(id);
+      reachable.get(id).add(currentId);
+    });
+  });
+  const visited = new Set([encounterIds[0]]);
+  const queue = [encounterIds[0]];
+  while (queue.length) {
+    reachable.get(queue.shift()).forEach((id) => {
+      if (!visited.has(id)) {
+        visited.add(id);
+        queue.push(id);
+      }
+    });
+  }
+  assert.equal(visited.size, encounterIds.length, `${selected.join("+")} must remain connected`);
+}
+
 console.log("DESIRE PATH navigation is valid.");

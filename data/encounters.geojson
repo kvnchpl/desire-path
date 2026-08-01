@@ -180,6 +180,356 @@
           41.081
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E006",
+        "title": "The Empty Platform",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "RECENT_PAST",
+        "tm_extent": "DURATIONAL",
+        "tm_form_primary": "RECURSIVE",
+        "tm_form_secondary": null,
+        "af_intensity": 0.58,
+        "af_primary": "LONELINESS",
+        "af_secondary": "SERENITY",
+        "kn_primary": "REMEMBERED",
+        "kn_secondary": "IMAGINED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "No train is expected, but the rails continue gathering the evening.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.164,
+          40.738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E007",
+        "title": "Blue Thread",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "PRESENT",
+        "tm_extent": "MOMENTARY",
+        "tm_form_primary": "LINEAR",
+        "tm_form_secondary": null,
+        "af_intensity": 0.36,
+        "af_primary": "TENDERNESS",
+        "af_secondary": "WONDER",
+        "kn_primary": "WITNESSED",
+        "kn_secondary": "DOCUMENTED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "A length of blue thread catches on the fence and points briefly east.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.842,
+          40.682
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E008",
+        "title": "Rooms Above the Trees",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "DISTANT_FUTURE",
+        "tm_extent": "ONGOING",
+        "tm_form_primary": "COMPOSITE",
+        "tm_form_secondary": "ANACHRONIC",
+        "af_intensity": 0.49,
+        "af_primary": "ESTRANGEMENT",
+        "af_secondary": "DESIRE",
+        "kn_primary": "ANTICIPATED",
+        "kn_secondary": "GENERATED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "Windows appear above the canopy where no building has yet been raised.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.954,
+          40.821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E009",
+        "title": "Salt on the Steps",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "RECENT_PAST",
+        "tm_extent": "MOMENTARY",
+        "tm_form_primary": "CYCLICAL",
+        "tm_form_secondary": null,
+        "af_intensity": 0.65,
+        "af_primary": "MELANCHOLY",
+        "af_secondary": "NOSTALGIA",
+        "kn_primary": "INFERRED",
+        "kn_secondary": "REMEMBERED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "A white line remains after the water leaves, measuring a storm no one names.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.886,
+          40.641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E010",
+        "title": "Night Orchard",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "DISTANT_PAST",
+        "tm_extent": "DURATIONAL",
+        "tm_form_primary": "CYCLICAL",
+        "tm_form_secondary": "RECURSIVE",
+        "af_intensity": 0.72,
+        "af_primary": "EERINESS",
+        "af_secondary": "TENDERNESS",
+        "kn_primary": "INHERITED",
+        "kn_secondary": "DREAMED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "Fruit falls in the dark, one soft interruption after another.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.052,
+          41.142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E011",
+        "title": "A Map Folded Wrong",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "PRESENT",
+        "tm_extent": "DURATIONAL",
+        "tm_form_primary": "ANACHRONIC",
+        "tm_form_secondary": null,
+        "af_intensity": 0.44,
+        "af_primary": "AMBIVALENCE",
+        "af_secondary": "WONDER",
+        "kn_primary": "DOCUMENTED",
+        "kn_secondary": "UNRESOLVED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "Two distant roads touch along a crease and remain together when the page opens.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.708,
+          41.048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E012",
+        "title": "Underpass Choir",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "INDETERMINATE",
+        "tm_extent": "ONGOING",
+        "tm_form_primary": "RECURSIVE",
+        "tm_form_secondary": null,
+        "af_intensity": 0.81,
+        "af_primary": "ANXIETY",
+        "af_secondary": "WONDER",
+        "kn_primary": "WITNESSED",
+        "kn_secondary": "INFERRED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "Traffic becomes a held note beneath the concrete, then divides into weather.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.218,
+          40.872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E013",
+        "title": "The Borrowed Horizon",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "NEAR_FUTURE",
+        "tm_extent": "MOMENTARY",
+        "tm_form_primary": "LINEAR",
+        "tm_form_secondary": "COMPOSITE",
+        "af_intensity": 0.55,
+        "af_primary": "DESIRE",
+        "af_secondary": "SERENITY",
+        "kn_primary": "IMAGINED",
+        "kn_secondary": "ANTICIPATED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "For one block the street borrows the horizon from a place much farther away.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.612,
+          40.846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E014",
+        "title": "Ash in the Snow",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "RECENT_PAST",
+        "tm_extent": "ONGOING",
+        "tm_form_primary": "COMPOSITE",
+        "tm_form_secondary": null,
+        "af_intensity": 0.62,
+        "af_primary": "GRIEF",
+        "af_secondary": "NUMBNESS",
+        "kn_primary": "DOCUMENTED",
+        "kn_secondary": "REMEMBERED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "Gray marks settle into the new snow and disappear before the thaw.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.104,
+          40.998
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "E015",
+        "title": "Signal Without a Source",
+        "placeholder": true,
+        "sp_geometry": "POINT",
+        "sp_status": "APPROXIMATE",
+        "tm_position": "ATEMPORAL",
+        "tm_extent": "MOMENTARY",
+        "tm_form_primary": "ANACHRONIC",
+        "tm_form_secondary": "RECURSIVE",
+        "af_intensity": 0.39,
+        "af_primary": "EERINESS",
+        "af_secondary": "WONDER",
+        "kn_primary": "UNRESOLVED",
+        "kn_secondary": "GENERATED",
+        "media": [
+          {
+            "type": "text",
+            "src": null,
+            "text": "A receiver wakes for three seconds and offers a voice made entirely of distance.",
+            "caption": "Fictional placeholder",
+            "alt": null
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.746,
+          40.762
+        ]
+      }
     }
   ]
 }
