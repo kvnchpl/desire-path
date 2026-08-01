@@ -1,15 +1,13 @@
 import { renderEncounter } from "./encounter.js";
 import { createEncounterMap } from "./map.js";
-import { compositeDistance, createDistanceIndex, pairKey, visibleNeighborhood } from "./navigation.js";
+import { visibleNeighborhood } from "./navigation.js";
 
 const elements = {
   form: document.querySelector("#explore-form"),
-  settingsShowAll: document.querySelector("#settings-show-all"),
-  settingsShowIds: document.querySelector("#settings-show-ids"),
-  settingsShowDistances: document.querySelector("#settings-show-distances"),
-  settingsDistances: document.querySelector("#settings-distances"),
-  settingsShowDetails: document.querySelector("#settings-show-details"),
-  settingsData: document.querySelector("#settings-data"),
+  optionsShowAll: document.querySelector("#options-show-all"),
+  optionsShowIds: document.querySelector("#options-show-ids"),
+  optionsShowDetails: document.querySelector("#options-show-details"),
+  optionsData: document.querySelector("#options-data"),
   map: document.querySelector("#map"),
   media: document.querySelector("#encounter-media"),
   retrace: document.querySelector("#retrace"),
@@ -45,51 +43,19 @@ async function start() {
   ]);
   const encounterById = new Map(encounters.encounters.map((encounter) => [encounter.id, encounter]));
   const encounterIds = [...encounterById.keys()];
-  const distanceByPair = createDistanceIndex(distances.pairs);
   const history = [settings.initial_encounter];
   let currentId = settings.initial_encounter;
   const map = createEncounterMap(elements.map, settings, navigate);
 
-  function renderDistanceSettings(dimensions) {
-    elements.settingsDistances.hidden = !elements.settingsShowDistances.checked;
-    if (!elements.settingsShowDistances.checked) {
-      elements.settingsDistances.replaceChildren();
-      return;
-    }
-
-    const table = document.createElement("table");
-    const caption = table.createCaption();
-    caption.textContent = `distance from ${encounterById.get(currentId).title.toUpperCase()}; 0 is near, 1 is far`;
-    const header = table.createTHead().insertRow();
-    ["encounter", "place", "time", "feeling", "knowing", "combined"].forEach((label) => {
-      const cell = document.createElement("th");
-      cell.scope = "col";
-      cell.textContent = label;
-      header.append(cell);
-    });
-    const body = table.createTBody();
-    encounterIds.filter((id) => id !== currentId).forEach((id) => {
-      const pair = distanceByPair.get(pairKey(currentId, id));
-      const row = body.insertRow();
-      const values = [encounterById.get(id).title.toUpperCase(), pair.place, pair.time, pair.feeling, pair.knowing, compositeDistance(pair, dimensions)];
-      values.forEach((value, index) => {
-        const cell = row.insertCell();
-        cell.textContent = index === 0 ? value : value.toFixed(3);
-      });
-    });
-    elements.settingsDistances.replaceChildren(table);
-  }
-
   function renderEncounterDetails(current) {
-    elements.settingsData.hidden = !elements.settingsShowDetails.checked;
-    if (!elements.settingsShowDetails.checked) {
-      elements.settingsData.replaceChildren();
+    elements.optionsData.hidden = !elements.optionsShowDetails.checked;
+    if (!elements.optionsShowDetails.checked) {
+      elements.optionsData.replaceChildren();
       return;
     }
 
     const table = document.createElement("table");
     const body = table.createTBody();
-    const mediaTypes = [...new Set(current.media.map(({ type }) => type))].join(", ");
     const rows = [
       ["title", current.title.toUpperCase()],
       ["id", current.id],
@@ -97,8 +63,6 @@ async function start() {
       ["time", readableCategory(current.time)],
       ["feeling", readableCategory(current.feeling)],
       ["knowing", readableCategory(current.knowing)],
-      ["media", mediaTypes],
-      ["sample", current.placeholder ? "yes" : "no"],
     ];
     rows.forEach(([label, value]) => {
       const row = body.insertRow();
@@ -108,7 +72,7 @@ async function start() {
       row.append(heading);
       row.insertCell().textContent = value;
     });
-    elements.settingsData.replaceChildren(table);
+    elements.optionsData.replaceChildren(table);
   }
 
   function render(announcement = "") {
@@ -124,10 +88,9 @@ async function start() {
     renderEncounter(current, elements);
     renderEncounterDetails(current);
     map.render(current, neighbors, encounterById, {
-      showAllNodes: elements.settingsShowAll.checked,
-      showNodeIds: elements.settingsShowIds.checked,
+      showAllNodes: elements.optionsShowAll.checked,
+      showNodeIds: elements.optionsShowIds.checked,
     });
-    renderDistanceSettings(dimensions);
     elements.retrace.disabled = history.length < 2;
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
   }
@@ -156,20 +119,16 @@ async function start() {
     render(`Retraced to ${encounterById.get(currentId).title}.`);
   });
 
-  elements.settingsShowAll.addEventListener("change", () => {
-    render(elements.settingsShowAll.checked ? "Every encounter position is visible." : "Only nearby encounter positions are visible.");
+  elements.optionsShowAll.addEventListener("change", () => {
+    render(elements.optionsShowAll.checked ? "Every encounter position is visible." : "Only nearby encounter positions are visible.");
   });
 
-  elements.settingsShowIds.addEventListener("change", () => {
-    render(elements.settingsShowIds.checked ? "Encounter IDs are visible." : "Encounter IDs are hidden.");
+  elements.optionsShowIds.addEventListener("change", () => {
+    render(elements.optionsShowIds.checked ? "Encounter IDs are visible." : "Encounter IDs are hidden.");
   });
 
-  elements.settingsShowDistances.addEventListener("change", () => {
-    render(elements.settingsShowDistances.checked ? "Distance comparison is visible." : "Distance comparison is hidden.");
-  });
-
-  elements.settingsShowDetails.addEventListener("change", () => {
-    render(elements.settingsShowDetails.checked ? "Current encounter details are visible." : "Current encounter details are hidden.");
+  elements.optionsShowDetails.addEventListener("change", () => {
+    render(elements.optionsShowDetails.checked ? "Current encounter details are visible." : "Current encounter details are hidden.");
   });
 
   render();

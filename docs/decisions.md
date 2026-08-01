@@ -91,7 +91,7 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
-The collapsed Debug panel becomes Settings. Its controls use visitor-facing Encounter and distance language, the comparison view explains that `0` is near and `1` is far, and current Encounter information is presented as readable labeled details instead of raw JSON.
+The collapsed Debug panel becomes Options. Its controls use visitor-facing Encounter language, and current Encounter information is presented as concise labeled details instead of raw JSON. Distance comparison is removed from the public interface.
 
 ### Reasoning
 
@@ -99,7 +99,7 @@ These views are useful for exploration as well as development. Presenting them a
 
 ### Implications
 
-Settings remains collapsed by default. Optional context stays visually subordinate, and the ordinary map never reveals the complete path network.
+Options remains collapsed by default. Optional context stays visually subordinate, and the ordinary map never reveals the complete path network. The sidebar content scrolls independently, while Retrace remains visible in a separate footer.
 
 ---
 
@@ -121,7 +121,7 @@ The public data now mirrors the language and conceptual symmetry of the interfac
 
 ### Implications
 
-This introduces public schema version 3. QGIS geometry remains authoritative, while the browser, distance generator, validator, and Settings panel consume the simplified JSON record.
+This introduces public schema version 3. QGIS geometry remains authoritative, while the browser, distance generator, validator, and Options panel consume the simplified JSON record.
 
 ---
 
