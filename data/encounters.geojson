@@ -1,12 +1,13 @@
 {
   "type": "FeatureCollection",
   "schema_version": 1,
+  "generated": true,
+  "generated_from": "qgis/encounters.gpkg",
   "placeholder": true,
   "notice": "All encounters and coordinates in this prototype are fictional placeholders.",
   "features": [
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-73.991, 40.726] },
       "properties": {
         "id": "E001",
         "title": "A Door Left Open",
@@ -31,11 +32,17 @@
             "alt": null
           }
         ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.991,
+          40.726
+        ]
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-74.046, 40.884] },
       "properties": {
         "id": "E002",
         "title": "Low Water",
@@ -60,11 +67,17 @@
             "alt": null
           }
         ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.046,
+          40.884
+        ]
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-73.812, 40.972] },
       "properties": {
         "id": "E003",
         "title": "The Unsent Weather",
@@ -89,11 +102,17 @@
             "alt": null
           }
         ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.812,
+          40.972
+        ]
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-73.764, 40.759] },
       "properties": {
         "id": "E004",
         "title": "Cicadas After Rain",
@@ -118,11 +137,17 @@
             "alt": null
           }
         ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.764,
+          40.759
+        ]
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-73.918, 41.081] },
       "properties": {
         "id": "E005",
         "title": "A Light Across the Cut",
@@ -146,6 +171,13 @@
             "caption": "Fictional placeholder",
             "alt": null
           }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.918,
+          41.081
         ]
       }
     }

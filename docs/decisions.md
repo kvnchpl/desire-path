@@ -1,4 +1,4 @@
- # DECISIONS.md
+# Decision log
 
 # DESIRE PATH Decision Log
 

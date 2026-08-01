@@ -8,12 +8,12 @@ This repository contains both the analytical GIS project and the public web inte
 
 Before contributing, read:
 
-1. AGENTS.md
-2. PROJECT_CONTEXT.md
-3. DATA_SCHEMA.md
-4. NAVIGATION_SPEC.md
-5. DESIGN_LANGUAGE.md
-6. DECISIONS.md
+1. [`AGENTS.md`](AGENTS.md)
+2. [`docs/project-context.md`](docs/project-context.md)
+3. [`docs/data-schema.md`](docs/data-schema.md)
+4. [`docs/navigation-spec.md`](docs/navigation-spec.md)
+5. [`docs/design-language.md`](docs/design-language.md)
+6. [`docs/decisions.md`](docs/decisions.md)
 
 ## Current Status
 
@@ -49,8 +49,8 @@ npm test
 
 ## Data workflow
 
-Author encounters in [`qgis/desire-path.qgz`](qgis/desire-path.qgz), export the public GeoJSON, regenerate pairwise distances, and validate before committing. Detailed steps are in [`docs/navigation.md`](docs/navigation.md).
+Author encounters in [`qgis/desire-path.qgz`](qgis/desire-path.qgz), then run `npm run export:data` to regenerate and validate the public files. Detailed steps are in [`docs/qgis-workflow.md`](docs/qgis-workflow.md).
 
 The five current encounters and their coordinates are fictional placeholders.
 
-The project itself does not yet declare a license. The locally vendored Leaflet dependency retains its BSD-2-Clause license in `vendor/leaflet/LICENSE`.
+The project license remains explicitly pending in [`LICENSE-PENDING.md`](LICENSE-PENDING.md). The locally vendored Leaflet dependency retains its BSD-2-Clause license in `vendor/leaflet/LICENSE`.

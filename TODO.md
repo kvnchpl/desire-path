@@ -34,7 +34,7 @@ Milestone #9 — complete for the vertical slice
 Milestone #10 — in progress
 * Replace fictional encounters with reviewed content
 * Test real image, audio, and video media
-* Refine the QGIS public-export action
+* Test the QGIS public-export action with real encounter media
 * Choose a project license
 * Verify the deployed GitHub Pages URL
 

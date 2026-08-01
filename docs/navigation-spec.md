@@ -1,4 +1,4 @@
-# NAVIGATION_SPEC.md
+# Navigation specification
 
 # DESIRE PATH Navigation Specification
 

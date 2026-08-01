@@ -76,7 +76,8 @@ def main() -> None:
     source = json.loads(args.input.read_text())
     result = {
         "schema_version": source["schema_version"],
-        "generated_from": args.input.name,
+        "generated": True,
+        "generated_from": str(args.input.as_posix()),
         "dimensions": ["place", "time", "feeling", "knowing"],
         "pairs": calculate(source["features"]),
     }

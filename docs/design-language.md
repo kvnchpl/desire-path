@@ -1,4 +1,4 @@
-# DESIGN_LANGUAGE.md
+# Design language
 
 # DESIRE PATH Design Language
 

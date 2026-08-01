@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "generated_from": "encounters.geojson",
+  "generated": true,
+  "generated_from": "data/encounters.geojson",
   "dimensions": [
     "place",
     "time",

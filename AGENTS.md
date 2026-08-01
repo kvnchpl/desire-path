@@ -215,13 +215,13 @@ First:
 
 Before making a major conceptual or architectural change:
 
-- consult `DECISIONS.md`
+- consult `docs/decisions.md`
 - determine whether the decision has already been made
 - understand the reasoning behind that decision
 
 If an earlier decision is intentionally reversed:
 
-- preserve the original entry in `DECISIONS.md`
+- preserve the original entry in `docs/decisions.md`
 - add a new entry explaining why the decision changed
 - describe the implications of the revision
 
@@ -264,7 +264,7 @@ When making implementation decisions, ask:
 
 4. Does this preserve opacity rather than total visibility?
 
-5. Does this remain consistent with previous decisions recorded in `DECISIONS.md`?
+5. Does this remain consistent with previous decisions recorded in `docs/decisions.md`?
 
 6. Does this keep the project understandable six months from now?
 

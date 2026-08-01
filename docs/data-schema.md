@@ -1,4 +1,4 @@
-# DATA_SCHEMA.md
+# Data schema
 
 # DESIRE PATH Data Schema
 
@@ -319,3 +319,24 @@ Every field should satisfy the following criteria:
 4. It contributes to navigation rather than merely describing metadata.
 
 Fields that do not participate in the cartography should be considered metadata rather than dimensions and should remain outside the core schema.
+
+---
+
+# Prototype Distance Model
+
+The first vertical slice derives four normalized pairwise distances:
+
+- **Place:** great-circle distance between public representative points, divided by the greatest pairwise place distance in the current export.
+- **Time:** the mean of normalized temporal-position difference, temporal-extent mismatch, and primary temporal-form mismatch. Categorical matches are `0`; mismatches are `1`.
+- **Feeling:** the mean of intensity difference and Jaccard distance between each encounter's set of primary and optional secondary feelings.
+- **Knowing:** Jaccard distance between each encounter's set of primary and optional secondary ways of knowing.
+
+All results are rounded to six decimal places. Missing dimensional values fail validation instead of being interpreted as distance. These formulas are provisional analytical choices and may be revised through the decision log.
+
+## Public Files
+
+- `data/encounters.geojson` contains the generated public encounter and media export.
+- `data/distances.json` contains every generated unique unordered pair once.
+- `data/settings.json` contains authored presentation and neighborhood settings.
+
+All three files share `schema_version: 1`.

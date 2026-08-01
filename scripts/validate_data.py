@@ -36,6 +36,8 @@ def validate() -> list[str]:
     versions = {encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version")}
     if len(versions) != 1 or None in versions:
         errors.append("all public data files must share a schema_version")
+    if encounters.get("generated") is not True or distances.get("generated") is not True:
+        errors.append("encounters.geojson and distances.json must be generated public files")
     features = encounters.get("features", [])
     ids: list[str] = []
     for index, feature in enumerate(features):

@@ -19,3 +19,5 @@ Gemfile.lock
 node_modules/
 *.tmp
 *.log
+__pycache__/
+*.py[cod]

@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "export:data": "python3 qgis/scripts/export_public.py",
     "test": "node scripts/test_navigation.mjs && python3 scripts/validate_data.py",
     "serve": "http-server ."
   }
