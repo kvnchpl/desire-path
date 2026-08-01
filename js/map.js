@@ -43,14 +43,14 @@ export function createEncounterMap(element, settings, onNavigate) {
 
   function render(current, neighbors, encounterById, debug = {}) {
     layer.clearLayers();
-    const currentLatLng = L.latLng(current.geometry.coordinates[1], current.geometry.coordinates[0]);
+    const currentLatLng = L.latLng(current.place[1], current.place[0]);
     const visibleLatLngs = [currentLatLng];
-    const visibleIds = new Set([current.properties.id, ...neighbors.map(({ id }) => id)]);
+    const visibleIds = new Set([current.id, ...neighbors.map(({ id }) => id)]);
 
     if (debug.showAllNodes) {
       encounterById.forEach((encounter, id) => {
         if (visibleIds.has(id)) return;
-        const latLng = L.latLng(encounter.geometry.coordinates[1], encounter.geometry.coordinates[0]);
+        const latLng = L.latLng(encounter.place[1], encounter.place[0]);
         const marker = L.marker(latLng, {
           icon: markerIcon("debug"),
           interactive: false,
@@ -63,14 +63,14 @@ export function createEncounterMap(element, settings, onNavigate) {
 
     neighbors.forEach(({ id, bridge }) => {
       const neighbor = encounterById.get(id);
-      const latLng = L.latLng(neighbor.geometry.coordinates[1], neighbor.geometry.coordinates[0]);
+      const latLng = L.latLng(neighbor.place[1], neighbor.place[0]);
       visibleLatLngs.push(latLng);
       L.polyline([currentLatLng, latLng], { ...pathStyle, dashArray: bridge ? "4 5" : null }).addTo(layer);
       const marker = L.marker(latLng, {
         icon: markerIcon("reachable"),
         keyboard: true,
-        title: neighbor.properties.title.toUpperCase(),
-        alt: neighbor.properties.title.toUpperCase(),
+        title: neighbor.title.toUpperCase(),
+        alt: neighbor.title.toUpperCase(),
       });
       marker.on("click", () => onNavigate(id));
       marker.addTo(layer);
@@ -80,11 +80,11 @@ export function createEncounterMap(element, settings, onNavigate) {
     const currentMarker = L.marker(currentLatLng, {
       icon: markerIcon("current"),
       keyboard: true,
-      title: `current: ${current.properties.title.toUpperCase()}`,
-      alt: `current: ${current.properties.title.toUpperCase()}`,
+      title: `current: ${current.title.toUpperCase()}`,
+      alt: `current: ${current.title.toUpperCase()}`,
       zIndexOffset: 1000,
     }).addTo(layer);
-    addNodeId(currentMarker, current.properties.id, debug.showNodeIds);
+    addNodeId(currentMarker, current.id, debug.showNodeIds);
 
     const bounds = L.latLngBounds(visibleLatLngs);
     if (!hasFit) {

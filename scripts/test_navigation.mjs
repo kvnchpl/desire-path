@@ -30,51 +30,52 @@ assert.match(interfaceHtml, /id="debug-show-distances"/);
 assert.match(interfaceHtml, /id="debug-show-data"/);
 assert.match(interfaceHtml, /id="debug-data" hidden/);
 
-const encounters = JSON.parse(await readFile(new URL("../data/encounters.geojson", import.meta.url), "utf8"));
+const encounters = JSON.parse(await readFile(new URL("../data/encounters.json", import.meta.url), "utf8"));
 const generatedDistances = JSON.parse(await readFile(new URL("../data/distances.json", import.meta.url), "utf8"));
 const generatedSettings = JSON.parse(await readFile(new URL("../data/settings.json", import.meta.url), "utf8"));
-const affectDistances = JSON.parse(await readFile(new URL("../data/affect-distances.json", import.meta.url), "utf8"));
+const feelingDistances = JSON.parse(await readFile(new URL("../data/feeling-distances.json", import.meta.url), "utf8"));
 const knowingDistances = JSON.parse(await readFile(new URL("../data/knowing-distances.json", import.meta.url), "utf8"));
-const encounterIds = encounters.features.map(({ properties }) => properties.id);
+const encounterIds = encounters.encounters.map(({ id }) => id);
 assert.equal(encounterIds.length, 15);
 assert.equal(generatedDistances.pairs.length, 105);
-assert.equal(generatedDistances.schema_version, 2);
-assert.equal(generatedSettings.schema_version, 2);
-assert.equal(affectDistances.schema_version, 2);
-assert.equal(knowingDistances.schema_version, 2);
+assert.equal(generatedDistances.schema_version, 3);
+assert.equal(generatedSettings.schema_version, 3);
+assert.equal(feelingDistances.schema_version, 3);
+assert.equal(knowingDistances.schema_version, 3);
 const firstGeneratedPair = generatedDistances.pairs.find(({ a, b }) => a === "E001" && b === "E002");
 assert.equal(firstGeneratedPair.time, 0.166667);
 assert.equal(firstGeneratedPair.feeling, 0.45);
 assert.equal(firstGeneratedPair.knowing, 0.8);
 
-const encounterProperties = encounters.features.map(({ properties }) => properties);
-const valuesFor = (field) => [...new Set(encounterProperties.map((properties) => properties[field]).filter(Boolean))].sort();
+const encounterRecords = encounters.encounters;
+const valuesFor = (field) => [...new Set(encounterRecords.map((encounter) => encounter[field]).filter(Boolean))].sort();
 
-assert.deepEqual(valuesFor("tm_position"), [
+assert.deepEqual(valuesFor("time"), [
   "ATEMPORAL", "DISTANT_FUTURE", "DISTANT_PAST", "INDETERMINATE", "NEAR_FUTURE", "PRESENT", "RECENT_PAST",
 ]);
-assert.deepEqual(valuesFor("af_primary"), [
+assert.deepEqual(valuesFor("feeling"), [
   "AMBIVALENCE", "ANGER", "ANXIETY", "DESIRE", "EERINESS", "ESTRANGEMENT", "FEAR", "GRIEF", "JOY",
   "LONELINESS", "MELANCHOLY", "NOSTALGIA", "SERENITY", "TENDERNESS", "WONDER",
 ]);
-assert.deepEqual(valuesFor("kn_primary"), [
+assert.deepEqual(valuesFor("knowing"), [
   "ANTICIPATED", "DOCUMENTED", "DREAMED", "GENERATED", "IMAGINED", "INFERRED", "INHERITED", "REMEMBERED",
   "UNRESOLVED", "WITNESSED",
 ]);
 const removedFields = [
   "sp_geometry", "sp_status", "tm_extent", "tm_form_primary", "tm_form_secondary",
-  "af_intensity", "af_secondary", "kn_secondary",
+  "af_intensity", "af_secondary", "kn_secondary", "tm_position", "af_primary", "kn_primary",
 ];
-encounterProperties.forEach((properties) => removedFields.forEach((field) => assert.ok(!(field in properties))));
-assert.equal(affectDistances.placeholder, true);
-assert.equal(affectDistances.identical, 0);
-assert.equal(affectDistances.pairs.length, 136);
-const affectDistance = new Map(affectDistances.pairs.map(({ a, b, distance }) => [[a, b].sort().join("|"), distance]));
-assert.equal(affectDistance.get("ANXIETY|FEAR"), 0.1);
-assert.equal(affectDistance.get("JOY|WONDER"), 0.15);
-assert.equal(affectDistance.get("GRIEF|MELANCHOLY"), 0.2);
-assert.equal(affectDistance.get("EERINESS|ESTRANGEMENT"), 0.2);
-assert.equal(affectDistance.get("FEAR|JOY"), 1);
+encounterRecords.forEach((encounter) => removedFields.forEach((field) => assert.ok(!(field in encounter))));
+encounterRecords.forEach(({ place }) => assert.ok(Array.isArray(place) && place.length === 2));
+assert.equal(feelingDistances.placeholder, true);
+assert.equal(feelingDistances.identical, 0);
+assert.equal(feelingDistances.pairs.length, 136);
+const feelingDistance = new Map(feelingDistances.pairs.map(({ a, b, distance }) => [[a, b].sort().join("|"), distance]));
+assert.equal(feelingDistance.get("ANXIETY|FEAR"), 0.1);
+assert.equal(feelingDistance.get("JOY|WONDER"), 0.15);
+assert.equal(feelingDistance.get("GRIEF|MELANCHOLY"), 0.2);
+assert.equal(feelingDistance.get("EERINESS|ESTRANGEMENT"), 0.2);
+assert.equal(feelingDistance.get("FEAR|JOY"), 1);
 assert.equal(knowingDistances.placeholder, true);
 assert.equal(knowingDistances.identical, 0);
 assert.equal(knowingDistances.pairs.length, 45);
@@ -84,7 +85,7 @@ assert.equal(knowingDistance.get("DOCUMENTED|INFERRED"), 0.25);
 assert.equal(knowingDistance.get("DREAMED|IMAGINED"), 0.2);
 assert.equal(knowingDistance.get("ANTICIPATED|IMAGINED"), 0.3);
 assert.equal(knowingDistance.get("IMAGINED|WITNESSED"), 0.8);
-const mediaTypes = [...new Set(encounterProperties.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
+const mediaTypes = [...new Set(encounterRecords.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.deepEqual(mediaTypes, ["audio", "image", "text", "video"]);
 
 const dimensions = ["place", "time", "feeling", "knowing"];

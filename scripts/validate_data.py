@@ -10,7 +10,7 @@ from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 DIMENSIONS = {"place", "time", "feeling", "knowing"}
-AFFECT_TYPES = (
+FEELING_TYPES = (
     "JOY", "TENDERNESS", "DESIRE", "WONDER", "SERENITY", "NOSTALGIA", "MELANCHOLY", "GRIEF", "LONELINESS",
     "ANXIETY", "FEAR", "ANGER", "DISGUST", "ESTRANGEMENT", "EERINESS", "NUMBNESS", "AMBIVALENCE",
 )
@@ -19,13 +19,13 @@ KNOWING_TYPES = (
     "GENERATED", "UNRESOLVED",
 )
 ENUMS = {
-    "tm_position": {"DISTANT_PAST", "RECENT_PAST", "PRESENT", "NEAR_FUTURE", "DISTANT_FUTURE", "INDETERMINATE", "ATEMPORAL"},
-    "af_primary": set(AFFECT_TYPES),
-    "kn_primary": set(KNOWING_TYPES),
+    "time": {"DISTANT_PAST", "RECENT_PAST", "PRESENT", "NEAR_FUTURE", "DISTANT_FUTURE", "INDETERMINATE", "ATEMPORAL"},
+    "feeling": set(FEELING_TYPES),
+    "knowing": set(KNOWING_TYPES),
 }
 REMOVED_FIELDS = {
     "sp_geometry", "sp_status", "tm_extent", "tm_form_primary", "tm_form_secondary",
-    "af_intensity", "af_secondary", "kn_secondary",
+    "af_intensity", "af_secondary", "kn_secondary", "tm_position", "af_primary", "kn_primary",
 }
 
 
@@ -36,44 +36,43 @@ def load(relative: str) -> dict:
 
 def validate() -> list[str]:
     errors: list[str] = []
-    encounters = load("data/encounters.geojson")
+    encounter_data = load("data/encounters.json")
     distances = load("data/distances.json")
     settings = load("data/settings.json")
-    affect_distances = load("data/affect-distances.json")
+    feeling_distances = load("data/feeling-distances.json")
     knowing_distances = load("data/knowing-distances.json")
-    if encounters.get("type") != "FeatureCollection":
-        errors.append("encounters.geojson must be a FeatureCollection")
     versions = {
-        encounters.get("schema_version"), distances.get("schema_version"), settings.get("schema_version"),
-        affect_distances.get("schema_version"), knowing_distances.get("schema_version"),
+        encounter_data.get("schema_version"), distances.get("schema_version"), settings.get("schema_version"),
+        feeling_distances.get("schema_version"), knowing_distances.get("schema_version"),
     }
     if len(versions) != 1 or None in versions:
         errors.append("all public data files must share a schema_version")
-    if encounters.get("generated") is not True or distances.get("generated") is not True:
-        errors.append("encounters.geojson and distances.json must be generated public files")
-    features = encounters.get("features", [])
+    if encounter_data.get("generated") is not True or distances.get("generated") is not True:
+        errors.append("encounters.json and distances.json must be generated public files")
+    encounters = encounter_data.get("encounters", [])
     ids: list[str] = []
-    for index, feature in enumerate(features):
-        context = f"feature {index + 1}"
-        props = feature.get("properties", {})
-        encounter_id = props.get("id")
+    for index, encounter in enumerate(encounters):
+        context = f"encounter {index + 1}"
+        encounter_id = encounter.get("id")
         if not isinstance(encounter_id, str) or not encounter_id:
             errors.append(f"{context}: id is required")
         elif encounter_id in ids:
             errors.append(f"{context}: duplicate id {encounter_id}")
         else:
             ids.append(encounter_id)
-        if not props.get("title"):
+        if not encounter.get("title"):
             errors.append(f"{context}: title is required")
-        geometry = feature.get("geometry")
-        if not geometry or geometry.get("type") != "Point" or len(geometry.get("coordinates", [])) != 2:
-            errors.append(f"{context}: the public prototype requires a representative Point")
+        place = encounter.get("place")
+        if not isinstance(place, list) or len(place) != 2 or not all(isinstance(value, (int, float)) for value in place):
+            errors.append(f"{context}: place must be a [longitude, latitude] pair")
+        elif not -180 <= place[0] <= 180 or not -90 <= place[1] <= 90:
+            errors.append(f"{context}: place coordinates are outside valid longitude and latitude ranges")
         for field, allowed in ENUMS.items():
-            if props.get(field) not in allowed:
+            if encounter.get(field) not in allowed:
                 errors.append(f"{context}: invalid {field}")
-        for field in REMOVED_FIELDS & props.keys():
+        for field in REMOVED_FIELDS & encounter.keys():
             errors.append(f"{context}: removed field {field} must not be exported")
-        for media_index, media in enumerate(props.get("media", [])):
+        for media_index, media in enumerate(encounter.get("media", [])):
             media_context = f"{context}, media {media_index + 1}"
             if media.get("type") not in {"text", "image", "audio", "video"}:
                 errors.append(f"{media_context}: invalid type")
@@ -90,7 +89,7 @@ def validate() -> list[str]:
                 errors.append(f"{media_context}: image media requires alt text")
 
     for label, source, categories in (
-        ("affect", affect_distances, AFFECT_TYPES),
+        ("feeling", feeling_distances, FEELING_TYPES),
         ("knowing", knowing_distances, KNOWING_TYPES),
     ):
         for field in ("identical", "default"):

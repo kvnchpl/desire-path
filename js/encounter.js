@@ -24,9 +24,8 @@ function mediaElement(media) {
   return figure;
 }
 
-export function renderEncounter(feature, elements) {
-  const { properties } = feature;
-  elements.title.textContent = properties.title;
-  elements.media.replaceChildren(...properties.media.map(mediaElement));
-  document.title = `${properties.title} — DESIRE PATH`;
+export function renderEncounter(encounter, elements) {
+  elements.title.textContent = encounter.title;
+  elements.media.replaceChildren(...encounter.media.map(mediaElement));
+  document.title = `${encounter.title} — DESIRE PATH`;
 }

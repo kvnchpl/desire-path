@@ -91,6 +91,28 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+The public encounter schema uses the plain sibling fields `place`, `time`, `feeling`, and `knowing`. QGIS retains point geometry for authoring, while export converts it to `place: [longitude, latitude]`. The public encounter collection is plain JSON rather than GeoJSON, avoiding duplicate geometry while giving all four navigational dimensions the same structural level. `affect-distances.json` is renamed `feeling-distances.json` to match public terminology.
+
+### Reasoning
+
+The public data now mirrors the language and conceptual symmetry of the interface. Keeping GeoJSON geometry alongside a `place` property would duplicate public coordinates and create two possible sources of truth.
+
+### Alternatives Considered
+
+- Retaining backend-prefixed field names in public data.
+- Duplicating coordinates in both GeoJSON geometry and a `place` property.
+- Keeping the Feeling configuration under the term Affect.
+
+### Implications
+
+This introduces public schema version 3. QGIS geometry remains authoritative, while the browser, distance generator, validator, and debug panel consume the simplified JSON record.
+
+---
+
+## 2026-08-01
+
+### Decision
+
 The encounter schema uses one coordinate for each navigational dimension: public point geometry for Place, `tm_position` for Time, `af_primary` for Feeling, and `kn_primary` for Knowing. Earlier spatial descriptors, temporal extent and form, affect intensity and secondary affect, and secondary knowing are removed.
 
 Feeling and Knowing use provisional authored semantic distances between their categorical values. Like every other dimension, `0` is nearest and `1` is farthest. Identical categories use zero and different categories use their configured pairwise distance. Supported media types are limited to text, image, audio, and video.

@@ -1,0 +1,345 @@
+{
+  "schema_version": 3,
+  "generated": true,
+  "generated_from": "qgis/encounters.gpkg",
+  "placeholder": true,
+  "notice": "All encounters and coordinates in this prototype are fictional placeholders.",
+  "encounters": [
+    {
+      "id": "E001",
+      "title": "A Door Left Open",
+      "placeholder": true,
+      "place": [
+        -73.991,
+        40.726
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "WONDER",
+      "knowing": "IMAGINED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "A room holds the last of the afternoon. Beyond the doorway, something has already gone.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E002",
+      "title": "Low Water",
+      "placeholder": true,
+      "place": [
+        -74.046,
+        40.884
+      ],
+      "time": "PRESENT",
+      "feeling": "SERENITY",
+      "knowing": "WITNESSED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "Stones surface where the current thins. The river keeps a quieter record beneath them.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E003",
+      "title": "The Unsent Weather",
+      "placeholder": true,
+      "place": [
+        -73.812,
+        40.972
+      ],
+      "time": "NEAR_FUTURE",
+      "feeling": "ANXIETY",
+      "knowing": "ANTICIPATED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "A forecast addressed to no one gathers at the edge of the field.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E004",
+      "title": "Cicadas After Rain",
+      "placeholder": true,
+      "place": [
+        -73.764,
+        40.759
+      ],
+      "time": "DISTANT_PAST",
+      "feeling": "NOSTALGIA",
+      "knowing": "REMEMBERED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "The sound begins in one tree and is answered from another summer.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E005",
+      "title": "A Light Across the Cut",
+      "placeholder": true,
+      "place": [
+        -73.918,
+        41.081
+      ],
+      "time": "INDETERMINATE",
+      "feeling": "EERINESS",
+      "knowing": "UNRESOLVED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "For a moment the opposite hillside appears inhabited, then the light is gone.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E006",
+      "title": "The Empty Platform",
+      "placeholder": true,
+      "place": [
+        -74.164,
+        40.738
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "LONELINESS",
+      "knowing": "INHERITED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "No train is expected, but the rails continue gathering the evening.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        },
+        {
+          "type": "image",
+          "src": "media/placeholders/placeholder-horizon.svg",
+          "text": null,
+          "caption": "Fictional placeholder image",
+          "alt": "A thin horizontal line crossing a pale field."
+        }
+      ]
+    },
+    {
+      "id": "E007",
+      "title": "Blue Thread",
+      "placeholder": true,
+      "place": [
+        -73.842,
+        40.682
+      ],
+      "time": "PRESENT",
+      "feeling": "TENDERNESS",
+      "knowing": "WITNESSED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "A length of blue thread catches on the fence and points briefly east.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        },
+        {
+          "type": "audio",
+          "src": "media/placeholders/placeholder-tone.mp3",
+          "text": null,
+          "caption": "Fictional placeholder tone",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E008",
+      "title": "Rooms Above the Trees",
+      "placeholder": true,
+      "place": [
+        -73.954,
+        40.821
+      ],
+      "time": "DISTANT_FUTURE",
+      "feeling": "ESTRANGEMENT",
+      "knowing": "ANTICIPATED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "Windows appear above the canopy where no building has yet been raised.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        },
+        {
+          "type": "video",
+          "src": "media/placeholders/placeholder-field.mp4",
+          "text": null,
+          "caption": "Fictional placeholder video",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E009",
+      "title": "Salt on the Steps",
+      "placeholder": true,
+      "place": [
+        -73.886,
+        40.641
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "MELANCHOLY",
+      "knowing": "INFERRED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "A white line remains after the water leaves, measuring a storm no one names.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E010",
+      "title": "Night Orchard",
+      "placeholder": true,
+      "place": [
+        -74.052,
+        41.142
+      ],
+      "time": "DISTANT_PAST",
+      "feeling": "JOY",
+      "knowing": "DREAMED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "Fruit falls in the dark, one soft interruption after another.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E011",
+      "title": "A Map Folded Wrong",
+      "placeholder": true,
+      "place": [
+        -73.708,
+        41.048
+      ],
+      "time": "PRESENT",
+      "feeling": "AMBIVALENCE",
+      "knowing": "DOCUMENTED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "Two distant roads touch along a crease and remain together when the page opens.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E012",
+      "title": "Underpass Choir",
+      "placeholder": true,
+      "place": [
+        -74.218,
+        40.872
+      ],
+      "time": "INDETERMINATE",
+      "feeling": "FEAR",
+      "knowing": "WITNESSED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "Traffic becomes a held note beneath the concrete, then divides into weather.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E013",
+      "title": "The Borrowed Horizon",
+      "placeholder": true,
+      "place": [
+        -73.612,
+        40.846
+      ],
+      "time": "NEAR_FUTURE",
+      "feeling": "DESIRE",
+      "knowing": "IMAGINED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "For one block the street borrows the horizon from a place much farther away.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E014",
+      "title": "Ash in the Snow",
+      "placeholder": true,
+      "place": [
+        -74.104,
+        40.998
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "GRIEF",
+      "knowing": "DOCUMENTED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "Gray marks settle into the new snow and disappear before the thaw.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    },
+    {
+      "id": "E015",
+      "title": "Signal Without a Source",
+      "placeholder": true,
+      "place": [
+        -73.746,
+        40.762
+      ],
+      "time": "ATEMPORAL",
+      "feeling": "ANGER",
+      "knowing": "GENERATED",
+      "media": [
+        {
+          "type": "text",
+          "src": null,
+          "text": "A receiver wakes for three seconds and offers a voice made entirely of distance.",
+          "caption": "Fictional placeholder",
+          "alt": null
+        }
+      ]
+    }
+  ]
+}

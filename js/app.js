@@ -29,11 +29,11 @@ function selectedDimensions() {
 
 async function start() {
   const [encounters, distances, settings] = await Promise.all([
-    loadJson("data/encounters.geojson"),
+    loadJson("data/encounters.json"),
     loadJson("data/distances.json"),
     loadJson("data/settings.json"),
   ]);
-  const encounterById = new Map(encounters.features.map((feature) => [feature.properties.id, feature]));
+  const encounterById = new Map(encounters.encounters.map((encounter) => [encounter.id, encounter]));
   const encounterIds = [...encounterById.keys()];
   const distanceByPair = createDistanceIndex(distances.pairs);
   const history = [settings.initial_encounter];
@@ -71,7 +71,7 @@ async function start() {
   function renderDataDebug(current) {
     elements.debugData.hidden = !elements.debugShowData.checked;
     elements.debugData.textContent = elements.debugShowData.checked
-      ? JSON.stringify({ geometry: current.geometry, ...current.properties }, null, 2)
+      ? JSON.stringify(current, null, 2)
       : "";
   }
 
@@ -100,7 +100,7 @@ async function start() {
     if (!encounterById.has(nextId) || nextId === currentId) return;
     currentId = nextId;
     history.push(nextId);
-    render(`Arrived at ${encounterById.get(nextId).properties.title}.`);
+    render(`Arrived at ${encounterById.get(nextId).title}.`);
   }
 
   elements.form.addEventListener("change", (event) => {
@@ -117,7 +117,7 @@ async function start() {
     if (history.length < 2) return;
     history.pop();
     currentId = history.at(-1);
-    render(`Retraced to ${encounterById.get(currentId).properties.title}.`);
+    render(`Retraced to ${encounterById.get(currentId).title}.`);
   });
 
   elements.debugShowAll.addEventListener("change", () => {

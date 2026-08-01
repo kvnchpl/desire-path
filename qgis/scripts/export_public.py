@@ -15,7 +15,7 @@ from calculate_paths import calculate
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "qgis" / "encounters.gpkg"
-ENCOUNTERS_OUTPUT = ROOT / "data" / "encounters.geojson"
+ENCOUNTERS_OUTPUT = ROOT / "data" / "encounters.json"
 DISTANCES_OUTPUT = ROOT / "data" / "distances.json"
 LAYER = "encounters"
 
@@ -60,26 +60,33 @@ def export_encounters() -> dict:
         )
         exported = json.loads(temporary_output.read_text(encoding="utf-8"))
 
+    encounters = []
     for feature in exported["features"]:
         properties = feature.get("properties", {})
         if isinstance(properties.get("media"), str):
             properties["media"] = json.loads(properties["media"])
-    if all(feature.get("properties", {}).get("placeholder") is True for feature in exported["features"]):
-        exported["placeholder"] = True
-        exported.setdefault("notice", "All encounters and coordinates in this prototype are fictional placeholders.")
-    else:
-        exported["placeholder"] = False
-        exported.pop("notice", None)
+        encounters.append(
+            {
+                "id": properties["id"],
+                "title": properties["title"],
+                "placeholder": properties["placeholder"],
+                "place": feature["geometry"]["coordinates"],
+                "time": properties["time"],
+                "feeling": properties["feeling"],
+                "knowing": properties["knowing"],
+                "media": properties["media"],
+            }
+        )
+    all_placeholders = all(encounter["placeholder"] is True for encounter in encounters)
     public_export = {
-        "type": "FeatureCollection",
-        "schema_version": 2,
+        "schema_version": 3,
         "generated": True,
         "generated_from": "qgis/encounters.gpkg",
-        "placeholder": exported["placeholder"],
+        "placeholder": all_placeholders,
     }
-    if exported.get("notice"):
-        public_export["notice"] = exported["notice"]
-    public_export["features"] = exported["features"]
+    if all_placeholders:
+        public_export["notice"] = "All encounters and coordinates in this prototype are fictional placeholders."
+    public_export["encounters"] = encounters
     return public_export
 
 
@@ -87,9 +94,9 @@ def write_exports(encounters: dict) -> None:
     distances = {
         "schema_version": encounters["schema_version"],
         "generated": True,
-        "generated_from": "data/encounters.geojson",
+        "generated_from": "data/encounters.json",
         "dimensions": ["place", "time", "feeling", "knowing"],
-        "pairs": calculate(encounters["features"]),
+        "pairs": calculate(encounters["encounters"]),
     }
     ENCOUNTERS_OUTPUT.write_text(json.dumps(encounters, indent=2) + "\n", encoding="utf-8")
     DISTANCES_OUTPUT.write_text(json.dumps(distances, indent=2) + "\n", encoding="utf-8")

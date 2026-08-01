@@ -13,19 +13,19 @@ Each encounter has these fields:
 | `id` | Text | Stable unique identifier, such as `E001` |
 | `title` | Text | Human-readable title |
 | `placeholder` | Boolean | Marks temporary sample content |
-| `tm_position` | Text | Time category |
-| `af_primary` | Text | Feeling category |
-| `kn_primary` | Text | Knowing category |
+| `place` | Number pair | Public `[longitude, latitude]` location |
+| `time` | Text | Time category |
+| `feeling` | Text | Feeling category |
+| `knowing` | Text | Knowing category |
 | `media` | JSON array | Ordered encounter content |
-| feature geometry | Point | Public representative location |
 
 An identifier must never change once assigned. Titles do not need to be unique.
 
-Every committed geometry is public. Private coordinates must be generalized, displaced, or omitted before they enter this repository.
+QGIS geometry is converted to `place` during public export. Every committed coordinate is public. Private coordinates must be generalized, displaced, or omitted before they enter this repository.
 
 ## Time
 
-`tm_position` accepts:
+`time` accepts:
 
 - `DISTANT_PAST`
 - `RECENT_PAST`
@@ -37,7 +37,7 @@ Every committed geometry is public. Private coordinates must be generalized, dis
 
 ## Feeling
 
-`af_primary` accepts:
+`feeling` accepts:
 
 - `JOY`
 - `TENDERNESS`
@@ -57,11 +57,11 @@ Every committed geometry is public. Private coordinates must be generalized, dis
 - `NUMBNESS`
 - `AMBIVALENCE`
 
-`data/affect-distances.json` contains all 136 unique pairwise distances between affect types in the canonical order shown above. As in every other dimension, `0` is nearest and `1` is farthest. Identical types use the configured `identical` value. The provisional semantic values consider valence, activation, and relational orientation, with editorial adjustments where those broad qualities would collapse distinct affect families. They remain placeholders intended for later revision.
+`data/feeling-distances.json` contains all 136 unique pairwise distances between Feeling categories in the canonical order shown above. As in every other dimension, `0` is nearest and `1` is farthest. Identical types use the configured `identical` value. The provisional semantic values consider valence, activation, and relational orientation, with editorial adjustments where those broad qualities would collapse distinct affect families. They remain placeholders intended for later revision.
 
 ## Knowing
 
-`kn_primary` accepts:
+`knowing` accepts:
 
 - `WITNESSED`
 - `REMEMBERED`
@@ -101,19 +101,19 @@ Media paths must be relative and must resolve to committed public files. Real me
 
 The export derives four normalized pairwise distances:
 
-- **Place:** great-circle distance between public representative points, divided by the greatest pairwise Place distance in the export.
-- **Time:** ordinal distance between `tm_position` values.
-- **Feeling:** configured distance using `data/affect-distances.json`.
+- **Place:** great-circle distance between public `place` coordinates, divided by the greatest pairwise Place distance in the export.
+- **Time:** ordinal distance between `time` values.
+- **Feeling:** configured distance using `data/feeling-distances.json`.
 - **Knowing:** configured distance using `data/knowing-distances.json`.
 
 All results are rounded to six decimal places. Missing values fail validation rather than being silently interpreted as maximum distance.
 
 ## Public files
 
-- `data/encounters.geojson` is the generated public encounter and media export.
+- `data/encounters.json` is the generated public encounter and media export.
 - `data/distances.json` contains every generated unique unordered pair once.
-- `data/affect-distances.json` contains authored provisional Feeling distances.
+- `data/feeling-distances.json` contains authored provisional Feeling distances.
 - `data/knowing-distances.json` contains authored provisional Knowing distances.
 - `data/settings.json` contains authored presentation and neighborhood settings.
 
-All versioned public files use `schema_version: 2`.
+All versioned public files use `schema_version: 3`.
