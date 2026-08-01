@@ -6,6 +6,10 @@ _site/
 
 # Additional Ruby/bundler ignore for when you run: bundle install
 /vendor
+!/vendor/
+/vendor/*
+!/vendor/leaflet/
+!/vendor/leaflet/**
 
 # Specific ignore for GitHub Pages
 Gemfile.lock
