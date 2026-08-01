@@ -227,6 +227,8 @@ Avoid decorative typefaces.
 
 Allow whitespace to perform much of the visual work.
 
+Use monospace typography throughout the interface. Display titles in uppercase and body or menu language in lowercase.
+
 ---
 
 # Paths
