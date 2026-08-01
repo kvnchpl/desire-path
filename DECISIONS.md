@@ -79,6 +79,112 @@ Describe how this decision affects future development.
 
 ### Decision
 
+The first public prototype will use five clearly fictional placeholder encounters. Their coordinates are generalized and their media are replaceable.
+
+### Reasoning
+
+Placeholder material allows the complete publishing and navigation workflow to be tested before real encounters are made public.
+
+### Alternatives Considered
+
+- Waiting for final encounter content.
+- Treating draft personal material as temporary public data.
+
+### Implications
+
+Placeholder records must identify themselves as fictional, use stable IDs, and be replaceable without changing application code. No placeholder should be mistaken for documentary material.
+
+---
+
+## 2026-08-01
+
+### Decision
+
+The first web map will use a locally hosted copy of Leaflet and will consume GeoJSON exported from QGIS.
+
+### Reasoning
+
+Leaflet is lightweight, works on a static GitHub Pages site, and accepts the same standard interchange format produced by the QGIS workflow. Hosting it locally preserves relative asset paths and avoids making the interface dependent on a third-party CDN.
+
+### Alternatives Considered
+
+- A custom SVG map.
+- A larger vector-map framework.
+- Loading Leaflet from a public CDN.
+
+### Implications
+
+Leaflet is a presentation dependency only. QGIS remains the analytical authority, and the application must not require a server or build step.
+
+---
+
+## 2026-08-01
+
+### Decision
+
+The prototype will use deterministic, documented distance formulas for Place, Time, Feeling, and Knowing.
+
+### Reasoning
+
+The navigation specification defines how selected distances are combined but not how the four source distances are derived. A reproducible first model is required to build and evaluate the vertical slice.
+
+### Alternatives Considered
+
+- Hand-authoring every pairwise distance.
+- Deferring navigation until a final analytical model exists.
+- Calculating opaque distances in the browser.
+
+### Implications
+
+QGIS export tooling will generate normalized public distances. The formulas may evolve, but any change must be recorded here and regenerate the derived distance file.
+
+---
+
+## 2026-08-01
+
+### Decision
+
+Neighborhood thresholds are global percentiles calculated for each selected dimension combination. Paths are undirected. Connectivity bridges are added before the six-neighbor cap, a required bridge reserves a visible slot, and equal distances are ordered by encounter ID.
+
+### Reasoning
+
+These rules make the navigation graph reproducible, connected, and bounded while retaining a definition of nearness that adapts as the archive grows.
+
+### Alternatives Considered
+
+- A percentile calculated independently for each inhabited encounter.
+- Directed paths.
+- Adding bridges after applying the visible-neighbor cap.
+
+### Implications
+
+Generated distance data and the browser implementation must use identical ordering and connectivity rules. With fewer than four encounters, the minimum visible neighborhood becomes every other available encounter.
+
+---
+
+## 2026-08-01
+
+### Decision
+
+Retrace removes the current encounter from a navigation-history stack and returns to the new top item. Retracing does not create another history entry.
+
+### Reasoning
+
+Stack semantics preserve the ordinary meaning of retracing a route and prevent two encounters from toggling indefinitely.
+
+### Alternatives Considered
+
+- Treating Retrace as a new forward traversal.
+- Retaining only one previous encounter.
+
+### Implications
+
+Retrace is unavailable at the initial encounter. Forward traversal after retracing begins a new continuation from the remaining history.
+
+## 2026-08-01
+
+### Decision
+
 The project's fundamental unit is an **Encounter** rather than a **Fragment**.
 
 ### Reasoning

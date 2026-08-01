@@ -146,6 +146,8 @@ For every possible dimension combination, calculate all pairwise distances.
 
 The visibility threshold is defined by a percentile rather than a fixed numerical distance.
 
+For each of the 15 possible non-empty dimension combinations, calculate the percentile over the global set of unique unordered encounter pairs. Every current encounter uses that combination's global threshold.
+
 This ensures that the definition of "near" adapts naturally as the archive grows.
 
 The percentile value should remain configurable.
@@ -186,15 +188,19 @@ If more than six encounters remain:
 
 retain only the six nearest.
 
-The resulting visible neighborhood therefore always contains:
+The resulting visible neighborhood therefore contains:
 
-minimum:
+minimum, when at least four encounters exist:
 
 3 encounters
 
 maximum:
 
 6 encounters
+
+If the archive contains fewer than four encounters, show every other available encounter.
+
+Equal composite distances are ordered by encounter ID so that results remain reproducible.
 
 ---
 
@@ -205,6 +211,8 @@ Retrace is determined entirely by navigation history.
 It is not determined by dimensional distance.
 
 Retrace always returns the visitor to the immediately previous encounter.
+
+Navigation history is a stack. Retrace removes the current encounter and returns to the new top of the stack; it does not add a new history entry. Retrace is unavailable when the stack contains only the initial encounter.
 
 If the previous encounter already appears within the visible neighborhood, it should not be duplicated.
 
@@ -218,9 +226,11 @@ Every encounter in the archive should eventually be reachable.
 
 The generated navigation graph must therefore remain connected.
 
-If threshold-based neighborhoods fail to produce a connected graph, additional bridge paths may be generated.
+If threshold-based neighborhoods fail to produce a connected graph, additional bridge paths must be generated.
 
 Bridge paths should be chosen using the smallest available distance necessary to restore connectivity.
+
+Paths are undirected. Connectivity is evaluated globally for the active dimension combination. Required bridges are established before limiting an encounter to six visible neighbors and reserve a place within that limit, displacing the most distant non-bridge neighbor when necessary.
 
 The visitor should never encounter a permanently isolated region of the archive.
 

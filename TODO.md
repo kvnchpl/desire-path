@@ -33,3 +33,5 @@ Milestone #9
 
 Milestone #10
 * Polish
+
+Every milestone commit must load as a working static site, produce no browser console errors, and pass the repository data validator.

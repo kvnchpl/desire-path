@@ -266,6 +266,32 @@ Each feature contains:
 
 The feature geometry stores `sp_location`.
 
+For web display, every encounter must also have a stable representative point. Point encounters use their geometry directly. Routes, areas, and multiple geometries use a representative point authored in QGIS rather than an automatically exposed private centroid. Encounters with `WITHHELD` or `UNLOCATABLE` status must use an intentionally generalized public point or remain absent from public exports.
+
+---
+
+# Public Export
+
+The website consumes derived GeoJSON and JSON files exported from the authoritative QGIS project. Each export includes a schema version. Generated files may be replaced without changing application code as long as the versioned contract remains compatible.
+
+Missing dimensional values are validation errors in the first prototype. They are never silently converted to maximum distance.
+
+---
+
+# Media Object
+
+Public media are listed on an encounter in display order. Each media object contains:
+
+| Field | Type | Purpose |
+|-------|------|---------|
+| type | Text | `text`, `image`, `audio`, or `video` |
+| src | Text or null | Relative public asset path for file-based media |
+| text | Text or null | Inline text for textual media |
+| caption | Text or null | Optional quiet contextual caption |
+| alt | Text or null | Required text alternative for informative images |
+
+Media paths must be relative. A public export must never reference private or local-only files.
+
 ---
 
 # Future Crowdsourced Implementation

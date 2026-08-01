@@ -19,6 +19,8 @@ Before contributing, read:
 
 Prototype.
 
+The code and data files currently form an implementation scaffold. The first vertical slice uses fictional placeholder encounters that will later be replaced with contributed content.
+
 Current goal:
 
 Build a minimal vertical slice demonstrating:
