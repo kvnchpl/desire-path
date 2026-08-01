@@ -26,7 +26,7 @@ Current goal:
 Build a minimal vertical slice demonstrating:
 
 - one map
-- five encounters
+- 15 encounters
 - multidimensional navigation
 - retrace
 - dynamic path generation
@@ -51,6 +51,6 @@ npm test
 
 Author encounters in [`qgis/desire-path.qgz`](qgis/desire-path.qgz), then run `npm run export:data` to regenerate and validate the public files. Detailed steps are in [`docs/qgis-workflow.md`](docs/qgis-workflow.md).
 
-The five current encounters and their coordinates are fictional placeholders.
+The 15 current encounters and their coordinates are fictional placeholders designed to exercise the full range of supported categories and media types.
 
 The project license remains explicitly pending in [`LICENSE-PENDING.md`](LICENSE-PENDING.md). The locally vendored Leaflet dependency retains its BSD-2-Clause license in `vendor/leaflet/LICENSE`.
