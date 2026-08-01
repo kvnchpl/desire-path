@@ -87,6 +87,8 @@ def validate() -> list[str]:
                     errors.append(f"{media_context}: src must be a safe relative path")
                 elif not (ROOT / path).is_file():
                     errors.append(f"{media_context}: missing file {src}")
+            elif media.get("type") in {"image", "audio", "video"}:
+                errors.append(f"{media_context}: {media.get('type')} media requires src")
             if media.get("type") == "text" and not media.get("text"):
                 errors.append(f"{media_context}: text media requires text")
             if media.get("type") == "image" and not media.get("alt"):

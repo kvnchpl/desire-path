@@ -39,11 +39,11 @@
       "knowing": "WITNESSED",
       "media": [
         {
-          "type": "text",
+          "alt": null,
+          "caption": "Fictional placeholder",
           "src": null,
           "text": "Stones surface where the current thins. The river keeps a quieter record beneath them.",
-          "caption": "Fictional placeholder",
-          "alt": null
+          "type": "text"
         }
       ]
     },

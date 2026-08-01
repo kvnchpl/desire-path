@@ -64,6 +64,10 @@ if (encounterIds.length === 15 && encounterRecords.every(({ placeholder }) => pl
     "ANTICIPATED", "DOCUMENTED", "DREAMED", "GENERATED", "IMAGINED", "INFERRED", "INHERITED", "REMEMBERED",
     "UNRESOLVED", "WITNESSED",
   ]);
+  assert.deepEqual(
+    [...new Set(encounterRecords.flatMap(({ media }) => media.map(({ type }) => type)))].sort(),
+    ["audio", "image", "text", "video"],
+  );
 }
 const removedFields = [
   "sp_geometry", "sp_status", "tm_extent", "tm_form_primary", "tm_form_secondary",
