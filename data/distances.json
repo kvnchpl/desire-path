@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "generated_from": "encounters.geojson",
+  "dimensions": [
+    "place",
+    "time",
+    "feeling",
+    "knowing"
+  ],
+  "pairs": [
+    {
+      "a": "E001",
+      "b": "E002",
+      "place": 0.454801,
+      "time": 0.722222,
+      "feeling": 0.56,
+      "knowing": 1.0
+    },
+    {
+      "a": "E001",
+      "b": "E003",
+      "place": 0.781607,
+      "time": 0.777778,
+      "feeling": 0.63,
+      "knowing": 0.666667
+    },
+    {
+      "a": "E001",
+      "b": "E004",
+      "place": 0.487455,
+      "time": 0.722222,
+      "feeling": 0.508333,
+      "knowing": 1.0
+    },
+    {
+      "a": "E001",
+      "b": "E005",
+      "place": 1.0,
+      "time": 0.555556,
+      "feeling": 0.388333,
+      "knowing": 1.0
+    },
+    {
+      "a": "E002",
+      "b": "E003",
+      "place": 0.549697,
+      "time": 0.722222,
+      "feeling": 0.69,
+      "knowing": 1.0
+    },
+    {
+      "a": "E002",
+      "b": "E004",
+      "place": 0.688404,
+      "time": 0.111111,
+      "feeling": 0.735,
+      "knowing": 0.5
+    },
+    {
+      "a": "E002",
+      "b": "E005",
+      "place": 0.610758,
+      "time": 0.833333,
+      "feeling": 0.615,
+      "knowing": 1.0
+    },
+    {
+      "a": "E003",
+      "b": "E004",
+      "place": 0.60143,
+      "time": 0.833333,
+      "feeling": 0.545,
+      "knowing": 1.0
+    },
+    {
+      "a": "E003",
+      "b": "E005",
+      "place": 0.376293,
+      "time": 0.777778,
+      "feeling": 0.575,
+      "knowing": 1.0
+    },
+    {
+      "a": "E004",
+      "b": "E005",
+      "place": 0.953013,
+      "time": 0.944444,
+      "feeling": 0.62,
+      "knowing": 1.0
+    }
+  ]
+}
