@@ -9,3 +9,9 @@ _site/
 
 # Specific ignore for GitHub Pages
 Gemfile.lock
+
+.DS_Store
+.vscode/
+node_modules/
+*.tmp
+*.log
