@@ -1,11 +1,13 @@
 import { renderEncounter } from "./encounter.js";
 import { createEncounterMap } from "./map.js";
-import { visibleNeighborhood } from "./navigation.js";
+import { compositeDistance, createDistanceIndex, pairKey, visibleNeighborhood } from "./navigation.js";
 
 const elements = {
   form: document.querySelector("#explore-form"),
   debugShowAll: document.querySelector("#debug-show-all"),
   debugShowIds: document.querySelector("#debug-show-ids"),
+  debugShowDistances: document.querySelector("#debug-show-distances"),
+  debugDistances: document.querySelector("#debug-distances"),
   map: document.querySelector("#map"),
   media: document.querySelector("#encounter-media"),
   retrace: document.querySelector("#retrace"),
@@ -31,17 +33,47 @@ async function start() {
   ]);
   const encounterById = new Map(encounters.features.map((feature) => [feature.properties.id, feature]));
   const encounterIds = [...encounterById.keys()];
+  const distanceByPair = createDistanceIndex(distances.pairs);
   const history = [settings.initial_encounter];
   let currentId = settings.initial_encounter;
   const map = createEncounterMap(elements.map, settings, navigate);
 
+  function renderDistanceDebug(dimensions) {
+    elements.debugDistances.hidden = !elements.debugShowDistances.checked;
+    if (!elements.debugShowDistances.checked) {
+      elements.debugDistances.replaceChildren();
+      return;
+    }
+
+    const table = document.createElement("table");
+    const header = table.createTHead().insertRow();
+    ["node", "place", "time", "feeling", "knowing", "composite"].forEach((label) => {
+      const cell = document.createElement("th");
+      cell.scope = "col";
+      cell.textContent = label;
+      header.append(cell);
+    });
+    const body = table.createTBody();
+    encounterIds.filter((id) => id !== currentId).forEach((id) => {
+      const pair = distanceByPair.get(pairKey(currentId, id));
+      const row = body.insertRow();
+      const values = [id, pair.place, pair.time, pair.feeling, pair.knowing, compositeDistance(pair, dimensions)];
+      values.forEach((value, index) => {
+        const cell = row.insertCell();
+        cell.textContent = index === 0 ? value : value.toFixed(3);
+      });
+    });
+    elements.debugDistances.replaceChildren(table);
+  }
+
   function render(announcement = "") {
     const current = encounterById.get(currentId);
+    const dimensions = selectedDimensions();
     const neighbors = visibleNeighborhood({
       currentId,
       encounterIds,
       pairs: distances.pairs,
-      dimensions: selectedDimensions(),
+      dimensions,
       settings,
     });
     renderEncounter(current, elements);
@@ -49,6 +81,7 @@ async function start() {
       showAllNodes: elements.debugShowAll.checked,
       showNodeIds: elements.debugShowIds.checked,
     });
+    renderDistanceDebug(dimensions);
     elements.retrace.disabled = history.length < 2;
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
   }
@@ -83,6 +116,10 @@ async function start() {
 
   elements.debugShowIds.addEventListener("change", () => {
     render(elements.debugShowIds.checked ? "Node IDs are visible." : "Node IDs are hidden.");
+  });
+
+  elements.debugShowDistances.addEventListener("change", () => {
+    render(elements.debugShowDistances.checked ? "Distances are visible." : "Distances are hidden.");
   });
 
   render();

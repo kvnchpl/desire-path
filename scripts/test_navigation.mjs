@@ -23,8 +23,10 @@ for (const dimension of ["time", "feeling", "knowing"]) {
   assert.match(interfaceHtml, new RegExp(`value="${dimension}" checked`));
 }
 assert.match(interfaceHtml, /<details class="debug">/);
+assert.match(interfaceHtml, /<details class="explore" open>/);
 assert.match(interfaceHtml, /id="debug-show-all"/);
 assert.match(interfaceHtml, /id="debug-show-ids"/);
+assert.match(interfaceHtml, /id="debug-show-distances"/);
 
 const encounters = JSON.parse(await readFile(new URL("../data/encounters.geojson", import.meta.url), "utf8"));
 const generatedDistances = JSON.parse(await readFile(new URL("../data/distances.json", import.meta.url), "utf8"));

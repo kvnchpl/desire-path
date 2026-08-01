@@ -141,6 +141,8 @@ Visitors should discover the logic of the project through use.
 
 The primary interface should remain minimal.
 
+Explore is collapsible and begins open. Debug controls are collapsible and begin closed.
+
 DESIRE PATH
 
 ────────────

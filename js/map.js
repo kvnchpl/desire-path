@@ -69,8 +69,8 @@ export function createEncounterMap(element, settings, onNavigate) {
       const marker = L.marker(latLng, {
         icon: markerIcon("reachable"),
         keyboard: true,
-        title: `Explore ${neighbor.properties.title}`,
-        alt: `Explore ${neighbor.properties.title}`,
+        title: neighbor.properties.title.toUpperCase(),
+        alt: neighbor.properties.title.toUpperCase(),
       });
       marker.on("click", () => onNavigate(id));
       marker.addTo(layer);
@@ -80,8 +80,8 @@ export function createEncounterMap(element, settings, onNavigate) {
     const currentMarker = L.marker(currentLatLng, {
       icon: markerIcon("current"),
       keyboard: true,
-      title: `Current encounter: ${current.properties.title}`,
-      alt: `Current encounter: ${current.properties.title}`,
+      title: `current: ${current.properties.title.toUpperCase()}`,
+      alt: `current: ${current.properties.title.toUpperCase()}`,
       zIndexOffset: 1000,
     }).addTo(layer);
     addNodeId(currentMarker, current.properties.id, debug.showNodeIds);

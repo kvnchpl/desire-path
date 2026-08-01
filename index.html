@@ -24,20 +24,25 @@
           <h1>DESIRE PATH</h1>
         </header>
 
-        <form class="explore" id="explore-form">
-          <fieldset>
-            <legend>Explore</legend>
-            <label><input type="checkbox" name="dimension" value="place"> <span>Place</span></label>
-            <label><input type="checkbox" name="dimension" value="time" checked> <span>Time</span></label>
-            <label><input type="checkbox" name="dimension" value="feeling" checked> <span>Feeling</span></label>
-            <label><input type="checkbox" name="dimension" value="knowing" checked> <span>Knowing</span></label>
-          </fieldset>
-        </form>
+        <details class="explore" open>
+          <summary>explore</summary>
+          <form id="explore-form">
+            <fieldset>
+              <legend>explore dimensions</legend>
+              <label><input type="checkbox" name="dimension" value="place"> <span>Place</span></label>
+              <label><input type="checkbox" name="dimension" value="time" checked> <span>Time</span></label>
+              <label><input type="checkbox" name="dimension" value="feeling" checked> <span>Feeling</span></label>
+              <label><input type="checkbox" name="dimension" value="knowing" checked> <span>Knowing</span></label>
+            </fieldset>
+          </form>
+        </details>
 
         <details class="debug">
           <summary>debug</summary>
           <label><input type="checkbox" id="debug-show-all"> <span>show all nodes</span></label>
           <label><input type="checkbox" id="debug-show-ids"> <span>show node ids</span></label>
+          <label><input type="checkbox" id="debug-show-distances"> <span>show distances</span></label>
+          <div class="debug-distances" id="debug-distances" hidden></div>
         </details>
 
         <article class="encounter" id="encounter" tabindex="-1" aria-live="polite">

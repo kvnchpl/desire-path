@@ -79,7 +79,7 @@ Describe how this decision affects future development.
 
 ### Decision
 
-A collapsed debug section may expose diagnostic views that are unavailable in ordinary exploration. Its initial options reveal faint non-navigable encounter positions and node IDs without revealing the complete path network.
+A collapsed debug section may expose diagnostic views that are unavailable in ordinary exploration. Its initial options reveal faint non-navigable encounter positions, node IDs, and the four source distances plus active composite distance without revealing the complete path network.
 
 ### Reasoning
 
@@ -92,7 +92,7 @@ Diagnostic visibility helps evaluate geographic distribution and generated neigh
 
 ### Implications
 
-Debug controls remain collapsed by default. Debug-only nodes must be visually subordinate and cannot be used to bypass generated navigation.
+Debug controls remain collapsed by default. Debug-only nodes must be visually subordinate and cannot be used to bypass generated navigation. Distance diagnostics recalculate whenever the current encounter or selected dimensions change.
 
 ---
 
