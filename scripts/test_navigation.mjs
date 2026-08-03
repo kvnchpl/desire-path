@@ -26,7 +26,8 @@ assert.equal(activePathColor(["knowing"]), "#536f8f");
 assert.equal(activePathColor(["place", "time", "feeling"]), "#b66f3d");
 assert.equal(activePathColor(["time", "knowing"]), "#785f79");
 assert.equal(activePathColor(["feeling", "knowing"]), "#697c5a");
-assert.equal(activePathColor(["place", "time", "feeling", "knowing"]), "#4f514e");
+assert.equal(activePathColor(["time", "feeling", "knowing"]), "#4f514e");
+assert.equal(activePathColor(["place", "time", "feeling", "knowing"]), "#252724");
 const colorPairs = [
   { place: 0.1, time: 0.9, feeling: 0.9, knowing: 0.9 },
   { place: 0.9, time: 0.1, feeling: 0.1, knowing: 0.9 },

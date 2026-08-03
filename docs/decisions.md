@@ -91,6 +91,27 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+Selecting all four dimensions colors nearby paths and encounters near-black, matching the current encounter. Time, Feeling, and Knowing without Place remain dark gray. Place remains light gray alone and neutral in every other partial mixture.
+
+### Reasoning
+
+Near-black gives the complete four-dimensional selection a distinct visual state without weakening the established dark-gray mixture of the three chromatic dimensions.
+
+### Alternatives Considered
+
+- Continuing to treat Place as neutral when all four dimensions are selected.
+- Changing the three-chromatic-dimension mixture to near-black as well.
+
+### Implications
+
+Place has one deliberate exception to its neutral mixing behavior. The exception applies consistently to nearby paths, nearby encounters, and debugging-path colors.
+
+---
+
+## 2026-08-03
+
+### Decision
+
 Options may reveal the union of every path that can become traversable under any dimension combination as a faint, non-navigable debugging layer. Enabling the layer also reveals every encounter position, while the ordinary nearby paths remain visually prominent and exclusively traversable. Each debugging path reflects the dimensions in which its encounters fall within the single-dimension nearness threshold.
 
 ### Reasoning

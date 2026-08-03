@@ -216,7 +216,7 @@ The dimensions use a muted orientation palette:
 - Feeling: yellow
 - Knowing: blue
 
-Visible paths and nearby encounters take the color of the selected dimensions. Time and Feeling mix to orange, Time and Knowing to purple, and Feeling and Knowing to green. Selecting all three produces dark gray. Place remains neutral: it appears light gray alone and does not alter a mixture with another dimension.
+Visible paths and nearby encounters take the color of the selected dimensions. Time and Feeling mix to orange, Time and Knowing to purple, and Feeling and Knowing to green. Selecting all three produces dark gray. Place remains neutral in partial combinations: it appears light gray alone and does not alter a mixture with one or two other dimensions. Selecting all four dimensions produces near-black.
 
 Prefer muted colors.
 

@@ -12,10 +12,14 @@ const dimensionColors = {
   "knowing+time": "#785f79",
   "feeling+knowing": "#697c5a",
   "feeling+knowing+time": "#4f514e",
+  all: "#252724",
   neutral: "#858984",
 };
 
 export function activePathColor(dimensions) {
+  if (["place", "time", "feeling", "knowing"].every((dimension) => dimensions.includes(dimension))) {
+    return dimensionColors.all;
+  }
   const chromaticDimensions = dimensions.filter((dimension) => dimension !== "place").sort();
   return dimensionColors[chromaticDimensions.join("+")] || dimensionColors.place;
 }
