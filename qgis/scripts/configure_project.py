@@ -96,10 +96,7 @@ def configure(xml: bytes) -> bytes:
     label_on_top = replace(layer, "labelOnTop")
     reuse_last = replace(layer, "reuseLastValue")
 
-    # Media remains required by the public-data validator. QGIS's form-level
-    # Not NULL check incorrectly treats the populated multiline JSON editor as
-    # null, so enforcing it here prevents otherwise valid features from saving.
-    required = {"id", "title", "time", "feeling", "knowing"}
+    required = {"id", "time", "feeling", "knowing"}
     for index, (name, alias, widget_type, values) in enumerate(FIELDS):
         field = ET.SubElement(field_configuration, "field", {"name": name, "configurationFlags": "None"})
         widget(field, widget_type, values)

@@ -72,8 +72,8 @@ def validate() -> list[str]:
         for field in REMOVED_FIELDS & encounter.keys():
             errors.append(f"{context}: removed field {field} must not be exported")
         media_entries = encounter.get("media")
-        if not isinstance(media_entries, list) or not media_entries:
-            errors.append(f"{context}: media must be a non-empty array")
+        if not isinstance(media_entries, list):
+            errors.append(f"{context}: media must be an array")
             media_entries = []
         for media_index, media in enumerate(media_entries):
             media_context = f"{context}, media {media_index + 1}"

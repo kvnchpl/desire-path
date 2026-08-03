@@ -113,13 +113,13 @@ If QGIS reports a missing layer, open **Layer → Data Source Manager → GeoPac
 | Field | Type | Requirement |
 |---|---|---|
 | `id` | Text | Stable and unique, such as `E016`; never reuse or change an assigned ID |
-| `title` | Text | Human-readable encounter title |
+| `title` | Text | Optional human-readable title; “Untitled” is used when omitted |
 | `placeholder` | Boolean | Clear this for reviewed, publishable material |
 | geometry | Point | Public geographic location authored in QGIS |
 | `time` | Category | One supported Time value |
 | `feeling` | Category | One supported Feeling value |
 | `knowing` | Category | One supported Knowing value |
-| `media` | JSON array | One or more ordered media objects |
+| `media` | JSON array | Zero or more ordered media objects |
 
 QGIS geometry is exported as `place: [longitude, latitude]`. Every coordinate committed to this repository must be considered public. Generalize, displace, or omit private and withheld locations before saving them to the source layer.
 
@@ -155,7 +155,7 @@ Supported Knowing values:
 
 ### Media
 
-An encounter supports any ordered combination of `text`, `image`, `audio`, and `video` objects.
+An encounter supports any ordered combination of `text`, `image`, `audio`, and `video` objects. Use an empty array (`[]`) for an encounter with no content; its title will appear above an empty content section.
 
 Text:
 

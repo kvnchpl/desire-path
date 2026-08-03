@@ -96,7 +96,7 @@ const knowingDistance = new Map(knowingDistances.pairs.map(({ a, b, distance }) 
 assert.equal(knowingDistance.get("REMEMBERED|WITNESSED"), 0.2);
 assert.equal(knowingDistance.get("DREAMED|IMAGINED"), 0.2);
 assert.equal(knowingDistance.get("IMAGINED|WITNESSED"), 0.8);
-assert.ok(encounterRecords.every(({ media }) => Array.isArray(media) && media.length > 0));
+assert.ok(encounterRecords.every(({ media }) => Array.isArray(media)));
 const mediaTypes = [...new Set(encounterRecords.flatMap(({ media }) => media.map(({ type }) => type)))].sort();
 assert.ok(mediaTypes.every((type) => ["audio", "image", "text", "video"].includes(type)));
 

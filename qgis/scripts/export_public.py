@@ -67,18 +67,25 @@ def export_encounters() -> dict:
     encounters = []
     for feature in exported["features"]:
         properties = feature.get("properties", {})
-        if isinstance(properties.get("media"), str):
-            properties["media"] = json.loads(properties["media"])
+        encounter_id = properties["id"]
+        title = properties.get("title")
+        if not isinstance(title, str) or not title.strip():
+            title = "Untitled"
+        media = properties.get("media")
+        if isinstance(media, str):
+            media = json.loads(media) if media.strip() else []
+        if media is None:
+            media = []
         encounters.append(
             {
-                "id": properties["id"],
-                "title": properties["title"],
+                "id": encounter_id,
+                "title": title,
                 "placeholder": properties["placeholder"],
                 "place": feature["geometry"]["coordinates"],
                 "time": properties["time"],
                 "feeling": properties["feeling"],
                 "knowing": properties["knowing"],
-                "media": properties["media"],
+                "media": media,
             }
         )
     all_placeholders = all(encounter["placeholder"] is True for encounter in encounters)
