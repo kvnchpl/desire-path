@@ -253,6 +253,10 @@ input[name="dimension"][value="knowing"] {
   margin-top: 0.75rem;
 }
 
+.options input[type="checkbox"] {
+  accent-color: #4f514e;
+}
+
 .options-data {
   max-width: 100%;
   max-height: 16rem;
