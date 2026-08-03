@@ -15,7 +15,7 @@
     <main class="landscape">
       <section class="map-region">
         <div id="map" class="map" role="region" aria-label="Paths near the current encounter">
-          <p class="map-fallback">The landscape is waiting.</p>
+          <p class="map-fallback">Loading...</p>
           <section class="load-error" id="load-error" aria-labelledby="load-error-title" hidden>
             <h2 id="load-error-title">The landscape could not be opened</h2>
             <p id="load-error-message">Its public data is currently unavailable.</p>
@@ -68,8 +68,16 @@
           <button class="about-close" id="about-close" type="button" aria-label="Close about">X</button>
           <div class="about-content">
             <h2 id="about-title">About</h2>
-            <p><span class="project-title">DESIRE PATH</span> is an experimental cartography of encounters.</p>
-            <p>Place remains visible, but nearness may also arise through time, feeling, or knowing. The landscape appears gradually as you move through it.</p>
+            <dl class="about-faq">
+              <div>
+                <dt>What is <span class="project-title">DESIRE PATH</span>?</dt>
+                <dd>It is an experimental cartography of encounters.</dd>
+              </div>
+              <div>
+                <dt>What makes two encounters near?</dt>
+                <dd>Place remains visible, but nearness may also arise through time, feeling, or knowing. The landscape appears gradually as you move through it.</dd>
+              </div>
+            </dl>
           </div>
         </dialog>
 
