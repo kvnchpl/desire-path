@@ -223,7 +223,7 @@ input[type="checkbox"] {
 }
 
 input[name="dimension"][value="place"] {
-  accent-color: var(--place);
+  accent-color: #4f514e;
 }
 
 input[name="dimension"][value="time"] {
