@@ -115,7 +115,7 @@ If QGIS reports a missing layer, open **Layer → Data Source Manager → GeoPac
 | `id` | Text | Stable and unique, such as `E016`; never reuse or change an assigned ID |
 | `title` | Text | Optional human-readable title; “Untitled” is used when omitted |
 | `placeholder` | Boolean | Clear this for reviewed, publishable material |
-| geometry | Point | Public geographic location authored in QGIS |
+| `geometry` | Point | Public geographic location authored in QGIS |
 | `time` | Category | One supported Time value |
 | `feeling` | Category | One supported Feeling value |
 | `knowing` | Category | One supported Knowing value |
@@ -222,16 +222,6 @@ qgis/scripts/               export, navigation, and form utilities
 scripts/                    repository validation
 vendor/leaflet/             locally hosted presentation dependency
 ```
-
-### Contribution principles
-
-- Preserve the terms Encounter, Path, Place, Time, Feeling, Knowing, Explore, and Retrace in the public interface.
-- Keep geographic locations fixed; selected dimensions change paths rather than positions.
-- Preserve local visibility instead of revealing the archive as an ordinary overview.
-- Keep the interface calm, restrained, spacious, and non-instructional.
-- Prefer simple static assets, small modules, explicit logic, and progressive enhancement.
-- Treat QGIS as authoritative and generated browser data as disposable.
-- Assume everything committed to this repository will become public.
 
 ### Licensing
 
