@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+*.qgz binary
+*.gpkg binary
+*.png binary
+*.mp3 binary
+*.mp4 binary
+
+data/encounters.json linguist-generated=true
+data/navigation.json linguist-generated=true
+vendor/leaflet/** linguist-vendored

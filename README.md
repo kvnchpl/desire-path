@@ -47,7 +47,7 @@ The repository contains both the authoritative QGIS project and a static public 
 - Node.js 20 or newer
 - Python 3.9 or newer
 
-The public site uses plain HTML, CSS, JavaScript, JSON, GeoJSON, and a locally vendored copy of Leaflet. There is no build step or application server.
+The public site uses plain HTML, CSS, JavaScript, JSON, GeoJSON, and a locally vendored copy of [Leaflet 1.9.4](vendor/leaflet/README.md). There is no build step or application server.
 
 ### Run locally
 
