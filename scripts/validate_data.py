@@ -35,11 +35,15 @@ def load(path: Path) -> dict:
         return json.load(handle)
 
 
-def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[Path] = None) -> list[str]:
+def validate(
+    encounters_path: Optional[Path] = None,
+    navigation_path: Optional[Path] = None,
+    settings_path: Optional[Path] = None,
+) -> list[str]:
     errors: list[str] = []
     encounter_data = load(encounters_path or ROOT / "data" / "encounters.json")
     navigation = load(navigation_path or ROOT / "data" / "navigation.json")
-    settings = load(ROOT / "data" / "settings.json")
+    settings = load(settings_path or ROOT / "data" / "settings.json")
     feeling_distances = load(ROOT / "data" / "feeling-distances.json")
     knowing_distances = load(ROOT / "data" / "knowing-distances.json")
     versions = {
@@ -61,7 +65,7 @@ def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[P
             errors.append(f"{context}: duplicate id {encounter_id}")
         else:
             ids.append(encounter_id)
-        if not encounter.get("title"):
+        if not isinstance(encounter.get("title"), str) or not encounter["title"].strip():
             errors.append(f"{context}: title is required")
         place = encounter.get("place")
         if not isinstance(place, list) or len(place) != 2 or not all(isinstance(value, (int, float)) for value in place):
@@ -79,10 +83,15 @@ def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[P
             media_entries = []
         for media_index, media in enumerate(media_entries):
             media_context = f"{context}, media {media_index + 1}"
+            if not isinstance(media, dict):
+                errors.append(f"{media_context}: media entry must be an object")
+                continue
             if media.get("type") not in {"text", "image", "audio", "video"}:
                 errors.append(f"{media_context}: invalid type")
             src = media.get("src")
-            if src:
+            if src is not None and not isinstance(src, str):
+                errors.append(f"{media_context}: src must be a string")
+            elif src:
                 path = PurePosixPath(src)
                 if path.is_absolute() or ".." in path.parts or "://" in src:
                     errors.append(f"{media_context}: src must be a safe relative path")
@@ -90,10 +99,18 @@ def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[P
                     errors.append(f"{media_context}: missing file {src}")
             elif media.get("type") in {"image", "audio", "video"}:
                 errors.append(f"{media_context}: {media.get('type')} media requires src")
-            if media.get("type") == "text" and not media.get("text"):
+            if media.get("type") == "text" and (
+                not isinstance(media.get("text"), str) or not media["text"].strip()
+            ):
                 errors.append(f"{media_context}: text media requires text")
-            if media.get("type") == "image" and not media.get("alt"):
+            if media.get("type") == "image" and (
+                not isinstance(media.get("alt"), str) or not media["alt"].strip()
+            ):
                 errors.append(f"{media_context}: image media requires alt text")
+            if "caption" in media and media["caption"] is not None and (
+                not isinstance(media["caption"], str) or not media["caption"].strip()
+            ):
+                errors.append(f"{media_context}: caption must be a nonempty string when provided")
 
     for label, source, categories in (
         ("feeling", feeling_distances, FEELING_TYPES),
@@ -124,6 +141,32 @@ def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[P
     percentile = settings.get("visibility_percentile")
     if not isinstance(percentile, (int, float)) or not 0 <= percentile <= 100:
         errors.append("visibility_percentile must be between 0 and 100")
+    minimum_setting = settings.get("minimum_neighbors")
+    maximum_setting = settings.get("maximum_neighbors")
+    if type(minimum_setting) is not int or minimum_setting < 0:
+        errors.append("minimum_neighbors must be a nonnegative integer")
+        minimum_setting = 0
+    if type(maximum_setting) is not int or maximum_setting < 0:
+        errors.append("maximum_neighbors must be a nonnegative integer")
+        maximum_setting = 0
+    if minimum_setting > maximum_setting:
+        errors.append("minimum_neighbors must not exceed maximum_neighbors")
+    map_settings = settings.get("map")
+    if not isinstance(map_settings, dict):
+        errors.append("settings.map must be an object")
+    else:
+        coastline = map_settings.get("coastline")
+        if not isinstance(coastline, str) or not coastline.strip():
+            errors.append("settings.map.coastline must be a nonempty relative path")
+        else:
+            coastline_path = PurePosixPath(coastline)
+            if coastline_path.is_absolute() or ".." in coastline_path.parts or "://" in coastline:
+                errors.append("settings.map.coastline must be a safe relative path")
+            elif not (ROOT / coastline_path).is_file():
+                errors.append(f"settings.map.coastline file is missing: {coastline}")
+        maximum_zoom = map_settings.get("maximum_zoom")
+        if type(maximum_zoom) is not int or not 0 <= maximum_zoom <= 24:
+            errors.append("settings.map.maximum_zoom must be an integer between 0 and 24")
     expected_combinations = [
         "+".join(dimension for index, dimension in enumerate(DIMENSION_ORDER) if mask & (1 << index))
         for mask in range(1, 2 ** len(DIMENSION_ORDER))
@@ -134,8 +177,8 @@ def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[P
     if list(generated_combinations) != expected_combinations:
         errors.append("navigation must contain all 15 dimension combinations in canonical order")
 
-    minimum_neighbors = min(settings.get("minimum_neighbors", 0), max(0, len(ids) - 1))
-    maximum_neighbors = min(settings.get("maximum_neighbors", 0), max(0, len(ids) - 1))
+    minimum_neighbors = min(minimum_setting, max(0, len(ids) - 1))
+    maximum_neighbors = min(maximum_setting, max(0, len(ids) - 1))
     expected_directions = {}
     for combination_key, combination in generated_combinations.items():
         threshold = combination.get("threshold")
@@ -196,7 +239,7 @@ def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[P
         if not all(isinstance(value, bool) for value in direction.values()) or not any(direction.values()):
             errors.append(f"navigation path {index + 1}: invalid direction")
         near = path.get("near")
-        if not isinstance(near, list) or any(dimension not in DIMENSIONS for dimension in near):
+        if not isinstance(near, list) or near != [dimension for dimension in DIMENSION_ORDER if dimension in near]:
             errors.append(f"navigation path {index + 1}: invalid near dimensions")
         actual_directions[key] = direction
     if actual_directions != expected_directions:
@@ -208,13 +251,14 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--encounters", type=Path, help="candidate encounters JSON to validate")
     parser.add_argument("--navigation", type=Path, help="candidate navigation JSON to validate")
+    parser.add_argument("--settings", type=Path, help="candidate settings JSON to validate")
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     arguments = parse_args()
     try:
-        problems = validate(arguments.encounters, arguments.navigation)
+        problems = validate(arguments.encounters, arguments.navigation, arguments.settings)
     except (OSError, json.JSONDecodeError, KeyError, TypeError) as error:
         problems = [str(error)]
     if problems:
