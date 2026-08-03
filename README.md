@@ -33,7 +33,7 @@ Place remains neutral when mixed with one or two other dimensions. Nearby paths 
 
 **Retrace** returns to the immediately previous encounter. Navigation history behaves as a stack, so retracing does not create another forward movement.
 
-The optional **Options** menu can reveal encounter IDs, the current encounter’s dimensional details, every encounter position, or every path that can become traversable. Debugging paths remain non-navigable. Their colors indicate the dimensions through which their endpoints are near, while single- and double-ended arrows indicate whether a path can appear from one endpoint or both.
+The optional **Options** menu can reveal every encounter position or the current encounter’s dimensional details. A separate **Advanced** menu can reveal encounter IDs or every path that can become traversable. Debugging paths remain non-navigable. Their colors indicate the dimensions through which their endpoints are near, while single- and double-ended arrows indicate whether a path can appear from one endpoint or both.
 
 The interface is intentionally quiet. It favors exploration over search, local knowledge over overview, and suggestion over explanation.
 

@@ -182,7 +182,8 @@ fieldset {
 }
 
 .explore summary,
-.options summary {
+.options summary,
+.advanced summary {
   width: fit-content;
   cursor: pointer;
   list-style-position: outside;
@@ -238,22 +239,26 @@ input[name="dimension"][value="knowing"] {
   accent-color: var(--knowing);
 }
 
-.options {
+.options,
+.advanced {
   margin-top: -1.5rem;
   color: var(--ink-soft);
   font-size: 0.72rem;
 }
 
-.options summary {
+.options summary,
+.advanced summary {
   color: inherit;
 }
 
-.options label {
+.options label,
+.advanced label {
   display: flex;
   margin-top: 0.75rem;
 }
 
-.options input[type="checkbox"] {
+.options input[type="checkbox"],
+.advanced input[type="checkbox"] {
   accent-color: #4f514e;
 }
 

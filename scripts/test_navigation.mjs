@@ -31,6 +31,7 @@ for (const dimension of ["time", "feeling", "knowing"]) {
   assert.match(interfaceHtml, new RegExp(`value="${dimension}" checked`));
 }
 assert.match(interfaceHtml, /<details class="options">/);
+assert.match(interfaceHtml, /<details class="advanced">/);
 assert.match(interfaceHtml, /<details class="explore" open>/);
 assert.match(interfaceHtml, /id="options-show-all"/);
 assert.match(interfaceHtml, /id="options-show-all-paths"/);
