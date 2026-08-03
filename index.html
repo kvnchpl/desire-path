@@ -16,6 +16,11 @@
       <section class="map-region">
         <div id="map" class="map" role="region" aria-label="Paths near the current encounter">
           <p class="map-fallback">The landscape is waiting.</p>
+          <section class="load-error" id="load-error" aria-labelledby="load-error-title" hidden>
+            <h2 id="load-error-title">The landscape could not be opened</h2>
+            <p id="load-error-message">Its public data is currently unavailable.</p>
+            <button id="load-error-retry" type="button">Try again</button>
+          </section>
         </div>
       </section>
 

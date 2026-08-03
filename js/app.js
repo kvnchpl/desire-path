@@ -2,11 +2,16 @@ import { renderEncounter } from "./encounter.js";
 import { createEncounterMap } from "./map.js";
 import { visibleNeighborhood } from "./navigation.js";
 
+const PUBLIC_SCHEMA_VERSION = 5;
+
 const elements = {
   aboutClose: document.querySelector("#about-close"),
   aboutPanel: document.querySelector("#about-panel"),
   aboutToggle: document.querySelector("#about-toggle"),
   form: document.querySelector("#explore-form"),
+  loadError: document.querySelector("#load-error"),
+  loadErrorMessage: document.querySelector("#load-error-message"),
+  loadErrorRetry: document.querySelector("#load-error-retry"),
   optionsShowAll: document.querySelector("#options-show-all"),
   optionsShowAllPaths: document.querySelector("#options-show-all-paths"),
   optionsShowIds: document.querySelector("#options-show-ids"),
@@ -18,6 +23,8 @@ const elements = {
   status: document.querySelector("#status"),
   title: document.querySelector("#encounter-title"),
 };
+
+elements.loadErrorRetry.addEventListener("click", () => window.location.reload());
 
 function openAbout() {
   elements.aboutPanel.showModal();
@@ -45,9 +52,32 @@ elements.aboutPanel.addEventListener("keydown", (event) => {
 });
 
 async function loadJson(path) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error(`Could not load ${path}`);
-  return response.json();
+  let response;
+  try {
+    response = await fetch(path);
+  } catch (error) {
+    throw new Error(`Could not reach ${path}`, { cause: error });
+  }
+  if (!response.ok) throw new Error(`Could not load ${path}: HTTP ${response.status}`);
+  try {
+    return await response.json();
+  } catch (error) {
+    throw new Error(`Could not parse ${path}`, { cause: error });
+  }
+}
+
+function validatePublicData(encounters, navigation, settings) {
+  const versions = [encounters.schema_version, navigation.schema_version, settings.schema_version];
+  if (versions.some((version) => version !== PUBLIC_SCHEMA_VERSION)) {
+    const error = new Error(`Expected public schema ${PUBLIC_SCHEMA_VERSION}; received ${versions.join(", ")}`);
+    error.publicMessage = "The published landscape is incompatible with this version of the interface.";
+    throw error;
+  }
+  if (!Array.isArray(encounters.encounters) || !navigation.combinations || !settings.initial_encounter) {
+    const error = new Error("Public data is missing required fields");
+    error.publicMessage = "The published landscape is incomplete.";
+    throw error;
+  }
 }
 
 function selectedDimensions() {
@@ -70,10 +100,13 @@ async function start() {
     loadJson("data/navigation.json"),
     loadJson("data/settings.json"),
   ]);
+  validatePublicData(encounters, navigation, settings);
   const encounterById = new Map(encounters.encounters.map((encounter) => [encounter.id, encounter]));
   const history = [settings.initial_encounter];
   let currentId = settings.initial_encounter;
-  const map = createEncounterMap(elements.map, settings, navigate);
+  const map = createEncounterMap(elements.map, settings, navigate, (message) => {
+    elements.status.textContent = message;
+  });
 
   function renderEncounterDetails(current) {
     elements.optionsData.hidden = !elements.optionsShowDetails.checked;
@@ -166,5 +199,8 @@ async function start() {
 start().catch((error) => {
   console.error(error);
   elements.status.textContent = "The landscape could not be opened.";
-  elements.map.querySelector(".map-fallback")?.replaceChildren("The landscape could not be opened.");
+  elements.map.querySelector(".map-fallback")?.remove();
+  elements.loadErrorMessage.textContent = error.publicMessage || "Its public data is currently unavailable.";
+  elements.loadError.hidden = false;
+  elements.loadErrorRetry.focus();
 });

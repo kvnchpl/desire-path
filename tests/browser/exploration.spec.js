@@ -66,3 +66,12 @@ test("keeps the encounter interface usable at a narrow viewport", async ({ page 
   );
   expect(fitsViewport).toBe(true);
 });
+
+test("offers a retry when required public data cannot be loaded", async ({ page }) => {
+  await page.route("**/data/navigation.json", (route) => route.abort());
+  await page.goto("/");
+
+  await expect(page.getByRole("heading", { name: "The landscape could not be opened" })).toBeVisible();
+  await expect(page.getByText("Its public data is currently unavailable.")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Try again" })).toBeFocused();
+});

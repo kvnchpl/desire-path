@@ -93,7 +93,7 @@ function bindEncounterPreview(marker, text) {
   });
 }
 
-export function createEncounterMap(element, settings, onNavigate) {
+export function createEncounterMap(element, settings, onNavigate, onWarning = () => {}) {
   element.querySelector(".map-fallback")?.remove();
   const map = L.map(element, { zoomControl: false, attributionControl: false, maxZoom: settings.map.maximum_zoom });
   fetch(settings.map.coastline)
@@ -107,7 +107,10 @@ export function createEncounterMap(element, settings, onNavigate) {
         style: { color: "#6e736d", opacity: 0.28, weight: 0.8 },
       }).addTo(map).bringToBack();
     })
-    .catch((error) => console.warn(error));
+    .catch((error) => {
+      console.warn(error);
+      onWarning("The coastline could not be loaded; encounter paths remain available.");
+    });
   const layer = L.layerGroup().addTo(map);
   const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   let touchPreviewMarker = null;

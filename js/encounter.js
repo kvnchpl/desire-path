@@ -16,6 +16,12 @@ function mediaElement(media) {
   }
   element.src = media.src;
   figure.append(element);
+  element.addEventListener("error", () => {
+    const fallback = document.createElement("p");
+    fallback.className = "media-error";
+    fallback.textContent = `This ${media.type} could not be loaded.`;
+    element.replaceWith(fallback);
+  }, { once: true });
   if (media.caption) {
     const caption = document.createElement("figcaption");
     caption.textContent = media.caption;

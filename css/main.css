@@ -79,6 +79,39 @@ input {
   text-transform: lowercase;
 }
 
+.load-error {
+  max-width: 24rem;
+  margin: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.load-error h2 {
+  font-size: 0.8rem;
+}
+
+.load-error p {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.load-error button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.media-error {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+}
+
 .encounter-marker {
   display: grid;
   place-items: center;
