@@ -73,13 +73,23 @@ function markerIcon(kind) {
   });
 }
 
-function addNodeId(marker, id, visible) {
+function addNodeId(marker, id, visible, layer) {
   if (!visible) return;
-  marker.bindTooltip(id, {
+  L.tooltip({
     className: "node-id",
     direction: "top",
     offset: [0, -8],
     permanent: true,
+    interactive: false,
+  }).setLatLng(marker.getLatLng()).setContent(id).addTo(layer);
+}
+
+function bindEncounterPreview(marker, text) {
+  marker.bindTooltip(text, {
+    className: "encounter-preview",
+    direction: "top",
+    offset: [0, -12],
+    opacity: 1,
   });
 }
 
@@ -99,10 +109,18 @@ export function createEncounterMap(element, settings, onNavigate) {
     })
     .catch((error) => console.warn(error));
   const layer = L.layerGroup().addTo(map);
+  const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let touchPreviewMarker = null;
   let hasFit = false;
+
+  map.on("click", () => {
+    touchPreviewMarker?.closeTooltip();
+    touchPreviewMarker = null;
+  });
 
   function render(current, neighbors, encounterById, options = {}) {
     layer.clearLayers();
+    touchPreviewMarker = null;
     const color = activePathColor(options.dimensions || []);
     element.style.setProperty("--active-path-color", color);
     const currentLatLng = L.latLng(current.place[1], current.place[0]);
@@ -139,7 +157,7 @@ export function createEncounterMap(element, settings, onNavigate) {
           keyboard: false,
           alt: "",
         }).addTo(layer);
-        addNodeId(marker, id, options.showNodeIds);
+        addNodeId(marker, id, options.showNodeIds, layer);
       });
     }
 
@@ -156,22 +174,37 @@ export function createEncounterMap(element, settings, onNavigate) {
       const marker = L.marker(latLng, {
         icon: markerIcon("reachable"),
         keyboard: true,
-        title: neighbor.title.toUpperCase(),
         alt: neighbor.title.toUpperCase(),
       });
-      marker.on("click", () => onNavigate(id));
+      bindEncounterPreview(marker, neighbor.title.toUpperCase());
+      marker.on("click", () => {
+        if (!supportsHover && touchPreviewMarker !== marker) {
+          touchPreviewMarker?.closeTooltip();
+          marker.openTooltip();
+          touchPreviewMarker = marker;
+          return;
+        }
+        touchPreviewMarker = null;
+        onNavigate(id);
+      });
       marker.addTo(layer);
-      addNodeId(marker, id, options.showNodeIds);
+      addNodeId(marker, id, options.showNodeIds, layer);
     });
 
     const currentMarker = L.marker(currentLatLng, {
       icon: markerIcon("current"),
       keyboard: true,
-      title: `current: ${current.title.toUpperCase()}`,
       alt: `current: ${current.title.toUpperCase()}`,
       zIndexOffset: 1000,
     }).addTo(layer);
-    addNodeId(currentMarker, current.id, options.showNodeIds);
+    bindEncounterPreview(currentMarker, `CURRENT — ${current.title.toUpperCase()}`);
+    currentMarker.on("click", () => {
+      if (supportsHover) return;
+      touchPreviewMarker?.closeTooltip();
+      currentMarker.openTooltip();
+      touchPreviewMarker = currentMarker;
+    });
+    addNodeId(currentMarker, current.id, options.showNodeIds, layer);
 
     const bounds = L.latLngBounds(visibleLatLngs);
     if (!hasFit) {

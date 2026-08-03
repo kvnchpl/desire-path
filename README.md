@@ -29,7 +29,7 @@ Color offers a quiet indication of the active dimensions:
 - Time, Feeling, and Knowing together are dark gray.
 - All four dimensions together are near-black.
 
-Place remains neutral when mixed with one or two other dimensions. Nearby paths use arrowheads to suggest possible movement outward from the current encounter.
+Place remains neutral when mixed with one or two other dimensions. Nearby paths use arrowheads to suggest possible movement outward from the current encounter. On desktop, hovering over a node reveals its encounter title above the node. On touch devices, the first tap reveals the title and a second tap follows the path.
 
 **Retrace** returns to the immediately previous encounter. Navigation history behaves as a stack, so retracing does not create another forward movement.
 

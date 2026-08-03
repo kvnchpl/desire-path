@@ -132,6 +132,22 @@ input {
   display: none;
 }
 
+.leaflet-tooltip.encounter-preview {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: none;
+  color: var(--ink);
+  font: 0.64rem/1.25 ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.leaflet-tooltip-top.encounter-preview::before {
+  border-top-color: var(--line);
+}
+
 .interface {
   position: relative;
   z-index: 500;
