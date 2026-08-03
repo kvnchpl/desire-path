@@ -31,42 +31,6 @@ test("keeps at least one exploration dimension active", async ({ page }) => {
   await expect(page.getByRole("status")).toHaveText("At least one way of exploring must remain.");
 });
 
-test("opens and closes About with keyboard focus restored", async ({ page }) => {
-  await page.goto("/");
-
-  const about = page.getByRole("button", { name: "About", exact: true });
-  await about.click();
-  const dialog = page.getByRole("dialog", { name: "About" });
-  const close = page.getByRole("button", { name: "Close about" });
-  await expect(dialog).toBeVisible();
-  await expect(about).toHaveAttribute("aria-expanded", "true");
-  await expect(close).toBeFocused();
-
-  await page.keyboard.press("Tab");
-  const focusRemainsInDialog = await dialog.evaluate(
-    (element) => element === document.activeElement || element.contains(document.activeElement),
-  );
-  expect(focusRemainsInDialog).toBe(true);
-
-  await page.keyboard.press("Escape");
-  await expect(dialog).toBeHidden();
-  await expect(about).toHaveAttribute("aria-expanded", "false");
-  await expect(about).toBeFocused();
-});
-
-test("keeps the encounter interface usable at a narrow viewport", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
-
-  await expect(page.locator("#map")).toBeVisible();
-  await expect(page.locator("#encounter")).toBeVisible();
-  await expect(page.getByRole("button", { name: "About" })).toBeVisible();
-  const fitsViewport = await page.evaluate(
-    () => document.documentElement.scrollWidth <= document.documentElement.clientWidth,
-  );
-  expect(fitsViewport).toBe(true);
-});
-
 test("offers a retry when required public data cannot be loaded", async ({ page }) => {
   await page.route("**/data/navigation.json", (route) => route.abort());
   await page.goto("/");

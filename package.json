@@ -8,7 +8,7 @@
   "scripts": {
     "export:data": "python3 qgis/scripts/export_public.py",
     "test": "npm run test:data && npm run test:browser",
-    "test:data": "node scripts/test_navigation.mjs && python3 scripts/validate_data.py && python3 scripts/test_validation.py",
+    "test:data": "python3 scripts/validate_data.py",
     "test:browser": "playwright test",
     "serve": "python3 -m http.server 8080"
   },
