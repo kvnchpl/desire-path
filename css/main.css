@@ -569,7 +569,7 @@ input[name="dimension"][value="knowing"] {
   }
 
   .touch-hint {
-    margin: -0.25rem 0 1rem;
+    margin: 0.6rem 0 0;
     color: var(--ink-soft);
     font-size: 0.65rem;
     line-height: 1.45;
