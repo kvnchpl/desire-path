@@ -21,6 +21,7 @@ const elements = {
   media: document.querySelector("#encounter-media"),
   retrace: document.querySelector("#retrace"),
   status: document.querySelector("#status"),
+  touchHint: document.querySelector("#touch-hint"),
   title: document.querySelector("#encounter-title"),
 };
 
@@ -160,6 +161,7 @@ async function start() {
 
   function navigate(nextId) {
     if (!encounterById.has(nextId) || nextId === currentId) return;
+    elements.touchHint.hidden = true;
     currentId = nextId;
     history.push(nextId);
     render(`Arrived at ${encounterById.get(nextId).title}.`);

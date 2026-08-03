@@ -65,11 +65,12 @@ function addArrowheads(polyline, { color, start = false, end = false, opacity = 
 }
 
 function markerIcon(kind) {
+  const hitArea = kind === "current" ? 44 : kind === "reachable" ? 40 : 16;
   return L.divIcon({
     className: `encounter-marker encounter-marker--${kind}`,
     html: "<span aria-hidden=\"true\"></span>",
-    iconSize: kind === "current" ? [22, 22] : [16, 16],
-    iconAnchor: kind === "current" ? [11, 11] : [8, 8],
+    iconSize: [hitArea, hitArea],
+    iconAnchor: [hitArea / 2, hitArea / 2],
   });
 }
 

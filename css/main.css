@@ -10,6 +10,7 @@
   --feeling: #c4a447;
   --knowing: #536f8f;
   --active-path-color: var(--ink-soft);
+  --footer-height: 4.25rem;
   font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-synthesis: none;
 }
@@ -54,12 +55,15 @@ input {
 .landscape {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(15rem, 20rem);
+  height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .map-region,
 .map {
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .map,
@@ -122,12 +126,17 @@ input {
 
 .encounter-marker span {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 16px;
+  height: 16px;
   border: 1px solid var(--paper);
   border-radius: 50%;
   background: var(--ink);
   box-shadow: 0 0 0 1px rgba(37, 39, 36, 0.35);
+}
+
+.encounter-marker--current span {
+  width: 22px;
+  height: 22px;
 }
 
 .encounter-marker--reachable span {
@@ -141,8 +150,8 @@ input {
 }
 
 .encounter-marker--context span {
-  width: 50%;
-  height: 50%;
+  width: 8px;
+  height: 8px;
   border: 0;
   background: var(--ink-soft);
   box-shadow: none;
@@ -185,7 +194,7 @@ input {
 .interface {
   position: relative;
   z-index: 500;
-  height: 100vh;
+  height: 100%;
   min-width: 0;
   overflow: hidden;
   border-left: 1px solid var(--line);
@@ -243,7 +252,10 @@ fieldset {
 .explore summary,
 .options summary,
 .advanced summary {
+  display: flex;
+  align-items: center;
   width: fit-content;
+  min-height: 2.75rem;
   cursor: pointer;
   list-style-position: outside;
   color: var(--ink-soft);
@@ -271,6 +283,7 @@ label {
   align-items: center;
   gap: 0.55rem;
   width: fit-content;
+  min-height: 2.75rem;
   cursor: pointer;
   text-transform: lowercase;
 }
@@ -397,6 +410,7 @@ input[name="dimension"][value="knowing"] {
   background: transparent;
   color: var(--ink);
   cursor: pointer;
+  min-height: 2.75rem;
   text-transform: lowercase;
 }
 
@@ -409,20 +423,21 @@ input[name="dimension"][value="knowing"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem 1.5rem;
+  height: var(--footer-height);
+  padding: 0 1.5rem;
   border-top: 1px solid var(--line);
   background: var(--paper);
 }
 
 .about-panel {
   position: fixed;
-  inset: 0 0 4.25rem auto;
+  inset: 0 0 var(--footer-height) auto;
   width: min(20rem, 100vw);
-  height: calc(100vh - 4.25rem);
-  height: calc(100dvh - 4.25rem);
+  height: calc(100vh - var(--footer-height));
+  height: calc(100dvh - var(--footer-height));
   max-width: none;
-  max-height: calc(100vh - 4.25rem);
-  max-height: calc(100dvh - 4.25rem);
+  max-height: calc(100vh - var(--footer-height));
+  max-height: calc(100dvh - var(--footer-height));
   margin: 0;
   overflow: hidden;
   padding: 0;
@@ -441,6 +456,7 @@ input[name="dimension"][value="knowing"] {
   z-index: 1;
   top: 1.5rem;
   right: 1.5rem;
+  min-height: 0;
   line-height: 1;
 }
 
@@ -476,7 +492,11 @@ input[name="dimension"][value="knowing"] {
 }
 
 .interface-scroll {
-  padding-bottom: 5.5rem;
+  padding-bottom: calc(var(--footer-height) + 1.25rem);
+}
+
+.touch-hint {
+  display: none;
 }
 
 .retrace:disabled {
@@ -513,32 +533,63 @@ input[name="dimension"][value="knowing"] {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --mobile-map-height: 50vh;
+    --mobile-map-height: 50dvh;
+  }
+
   .landscape {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(50vh, 26rem) auto;
+    grid-template-rows: var(--mobile-map-height) minmax(0, 1fr);
+    min-height: 0;
   }
 
   .map-region,
   .map {
-    min-height: 50vh;
+    height: 100%;
+    min-height: 0;
   }
 
   .interface {
-    height: 50vh;
-    min-height: 50vh;
+    height: auto;
+    min-height: 0;
     border-top: 1px solid var(--line);
     border-left: 0;
   }
 
   .about-panel {
-    inset: 50vh 0 4.25rem;
+    inset: var(--mobile-map-height) 0 var(--footer-height);
     width: 100%;
-    height: calc(50vh - 4.25rem);
-    height: calc(50dvh - 4.25rem);
-    max-height: calc(50vh - 4.25rem);
-    max-height: calc(50dvh - 4.25rem);
+    height: calc(100vh - var(--mobile-map-height) - var(--footer-height));
+    height: calc(100dvh - var(--mobile-map-height) - var(--footer-height));
+    max-height: calc(100vh - var(--mobile-map-height) - var(--footer-height));
+    max-height: calc(100dvh - var(--mobile-map-height) - var(--footer-height));
     border-top: 1px solid var(--line);
     border-left: 0;
+  }
+
+  .touch-hint {
+    margin: -0.25rem 0 1rem;
+    color: var(--ink-soft);
+    font-size: 0.65rem;
+    line-height: 1.45;
+  }
+
+  .touch-hint[hidden] {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) and (hover: none), (max-width: 720px) and (pointer: coarse) {
+  .touch-hint {
+    display: block;
+  }
+}
+
+@media (max-width: 720px) and (max-height: 600px) {
+  :root {
+    --mobile-map-height: 42vh;
+    --mobile-map-height: 42dvh;
   }
 }
 
