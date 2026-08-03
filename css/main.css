@@ -372,16 +372,21 @@ input[name="dimension"][value="knowing"] {
 }
 
 .about-panel {
-  position: absolute;
-  z-index: 2;
-  inset: 0 0 4.25rem;
+  position: fixed;
+  inset: 0 0 4.25rem auto;
+  width: min(20rem, 100vw);
+  max-width: none;
+  max-height: none;
+  margin: 0;
   overflow-y: auto;
   padding: 1.5rem;
+  border: 0;
   background: var(--paper);
+  color: var(--ink);
 }
 
-.about-panel[hidden] {
-  display: none;
+.about-panel::backdrop {
+  background: transparent;
 }
 
 .about-close {
@@ -460,6 +465,11 @@ input[name="dimension"][value="knowing"] {
     min-height: 50vh;
     border-top: 1px solid var(--line);
     border-left: 0;
+  }
+
+  .about-panel {
+    inset: 50vh 0 4.25rem;
+    width: 100%;
   }
 }
 

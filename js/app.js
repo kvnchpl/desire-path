@@ -7,7 +7,6 @@ const elements = {
   aboutPanel: document.querySelector("#about-panel"),
   aboutToggle: document.querySelector("#about-toggle"),
   form: document.querySelector("#explore-form"),
-  interfaceScroll: document.querySelector(".interface-scroll"),
   optionsShowAll: document.querySelector("#options-show-all"),
   optionsShowAllPaths: document.querySelector("#options-show-all-paths"),
   optionsShowIds: document.querySelector("#options-show-ids"),
@@ -20,27 +19,29 @@ const elements = {
   title: document.querySelector("#encounter-title"),
 };
 
-function setAboutOpen(isOpen) {
-  elements.aboutPanel.hidden = !isOpen;
-  elements.interfaceScroll.inert = isOpen;
-  elements.aboutToggle.setAttribute("aria-expanded", String(isOpen));
-  if (isOpen) {
-    elements.aboutClose.focus();
-  } else {
-    elements.aboutToggle.focus();
-  }
+function openAbout() {
+  elements.aboutPanel.showModal();
+  elements.aboutToggle.setAttribute("aria-expanded", "true");
+  elements.aboutClose.focus();
 }
 
 elements.aboutToggle.addEventListener("click", () => {
-  setAboutOpen(elements.aboutPanel.hidden);
+  openAbout();
 });
 
 elements.aboutClose.addEventListener("click", () => {
-  setAboutOpen(false);
+  elements.aboutPanel.close();
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !elements.aboutPanel.hidden) setAboutOpen(false);
+elements.aboutPanel.addEventListener("close", () => {
+  elements.aboutToggle.setAttribute("aria-expanded", "false");
+  elements.aboutToggle.focus();
+});
+
+elements.aboutPanel.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  event.preventDefault();
+  elements.aboutClose.focus();
 });
 
 async function loadJson(path) {
