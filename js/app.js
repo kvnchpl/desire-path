@@ -27,7 +27,7 @@ const elements = {
 elements.loadErrorRetry.addEventListener("click", () => window.location.reload());
 
 function openAbout() {
-  elements.aboutPanel.showModal();
+  elements.aboutPanel.show();
   elements.aboutToggle.setAttribute("aria-expanded", "true");
   elements.aboutClose.focus();
 }
@@ -46,9 +46,8 @@ elements.aboutPanel.addEventListener("close", () => {
 });
 
 elements.aboutPanel.addEventListener("keydown", (event) => {
-  if (event.key !== "Tab") return;
-  event.preventDefault();
-  elements.aboutClose.focus();
+  if (event.key !== "Escape") return;
+  elements.aboutPanel.close();
 });
 
 async function loadJson(path) {
