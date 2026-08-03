@@ -1,6 +1,6 @@
 import { renderEncounter } from "./encounter.js";
 import { createEncounterMap } from "./map.js";
-import { traversablePaths, visibleNeighborhood } from "./navigation.js";
+import { visibleNeighborhood } from "./navigation.js";
 
 const elements = {
   aboutClose: document.querySelector("#about-close"),
@@ -64,16 +64,14 @@ function readablePlace([longitude, latitude]) {
 }
 
 async function start() {
-  const [encounters, distances, settings] = await Promise.all([
+  const [encounters, navigation, settings] = await Promise.all([
     loadJson("data/encounters.json"),
-    loadJson("data/distances.json"),
+    loadJson("data/navigation.json"),
     loadJson("data/settings.json"),
   ]);
   const encounterById = new Map(encounters.encounters.map((encounter) => [encounter.id, encounter]));
-  const encounterIds = [...encounterById.keys()];
   const history = [settings.initial_encounter];
   let currentId = settings.initial_encounter;
-  const allPaths = traversablePaths({ encounterIds, pairs: distances.pairs, settings });
   const map = createEncounterMap(elements.map, settings, navigate);
 
   function renderEncounterDetails(current) {
@@ -107,18 +105,11 @@ async function start() {
   function render(announcement = "") {
     const current = encounterById.get(currentId);
     const dimensions = selectedDimensions();
-    const neighbors = visibleNeighborhood({
-      currentId,
-      encounterIds,
-      pairs: distances.pairs,
-      dimensions,
-      settings,
-    });
+    const neighbors = visibleNeighborhood(navigation, currentId, dimensions);
     renderEncounter(current, elements);
     renderEncounterDetails(current);
     map.render(current, neighbors, encounterById, {
-      allPairs: distances.pairs,
-      allPaths,
+      allPaths: navigation.possible_paths,
       dimensions,
       showAllNodes: elements.optionsShowAll.checked,
       showAllPaths: elements.optionsShowAllPaths.checked,

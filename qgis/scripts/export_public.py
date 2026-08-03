@@ -12,11 +12,12 @@ import tempfile
 from pathlib import Path
 
 from calculate_paths import calculate
+from calculate_navigation import generate_navigation
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "qgis" / "encounters.gpkg"
 ENCOUNTERS_OUTPUT = ROOT / "data" / "encounters.json"
-DISTANCES_OUTPUT = ROOT / "data" / "distances.json"
+NAVIGATION_OUTPUT = ROOT / "data" / "navigation.json"
 LAYER = "encounters"
 
 
@@ -82,7 +83,7 @@ def export_encounters() -> dict:
         )
     all_placeholders = all(encounter["placeholder"] is True for encounter in encounters)
     public_export = {
-        "schema_version": 4,
+        "schema_version": 5,
         "generated": True,
         "generated_from": "qgis/encounters.gpkg",
         "placeholder": all_placeholders,
@@ -94,21 +95,22 @@ def export_encounters() -> dict:
 
 
 def write_exports(encounters: dict) -> None:
-    distances = {
-        "schema_version": encounters["schema_version"],
-        "generated": True,
-        "generated_from": "data/encounters.json",
-        "dimensions": ["place", "time", "feeling", "knowing"],
-        "pairs": calculate(encounters["encounters"]),
-    }
+    settings = json.loads((ROOT / "data" / "settings.json").read_text(encoding="utf-8"))
+    pairs = calculate(encounters["encounters"])
+    navigation = generate_navigation(
+        encounters["encounters"],
+        pairs,
+        settings,
+        encounters["schema_version"],
+    )
     ENCOUNTERS_OUTPUT.write_text(json.dumps(encounters, indent=2) + "\n", encoding="utf-8")
-    DISTANCES_OUTPUT.write_text(json.dumps(distances, indent=2) + "\n", encoding="utf-8")
+    NAVIGATION_OUTPUT.write_text(json.dumps(navigation, indent=2) + "\n", encoding="utf-8")
 
 
 def main() -> None:
     write_exports(export_encounters())
     subprocess.run([sys.executable, str(ROOT / "scripts" / "validate_data.py")], check=True)
-    print("Public encounter and distance data were regenerated from QGIS.")
+    print("Public encounter and navigation data were regenerated from QGIS.")
 
 
 if __name__ == "__main__":

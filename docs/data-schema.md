@@ -86,21 +86,27 @@ Media paths must be relative and must resolve to committed public files. Real me
 
 ## Distance model
 
-The export derives four normalized pairwise distances:
+During export, the navigation generator derives four normalized pairwise distances:
 
 - **Place:** great-circle distance between public `place` coordinates, divided by the greatest pairwise Place distance in the export.
 - **Time:** ordinal distance between `time` values.
 - **Feeling:** configured distance using `data/feeling-distances.json`.
 - **Knowing:** configured distance using `data/knowing-distances.json`.
 
-All results are rounded to six decimal places. Missing values fail validation rather than being silently interpreted as maximum distance.
+The pairwise distances are an intermediate analytical model and are not published to the browser. Missing values fail validation rather than being silently interpreted as maximum distance.
+
+## Generated navigation
+
+`data/navigation.json` contains precomputed neighborhoods for all 15 non-empty combinations of Place, Time, Feeling, and Knowing. Each combination contains its global threshold and a 3–4 encounter neighborhood for every encounter. Neighborhood entries preserve ordering, rounded composite distance, and bridge status.
+
+The file also contains the union of paths that can become traversable. Each possible path records whether it appears from one endpoint or both and the individual dimensions in which the pair falls within the global nearness threshold. The browser uses this metadata for the optional debugging view without recalculating the global graph.
 
 ## Public files
 
 - `data/encounters.json` is the generated public encounter and media export.
-- `data/distances.json` contains every generated unique unordered pair once.
+- `data/navigation.json` contains every generated neighborhood graph and possible debugging path.
 - `data/feeling-distances.json` contains authored provisional Feeling distances.
 - `data/knowing-distances.json` contains authored provisional Knowing distances.
 - `data/settings.json` contains authored presentation and neighborhood settings.
 
-All versioned public files use `schema_version: 4`.
+All versioned public files use `schema_version: 5`.

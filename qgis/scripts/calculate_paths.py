@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate public pairwise distances from an encounter JSON export."""
+"""Calculate pairwise distances as an intermediate navigation model."""
 
 from __future__ import annotations
 
@@ -69,7 +69,7 @@ def calculate(encounters: list[dict]) -> list[dict]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=Path("data/encounters.json"))
-    parser.add_argument("--output", type=Path, default=Path("data/distances.json"))
+    parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     source = json.loads(args.input.read_text())
     result = {

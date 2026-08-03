@@ -13,7 +13,7 @@ QGIS is the place where encounters are authored and reviewed. The browser reads 
 5. From the repository root, run `npm run export:data`.
 6. Run `npm test` before publishing.
 
-The export command uses QGIS's GDAL tools and a temporary RFC 7946 GeoJSON file in `EPSG:4326`, then writes the public `data/encounters.json`, generates all pairwise distances, and runs the data validator. Generated files in `data/` should not be edited by hand.
+The export command uses QGIS's GDAL tools and a temporary RFC 7946 GeoJSON file in `EPSG:4326`, then writes `data/encounters.json`. Pairwise distances are calculated in memory and used to generate `data/navigation.json`, which contains all 15 precomputed neighborhood graphs and the possible-path debugging metadata. The command then runs the data validator. Generated files in `data/` should not be edited by hand.
 
 The form provides controlled dropdowns for time, feeling, and knowing. Required fields and unique encounter IDs are checked when edits are saved. Media remains serialized JSON in QGIS; the export command converts it back into a public JSON array.
 

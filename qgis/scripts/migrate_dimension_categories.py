@@ -11,7 +11,7 @@ from export_public import qgis_binary, qgis_environment
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "qgis" / "encounters.gpkg"
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 
 FEELING_VALUES = ("JOY", "DESIRE", "WONDER", "NOSTALGIA", "GRIEF", "FEAR", "ANGER")
 KNOWING_VALUES = ("WITNESSED", "REMEMBERED", "INHERITED", "DOCUMENTED", "DREAMED", "IMAGINED", "UNRESOLVED")

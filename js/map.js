@@ -24,16 +24,7 @@ export function activePathColor(dimensions) {
   return dimensionColors[chromaticDimensions.join("+")] || dimensionColors.place;
 }
 
-function percentileThreshold(pairs, dimension, percentage) {
-  const values = pairs.map((pair) => pair[dimension]).sort((left, right) => left - right);
-  const rank = Math.max(0, Math.ceil((percentage / 100) * values.length) - 1);
-  return values[rank] ?? 0;
-}
-
-export function dimensionalPathColor(pair, pairs, percentage) {
-  const dimensions = ["place", "time", "feeling", "knowing"].filter(
-    (dimension) => pair[dimension] <= percentileThreshold(pairs, dimension, percentage),
-  );
+export function dimensionalPathColor(dimensions) {
   return dimensions.length ? activePathColor(dimensions) : dimensionColors.neutral;
 }
 
@@ -123,15 +114,15 @@ export function createEncounterMap(element, settings, onNavigate) {
         const { a, b } = pair;
         const left = encounterById.get(a);
         const right = encounterById.get(b);
-        const pathColor = dimensionalPathColor(pair, options.allPairs, settings.visibility_percentile);
+        const pathColor = dimensionalPathColor(pair.near);
         const debuggingPath = L.polyline(
           [L.latLng(left.place[1], left.place[0]), L.latLng(right.place[1], right.place[0])],
           { color: pathColor, opacity: 0.32, weight: 0.9, interactive: false },
         );
         addArrowheads(debuggingPath, {
           color: pathColor,
-          start: pair.bToA,
-          end: pair.aToB,
+          start: pair.b_to_a,
+          end: pair.a_to_b,
           opacity: 0.68,
         });
         debuggingPath.addTo(layer);

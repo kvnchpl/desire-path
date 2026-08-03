@@ -91,6 +91,28 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+The QGIS export precomputes the neighborhood graph for every non-empty dimension combination and publishes them in `data/navigation.json`. Pairwise distances remain an export-time analytical model and are no longer published or recalculated by the browser.
+
+### Reasoning
+
+Pairwise public data and repeated browser-side graph construction grow poorly as the archive expands. Precomputed neighborhoods keep browser work proportional to the 3–4 paths actually visible and make navigation a direct lookup.
+
+### Alternatives Considered
+
+- Continuing to publish `data/distances.json` and calculating neighborhoods in the browser.
+- Adding a server-side navigation API.
+- Caching browser calculations without changing the public data shape.
+
+### Implications
+
+This introduces public schema version 5. The export becomes responsible for thresholds, bridges, caps, directional visibility, and debugging-path metadata across all 15 combinations. `data/distances.json` is removed, `data/navigation.json` becomes a generated public contract, and the static browser remains viable for substantially larger archives.
+
+---
+
+## 2026-08-03
+
+### Decision
+
 Nearby paths use subtle arrowheads pointing outward from the current encounter. The debugging-path layer uses single- or double-ended arrows to show whether a possible path becomes visible from one endpoint or both across the available dimension combinations.
 
 ### Reasoning
