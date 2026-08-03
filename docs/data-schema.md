@@ -40,24 +40,14 @@ QGIS geometry is converted to `place` during public export. Every committed coor
 `feeling` accepts:
 
 - `JOY`
-- `TENDERNESS`
 - `DESIRE`
 - `WONDER`
-- `SERENITY`
 - `NOSTALGIA`
-- `MELANCHOLY`
 - `GRIEF`
-- `LONELINESS`
-- `ANXIETY`
 - `FEAR`
 - `ANGER`
-- `DISGUST`
-- `ESTRANGEMENT`
-- `EERINESS`
-- `NUMBNESS`
-- `AMBIVALENCE`
 
-`data/feeling-distances.json` contains all 136 unique pairwise distances between Feeling categories in the canonical order shown above. As in every other dimension, `0` is nearest and `1` is farthest. Identical types use the configured `identical` value. The provisional semantic values consider valence, activation, and relational orientation, with editorial adjustments where those broad qualities would collapse distinct affect families. They remain placeholders intended for later revision.
+`data/feeling-distances.json` contains all 21 unique pairwise distances between Feeling categories in the canonical order shown above. As in every other dimension, `0` is nearest and `1` is farthest. Identical types use the configured `identical` value. The provisional semantic values consider valence, activation, and relational orientation, with editorial adjustments where those broad qualities would collapse distinct affect families. They remain placeholders intended for later revision.
 
 ## Knowing
 
@@ -69,12 +59,9 @@ QGIS geometry is converted to `place` during public export. Every committed coor
 - `DOCUMENTED`
 - `DREAMED`
 - `IMAGINED`
-- `ANTICIPATED`
-- `INFERRED`
-- `GENERATED`
 - `UNRESOLVED`
 
-`data/knowing-distances.json` contains all 45 unique pairwise distances between ways of knowing in the canonical order shown above. Values consider directness of evidence, transmission, construction, and temporal orientation. They use the same `0`-nearest and `1`-farthest convention and remain placeholders intended for later revision.
+`data/knowing-distances.json` contains all 21 unique pairwise distances between ways of knowing in the canonical order shown above. Values consider directness of evidence, transmission, construction, and temporal orientation. They use the same `0`-nearest and `1`-farthest convention and remain placeholders intended for later revision.
 
 ## Media
 
@@ -116,4 +103,4 @@ All results are rounded to six decimal places. Missing values fail validation ra
 - `data/knowing-distances.json` contains authored provisional Knowing distances.
 - `data/settings.json` contains authored presentation and neighborhood settings.
 
-All versioned public files use `schema_version: 3`.
+All versioned public files use `schema_version: 4`.

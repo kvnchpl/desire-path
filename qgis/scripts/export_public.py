@@ -82,7 +82,7 @@ def export_encounters() -> dict:
         )
     all_placeholders = all(encounter["placeholder"] is True for encounter in encounters)
     public_export = {
-        "schema_version": 3,
+        "schema_version": 4,
         "generated": True,
         "generated_from": "qgis/encounters.gpkg",
         "placeholder": all_placeholders,

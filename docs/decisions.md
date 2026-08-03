@@ -87,6 +87,28 @@ The evolution of the project's thinking is itself part of the project's history.
 
 # Initial Decisions
 
+## 2026-08-03
+
+### Decision
+
+Feeling and Knowing each use seven categories. Feeling retains Joy, Desire, Wonder, Nostalgia, Grief, Fear, and Anger. Knowing retains Witnessed, Remembered, Inherited, Documented, Dreamed, Imagined, and Unresolved. Existing placeholder encounters are migrated into the nearest retained editorial category.
+
+### Reasoning
+
+The earlier vocabularies offered more distinctions than the developing archive requires. A smaller set makes authoring more deliberate while preserving meaningful variation across both dimensions.
+
+### Alternatives Considered
+
+- Keeping all 18 Feeling and 10 Knowing categories.
+- Reducing only one dimension.
+- Replacing the categories with numerical scales.
+
+### Implications
+
+This introduces public schema version 4. Each authored distance table contains 21 unique pairs. The QGIS form, authoritative encounters, public exports, validator, tests, and documentation use the reduced vocabularies.
+
+---
+
 ## 2026-08-01
 
 ### Decision

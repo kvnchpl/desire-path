@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "initial_encounter": "E001",
   "visibility_percentile": 35,
   "minimum_neighbors": 3,

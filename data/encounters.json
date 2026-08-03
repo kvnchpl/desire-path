@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "generated": true,
   "generated_from": "qgis/encounters.gpkg",
   "placeholder": true,
@@ -35,7 +35,7 @@
         40.884
       ],
       "time": "PRESENT",
-      "feeling": "SERENITY",
+      "feeling": "JOY",
       "knowing": "WITNESSED",
       "media": [
         {
@@ -56,8 +56,8 @@
         40.972
       ],
       "time": "NEAR_FUTURE",
-      "feeling": "ANXIETY",
-      "knowing": "ANTICIPATED",
+      "feeling": "FEAR",
+      "knowing": "IMAGINED",
       "media": [
         {
           "type": "text",
@@ -98,7 +98,7 @@
         41.081
       ],
       "time": "INDETERMINATE",
-      "feeling": "EERINESS",
+      "feeling": "FEAR",
       "knowing": "UNRESOLVED",
       "media": [
         {
@@ -119,7 +119,7 @@
         40.738
       ],
       "time": "RECENT_PAST",
-      "feeling": "LONELINESS",
+      "feeling": "GRIEF",
       "knowing": "INHERITED",
       "media": [
         {
@@ -147,7 +147,7 @@
         40.682
       ],
       "time": "PRESENT",
-      "feeling": "TENDERNESS",
+      "feeling": "JOY",
       "knowing": "WITNESSED",
       "media": [
         {
@@ -175,8 +175,8 @@
         40.821
       ],
       "time": "DISTANT_FUTURE",
-      "feeling": "ESTRANGEMENT",
-      "knowing": "ANTICIPATED",
+      "feeling": "FEAR",
+      "knowing": "IMAGINED",
       "media": [
         {
           "type": "text",
@@ -203,8 +203,8 @@
         40.641
       ],
       "time": "RECENT_PAST",
-      "feeling": "MELANCHOLY",
-      "knowing": "INFERRED",
+      "feeling": "GRIEF",
+      "knowing": "DOCUMENTED",
       "media": [
         {
           "type": "text",
@@ -245,7 +245,7 @@
         41.048
       ],
       "time": "PRESENT",
-      "feeling": "AMBIVALENCE",
+      "feeling": "NOSTALGIA",
       "knowing": "DOCUMENTED",
       "media": [
         {
@@ -330,7 +330,7 @@
       ],
       "time": "ATEMPORAL",
       "feeling": "ANGER",
-      "knowing": "GENERATED",
+      "knowing": "IMAGINED",
       "media": [
         {
           "type": "text",
