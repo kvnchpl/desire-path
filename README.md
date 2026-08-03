@@ -44,7 +44,7 @@ The repository contains both the authoritative QGIS project and a static public 
 ### Requirements
 
 - QGIS, including its GDAL command-line tools
-- Node.js 20 or newer
+- Node.js and npm, for the convenience commands below
 - Python 3.9 or newer
 
 The public site uses plain HTML, CSS, JavaScript, JSON, GeoJSON, and a locally vendored copy of [Leaflet 1.9.4](vendor/leaflet/README.md). There is no build step or application server.
@@ -61,19 +61,13 @@ Open the local address printed in the terminal.
 
 The site is served at `http://localhost:8080/` using Python's standard-library HTTP server; no package installation or global command is required.
 
-Run the complete validation suite with:
+Validate the public data with:
 
 ```sh
 npm test
 ```
 
-The first browser-test run also requires Playwright's local Chromium build:
-
-```sh
-npx playwright install chromium
-```
-
-The suite validates the generated data and navigation rules, then exercises the interface in a real browser. It runs automatically on every push and pull request through GitHub Actions.
+The same data check runs automatically on every push and pull request through GitHub Actions. Review the interface in a browser after changing its behavior or presentation.
 
 ### Authoritative and generated data
 

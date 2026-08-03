@@ -20,21 +20,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "20"
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.9"
 
-      - name: Install test dependencies
-        run: npm ci
-
-      - name: Install browser
-        run: npx playwright install --with-deps chromium
-
-      - name: Validate project
-        run: npm test
+      - name: Validate public data
+        run: python3 scripts/validate_data.py

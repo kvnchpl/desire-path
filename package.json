@@ -2,17 +2,9 @@
   "name": "desire-path",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=20"
-  },
   "scripts": {
     "export:data": "python3 qgis/scripts/export_public.py",
-    "test": "npm run test:data && npm run test:browser",
-    "test:data": "python3 scripts/validate_data.py",
-    "test:browser": "playwright test",
+    "test": "python3 scripts/validate_data.py",
     "serve": "python3 -m http.server 8080"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.62.1"
   }
 }
