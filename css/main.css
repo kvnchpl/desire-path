@@ -256,10 +256,10 @@ fieldset {
 .explore summary,
 .options summary,
 .advanced summary {
-  display: flex;
-  align-items: center;
+  display: list-item;
   width: fit-content;
   min-height: 2.75rem;
+  padding-block: 0.85rem;
   cursor: pointer;
   list-style-position: outside;
   color: var(--ink-soft);
