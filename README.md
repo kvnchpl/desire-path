@@ -67,6 +67,8 @@ Run the complete validation suite with:
 npm test
 ```
 
+The same suite runs automatically on every push and pull request through GitHub Actions.
+
 ### Authoritative and generated data
 
 Author encounters in `qgis/desire-path.qgz`. The source layer is stored in `qgis/encounters.gpkg` and appears in QGIS as **Encounters — PUBLIC LOCATIONS**.
