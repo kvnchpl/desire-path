@@ -92,8 +92,6 @@ These files are authored configuration:
 
 `data/coastline.geojson` is a clipped Natural Earth coastline extract used as geographic context. Natural Earth data is public domain.
 
-All versioned public data currently uses schema version 5.
-
 ### Add or update an encounter
 
 1. Open `qgis/desire-path.qgz` in QGIS.
