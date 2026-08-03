@@ -110,13 +110,29 @@ def write_exports(encounters: dict) -> None:
         settings,
         encounters["schema_version"],
     )
-    ENCOUNTERS_OUTPUT.write_text(json.dumps(encounters, indent=2) + "\n", encoding="utf-8")
-    NAVIGATION_OUTPUT.write_text(json.dumps(navigation, indent=2) + "\n", encoding="utf-8")
+    with tempfile.TemporaryDirectory(prefix="desire-path-publish-", dir=ENCOUNTERS_OUTPUT.parent) as temporary_directory:
+        temporary_root = Path(temporary_directory)
+        encounters_candidate = temporary_root / ENCOUNTERS_OUTPUT.name
+        navigation_candidate = temporary_root / NAVIGATION_OUTPUT.name
+        encounters_candidate.write_text(json.dumps(encounters, indent=2) + "\n", encoding="utf-8")
+        navigation_candidate.write_text(json.dumps(navigation, indent=2) + "\n", encoding="utf-8")
+        subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "scripts" / "validate_data.py"),
+                "--encounters",
+                str(encounters_candidate),
+                "--navigation",
+                str(navigation_candidate),
+            ],
+            check=True,
+        )
+        encounters_candidate.replace(ENCOUNTERS_OUTPUT)
+        navigation_candidate.replace(NAVIGATION_OUTPUT)
 
 
 def main() -> None:
     write_exports(export_encounters())
-    subprocess.run([sys.executable, str(ROOT / "scripts" / "validate_data.py")], check=True)
     print("Public encounter and navigation data were regenerated from QGIS.")
 
 

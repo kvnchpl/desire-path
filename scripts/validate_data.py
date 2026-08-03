@@ -3,10 +3,12 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from itertools import combinations
 from pathlib import Path, PurePosixPath
+from typing import Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 DIMENSIONS = {"place", "time", "feeling", "knowing"}
@@ -28,18 +30,18 @@ REMOVED_FIELDS = {
 }
 
 
-def load(relative: str) -> dict:
-    with (ROOT / relative).open(encoding="utf-8") as handle:
+def load(path: Path) -> dict:
+    with path.open(encoding="utf-8") as handle:
         return json.load(handle)
 
 
-def validate() -> list[str]:
+def validate(encounters_path: Optional[Path] = None, navigation_path: Optional[Path] = None) -> list[str]:
     errors: list[str] = []
-    encounter_data = load("data/encounters.json")
-    navigation = load("data/navigation.json")
-    settings = load("data/settings.json")
-    feeling_distances = load("data/feeling-distances.json")
-    knowing_distances = load("data/knowing-distances.json")
+    encounter_data = load(encounters_path or ROOT / "data" / "encounters.json")
+    navigation = load(navigation_path or ROOT / "data" / "navigation.json")
+    settings = load(ROOT / "data" / "settings.json")
+    feeling_distances = load(ROOT / "data" / "feeling-distances.json")
+    knowing_distances = load(ROOT / "data" / "knowing-distances.json")
     versions = {
         encounter_data.get("schema_version"), navigation.get("schema_version"), settings.get("schema_version"),
         feeling_distances.get("schema_version"), knowing_distances.get("schema_version"),
@@ -202,9 +204,17 @@ def validate() -> list[str]:
     return errors
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--encounters", type=Path, help="candidate encounters JSON to validate")
+    parser.add_argument("--navigation", type=Path, help="candidate navigation JSON to validate")
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
+    arguments = parse_args()
     try:
-        problems = validate()
+        problems = validate(arguments.encounters, arguments.navigation)
     except (OSError, json.JSONDecodeError, KeyError, TypeError) as error:
         problems = [str(error)]
     if problems:
