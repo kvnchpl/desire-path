@@ -113,7 +113,10 @@ for (let mask = 1; mask < 2 ** dimensions.length; mask += 1) {
       dimensions: selected,
       settings: generatedSettings,
     });
-    assert.ok(neighborhood.length >= 3 && neighborhood.length <= 6);
+    assert.ok(
+      neighborhood.length >= generatedSettings.minimum_neighbors
+      && neighborhood.length <= generatedSettings.maximum_neighbors,
+    );
     neighborhood.forEach(({ id }) => {
       reachable.get(currentId).add(id);
       reachable.get(id).add(currentId);

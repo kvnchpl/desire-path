@@ -91,6 +91,28 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+The visible neighborhood narrows from three–six encounters to three–four encounters.
+
+### Reasoning
+
+A smaller neighborhood preserves more opacity, makes each visible path more consequential, and keeps the landscape quieter as the archive grows.
+
+### Alternatives Considered
+
+- Retaining the three–six range.
+- Showing exactly three encounters.
+- Allowing a larger neighborhood as the archive grows.
+
+### Implications
+
+Threshold-qualified encounters are capped at four. Required connectivity bridges continue to reserve a visible place before the cap is applied, and Retrace continues to return along navigation history independently of dimensional nearness.
+
+---
+
+## 2026-08-03
+
+### Decision
+
 Place, Time, Feeling, and Knowing use a muted light gray, red, yellow, and blue palette. Visible paths and nearby encounters reflect the active dimensions. The three chromatic dimensions mix into orange, purple, green, or dark gray; Place remains neutral in combinations.
 
 ### Reasoning

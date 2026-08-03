@@ -184,9 +184,9 @@ supplement using the nearest encounters outside the threshold until three are vi
 
 6.
 
-If more than six encounters remain:
+If more than four encounters remain:
 
-retain only the six nearest.
+retain only the four nearest.
 
 The resulting visible neighborhood therefore contains:
 
@@ -196,7 +196,7 @@ minimum, when at least four encounters exist:
 
 maximum:
 
-6 encounters
+4 encounters
 
 If the archive contains fewer than four encounters, show every other available encounter.
 
@@ -230,7 +230,7 @@ If threshold-based neighborhoods fail to produce a connected graph, additional b
 
 Bridge paths should be chosen using the smallest available distance necessary to restore connectivity.
 
-Paths are undirected. Connectivity is evaluated globally for the active dimension combination. Required bridges are established before limiting an encounter to six visible neighbors and reserve a place within that limit, displacing the most distant non-bridge neighbor when necessary.
+Paths are undirected. Connectivity is evaluated globally for the active dimension combination. Required bridges are established before limiting an encounter to four visible neighbors and reserve a place within that limit, displacing the most distant non-bridge neighbor when necessary.
 
 The visitor should never encounter a permanently isolated region of the archive.
 

@@ -3,7 +3,7 @@
   "initial_encounter": "E001",
   "visibility_percentile": 35,
   "minimum_neighbors": 3,
-  "maximum_neighbors": 6,
+  "maximum_neighbors": 4,
   "map": {
     "coastline": "data/coastline.geojson",
     "maximum_zoom": 15
