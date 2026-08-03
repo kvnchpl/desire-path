@@ -9,6 +9,7 @@ const elements = {
   form: document.querySelector("#explore-form"),
   interfaceScroll: document.querySelector(".interface-scroll"),
   optionsShowAll: document.querySelector("#options-show-all"),
+  optionsShowAllPaths: document.querySelector("#options-show-all-paths"),
   optionsShowIds: document.querySelector("#options-show-ids"),
   optionsShowDetails: document.querySelector("#options-show-details"),
   optionsData: document.querySelector("#options-data"),
@@ -115,8 +116,10 @@ async function start() {
     renderEncounter(current, elements);
     renderEncounterDetails(current);
     map.render(current, neighbors, encounterById, {
+      allPairs: distances.pairs,
       dimensions,
       showAllNodes: elements.optionsShowAll.checked,
+      showAllPaths: elements.optionsShowAllPaths.checked,
       showNodeIds: elements.optionsShowIds.checked,
     });
     elements.retrace.disabled = history.length < 2;
@@ -149,6 +152,10 @@ async function start() {
 
   elements.optionsShowAll.addEventListener("change", () => {
     render(elements.optionsShowAll.checked ? "Every encounter position is visible." : "Only nearby encounter positions are visible.");
+  });
+
+  elements.optionsShowAllPaths.addEventListener("change", () => {
+    render(elements.optionsShowAllPaths.checked ? "Every path is visible." : "Only nearby paths are visible.");
   });
 
   elements.optionsShowIds.addEventListener("change", () => {

@@ -91,6 +91,28 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+Options may reveal every pairwise path as a faint, non-navigable debugging layer. Enabling the layer also reveals every encounter position, while the ordinary nearby paths remain visually prominent and exclusively traversable.
+
+### Reasoning
+
+Seeing the complete field helps evaluate how the active dimensions and authored distances relate across the archive. Keeping the layer faint, optional, and non-navigable distinguishes analytical inspection from ordinary exploration.
+
+### Alternatives Considered
+
+- Continuing to prohibit the complete path network in the public interface.
+- Making every revealed path traversable.
+- Showing only the threshold-qualified global network.
+
+### Implications
+
+This revises the earlier decision that Options must never reveal the complete path network. The view remains disabled by default, uses visitor-facing Path language, and must not allow visitors to bypass the generated nearby neighborhood.
+
+---
+
+## 2026-08-03
+
+### Decision
+
 The visible neighborhood narrows from three–six encounters to three–four encounters.
 
 ### Reasoning

@@ -36,6 +36,7 @@ for (const dimension of ["time", "feeling", "knowing"]) {
 assert.match(interfaceHtml, /<details class="options">/);
 assert.match(interfaceHtml, /<details class="explore" open>/);
 assert.match(interfaceHtml, /id="options-show-all"/);
+assert.match(interfaceHtml, /id="options-show-all-paths"/);
 assert.match(interfaceHtml, /id="options-show-ids"/);
 assert.match(interfaceHtml, /id="options-show-details"/);
 assert.match(interfaceHtml, /id="options-data" hidden/);

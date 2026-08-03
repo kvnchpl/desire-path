@@ -64,7 +64,18 @@ export function createEncounterMap(element, settings, onNavigate) {
     const visibleLatLngs = [currentLatLng];
     const visibleIds = new Set([current.id, ...neighbors.map(({ id }) => id)]);
 
-    if (options.showAllNodes) {
+    if (options.showAllPaths) {
+      options.allPairs.forEach(({ a, b }) => {
+        const left = encounterById.get(a);
+        const right = encounterById.get(b);
+        L.polyline(
+          [L.latLng(left.place[1], left.place[0]), L.latLng(right.place[1], right.place[0])],
+          { color, opacity: 0.11, weight: 0.65, interactive: false },
+        ).addTo(layer);
+      });
+    }
+
+    if (options.showAllNodes || options.showAllPaths) {
       encounterById.forEach((encounter, id) => {
         if (visibleIds.has(id)) return;
         const latLng = L.latLng(encounter.place[1], encounter.place[0]);
