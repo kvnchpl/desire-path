@@ -5,6 +5,7 @@ This directory contains the browser distribution of [Leaflet 1.9.4](https://gith
 Included files:
 
 - `leaflet.js`
+- `leaflet.js.map`
 - `leaflet.css`
 - the default marker images referenced by the stylesheet
 - the upstream BSD 2-Clause license

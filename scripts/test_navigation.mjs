@@ -41,6 +41,11 @@ assert.match(interfaceHtml, /id="options-data" hidden/);
 assert.match(interfaceHtml, /<footer class="interface-footer">/);
 assert.doesNotMatch(interfaceHtml, /compare distances/);
 
+const leafletSourceMap = JSON.parse(await readFile(new URL("../vendor/leaflet/leaflet.js.map", import.meta.url), "utf8"));
+assert.equal(leafletSourceMap.version, 3);
+assert.equal(leafletSourceMap.file, "dist/leaflet.js.map");
+assert.ok(leafletSourceMap.sources.includes("../src/map/Map.js"));
+
 const encounters = JSON.parse(await readFile(new URL("../data/encounters.json", import.meta.url), "utf8"));
 const generatedNavigation = JSON.parse(await readFile(new URL("../data/navigation.json", import.meta.url), "utf8"));
 const generatedSettings = JSON.parse(await readFile(new URL("../data/settings.json", import.meta.url), "utf8"));
