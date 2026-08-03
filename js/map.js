@@ -37,6 +37,42 @@ export function dimensionalPathColor(pair, pairs, percentage) {
   return dimensions.length ? activePathColor(dimensions) : dimensionColors.neutral;
 }
 
+function addArrowheads(polyline, { color, start = false, end = false, opacity = 0.8 }) {
+  polyline.on("add", () => {
+    const path = polyline.getElement();
+    const svg = path?.ownerSVGElement;
+    if (!path || !svg) return;
+
+    const markerId = `path-arrow-${color.slice(1)}-${String(opacity).replace(".", "-")}`;
+    let marker = svg.querySelector(`#${markerId}`);
+    if (!marker) {
+      let definitions = svg.querySelector("defs");
+      if (!definitions) {
+        definitions = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+        svg.prepend(definitions);
+      }
+      marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+      marker.setAttribute("id", markerId);
+      marker.setAttribute("viewBox", "0 0 8 8");
+      marker.setAttribute("refX", "14");
+      marker.setAttribute("refY", "4");
+      marker.setAttribute("markerWidth", "8");
+      marker.setAttribute("markerHeight", "8");
+      marker.setAttribute("markerUnits", "userSpaceOnUse");
+      marker.setAttribute("orient", "auto-start-reverse");
+      const arrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      arrow.setAttribute("d", "M0 0 L8 4 L0 8 Z");
+      arrow.setAttribute("fill", color);
+      arrow.setAttribute("fill-opacity", String(opacity));
+      marker.append(arrow);
+      definitions.append(marker);
+    }
+
+    if (start) path.setAttribute("marker-start", `url(#${markerId})`);
+    if (end) path.setAttribute("marker-end", `url(#${markerId})`);
+  });
+}
+
 function markerIcon(kind) {
   return L.divIcon({
     className: `encounter-marker encounter-marker--${kind}`,
@@ -88,10 +124,17 @@ export function createEncounterMap(element, settings, onNavigate) {
         const left = encounterById.get(a);
         const right = encounterById.get(b);
         const pathColor = dimensionalPathColor(pair, options.allPairs, settings.visibility_percentile);
-        L.polyline(
+        const debuggingPath = L.polyline(
           [L.latLng(left.place[1], left.place[0]), L.latLng(right.place[1], right.place[0])],
           { color: pathColor, opacity: 0.32, weight: 0.9, interactive: false },
-        ).addTo(layer);
+        );
+        addArrowheads(debuggingPath, {
+          color: pathColor,
+          start: pair.bToA,
+          end: pair.aToB,
+          opacity: 0.68,
+        });
+        debuggingPath.addTo(layer);
       });
     }
 
@@ -113,7 +156,12 @@ export function createEncounterMap(element, settings, onNavigate) {
       const neighbor = encounterById.get(id);
       const latLng = L.latLng(neighbor.place[1], neighbor.place[0]);
       visibleLatLngs.push(latLng);
-      L.polyline([currentLatLng, latLng], { ...pathStyle, color, dashArray: bridge ? "4 5" : null }).addTo(layer);
+      const visiblePath = L.polyline(
+        [currentLatLng, latLng],
+        { ...pathStyle, color, dashArray: bridge ? "4 5" : null },
+      );
+      addArrowheads(visiblePath, { color, end: true });
+      visiblePath.addTo(layer);
       const marker = L.marker(latLng, {
         icon: markerIcon("reachable"),
         keyboard: true,

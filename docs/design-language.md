@@ -246,6 +246,8 @@ Use monospace typography throughout the interface. Display titles in uppercase a
 
 Paths represent possibility.
 
+Nearby paths use a small outward arrowhead to suggest possible movement from the current encounter. In the optional debugging view, single- and double-ended arrows distinguish paths that become visible from one endpoint or both after neighborhood limits are applied.
+
 They should feel inviting rather than directive.
 
 The interface should never imply that one path is objectively correct.

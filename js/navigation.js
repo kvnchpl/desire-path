@@ -94,15 +94,25 @@ export function visibleNeighborhood({ currentId, encounterIds, pairs, dimensions
 
 export function traversablePaths({ encounterIds, pairs, settings }) {
   const dimensions = ["place", "time", "feeling", "knowing"];
-  const traversableKeys = new Set();
+  const directions = new Map();
+  const pairIndex = createDistanceIndex(pairs);
 
   for (let mask = 1; mask < 2 ** dimensions.length; mask += 1) {
     const selected = dimensions.filter((_, index) => mask & (1 << index));
     encounterIds.forEach((currentId) => {
       visibleNeighborhood({ currentId, encounterIds, pairs, dimensions: selected, settings })
-        .forEach(({ id }) => traversableKeys.add(pairKey(currentId, id)));
+        .forEach(({ id }) => {
+          const key = pairKey(currentId, id);
+          const pair = pairIndex.get(key);
+          const direction = directions.get(key) || { aToB: false, bToA: false };
+          if (currentId === pair.a) direction.aToB = true;
+          else direction.bToA = true;
+          directions.set(key, direction);
+        });
     });
   }
 
-  return pairs.filter(({ a, b }) => traversableKeys.has(pairKey(a, b)));
+  return pairs
+    .filter(({ a, b }) => directions.has(pairKey(a, b)))
+    .map((pair) => ({ ...pair, ...directions.get(pairKey(pair.a, pair.b)) }));
 }

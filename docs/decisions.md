@@ -91,6 +91,28 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+Nearby paths use subtle arrowheads pointing outward from the current encounter. The debugging-path layer uses single- or double-ended arrows to show whether a possible path becomes visible from one endpoint or both across the available dimension combinations.
+
+### Reasoning
+
+Arrowheads clarify the immediate possibilities for movement and make asymmetry introduced by neighborhood limits legible during inspection.
+
+### Alternatives Considered
+
+- Keeping every path visually undirected.
+- Treating arrowheads as a change to the symmetric distance model.
+- Omitting direction from debugging paths.
+
+### Implications
+
+The underlying pairwise distances remain symmetric. Ordinary arrowheads describe movement outward from the encounter currently inhabited; debugging arrowheads describe actual visibility after thresholds, bridges, and the neighborhood cap are applied.
+
+---
+
+## 2026-08-03
+
+### Decision
+
 Selecting all four dimensions colors nearby paths and encounters near-black, matching the current encounter. Time, Feeling, and Knowing without Place remain dark gray. Place remains light gray alone and neutral in every other partial mixture.
 
 ### Reasoning
