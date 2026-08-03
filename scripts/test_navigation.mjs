@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { compositeDistance, visibleNeighborhood } from "../js/navigation.js";
+import { activePathColor } from "../js/map.js";
+
+globalThis.L = {};
 
 const pairs = [
   { a: "A", b: "B", place: 0.1, time: 0.9, feeling: 0.2, knowing: 0.8 },
@@ -16,6 +19,14 @@ assert.equal(compositeDistance(pairs[0], ["place", "time"]), 0.5);
 const placeNeighbors = visibleNeighborhood({ currentId: "A", encounterIds: ["A", "B", "C", "D"], pairs, dimensions: ["place"], settings });
 assert.deepEqual(placeNeighbors.map(({ id }) => id).sort(), ["B", "C", "D"]);
 assert.throws(() => visibleNeighborhood({ currentId: "A", encounterIds: ["A"], pairs: [], dimensions: [], settings }));
+assert.equal(activePathColor(["place"]), "#b8bbb5");
+assert.equal(activePathColor(["time"]), "#a9544f");
+assert.equal(activePathColor(["feeling"]), "#c4a447");
+assert.equal(activePathColor(["knowing"]), "#536f8f");
+assert.equal(activePathColor(["place", "time", "feeling"]), "#b66f3d");
+assert.equal(activePathColor(["time", "knowing"]), "#785f79");
+assert.equal(activePathColor(["feeling", "knowing"]), "#697c5a");
+assert.equal(activePathColor(["place", "time", "feeling", "knowing"]), "#4f514e");
 
 const interfaceHtml = await readFile(new URL("../index.html", import.meta.url), "utf8");
 assert.match(interfaceHtml, /value="place">/);

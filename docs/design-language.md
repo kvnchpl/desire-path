@@ -209,7 +209,16 @@ Animation should communicate orientation rather than spectacle.
 
 Color should support orientation rather than decoration.
 
-Prefer muted palettes.
+The dimensions use a muted orientation palette:
+
+- Place: light gray
+- Time: red
+- Feeling: yellow
+- Knowing: blue
+
+Visible paths and nearby encounters take the color of the selected dimensions. Time and Feeling mix to orange, Time and Knowing to purple, and Feeling and Knowing to green. Selecting all three produces dark gray. Place remains neutral: it appears light gray alone and does not alter a mixture with another dimension.
+
+Prefer muted colors.
 
 Avoid highly saturated interfaces.
 

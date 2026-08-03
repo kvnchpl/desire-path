@@ -1,8 +1,23 @@
 const pathStyle = {
-  color: "#59665d",
   opacity: 0.64,
   weight: 1.5,
 };
+
+const dimensionColors = {
+  place: "#b8bbb5",
+  time: "#a9544f",
+  feeling: "#c4a447",
+  knowing: "#536f8f",
+  "feeling+time": "#b66f3d",
+  "knowing+time": "#785f79",
+  "feeling+knowing": "#697c5a",
+  "feeling+knowing+time": "#4f514e",
+};
+
+export function activePathColor(dimensions) {
+  const chromaticDimensions = dimensions.filter((dimension) => dimension !== "place").sort();
+  return dimensionColors[chromaticDimensions.join("+")] || dimensionColors.place;
+}
 
 function markerIcon(kind) {
   return L.divIcon({
@@ -43,6 +58,8 @@ export function createEncounterMap(element, settings, onNavigate) {
 
   function render(current, neighbors, encounterById, options = {}) {
     layer.clearLayers();
+    const color = activePathColor(options.dimensions || []);
+    element.style.setProperty("--active-path-color", color);
     const currentLatLng = L.latLng(current.place[1], current.place[0]);
     const visibleLatLngs = [currentLatLng];
     const visibleIds = new Set([current.id, ...neighbors.map(({ id }) => id)]);
@@ -65,7 +82,7 @@ export function createEncounterMap(element, settings, onNavigate) {
       const neighbor = encounterById.get(id);
       const latLng = L.latLng(neighbor.place[1], neighbor.place[0]);
       visibleLatLngs.push(latLng);
-      L.polyline([currentLatLng, latLng], { ...pathStyle, dashArray: bridge ? "4 5" : null }).addTo(layer);
+      L.polyline([currentLatLng, latLng], { ...pathStyle, color, dashArray: bridge ? "4 5" : null }).addTo(layer);
       const marker = L.marker(latLng, {
         icon: markerIcon("reachable"),
         keyboard: true,

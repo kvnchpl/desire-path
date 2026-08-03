@@ -115,6 +115,7 @@ async function start() {
     renderEncounter(current, elements);
     renderEncounterDetails(current);
     map.render(current, neighbors, encounterById, {
+      dimensions,
       showAllNodes: elements.optionsShowAll.checked,
       showNodeIds: elements.optionsShowIds.checked,
     });

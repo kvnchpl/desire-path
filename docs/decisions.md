@@ -91,6 +91,28 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
+Place, Time, Feeling, and Knowing use a muted light gray, red, yellow, and blue palette. Visible paths and nearby encounters reflect the active dimensions. The three chromatic dimensions mix into orange, purple, green, or dark gray; Place remains neutral in combinations.
+
+### Reasoning
+
+Color provides a quiet, immediate sense of which forms of nearness are shaping the visible landscape without adding explanatory interface elements. Keeping Place neutral preserves its geographic presence without letting it dominate other relationships.
+
+### Alternatives Considered
+
+- Keeping every path and encounter monochrome.
+- Giving Place equal influence over mixed colors.
+- Showing separate colored paths for each selected dimension.
+
+### Implications
+
+The active color changes with the selected dimensions while geography and neighborhood construction remain unchanged. Dimension names and checkbox states remain visible so color is not the only carrier of meaning.
+
+---
+
+## 2026-08-03
+
+### Decision
+
 Feeling and Knowing each use seven categories. Feeling retains Joy, Desire, Wonder, Nostalgia, Grief, Fear, and Anger. Knowing retains Witnessed, Remembered, Inherited, Documented, Dreamed, Imagined, and Unresolved. Existing placeholder encounters are migrated into the nearest retained editorial category.
 
 ### Reasoning

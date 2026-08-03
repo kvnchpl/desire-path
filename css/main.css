@@ -5,6 +5,11 @@
   --ink-soft: #696c66;
   --line: rgba(37, 39, 36, 0.2);
   --focus: #465d51;
+  --place: #b8bbb5;
+  --time: #a9544f;
+  --feeling: #c4a447;
+  --knowing: #536f8f;
+  --active-path-color: var(--ink-soft);
   font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-synthesis: none;
 }
@@ -92,7 +97,9 @@ input {
 }
 
 .encounter-marker--reachable span {
-  background: var(--paper);
+  background: var(--active-path-color);
+  box-shadow: 0 0 0 1px var(--active-path-color);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--active-path-color) 72%, var(--ink));
 }
 
 .encounter-marker--context {
@@ -213,6 +220,22 @@ input[type="checkbox"] {
   height: 0.85rem;
   margin: 0;
   accent-color: var(--focus);
+}
+
+input[name="dimension"][value="place"] {
+  accent-color: var(--place);
+}
+
+input[name="dimension"][value="time"] {
+  accent-color: var(--time);
+}
+
+input[name="dimension"][value="feeling"] {
+  accent-color: var(--feeling);
+}
+
+input[name="dimension"][value="knowing"] {
+  accent-color: var(--knowing);
 }
 
 .options {
