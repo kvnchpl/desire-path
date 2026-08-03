@@ -134,7 +134,9 @@ async function start() {
       heading.scope = "row";
       heading.textContent = label;
       row.append(heading);
-      row.insertCell().textContent = value;
+      const valueCell = row.insertCell();
+      valueCell.className = `options-data-${label}`;
+      valueCell.textContent = value;
     });
     elements.optionsData.replaceChildren(table);
   }

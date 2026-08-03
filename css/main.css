@@ -28,6 +28,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-size: 13px;
+  text-transform: lowercase;
 }
 
 button,
@@ -219,6 +220,15 @@ h2 {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
+}
+
+#about-title,
+#encounter-title,
+.project-title,
+.leaflet-tooltip.node-id,
+.leaflet-tooltip.encounter-preview,
+.options-data-title,
+.options-data-id {
   text-transform: uppercase;
 }
 
@@ -432,7 +442,6 @@ input[name="dimension"][value="knowing"] {
   top: 1.5rem;
   right: 1.5rem;
   line-height: 1;
-  text-transform: uppercase;
 }
 
 .about-content {
@@ -464,10 +473,6 @@ input[name="dimension"][value="knowing"] {
 .about-faq dd {
   color: var(--ink-soft);
   text-transform: lowercase;
-}
-
-.about-content .project-title {
-  text-transform: uppercase;
 }
 
 .interface-scroll {
