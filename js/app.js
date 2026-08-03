@@ -1,6 +1,6 @@
 import { renderEncounter } from "./encounter.js";
 import { createEncounterMap } from "./map.js";
-import { visibleNeighborhood } from "./navigation.js";
+import { traversablePaths, visibleNeighborhood } from "./navigation.js";
 
 const elements = {
   aboutClose: document.querySelector("#about-close"),
@@ -73,6 +73,7 @@ async function start() {
   const encounterIds = [...encounterById.keys()];
   const history = [settings.initial_encounter];
   let currentId = settings.initial_encounter;
+  const allPaths = traversablePaths({ encounterIds, pairs: distances.pairs, settings });
   const map = createEncounterMap(elements.map, settings, navigate);
 
   function renderEncounterDetails(current) {
@@ -117,6 +118,7 @@ async function start() {
     renderEncounterDetails(current);
     map.render(current, neighbors, encounterById, {
       allPairs: distances.pairs,
+      allPaths,
       dimensions,
       showAllNodes: elements.optionsShowAll.checked,
       showAllPaths: elements.optionsShowAllPaths.checked,

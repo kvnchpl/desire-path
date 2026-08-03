@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { compositeDistance, visibleNeighborhood } from "../js/navigation.js";
-import { activePathColor } from "../js/map.js";
+import { compositeDistance, traversablePaths, visibleNeighborhood } from "../js/navigation.js";
+import { activePathColor, dimensionalPathColor } from "../js/map.js";
 
 globalThis.L = {};
 
@@ -27,6 +27,13 @@ assert.equal(activePathColor(["place", "time", "feeling"]), "#b66f3d");
 assert.equal(activePathColor(["time", "knowing"]), "#785f79");
 assert.equal(activePathColor(["feeling", "knowing"]), "#697c5a");
 assert.equal(activePathColor(["place", "time", "feeling", "knowing"]), "#4f514e");
+const colorPairs = [
+  { place: 0.1, time: 0.9, feeling: 0.9, knowing: 0.9 },
+  { place: 0.9, time: 0.1, feeling: 0.1, knowing: 0.9 },
+  { place: 0.9, time: 0.9, feeling: 0.9, knowing: 0.1 },
+];
+assert.equal(dimensionalPathColor(colorPairs[0], colorPairs, 1), "#b8bbb5");
+assert.equal(dimensionalPathColor(colorPairs[1], colorPairs, 1), "#b66f3d");
 
 const interfaceHtml = await readFile(new URL("../index.html", import.meta.url), "utf8");
 assert.match(interfaceHtml, /value="place">/);
@@ -50,6 +57,9 @@ const feelingDistances = JSON.parse(await readFile(new URL("../data/feeling-dist
 const knowingDistances = JSON.parse(await readFile(new URL("../data/knowing-distances.json", import.meta.url), "utf8"));
 const encounterIds = encounters.encounters.map(({ id }) => id);
 assert.ok(encounterIds.length >= 1);
+const possiblePaths = traversablePaths({ encounterIds, pairs: generatedDistances.pairs, settings: generatedSettings });
+assert.ok(possiblePaths.length > 0);
+assert.ok(possiblePaths.length < generatedDistances.pairs.length);
 assert.equal(generatedDistances.pairs.length, encounterIds.length * (encounterIds.length - 1) / 2);
 assert.equal(generatedDistances.schema_version, 4);
 assert.equal(generatedSettings.schema_version, 4);

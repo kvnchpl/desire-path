@@ -91,3 +91,18 @@ export function visibleNeighborhood({ currentId, encounterIds, pairs, dimensions
   });
   return candidates.slice(0, settings.maximum_neighbors);
 }
+
+export function traversablePaths({ encounterIds, pairs, settings }) {
+  const dimensions = ["place", "time", "feeling", "knowing"];
+  const traversableKeys = new Set();
+
+  for (let mask = 1; mask < 2 ** dimensions.length; mask += 1) {
+    const selected = dimensions.filter((_, index) => mask & (1 << index));
+    encounterIds.forEach((currentId) => {
+      visibleNeighborhood({ currentId, encounterIds, pairs, dimensions: selected, settings })
+        .forEach(({ id }) => traversableKeys.add(pairKey(currentId, id)));
+    });
+  }
+
+  return pairs.filter(({ a, b }) => traversableKeys.has(pairKey(a, b)));
+}

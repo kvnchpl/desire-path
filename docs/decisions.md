@@ -91,17 +91,18 @@ The evolution of the project's thinking is itself part of the project's history.
 
 ### Decision
 
-Options may reveal every pairwise path as a faint, non-navigable debugging layer. Enabling the layer also reveals every encounter position, while the ordinary nearby paths remain visually prominent and exclusively traversable.
+Options may reveal the union of every path that can become traversable under any dimension combination as a faint, non-navigable debugging layer. Enabling the layer also reveals every encounter position, while the ordinary nearby paths remain visually prominent and exclusively traversable. Each debugging path reflects the dimensions in which its encounters fall within the single-dimension nearness threshold.
 
 ### Reasoning
 
-Seeing the complete field helps evaluate how the active dimensions and authored distances relate across the archive. Keeping the layer faint, optional, and non-navigable distinguishes analytical inspection from ordinary exploration.
+Seeing the complete field of possible movement helps evaluate how the dimensions and authored distances relate across the archive. Keeping the layer faint, optional, and non-navigable distinguishes analytical inspection from ordinary exploration.
 
 ### Alternatives Considered
 
 - Continuing to prohibit the complete path network in the public interface.
 - Making every revealed path traversable.
-- Showing only the threshold-qualified global network.
+- Drawing the complete graph, including relationships that can never become traversable.
+- Coloring every debugging path according to the currently selected dimensions.
 
 ### Implications
 

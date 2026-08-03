@@ -12,11 +12,25 @@ const dimensionColors = {
   "knowing+time": "#785f79",
   "feeling+knowing": "#697c5a",
   "feeling+knowing+time": "#4f514e",
+  neutral: "#858984",
 };
 
 export function activePathColor(dimensions) {
   const chromaticDimensions = dimensions.filter((dimension) => dimension !== "place").sort();
   return dimensionColors[chromaticDimensions.join("+")] || dimensionColors.place;
+}
+
+function percentileThreshold(pairs, dimension, percentage) {
+  const values = pairs.map((pair) => pair[dimension]).sort((left, right) => left - right);
+  const rank = Math.max(0, Math.ceil((percentage / 100) * values.length) - 1);
+  return values[rank] ?? 0;
+}
+
+export function dimensionalPathColor(pair, pairs, percentage) {
+  const dimensions = ["place", "time", "feeling", "knowing"].filter(
+    (dimension) => pair[dimension] <= percentileThreshold(pairs, dimension, percentage),
+  );
+  return dimensions.length ? activePathColor(dimensions) : dimensionColors.neutral;
 }
 
 function markerIcon(kind) {
@@ -65,12 +79,14 @@ export function createEncounterMap(element, settings, onNavigate) {
     const visibleIds = new Set([current.id, ...neighbors.map(({ id }) => id)]);
 
     if (options.showAllPaths) {
-      options.allPairs.forEach(({ a, b }) => {
+      options.allPaths.forEach((pair) => {
+        const { a, b } = pair;
         const left = encounterById.get(a);
         const right = encounterById.get(b);
+        const pathColor = dimensionalPathColor(pair, options.allPairs, settings.visibility_percentile);
         L.polyline(
           [L.latLng(left.place[1], left.place[0]), L.latLng(right.place[1], right.place[0])],
-          { color, opacity: 0.11, weight: 0.65, interactive: false },
+          { color: pathColor, opacity: 0.2, weight: 0.75, interactive: false },
         ).addTo(layer);
       });
     }
