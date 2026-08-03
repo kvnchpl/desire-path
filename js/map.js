@@ -86,7 +86,7 @@ export function createEncounterMap(element, settings, onNavigate) {
         const pathColor = dimensionalPathColor(pair, options.allPairs, settings.visibility_percentile);
         L.polyline(
           [L.latLng(left.place[1], left.place[0]), L.latLng(right.place[1], right.place[0])],
-          { color: pathColor, opacity: 0.2, weight: 0.75, interactive: false },
+          { color: pathColor, opacity: 0.32, weight: 0.9, interactive: false },
         ).addTo(layer);
       });
     }
