@@ -66,6 +66,10 @@ input {
   min-height: 100%;
 }
 
+.map-region {
+  position: relative;
+}
+
 .map,
 .leaflet-container {
   background: var(--paper);
@@ -534,14 +538,16 @@ input[name="dimension"][value="knowing"] {
 
 @media (max-width: 720px) {
   :root {
-    --mobile-map-height: 50vh;
-    --mobile-map-height: 50dvh;
+    --mobile-header-height: 4.25rem;
+    --mobile-map-height: 43vh;
+    --mobile-map-height: 43dvh;
   }
 
   .landscape {
     grid-template-columns: 1fr;
     grid-template-rows: var(--mobile-map-height) minmax(0, 1fr);
     min-height: 0;
+    padding-top: var(--mobile-header-height);
   }
 
   .map-region,
@@ -557,19 +563,60 @@ input[name="dimension"][value="knowing"] {
     border-left: 0;
   }
 
+  .site-header {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: var(--mobile-header-height);
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .encounter {
+    order: 1;
+  }
+
+  .explore {
+    order: 2;
+  }
+
+  .options {
+    order: 3;
+  }
+
+  .advanced {
+    order: 4;
+  }
+
   .about-panel {
-    inset: var(--mobile-map-height) 0 var(--footer-height);
+    inset: calc(var(--mobile-header-height) + var(--mobile-map-height)) 0 var(--footer-height);
     width: 100%;
-    height: calc(100vh - var(--mobile-map-height) - var(--footer-height));
-    height: calc(100dvh - var(--mobile-map-height) - var(--footer-height));
-    max-height: calc(100vh - var(--mobile-map-height) - var(--footer-height));
-    max-height: calc(100dvh - var(--mobile-map-height) - var(--footer-height));
+    height: calc(100vh - var(--mobile-header-height) - var(--mobile-map-height) - var(--footer-height));
+    height: calc(100dvh - var(--mobile-header-height) - var(--mobile-map-height) - var(--footer-height));
+    max-height: calc(100vh - var(--mobile-header-height) - var(--mobile-map-height) - var(--footer-height));
+    max-height: calc(100dvh - var(--mobile-header-height) - var(--mobile-map-height) - var(--footer-height));
     border-top: 1px solid var(--line);
     border-left: 0;
   }
 
   .touch-hint {
-    margin: 0.6rem 0 0;
+    position: absolute;
+    z-index: 500;
+    right: 1rem;
+    bottom: 0.85rem;
+    left: 1rem;
+    width: fit-content;
+    max-width: calc(100% - 2rem);
+    margin: 0;
+    padding: 0.35rem 0.45rem;
+    pointer-events: none;
+    background: var(--paper);
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
     color: var(--ink-soft);
     font-size: 0.65rem;
     line-height: 1.45;
@@ -588,8 +635,8 @@ input[name="dimension"][value="knowing"] {
 
 @media (max-width: 720px) and (max-height: 600px) {
   :root {
-    --mobile-map-height: 42vh;
-    --mobile-map-height: 42dvh;
+    --mobile-map-height: 36vh;
+    --mobile-map-height: 36dvh;
   }
 }
 
