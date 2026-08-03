@@ -33,6 +33,10 @@ function openAbout() {
 }
 
 elements.aboutToggle.addEventListener("click", () => {
+  if (elements.aboutPanel.open) {
+    elements.aboutPanel.close();
+    return;
+  }
   openAbout();
 });
 
