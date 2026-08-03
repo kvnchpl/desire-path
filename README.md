@@ -44,8 +44,8 @@ The repository contains both the authoritative QGIS project and a static public 
 ### Requirements
 
 - QGIS, including its GDAL command-line tools
-- Node.js
-- Python 3
+- Node.js 18 or newer
+- Python 3.9 or newer
 
 The public site uses plain HTML, CSS, JavaScript, JSON, GeoJSON, and a locally vendored copy of Leaflet. There is no build step or application server.
 
@@ -58,6 +58,8 @@ npm run serve
 ```
 
 Open the local address printed in the terminal.
+
+The site is served at `http://localhost:8080/` using Python's standard-library HTTP server; no package installation or global command is required.
 
 Run the complete validation suite with:
 
