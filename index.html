@@ -54,8 +54,18 @@
           </article>
         </div>
 
+        <section class="about-panel" id="about-panel" aria-labelledby="about-title" hidden>
+          <button class="about-close" id="about-close" type="button" aria-label="Close about">X</button>
+          <div class="about-content">
+            <h2 id="about-title">About</h2>
+            <p>DESIRE PATH is an experimental cartography of encounters.</p>
+            <p>Place remains visible, but nearness may also arise through time, feeling, or knowing. The landscape appears gradually as you move through it.</p>
+          </div>
+        </section>
+
         <footer class="interface-footer">
           <button class="retrace" id="retrace" type="button" disabled>Retrace</button>
+          <button class="about-toggle" id="about-toggle" type="button" aria-expanded="false" aria-controls="about-panel">About</button>
         </footer>
         <p class="status" id="status" role="status">Preparing the landscape.</p>
       </aside>

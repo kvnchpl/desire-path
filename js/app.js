@@ -3,7 +3,11 @@ import { createEncounterMap } from "./map.js";
 import { visibleNeighborhood } from "./navigation.js";
 
 const elements = {
+  aboutClose: document.querySelector("#about-close"),
+  aboutPanel: document.querySelector("#about-panel"),
+  aboutToggle: document.querySelector("#about-toggle"),
   form: document.querySelector("#explore-form"),
+  interfaceScroll: document.querySelector(".interface-scroll"),
   optionsShowAll: document.querySelector("#options-show-all"),
   optionsShowIds: document.querySelector("#options-show-ids"),
   optionsShowDetails: document.querySelector("#options-show-details"),
@@ -14,6 +18,29 @@ const elements = {
   status: document.querySelector("#status"),
   title: document.querySelector("#encounter-title"),
 };
+
+function setAboutOpen(isOpen) {
+  elements.aboutPanel.hidden = !isOpen;
+  elements.interfaceScroll.inert = isOpen;
+  elements.aboutToggle.setAttribute("aria-expanded", String(isOpen));
+  if (isOpen) {
+    elements.aboutClose.focus();
+  } else {
+    elements.aboutToggle.focus();
+  }
+}
+
+elements.aboutToggle.addEventListener("click", () => {
+  setAboutOpen(elements.aboutPanel.hidden);
+});
+
+elements.aboutClose.addEventListener("click", () => {
+  setAboutOpen(false);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !elements.aboutPanel.hidden) setAboutOpen(false);
+});
 
 async function loadJson(path) {
   const response = await fetch(path);
