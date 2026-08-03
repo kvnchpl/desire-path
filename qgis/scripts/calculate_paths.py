@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import argparse
 import json
 import math
 from itertools import combinations
@@ -64,23 +63,3 @@ def calculate(encounters: list[dict]) -> list[dict]:
             }
         )
     return pairs
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", type=Path, default=Path("data/encounters.json"))
-    parser.add_argument("--output", type=Path, required=True)
-    args = parser.parse_args()
-    source = json.loads(args.input.read_text())
-    result = {
-        "schema_version": source["schema_version"],
-        "generated": True,
-        "generated_from": str(args.input.as_posix()),
-        "dimensions": ["place", "time", "feeling", "knowing"],
-        "pairs": calculate(source["encounters"]),
-    }
-    args.output.write_text(json.dumps(result, indent=2) + "\n")
-
-
-if __name__ == "__main__":
-    main()
