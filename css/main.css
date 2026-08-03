@@ -155,7 +155,6 @@ h1 {
   margin-bottom: 0;
   font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -354,6 +353,10 @@ input[type="checkbox"] {
   font-size: 0.8rem;
   line-height: 1.55;
   text-transform: lowercase;
+}
+
+.about-content .project-title {
+  text-transform: uppercase;
 }
 
 .interface-scroll {
