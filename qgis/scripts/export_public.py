@@ -24,18 +24,21 @@ def qgis_binary(name: str) -> Path:
     discovered = shutil.which(name)
     if discovered:
         return Path(discovered)
-    macos_candidate = Path("/Applications/QGIS.app/Contents/MacOS") / name
-    if macos_candidate.is_file():
-        return macos_candidate
+    for applications_directory in (Path("/Applications"), Path.home() / "Applications"):
+        macos_candidate = applications_directory / "QGIS.app" / "Contents" / "MacOS" / name
+        if macos_candidate.is_file():
+            return macos_candidate
     raise RuntimeError(f"Could not find {name}. Install QGIS or add its command-line tools to PATH.")
 
 
 def qgis_environment() -> dict[str, str]:
     environment = os.environ.copy()
-    resources = Path("/Applications/QGIS.app/Contents/Resources/qgis")
-    if resources.is_dir():
-        environment.setdefault("PROJ_DATA", str(resources / "proj"))
-        environment.setdefault("GDAL_DATA", str(resources / "gdal"))
+    for applications_directory in (Path("/Applications"), Path.home() / "Applications"):
+        resources = applications_directory / "QGIS.app" / "Contents" / "Resources" / "qgis"
+        if resources.is_dir():
+            environment.setdefault("PROJ_DATA", str(resources / "proj"))
+            environment.setdefault("GDAL_DATA", str(resources / "gdal"))
+            break
     return environment
 
 
