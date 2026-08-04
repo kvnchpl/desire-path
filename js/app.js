@@ -109,9 +109,17 @@ async function start() {
   const encounterById = new Map(encounters.encounters.map((encounter) => [encounter.id, encounter]));
   const history = [settings.initial_encounter];
   let currentId = settings.initial_encounter;
-  const map = createEncounterMap(elements.map, settings, navigate, (message) => {
-    elements.status.textContent = message;
-  });
+  const map = createEncounterMap(
+    elements.map,
+    settings,
+    navigate,
+    (message) => {
+      elements.status.textContent = message;
+    },
+    (resetAvailable) => {
+      elements.resetView.disabled = !resetAvailable;
+    },
+  );
   elements.resetView.addEventListener("click", () => {
     map.resetView();
     elements.status.textContent = "Map view reset to the visible encounters.";
@@ -160,7 +168,6 @@ async function start() {
       showAllPaths: elements.optionsShowAllPaths.checked,
       showNodeIds: elements.optionsShowIds.checked,
     });
-    elements.resetView.disabled = false;
     elements.retrace.disabled = history.length < 2;
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
   }

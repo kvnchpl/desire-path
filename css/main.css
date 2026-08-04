@@ -135,7 +135,9 @@ input {
   visibility: hidden;
 }
 
-.reset-view:hover {
+.reset-view:hover,
+.retrace:not(:disabled):hover,
+.about-toggle:hover {
   color: var(--ink);
 }
 
@@ -439,6 +441,11 @@ input[name="dimension"][value="knowing"] {
   cursor: pointer;
   min-height: 2.75rem;
   text-transform: lowercase;
+}
+
+.retrace,
+.about-toggle {
+  color: var(--ink-soft);
 }
 
 .interface-footer {

@@ -94,7 +94,7 @@ function bindEncounterPreview(marker, text) {
   });
 }
 
-export function createEncounterMap(element, settings, onNavigate, onWarning = () => {}) {
+export function createEncounterMap(element, settings, onNavigate, onWarning = () => {}, onResetAvailabilityChange = () => {}) {
   element.querySelector(".map-fallback")?.remove();
   const map = L.map(element, { zoomControl: false, attributionControl: false, maxZoom: settings.map.maximum_zoom });
   fetch(settings.map.coastline)
@@ -118,10 +118,27 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
   let hasFit = false;
   let visibleBounds = null;
 
+  function resetViewIsAvailable() {
+    if (!visibleBounds?.isValid()) return false;
+    const paddedBounds = visibleBounds.pad(0.28);
+    const targetZoom = Math.min(map.getBoundsZoom(paddedBounds), 11);
+    const zoomDifference = Math.abs(map.getZoom() - targetZoom);
+    const centerOffset = map
+      .latLngToContainerPoint(map.getCenter())
+      .distanceTo(map.latLngToContainerPoint(paddedBounds.getCenter()));
+    return zoomDifference >= 1 || centerOffset > 64;
+  }
+
+  function updateResetAvailability() {
+    onResetAvailabilityChange(resetViewIsAvailable());
+  }
+
   function fitVisibleBounds(animate = false) {
     if (!visibleBounds?.isValid()) return;
     map.fitBounds(visibleBounds.pad(0.28), { maxZoom: 11, animate });
   }
+
+  map.on("moveend zoomend", updateResetAvailability);
 
   map.on("click", () => {
     touchPreviewMarker?.closeTooltip();
@@ -224,6 +241,7 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
       hasFit = true;
     } else {
       map.panInsideBounds(bounds.pad(0.18), { animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches });
+      updateResetAvailability();
     }
   }
 
