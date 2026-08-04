@@ -2,8 +2,6 @@ import { renderEncounter } from "./encounter.js";
 import { createEncounterMap } from "./map.js";
 import { visibleNeighborhood } from "./navigation.js";
 
-const PUBLIC_SCHEMA_VERSION = 5;
-
 const elements = {
   aboutClose: document.querySelector("#about-close"),
   aboutPanel: document.querySelector("#about-panel"),
@@ -72,12 +70,6 @@ async function loadJson(path) {
 }
 
 function validatePublicData(encounters, navigation, settings) {
-  const versions = [encounters.schema_version, navigation.schema_version, settings.schema_version];
-  if (versions.some((version) => version !== PUBLIC_SCHEMA_VERSION)) {
-    const error = new Error(`Expected public schema ${PUBLIC_SCHEMA_VERSION}; received ${versions.join(", ")}`);
-    error.publicMessage = "The published landscape is incompatible with this version of the interface.";
-    throw error;
-  }
   if (!Array.isArray(encounters.encounters) || !navigation.combinations || !settings.initial_encounter) {
     const error = new Error("Public data is missing required fields");
     error.publicMessage = "The published landscape is incomplete.";

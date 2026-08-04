@@ -90,7 +90,6 @@ def export_encounters() -> dict:
         )
     all_placeholders = all(encounter["placeholder"] is True for encounter in encounters)
     public_export = {
-        "schema_version": 5,
         "generated": True,
         "generated_from": "qgis/encounters.gpkg",
         "placeholder": all_placeholders,
@@ -108,7 +107,6 @@ def write_exports(encounters: dict) -> None:
         encounters["encounters"],
         pairs,
         settings,
-        encounters["schema_version"],
     )
     with tempfile.TemporaryDirectory(prefix="desire-path-publish-", dir=ENCOUNTERS_OUTPUT.parent) as temporary_directory:
         temporary_root = Path(temporary_directory)

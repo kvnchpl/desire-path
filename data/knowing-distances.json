@@ -1,5 +1,4 @@
 {
-  "schema_version": 5,
   "placeholder": true,
   "description": "Provisional semantic distances between ways of knowing. 0 is nearest; 1 is farthest.",
   "basis": "Editorial placeholder model considering directness of evidence, transmission, construction, and temporal orientation.",

@@ -116,7 +116,7 @@ def neighborhoods(encounter_ids: list[str], graph: dict, settings: dict) -> dict
     return result
 
 
-def generate_navigation(encounters: list[dict], pairs: list[dict], settings: dict, schema_version: int) -> dict:
+def generate_navigation(encounters: list[dict], pairs: list[dict], settings: dict) -> dict:
     encounter_ids = [encounter["id"] for encounter in encounters]
     combinations = {}
     single_dimension_thresholds = {}
@@ -162,7 +162,6 @@ def generate_navigation(encounters: list[dict], pairs: list[dict], settings: dic
         })
 
     return {
-        "schema_version": schema_version,
         "generated": True,
         "generated_from": "qgis/encounters.gpkg",
         "dimension_order": list(DIMENSIONS),

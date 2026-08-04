@@ -34,10 +34,6 @@ def validate(
     navigation = load(navigation_path or ROOT / "data/navigation.json")
     settings = load(settings_path or ROOT / "data/settings.json")
 
-    versions = {encounter_data.get("schema_version"), navigation.get("schema_version"), settings.get("schema_version")}
-    if len(versions) != 1 or None in versions:
-        errors.append("encounters, navigation, and settings must share a schema_version")
-
     encounters = encounter_data.get("encounters")
     if not isinstance(encounters, list) or not encounters:
         return errors + ["encounters must be a nonempty array"]
