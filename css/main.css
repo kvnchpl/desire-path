@@ -261,7 +261,7 @@ fieldset {
   min-height: 2.75rem;
   padding-block: 0.85rem;
   cursor: pointer;
-  list-style-position: outside;
+  list-style-position: inside;
   color: var(--ink-soft);
   font-size: 0.72rem;
   text-transform: lowercase;
