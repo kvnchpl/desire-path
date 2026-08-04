@@ -14,6 +14,7 @@ const elements = {
   optionsShowAllPaths: document.querySelector("#options-show-all-paths"),
   optionsShowIds: document.querySelector("#options-show-ids"),
   optionsShowDetails: document.querySelector("#options-show-details"),
+  optionsShowTraversed: document.querySelector("#options-show-traversed"),
   optionsData: document.querySelector("#options-data"),
   map: document.querySelector("#map"),
   media: document.querySelector("#encounter-media"),
@@ -100,6 +101,7 @@ async function start() {
   validatePublicData(encounters, navigation, settings);
   const encounterById = new Map(encounters.encounters.map((encounter) => [encounter.id, encounter]));
   const history = [settings.initial_encounter];
+  const traversedPaths = new Map();
   let currentId = settings.initial_encounter;
   const map = createEncounterMap(
     elements.map,
@@ -159,6 +161,8 @@ async function start() {
       showAllNodes: elements.optionsShowAll.checked,
       showAllPaths: elements.optionsShowAllPaths.checked,
       showNodeIds: elements.optionsShowIds.checked,
+      showTraversedPaths: elements.optionsShowTraversed.checked,
+      traversedPaths: [...traversedPaths.values()],
     });
     elements.retrace.disabled = history.length < 2;
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
@@ -167,6 +171,8 @@ async function start() {
   function navigate(nextId) {
     if (!encounterById.has(nextId) || nextId === currentId) return;
     elements.touchHint.hidden = true;
+    const pathKey = [currentId, nextId].sort().join("+");
+    traversedPaths.set(pathKey, { a: currentId, b: nextId });
     currentId = nextId;
     history.push(nextId);
     render(`Arrived at ${encounterById.get(nextId).title}.`);
@@ -191,6 +197,10 @@ async function start() {
 
   elements.optionsShowAll.addEventListener("change", () => {
     render(elements.optionsShowAll.checked ? "Every encounter position is visible." : "Only nearby encounter positions are visible.");
+  });
+
+  elements.optionsShowTraversed.addEventListener("change", () => {
+    render(elements.optionsShowTraversed.checked ? "Traversed paths are visible." : "Traversed paths are hidden.");
   });
 
   elements.optionsShowAllPaths.addEventListener("change", () => {

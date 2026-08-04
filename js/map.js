@@ -154,6 +154,22 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
     const visibleLatLngs = [currentLatLng];
     const visibleIds = new Set([current.id, ...neighbors.map(({ id }) => id)]);
 
+    if (options.showTraversedPaths) {
+      options.traversedPaths.forEach(({ a, b }) => {
+        const left = encounterById.get(a);
+        const right = encounterById.get(b);
+        const leftLatLng = L.latLng(left.place[1], left.place[0]);
+        const rightLatLng = L.latLng(right.place[1], right.place[0]);
+        L.polyline([leftLatLng, rightLatLng], {
+          color: dimensionColors.neutral,
+          dashArray: "3 6",
+          interactive: false,
+          opacity: 0.46,
+          weight: 1.2,
+        }).addTo(layer);
+      });
+    }
+
     if (options.showAllPaths) {
       options.allPaths.forEach((pair) => {
         const { a, b } = pair;
@@ -174,8 +190,12 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
       });
     }
 
-    if (options.showAllNodes || options.showAllPaths) {
-      encounterById.forEach((encounter, id) => {
+    if (options.showAllNodes || options.showAllPaths || options.showTraversedPaths) {
+      const contextIds = options.showAllNodes || options.showAllPaths
+        ? [...encounterById.keys()]
+        : new Set(options.traversedPaths.flatMap(({ a, b }) => [a, b]));
+      contextIds.forEach((id) => {
+        const encounter = encounterById.get(id);
         const latLng = L.latLng(encounter.place[1], encounter.place[0]);
         visibleLatLngs.push(latLng);
         if (visibleIds.has(id)) return;
