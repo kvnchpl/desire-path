@@ -225,7 +225,7 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
       alt: `current: ${current.title.toUpperCase()}`,
       zIndexOffset: 1000,
     }).addTo(layer);
-    bindEncounterPreview(currentMarker, `CURRENT — ${current.title.toUpperCase()}`);
+    bindEncounterPreview(currentMarker, current.title.toUpperCase());
     currentMarker.on("click", () => {
       if (supportsHover) return;
       touchPreviewMarker?.closeTooltip();
