@@ -240,6 +240,16 @@ input {
   padding: 1.5rem;
 }
 
+.site-header {
+  display: flex;
+  flex: 0 0 var(--footer-height);
+  align-items: center;
+  min-height: var(--footer-height);
+  margin: -1.5rem -1.5rem 0;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
 h1,
 h2,
 p {
@@ -602,6 +612,8 @@ input[name="dimension"][value="knowing"] {
     display: flex;
     align-items: center;
     height: var(--mobile-header-height);
+    min-height: 0;
+    margin: 0;
     padding: 0 1.5rem;
     border-bottom: 1px solid var(--line);
     background: var(--paper);
