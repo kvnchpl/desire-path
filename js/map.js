@@ -116,6 +116,12 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
   const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   let touchPreviewMarker = null;
   let hasFit = false;
+  let visibleBounds = null;
+
+  function fitVisibleBounds(animate = false) {
+    if (!visibleBounds?.isValid()) return;
+    map.fitBounds(visibleBounds.pad(0.28), { maxZoom: 11, animate });
+  }
 
   map.on("click", () => {
     touchPreviewMarker?.closeTooltip();
@@ -153,8 +159,9 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
 
     if (options.showAllNodes || options.showAllPaths) {
       encounterById.forEach((encounter, id) => {
-        if (visibleIds.has(id)) return;
         const latLng = L.latLng(encounter.place[1], encounter.place[0]);
+        visibleLatLngs.push(latLng);
+        if (visibleIds.has(id)) return;
         const marker = L.marker(latLng, {
           icon: markerIcon("context"),
           interactive: false,
@@ -211,13 +218,18 @@ export function createEncounterMap(element, settings, onNavigate, onWarning = ()
     addNodeId(currentMarker, current.id, options.showNodeIds, layer);
 
     const bounds = L.latLngBounds(visibleLatLngs);
+    visibleBounds = bounds;
     if (!hasFit) {
-      map.fitBounds(bounds.pad(0.28), { maxZoom: 11, animate: false });
+      fitVisibleBounds();
       hasFit = true;
     } else {
       map.panInsideBounds(bounds.pad(0.18), { animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches });
     }
   }
 
-  return { render };
+  function resetView() {
+    fitVisibleBounds(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  return { render, resetView };
 }

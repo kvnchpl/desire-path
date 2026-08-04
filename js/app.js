@@ -19,6 +19,7 @@ const elements = {
   optionsData: document.querySelector("#options-data"),
   map: document.querySelector("#map"),
   media: document.querySelector("#encounter-media"),
+  resetView: document.querySelector("#reset-view"),
   retrace: document.querySelector("#retrace"),
   status: document.querySelector("#status"),
   touchHint: document.querySelector("#touch-hint"),
@@ -111,6 +112,10 @@ async function start() {
   const map = createEncounterMap(elements.map, settings, navigate, (message) => {
     elements.status.textContent = message;
   });
+  elements.resetView.addEventListener("click", () => {
+    map.resetView();
+    elements.status.textContent = "Map view reset to the visible encounters.";
+  });
 
   function renderEncounterDetails(current) {
     elements.optionsData.hidden = !elements.optionsShowDetails.checked;
@@ -155,6 +160,7 @@ async function start() {
       showAllPaths: elements.optionsShowAllPaths.checked,
       showNodeIds: elements.optionsShowIds.checked,
     });
+    elements.resetView.disabled = false;
     elements.retrace.disabled = history.length < 2;
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
   }

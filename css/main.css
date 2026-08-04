@@ -116,6 +116,29 @@ input {
   text-underline-offset: 0.2em;
 }
 
+.reset-view {
+  position: absolute;
+  z-index: 500;
+  top: 1rem;
+  left: 1rem;
+  min-height: 2.75rem;
+  padding: 0 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+.reset-view:disabled {
+  visibility: hidden;
+}
+
+.reset-view:hover {
+  color: var(--ink);
+}
+
 .media-error {
   color: var(--ink-soft);
   font-size: 0.72rem;
