@@ -1,6 +1,6 @@
 # DESIRE PATH
 
-DESIRE PATH is an experimental cartographic artwork about the different ways encounters become near.
+DESIRE PATH is an experimental mapping project about the different ways encounters become near.
 
 ## Experience
 
