@@ -33,5 +33,4 @@ function mediaElement(media) {
 export function renderEncounter(encounter, elements) {
   elements.title.textContent = encounter.title;
   elements.media.replaceChildren(...encounter.media.map(mediaElement));
-  document.title = `${encounter.title} — DESIRE PATH`;
 }
