@@ -95,7 +95,7 @@ def export_encounters() -> dict:
         "placeholder": all_placeholders,
     }
     if all_placeholders:
-        public_export["notice"] = "All encounters and coordinates in this prototype are fictional placeholders."
+        public_export["notice"] = "All encounters and coordinates in this prototype are placeholders."
     public_export["encounters"] = encounters
     return public_export
 
