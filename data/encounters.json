@@ -19,8 +19,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -39,9 +39,9 @@
       "media": [
         {
           "alt": null,
-          "caption": "Placeholder caption",
+          "caption": "Fictional placeholder",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "text": "Here is placeholder text. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           "type": "text"
         }
       ]
@@ -61,8 +61,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -82,8 +82,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -103,8 +103,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -124,15 +124,15 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Curabitur pretium tincidunt lacus, nulla gravida orci a odio.",
+          "caption": "Fictional placeholder",
           "alt": null
         },
         {
           "type": "image",
           "src": "media/placeholders/placeholder-horizon.svg",
           "text": null,
-          "caption": "Placeholder caption image",
+          "caption": "Fictional placeholder image",
           "alt": "A thin horizontal line crossing a pale field."
         }
       ]
@@ -152,15 +152,15 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Integer in mauris eu nibh euismod gravida.",
+          "caption": "Fictional placeholder",
           "alt": null
         },
         {
           "type": "audio",
           "src": "media/placeholders/placeholder-tone.mp3",
           "text": null,
-          "caption": "Placeholder caption tone",
+          "caption": "Fictional placeholder tone",
           "alt": null
         }
       ]
@@ -180,15 +180,15 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.",
+          "caption": "Fictional placeholder",
           "alt": null
         },
         {
           "type": "video",
           "src": "media/placeholders/placeholder-field.mp4",
           "text": null,
-          "caption": "Placeholder caption video",
+          "caption": "Fictional placeholder video",
           "alt": null
         }
       ]
@@ -208,8 +208,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Aliquam erat volutpat, nam dui mi, tincidunt quis, accumsan porttitor.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -229,8 +229,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Phasellus ultrices nulla quis nibh, quisque a lectus.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -250,8 +250,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Donec consectetuer ligula vulputate sem tristique cursus.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -271,8 +271,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -292,8 +292,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Pellentesque fermentum dolor, aliquam quam lectus, facilisis auctor.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -313,8 +313,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Morbi in sem quis dui placerat ornare, pellentesque odio nisi.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
@@ -334,8 +334,8 @@
         {
           "type": "text",
           "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "caption": "Placeholder caption",
+          "text": "Here is placeholder text. Maecenas mattis, tortor neque egestas augue, eu vulputate magna eros eu erat.",
+          "caption": "Fictional placeholder",
           "alt": null
         }
       ]
