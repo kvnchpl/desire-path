@@ -20,7 +20,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -39,7 +39,7 @@
       "media": [
         {
           "alt": null,
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "src": null,
           "text": "Here is placeholder text. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           "type": "text"
@@ -62,7 +62,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -83,7 +83,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -104,7 +104,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -125,14 +125,14 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Curabitur pretium tincidunt lacus, nulla gravida orci a odio.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         },
         {
           "type": "image",
           "src": "media/placeholders/placeholder-horizon.svg",
           "text": null,
-          "caption": "Fictional placeholder image",
+          "caption": "Placeholder image",
           "alt": "A thin horizontal line crossing a pale field."
         }
       ]
@@ -153,14 +153,14 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Integer in mauris eu nibh euismod gravida.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         },
         {
           "type": "audio",
           "src": "media/placeholders/placeholder-tone.mp3",
           "text": null,
-          "caption": "Fictional placeholder tone",
+          "caption": "Placeholder tone",
           "alt": null
         }
       ]
@@ -181,14 +181,14 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         },
         {
           "type": "video",
           "src": "media/placeholders/placeholder-field.mp4",
           "text": null,
-          "caption": "Fictional placeholder video",
+          "caption": "Placeholder video",
           "alt": null
         }
       ]
@@ -209,7 +209,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Aliquam erat volutpat, nam dui mi, tincidunt quis, accumsan porttitor.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -230,7 +230,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Phasellus ultrices nulla quis nibh, quisque a lectus.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -251,7 +251,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Donec consectetuer ligula vulputate sem tristique cursus.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -272,7 +272,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -293,7 +293,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Pellentesque fermentum dolor, aliquam quam lectus, facilisis auctor.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -314,7 +314,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Morbi in sem quis dui placerat ornare, pellentesque odio nisi.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
@@ -335,7 +335,7 @@
           "type": "text",
           "src": null,
           "text": "Here is placeholder text. Maecenas mattis, tortor neque egestas augue, eu vulputate magna eros eu erat.",
-          "caption": "Fictional placeholder",
+          "caption": "Placeholder caption",
           "alt": null
         }
       ]
