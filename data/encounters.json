@@ -160,7 +160,7 @@
           "type": "audio",
           "src": "media/placeholders/placeholder-tone.mp3",
           "text": null,
-          "caption": "Placeholder tone",
+          "caption": "Placeholder audio",
           "alt": null
         }
       ]
