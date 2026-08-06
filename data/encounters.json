@@ -15,15 +15,7 @@
       "time": "RECENT_PAST",
       "feeling": "WONDER",
       "knowing": "IMAGINED",
-      "media": [
-        {
-          "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          "caption": "Placeholder caption",
-          "alt": null
-        }
-      ]
+      "media": []
     },
     {
       "id": "E002",
