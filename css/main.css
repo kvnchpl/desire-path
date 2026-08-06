@@ -511,28 +511,20 @@ input[name="dimension"][value="knowing"] {
   padding: 1.5rem;
 }
 
-.about-faq {
-  margin: 0;
-}
-
-.about-faq div + div {
-  margin-top: 1.5rem;
-}
-
-.about-faq dt,
-.about-faq dd {
+.about-copy {
+  color: var(--ink-soft);
   margin: 0;
   font-size: 0.8rem;
   line-height: 1.55;
-}
-
-.about-faq dt {
-  margin-bottom: 0.35rem;
-}
-
-.about-faq dd {
-  color: var(--ink-soft);
   text-transform: lowercase;
+}
+
+.about-copy p {
+  margin: 0;
+}
+
+.about-copy p + p {
+  margin-top: 1.5rem;
 }
 
 .interface-scroll {
