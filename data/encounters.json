@@ -6,7 +6,7 @@
   "encounters": [
     {
       "id": "E001",
-      "title": "Encounter #1",
+      "title": "NOW",
       "placeholder": true,
       "place": [
         -73.991,
@@ -15,7 +15,12 @@
       "time": "RECENT_PAST",
       "feeling": "WONDER",
       "knowing": "IMAGINED",
-      "media": []
+      "media": [
+        {
+          "text": "i had no idea what i was getting into\nthe enticing cover of night\nno photos\njoys, sorrows fresh\noff the bus\nthe ship\nmy jailbreak, my destiny\nnow\ncontrol is a fickle thing\nwhile running away\nsuitcase in hand determined towards the sun",
+          "type": "text"
+        }
+      ]
     },
     {
       "id": "E002",
