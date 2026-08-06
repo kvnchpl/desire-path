@@ -163,7 +163,7 @@ def generate_navigation(encounters: list[dict], pairs: list[dict], settings: dic
 
     return {
         "generated": True,
-        "generated_from": "qgis/encounters.gpkg",
+        "generated_from": "data/encounters.csv",
         "dimension_order": list(DIMENSIONS),
         "combinations": combinations,
         "possible_paths": possible_paths,

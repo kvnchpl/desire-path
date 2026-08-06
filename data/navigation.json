@@ -1,6 +1,6 @@
 {
   "generated": true,
-  "generated_from": "qgis/encounters.gpkg",
+  "generated_from": "data/encounters.csv",
   "dimension_order": [
     "place",
     "time",

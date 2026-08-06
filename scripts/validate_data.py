@@ -11,6 +11,15 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[1]
 DIMENSIONS = ("place", "time", "feeling", "knowing")
 MEDIA_TYPES = {"text", "image", "audio", "video"}
+TIME_VALUES = {
+    "DISTANT_PAST", "RECENT_PAST", "PRESENT", "NEAR_FUTURE",
+    "DISTANT_FUTURE", "INDETERMINATE", "ATEMPORAL",
+}
+FEELING_VALUES = {"JOY", "DESIRE", "WONDER", "NOSTALGIA", "GRIEF", "FEAR", "ANGER"}
+KNOWING_VALUES = {
+    "WITNESSED", "REMEMBERED", "INHERITED", "DOCUMENTED",
+    "DREAMED", "IMAGINED", "UNRESOLVED",
+}
 
 
 def load(path: Path) -> dict:
@@ -50,11 +59,18 @@ def validate(
             ids.add(encounter_id)
         if not isinstance(encounter.get("title"), str) or not encounter["title"].strip():
             errors.append(f"encounter {index} must have a title")
-        if any(not isinstance(encounter.get(field), str) for field in ("time", "feeling", "knowing")):
-            errors.append(f"encounter {index} must have time, feeling, and knowing values")
+        for field, supported in (
+            ("time", TIME_VALUES),
+            ("feeling", FEELING_VALUES),
+            ("knowing", KNOWING_VALUES),
+        ):
+            if encounter.get(field) not in supported:
+                errors.append(f"encounter {index} has an invalid {field} value")
         place = encounter.get("place")
         if not isinstance(place, list) or len(place) != 2 or not all(type(value) in (int, float) for value in place):
             errors.append(f"encounter {index} must have a numeric [longitude, latitude] place")
+        elif not -180 <= place[0] <= 180 or not -90 <= place[1] <= 90:
+            errors.append(f"encounter {index} has coordinates outside longitude/latitude bounds")
         media = encounter.get("media")
         if not isinstance(media, list):
             errors.append(f"encounter {index} media must be an array")

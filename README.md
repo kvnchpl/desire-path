@@ -39,13 +39,12 @@ The interface is intentionally quiet. It favors exploration over search, local k
 
 ## Development
 
-The repository contains both the authoritative QGIS project and a static public website. QGIS is the authoring and analytical environment; the website is one generated traversal of that cartography.
+The repository contains a CSV-authored dataset and a static public website. A Python exporter turns the encounter rows into the public JSON and precomputed navigation graphs used by the site.
 
 ### Requirements
 
-- QGIS, including its GDAL command-line tools
 - Node.js and npm, for the convenience commands below
-- Python 3.9 or newer
+- Python 3.10 or newer
 
 The public site uses plain HTML, CSS, JavaScript, JSON, GeoJSON, and a locally vendored copy of [Leaflet 1.9.4](vendor/leaflet/README.md). There is no build step or application server.
 
@@ -67,11 +66,11 @@ Validate the public data with:
 npm test
 ```
 
-The same data check runs automatically on every push and pull request through GitHub Actions. Review the interface in a browser after changing its behavior or presentation.
+This validates the CSV, the generated public contract, referenced media files, and whether the generated JSON is current. The same check runs automatically on every push and pull request through GitHub Actions. Review the interface in a browser after changing its behavior or presentation.
 
 ### Authoritative and generated data
 
-Author encounters in `qgis/desire-path.qgz`. The source layer is stored in `qgis/encounters.gpkg` and appears in QGIS as **Encounters — PUBLIC LOCATIONS**.
+Author encounters in `data/encounters.csv`. This is the single source of truth for encounter content, categories, and coordinates.
 
 Do not edit these generated files by hand:
 
@@ -80,6 +79,7 @@ Do not edit these generated files by hand:
 
 These files are authored configuration:
 
+- `data/encounters.csv` — encounter content, categories, and coordinates
 - `data/settings.json` — initial encounter, percentile, 3–4 neighborhood limits, and map settings
 - `data/feeling-distances.json` — the 21 Feeling category pairs
 - `data/knowing-distances.json` — the 21 Knowing category pairs
@@ -88,27 +88,24 @@ These files are authored configuration:
 
 ### Add or update an encounter
 
-1. Open `qgis/desire-path.qgz` in QGIS.
-2. Select **Encounters — PUBLIC LOCATIONS** and enter edit mode.
-3. Add a point at a location that is safe to publish, or select an existing encounter to update it.
-4. Complete the encounter form using the schema below.
-5. Save the layer edits. Ordinary encounter edits do not require saving the QGIS project itself.
-6. Put publishable media in a directory such as `media/E016/` and reference it with repository-relative paths.
-7. From the repository root, regenerate the public data:
+1. Open `data/encounters.csv` in a spreadsheet application or a text editor that preserves CSV quoting.
+2. Add a row or update the existing row, using the schema below.
+3. In Google Maps, right-click the location and select the displayed coordinates to copy them. Google Maps copies `latitude, longitude`; paste the first number into `latitude` and the second into `longitude`.
+4. Put publishable media in a directory such as `media/E016/` and reference it with repository-relative paths.
+5. Save or export the file as UTF-8 CSV. Keep the existing header names unchanged.
+6. From the repository root, regenerate the public data:
 
    ```sh
    npm run export:data
    ```
 
-8. Run the full checks:
+7. Run the full checks:
 
    ```sh
    npm test
    ```
 
-9. Run the site locally and review the encounter, every dimension combination, its nearby paths, Retrace behavior, and its media.
-
-If QGIS reports a missing layer, open **Layer → Data Source Manager → GeoPackage**, select `qgis/encounters.gpkg`, and add the `encounters` layer.
+8. Run the site locally and review the encounter, every dimension combination, its nearby paths, Retrace behavior, and its media.
 
 ### Encounter schema
 
@@ -116,14 +113,16 @@ If QGIS reports a missing layer, open **Layer → Data Source Manager → GeoPac
 |---|---|---|
 | `id` | Text | Stable and unique, such as `E016`; never reuse or change an assigned ID |
 | `title` | Text | Optional human-readable title; “Untitled” is used when omitted |
-| `placeholder` | Boolean | Clear this for reviewed, publishable material |
-| `geometry` | Point | Public geographic location authored in QGIS |
+| `placeholder` | Boolean | `true` for provisional material; `false` for reviewed, publishable material |
+| `latitude` | Number | Latitude in decimal degrees, from `-90` to `90` |
+| `longitude` | Number | Longitude in decimal degrees, from `-180` to `180` |
 | `time` | Category | One supported Time value |
 | `feeling` | Category | One supported Feeling value |
 | `knowing` | Category | One supported Knowing value |
-| `media` | JSON array | Zero or more ordered media objects |
+| `text` | Text | Primary prose or poetry; multiline cells are preserved |
+| `media` | JSON array | Optional additional image, audio, video, or text objects |
 
-QGIS geometry is exported as `place: [longitude, latitude]`. Every coordinate committed to this repository must be considered public. Generalize, displace, or omit private and withheld locations before saving them to the source layer.
+The exporter converts the two coordinate columns into `place: [longitude, latitude]` for the website. Every coordinate committed to this repository must be considered public. Generalize, displace, or omit private and withheld locations before saving the CSV.
 
 Supported Time values:
 
@@ -157,22 +156,9 @@ Supported Knowing values:
 
 ### Media
 
-An encounter supports any ordered combination of `text`, `image`, `audio`, and `video` objects. Use an empty array (`[]`) for an encounter with no content; its title will appear above an empty content section.
+Put an encounter's primary written content directly in the `text` column. Line breaks and repeated spaces are preserved, including multiline poetry. A spreadsheet application will quote a multiline cell correctly when it saves the CSV.
 
-Text:
-
-```json
-[{"type":"text","text":"encounter text"}]
-```
-
-Text preserves line breaks and repeated spaces, so poetry can be entered with
-JSON newline escapes in the QGIS Media field:
-
-```json
-[{"type":"text","text":"first line\\nsecond line\\nthird line"}]
-```
-
-Image:
+The optional `media` column accepts a JSON array of additional `text`, `image`, `audio`, or `video` objects. Leave it blank when the encounter only has written content. In a spreadsheet cell, an image value looks like:
 
 ```json
 [{"type":"image","src":"media/E016/image.jpg","alt":"brief image description"}]
@@ -180,14 +166,20 @@ Image:
 
 Audio and video use the same structure with `"type":"audio"` or `"type":"video"` and a relative `src`. Every informative image requires `alt`. Any media object may include an optional `caption`.
 
+For unusual cases that require several text blocks in a specific order, leave the primary `text` column blank and put the complete ordered sequence in `media`:
+
+```json
+[{"type":"image","src":"media/E016/image.jpg","alt":"brief image description"},{"type":"text","text":"text after the image"}]
+```
+
 Media paths must be safe, relative paths that resolve to committed public files. Never commit sensitive, withheld, or unpublished media.
 
 ### Export and navigation
 
 `npm run export:data` performs the complete publishing pipeline:
 
-1. GDAL exports the QGIS encounter layer to temporary RFC 7946 GeoJSON in `EPSG:4326`.
-2. The exporter converts QGIS geometry and fields into `data/encounters.json`.
+1. Python reads and validates `data/encounters.csv` using only the standard library.
+2. The exporter converts each row into `data/encounters.json`.
 3. It calculates normalized Place, Time, Feeling, and Knowing distances in memory.
 4. For each of the 15 non-empty dimension combinations, it calculates a global percentile threshold.
 5. It selects threshold-qualified paths, adds the minimum connectivity bridges, supplements neighborhoods with fewer than three encounters, and caps them at four.
@@ -207,16 +199,6 @@ The canonical navigation rules are:
 - Equal distances are ordered by encounter ID.
 - Retrace depends only on navigation history.
 
-### Changing the QGIS form
-
-The controlled Time, Feeling, and Knowing dropdowns and field constraints are maintained in `qgis/scripts/configure_project.py`. After intentionally changing those controls, run:
-
-```sh
-python3 qgis/scripts/configure_project.py
-```
-
-Review and commit the resulting `qgis/desire-path.qgz` change. Do not run this command for ordinary encounter edits.
-
 ### Repository structure
 
 ```text
@@ -225,10 +207,7 @@ css/                        visual language
 js/                         encounter, map, and navigation modules
 data/                       authored configuration and generated public data
 media/                      public encounter media
-qgis/desire-path.qgz        QGIS authoring project
-qgis/encounters.gpkg        authoritative encounter layer
-qgis/scripts/               export, navigation, and form utilities
-scripts/                    repository validation
+scripts/                    CSV export, navigation generation, and validation
 vendor/leaflet/             locally hosted presentation dependency
 ```
 

@@ -8,7 +8,7 @@ import math
 from itertools import combinations
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 FEELING_DISTANCES_PATH = ROOT / "data" / "feeling-distances.json"
 KNOWING_DISTANCES_PATH = ROOT / "data" / "knowing-distances.json"
 

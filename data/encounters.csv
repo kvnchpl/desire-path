@@ -1,0 +1,26 @@
+id,title,placeholder,latitude,longitude,time,feeling,knowing,text,media
+E001,NOW,true,40.7497213,-73.9478115,RECENT_PAST,WONDER,IMAGINED,"i had no idea what i was getting into
+the enticing cover of night
+no photos
+joys, sorrows fresh
+off the bus
+the ship
+my jailbreak, my destiny
+now
+control is a fickle thing
+while running away
+suitcase in hand determined towards the sun",
+E002,Encounter #2,true,40.884,-74.046,PRESENT,JOY,WITNESSED,Here is placeholder text. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.,
+E003,Encounter #3,true,40.972,-73.812,NEAR_FUTURE,FEAR,IMAGINED,"Here is placeholder text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+E004,Encounter #4,true,40.759,-73.764,DISTANT_PAST,NOSTALGIA,REMEMBERED,Here is placeholder text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.,
+E005,Encounter #5,true,41.081,-73.918,INDETERMINATE,FEAR,UNRESOLVED,"Here is placeholder text. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
+E006,Encounter #6,true,40.738,-74.164,RECENT_PAST,GRIEF,INHERITED,"Here is placeholder text. Curabitur pretium tincidunt lacus, nulla gravida orci a odio.","[{""type"":""image"",""src"":""media/placeholders/placeholder-image.webp"",""caption"":""Placeholder image"",""alt"":""A thin horizontal line crossing a pale field.""}]"
+E007,Encounter #7,true,40.682,-73.842,PRESENT,JOY,WITNESSED,Here is placeholder text. Integer in mauris eu nibh euismod gravida.,"[{""type"":""audio"",""src"":""media/placeholders/placeholder-audio.mp3"",""caption"":""Placeholder audio""}]"
+E008,Encounter #8,true,40.821,-73.954,DISTANT_FUTURE,FEAR,IMAGINED,"Here is placeholder text. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.","[{""type"":""video"",""src"":""media/placeholders/placeholder-video.mp4"",""caption"":""Placeholder video""}]"
+E009,Encounter #9,true,40.641,-73.886,RECENT_PAST,GRIEF,DOCUMENTED,"Here is placeholder text. Aliquam erat volutpat, nam dui mi, tincidunt quis, accumsan porttitor.",
+E010,Encounter #10,true,41.142,-74.052,DISTANT_PAST,JOY,DREAMED,"Here is placeholder text. Phasellus ultrices nulla quis nibh, quisque a lectus.",
+E011,Encounter #11,true,41.048,-73.708,PRESENT,NOSTALGIA,DOCUMENTED,Here is placeholder text. Donec consectetuer ligula vulputate sem tristique cursus.,
+E012,Encounter #12,true,40.872,-74.218,INDETERMINATE,FEAR,WITNESSED,"Here is placeholder text. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.",
+E013,Encounter #13,true,40.846,-73.612,NEAR_FUTURE,DESIRE,IMAGINED,"Here is placeholder text. Pellentesque fermentum dolor, aliquam quam lectus, facilisis auctor.",
+E014,Encounter #14,true,40.998,-74.104,RECENT_PAST,GRIEF,DOCUMENTED,"Here is placeholder text. Morbi in sem quis dui placerat ornare, pellentesque odio nisi.",
+E015,Encounter #15,true,40.762,-73.746,ATEMPORAL,ANGER,IMAGINED,"Here is placeholder text. Maecenas mattis, tortor neque egestas augue, eu vulputate magna eros eu erat.",

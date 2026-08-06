@@ -23,7 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: "3.10"
 
-      - name: Validate public data
-        run: python3 scripts/validate_data.py
+      - name: Validate authored and generated data
+        run: npm test

@@ -1,6 +1,6 @@
 {
   "generated": true,
-  "generated_from": "qgis/encounters.gpkg",
+  "generated_from": "data/encounters.csv",
   "placeholder": true,
   "notice": "All encounters and coordinates in this prototype are placeholders.",
   "encounters": [
@@ -17,8 +17,8 @@
       "knowing": "IMAGINED",
       "media": [
         {
-          "text": "i had no idea what i was getting into\nthe enticing cover of night\nno photos\njoys, sorrows fresh\noff the bus\nthe ship\nmy jailbreak, my destiny\nnow\ncontrol is a fickle thing\nwhile running away\nsuitcase in hand determined towards the sun",
-          "type": "text"
+          "type": "text",
+          "text": "i had no idea what i was getting into\nthe enticing cover of night\nno photos\njoys, sorrows fresh\noff the bus\nthe ship\nmy jailbreak, my destiny\nnow\ncontrol is a fickle thing\nwhile running away\nsuitcase in hand determined towards the sun"
         }
       ]
     },
@@ -35,11 +35,8 @@
       "knowing": "WITNESSED",
       "media": [
         {
-          "alt": null,
-          "caption": "Placeholder caption",
-          "src": null,
-          "text": "Here is placeholder text. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-          "type": "text"
+          "type": "text",
+          "text": "Here is placeholder text. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         }
       ]
     },
@@ -57,10 +54,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
         }
       ]
     },
@@ -78,10 +72,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
         }
       ]
     },
@@ -99,10 +90,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
         }
       ]
     },
@@ -120,15 +108,11 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Curabitur pretium tincidunt lacus, nulla gravida orci a odio.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Curabitur pretium tincidunt lacus, nulla gravida orci a odio."
         },
         {
           "type": "image",
           "src": "media/placeholders/placeholder-image.webp",
-          "text": null,
           "caption": "Placeholder image",
           "alt": "A thin horizontal line crossing a pale field."
         }
@@ -148,17 +132,12 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Integer in mauris eu nibh euismod gravida.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Integer in mauris eu nibh euismod gravida."
         },
         {
           "type": "audio",
           "src": "media/placeholders/placeholder-audio.mp3",
-          "text": null,
-          "caption": "Placeholder audio",
-          "alt": null
+          "caption": "Placeholder audio"
         }
       ]
     },
@@ -176,17 +155,12 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue."
         },
         {
           "type": "video",
           "src": "media/placeholders/placeholder-video.mp4",
-          "text": null,
-          "caption": "Placeholder video",
-          "alt": null
+          "caption": "Placeholder video"
         }
       ]
     },
@@ -204,10 +178,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Aliquam erat volutpat, nam dui mi, tincidunt quis, accumsan porttitor.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Aliquam erat volutpat, nam dui mi, tincidunt quis, accumsan porttitor."
         }
       ]
     },
@@ -225,10 +196,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Phasellus ultrices nulla quis nibh, quisque a lectus.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Phasellus ultrices nulla quis nibh, quisque a lectus."
         }
       ]
     },
@@ -246,10 +214,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Donec consectetuer ligula vulputate sem tristique cursus.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Donec consectetuer ligula vulputate sem tristique cursus."
         }
       ]
     },
@@ -267,10 +232,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi."
         }
       ]
     },
@@ -288,10 +250,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Pellentesque fermentum dolor, aliquam quam lectus, facilisis auctor.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Pellentesque fermentum dolor, aliquam quam lectus, facilisis auctor."
         }
       ]
     },
@@ -309,10 +268,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Morbi in sem quis dui placerat ornare, pellentesque odio nisi.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Morbi in sem quis dui placerat ornare, pellentesque odio nisi."
         }
       ]
     },
@@ -330,10 +286,7 @@
       "media": [
         {
           "type": "text",
-          "src": null,
-          "text": "Here is placeholder text. Maecenas mattis, tortor neque egestas augue, eu vulputate magna eros eu erat.",
-          "caption": "Placeholder caption",
-          "alt": null
+          "text": "Here is placeholder text. Maecenas mattis, tortor neque egestas augue, eu vulputate magna eros eu erat."
         }
       ]
     }
