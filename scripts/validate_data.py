@@ -66,6 +66,10 @@ def validate(
         ):
             if encounter.get(field) not in supported:
                 errors.append(f"encounter {index} has an invalid {field} value")
+        if "time_detail" in encounter and (
+            not isinstance(encounter["time_detail"], str) or not encounter["time_detail"].strip()
+        ):
+            errors.append(f"encounter {index} time_detail must be nonempty text when present")
         place = encounter.get("place")
         if not isinstance(place, list) or len(place) != 2 or not all(type(value) in (int, float) for value in place):
             errors.append(f"encounter {index} must have a numeric [longitude, latitude] place")

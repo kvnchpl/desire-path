@@ -1,62 +1,65 @@
 {
   "generated": true,
   "generated_from": "data/encounters.csv",
-  "placeholder": true,
-  "notice": "All encounters and coordinates in this prototype are placeholders.",
+  "placeholder": false,
   "encounters": [
     {
       "id": "E001",
       "title": "NOW",
-      "placeholder": true,
+      "placeholder": false,
       "place": [
-        -73.9478115,
-        40.7497213
+        -73.94778112451282,
+        40.74977880092658
       ],
       "time": "RECENT_PAST",
       "feeling": "WONDER",
-      "knowing": "IMAGINED",
+      "knowing": "REMEMBERED",
       "media": [
         {
           "type": "text",
           "text": "i had no idea what i was getting into\nthe enticing cover of night\nno photos\njoys, sorrows fresh\noff the bus\nthe ship\nmy jailbreak, my destiny\nnow\ncontrol is a fickle thing\nwhile running away\nsuitcase in hand determined towards the sun"
         }
-      ]
+      ],
+      "time_detail": "July 2015"
     },
     {
       "id": "E002",
-      "title": "Encounter #2",
-      "placeholder": true,
+      "title": "Comedown",
+      "placeholder": false,
       "place": [
-        -74.046,
-        40.884
+        -73.91978921725324,
+        40.71169024194265
       ],
-      "time": "PRESENT",
-      "feeling": "JOY",
+      "time": "RECENT_PAST",
+      "feeling": "FEAR",
       "knowing": "WITNESSED",
       "media": [
         {
           "type": "text",
-          "text": "Here is placeholder text. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          "text": "walking back from basement, stunned\na giant bird on the sidewalk\nshot dead on a quiet morning"
         }
-      ]
+      ],
+      "time_detail": "Summer 2023?"
     },
     {
       "id": "E003",
-      "title": "Encounter #3",
-      "placeholder": true,
+      "title": "Pocha",
+      "placeholder": false,
       "place": [
-        -73.812,
-        40.972
+        -73.98638042188962,
+        40.747717174083554
       ],
-      "time": "NEAR_FUTURE",
-      "feeling": "FEAR",
-      "knowing": "IMAGINED",
+      "time": "RECENT_PAST",
+      "feeling": "JOY",
+      "knowing": "REMEMBERED",
       "media": [
         {
-          "type": "text",
-          "text": "Here is placeholder text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+          "type": "image",
+          "src": "media/E003/E003_001.png",
+          "alt": "A drink served inside a hollowed pineapple on a restaurant table."
         }
-      ]
+      ],
+      "time_detail": "September 2018"
     },
     {
       "id": "E004",

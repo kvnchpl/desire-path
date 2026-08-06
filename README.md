@@ -117,6 +117,7 @@ These files are authored configuration:
 | `latitude` | Number | Latitude in decimal degrees, from `-90` to `90` |
 | `longitude` | Number | Longitude in decimal degrees, from `-180` to `180` |
 | `time` | Category | One supported Time value |
+| `time_detail` | Text | Optional specific date, season, or other temporal note |
 | `feeling` | Category | One supported Feeling value |
 | `knowing` | Category | One supported Knowing value |
 | `text` | Text | Primary prose or poetry; multiline cells are preserved |

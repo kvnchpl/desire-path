@@ -132,7 +132,7 @@ async function start() {
       ["title", current.title.toUpperCase()],
       ["id", current.id],
       ["place", readablePlace(current.place)],
-      ["time", readableCategory(current.time)],
+      ["time", `${readableCategory(current.time)}${current.time_detail ? ` (${current.time_detail})` : ""}`],
       ["feeling", readableCategory(current.feeling)],
       ["knowing", readableCategory(current.knowing)],
     ];
