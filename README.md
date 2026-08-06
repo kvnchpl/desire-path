@@ -165,6 +165,13 @@ Text:
 [{"type":"text","text":"encounter text"}]
 ```
 
+Text preserves line breaks and repeated spaces, so poetry can be entered with
+JSON newline escapes in the QGIS Media field:
+
+```json
+[{"type":"text","text":"first line\\nsecond line\\nthird line"}]
+```
+
 Image:
 
 ```json

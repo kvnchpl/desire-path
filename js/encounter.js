@@ -1,6 +1,7 @@
 function mediaElement(media) {
   if (media.type === "text") {
     const paragraph = document.createElement("p");
+    paragraph.className = "encounter-text";
     paragraph.textContent = media.text;
     return paragraph;
   }

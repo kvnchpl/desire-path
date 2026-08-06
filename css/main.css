@@ -418,6 +418,10 @@ input[name="dimension"][value="knowing"] {
   text-transform: lowercase;
 }
 
+.encounter-text {
+  white-space: pre-wrap;
+}
+
 .encounter-media img,
 .encounter-media video {
   display: block;
