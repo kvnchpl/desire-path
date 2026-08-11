@@ -7,6 +7,7 @@ const elements = {
   aboutPanel: document.querySelector("#about-panel"),
   aboutToggle: document.querySelector("#about-toggle"),
   form: document.querySelector("#explore-form"),
+  interfaceScroll: document.querySelector(".interface-scroll"),
   loadError: document.querySelector("#load-error"),
   loadErrorMessage: document.querySelector("#load-error-message"),
   loadErrorRetry: document.querySelector("#load-error-retry"),
@@ -156,11 +157,11 @@ async function start() {
     elements.optionsData.replaceChildren(table);
   }
 
-  function render(announcement = "") {
+  function render(announcement = "", replaceEncounter = false) {
     const current = encounterById.get(currentId);
     const dimensions = selectedDimensions();
     const neighbors = visibleNeighborhood(navigation, currentId, dimensions);
-    renderEncounter(current, elements);
+    if (replaceEncounter) renderEncounter(current, elements);
     renderEncounterDetails(current);
     map.render(current, neighbors, encounterById, {
       allPaths: navigation.possible_paths,
@@ -175,6 +176,12 @@ async function start() {
     elements.status.textContent = announcement || `${neighbors.length} paths are near.`;
   }
 
+  function renderWithoutScrolling(announcement) {
+    const scrollTop = elements.interfaceScroll.scrollTop;
+    render(announcement);
+    elements.interfaceScroll.scrollTop = scrollTop;
+  }
+
   function navigate(nextId) {
     if (!encounterById.has(nextId) || nextId === currentId) return;
     elements.touchHint.hidden = true;
@@ -182,7 +189,7 @@ async function start() {
     traversedPaths.set(pathKey, { a: currentId, b: nextId });
     currentId = nextId;
     history.push(nextId);
-    render(`Arrived at ${encounterById.get(nextId).title}.`);
+    render(`Arrived at ${encounterById.get(nextId).title}.`, true);
   }
 
   elements.form.addEventListener("change", (event) => {
@@ -192,37 +199,37 @@ async function start() {
       elements.status.textContent = "At least one way of exploring must remain.";
       return;
     }
-    render(`Paths now follow ${checked.join(", ")}.`);
+    renderWithoutScrolling(`Paths now follow ${checked.join(", ")}.`);
   });
 
   elements.retrace.addEventListener("click", () => {
     if (history.length < 2) return;
     history.pop();
     currentId = history.at(-1);
-    render(`Retraced to ${encounterById.get(currentId).title}.`);
+    render(`Retraced to ${encounterById.get(currentId).title}.`, true);
   });
 
   elements.optionsShowAll.addEventListener("change", () => {
-    render(elements.optionsShowAll.checked ? "Every encounter position is visible." : "Only nearby encounter positions are visible.");
+    renderWithoutScrolling(elements.optionsShowAll.checked ? "Every encounter position is visible." : "Only nearby encounter positions are visible.");
   });
 
   elements.optionsShowTraversed.addEventListener("change", () => {
-    render(elements.optionsShowTraversed.checked ? "Traversed paths are visible." : "Traversed paths are hidden.");
+    renderWithoutScrolling(elements.optionsShowTraversed.checked ? "Traversed paths are visible." : "Traversed paths are hidden.");
   });
 
   elements.optionsShowAllPaths.addEventListener("change", () => {
-    render(elements.optionsShowAllPaths.checked ? "Every path is visible." : "Only nearby paths are visible.");
+    renderWithoutScrolling(elements.optionsShowAllPaths.checked ? "Every path is visible." : "Only nearby paths are visible.");
   });
 
   elements.optionsShowIds.addEventListener("change", () => {
-    render(elements.optionsShowIds.checked ? "Encounter IDs are visible." : "Encounter IDs are hidden.");
+    renderWithoutScrolling(elements.optionsShowIds.checked ? "Encounter IDs are visible." : "Encounter IDs are hidden.");
   });
 
   elements.optionsShowDetails.addEventListener("change", () => {
-    render(elements.optionsShowDetails.checked ? "Current encounter details are visible." : "Current encounter details are hidden.");
+    renderWithoutScrolling(elements.optionsShowDetails.checked ? "Current encounter details are visible." : "Current encounter details are hidden.");
   });
 
-  render();
+  render("", true);
 }
 
 start().catch((error) => {
