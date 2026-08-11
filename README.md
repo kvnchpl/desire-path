@@ -11,7 +11,7 @@ Every encounter has a fixed geographic location and may contain text, images, au
 - **Place** — geographic nearness
 - **Time** — temporal nearness
 - **Feeling** — affective nearness
-- **Knowing** — nearness in how something is known
+- **Knowing** — epistemic nearness
 
 Time, Feeling, and Knowing begin selected. Place remains available but begins unselected. At least one dimension must always remain active.
 
