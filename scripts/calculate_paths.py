@@ -54,7 +54,9 @@ def calculate(encounters: list[dict]) -> list[dict]:
     feelings = categorical_distances(FEELING_DISTANCES_PATH)
     knowings = categorical_distances(KNOWING_DISTANCES_PATH)
     raw_places = {
-        (a["id"], b["id"]): haversine(a["place"], b["place"])
+        # Quantize to one millimetre before normalization so platform libm
+        # differences cannot change exact percentile and bridge comparisons.
+        (a["id"], b["id"]): round(haversine(a["place"], b["place"]), 6)
         for a, b in combinations(encounters, 2)
     }
     maximum_place = max(raw_places.values(), default=1.0) or 1.0
