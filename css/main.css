@@ -431,8 +431,12 @@ input[name="dimension"][value="knowing"] {
 .encounter-media img,
 .encounter-media video {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 50vh;
+  max-height: 50dvh;
   height: auto;
+  object-fit: contain;
 }
 
 .encounter-media audio {
@@ -631,6 +635,12 @@ input[name="dimension"][value="knowing"] {
 
   .encounter {
     order: 1;
+  }
+
+  .encounter-media img,
+  .encounter-media video {
+    max-height: 30vh;
+    max-height: 30dvh;
   }
 
   .explore {
