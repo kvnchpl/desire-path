@@ -8,7 +8,10 @@ import sys
 
 from calculate_navigation import generate_navigation
 from calculate_paths import calculate
-from export_data import ENCOUNTERS_OUTPUT, NAVIGATION_OUTPUT, ROOT, export_encounters
+from export_data import (
+    ENCOUNTERS_OUTPUT, NAVIGATION_OUTPUT, SUMMARY_OUTPUT, ROOT,
+    export_encounters, generate_summary,
+)
 from validate_data import validate
 
 
@@ -23,8 +26,14 @@ def main() -> None:
         )
         actual_encounters = json.loads(ENCOUNTERS_OUTPUT.read_text(encoding="utf-8"))
         actual_navigation = json.loads(NAVIGATION_OUTPUT.read_text(encoding="utf-8"))
+        actual_summary = SUMMARY_OUTPUT.read_text(encoding="utf-8")
+        expected_summary = generate_summary(expected_encounters["encounters"])
         errors = validate()
-        if actual_encounters != expected_encounters or actual_navigation != expected_navigation:
+        if (
+            actual_encounters != expected_encounters
+            or actual_navigation != expected_navigation
+            or actual_summary != expected_summary
+        ):
             errors.append("generated data is out of date; run npm run export:data")
     except (OSError, ValueError, json.JSONDecodeError, KeyError, TypeError) as error:
         errors = [str(error)]

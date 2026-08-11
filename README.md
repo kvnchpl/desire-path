@@ -76,6 +76,7 @@ Do not edit these generated files by hand:
 
 - `data/encounters.json` — public encounter and media records
 - `data/navigation.json` — all 15 precomputed neighborhood graphs and debugging-path metadata
+- `data/encounters-summary.md` — encounter index, schema coverage, and dimension distributions
 
 These files are authored configuration:
 
@@ -192,7 +193,7 @@ with `brew install ffmpeg`.
 `npm run export:data` performs the complete publishing pipeline:
 
 1. Python reads and validates `data/encounters.csv` using only the standard library.
-2. The exporter converts each row into `data/encounters.json`.
+2. The exporter converts each row into `data/encounters.json` and writes `data/encounters-summary.md` for a quick balance and schema-coverage review.
 3. It calculates normalized Place, Time, Feeling, and Knowing distances in memory.
 4. For each of the 15 non-empty dimension combinations, it calculates a global percentile threshold.
 5. It selects threshold-qualified paths, adds the minimum connectivity bridges, supplements neighborhoods with fewer than three encounters, and caps them at four.
