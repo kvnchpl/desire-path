@@ -57,241 +57,238 @@
           "type": "image",
           "src": "media/E003/E003_001.webp",
           "alt": "A drink served inside a hollowed pineapple on a restaurant table."
+        },
+        {
+          "type": "audio",
+          "src": "media/E003/E003_002.webm"
         }
       ],
       "time_detail": "September 2018"
     },
     {
       "id": "E004",
-      "title": "Encounter #4",
-      "placeholder": true,
+      "title": "The Fallen Angel",
+      "placeholder": false,
       "place": [
-        -73.764,
-        40.759
+        -73.91629352004429,
+        40.686362490039905
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "DESIRE",
+      "knowing": "REMEMBERED",
+      "media": [
+        {
+          "type": "image",
+          "src": "media/E004/E004_001.webp",
+          "alt": "A crying-eye tattoo above a person's ankle."
+        }
+      ],
+      "time_detail": "May 2023"
+    },
+    {
+      "id": "E005",
+      "title": "Once on This Island",
+      "placeholder": false,
+      "place": [
+        -73.98508135848202,
+        40.76161705478796
       ],
       "time": "DISTANT_PAST",
+      "feeling": "GRIEF",
+      "knowing": "IMAGINED",
+      "media": [
+        {
+          "type": "image",
+          "src": "media/E005/E005_001.webp",
+          "alt": "Colorful clothing hanging from a sidewalk display behind a metal fence."
+        },
+        {
+          "type": "text",
+          "text": "she died with both hands grasping the gate\nloves unrequited beyond\nwithin herself\nafter hours, days\ni hoped she would dust herself off\nturn around\nbegin love anew\nshe became a tree instead"
+        }
+      ],
+      "time_detail": "Mid 1800s"
+    },
+    {
+      "id": "E006",
+      "title": "Silver Screen",
+      "placeholder": false,
+      "place": [
+        -73.9831149218619,
+        40.69115320561556
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "FEAR",
+      "knowing": "WITNESSED",
+      "media": [
+        {
+          "type": "image",
+          "src": "media/E006/E006_001.webp",
+          "alt": "A blurred film image of two figures surrounded by bright light."
+        }
+      ],
+      "time_detail": "OCTOBER 2022"
+    },
+    {
+      "id": "E007",
+      "title": "Prank",
+      "placeholder": false,
+      "place": [
+        -73.97843403151761,
+        40.75865200857649
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "JOY",
+      "knowing": "REMEMBERED",
+      "media": [
+        {
+          "type": "video",
+          "src": "media/E007/E007_001.webm"
+        }
+      ],
+      "time_detail": "December 2018"
+    },
+    {
+      "id": "E008",
+      "title": "Summer Alone",
+      "placeholder": false,
+      "place": [
+        -73.97801913852027,
+        40.573267283089734
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "WONDER",
+      "knowing": "WITNESSED",
+      "media": [
+        {
+          "type": "video",
+          "src": "media/E008/E008_001.webm"
+        }
+      ],
+      "time_detail": "July 2022"
+    },
+    {
+      "id": "E009",
+      "title": "Before I Heard the Echos",
+      "placeholder": false,
+      "place": [
+        -73.91407843990517,
+        40.71564391497664
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "WONDER",
+      "knowing": "IMAGINED",
+      "media": [
+        {
+          "type": "image",
+          "src": "media/E009/E009_001.webp",
+          "alt": "A person moving through a narrow hallway illuminated by red lights."
+        },
+        {
+          "type": "text",
+          "text": "wata igarashi"
+        }
+      ],
+      "time_detail": "July 2022"
+    },
+    {
+      "id": "E010",
+      "title": "I Thought This Would Be The End of Everything",
+      "placeholder": false,
+      "place": [
+        -73.96204431792508,
+        40.68290545053948
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "FEAR",
+      "knowing": "IMAGINED",
+      "media": [
+        {
+          "type": "video",
+          "src": "media/E010/E010_001.webm"
+        }
+      ],
+      "time_detail": "July 2025"
+    },
+    {
+      "id": "E011",
+      "title": "Lying in Wait",
+      "placeholder": false,
+      "place": [
+        -73.94962003007824,
+        40.67825168968213
+      ],
+      "time": "RECENT_PAST",
+      "feeling": "WONDER",
+      "knowing": "WITNESSED",
+      "media": [
+        {
+          "type": "image",
+          "src": "media/E011/E011_001.webp",
+          "alt": "A street drain surrounded by scattered red berries and debris."
+        }
+      ],
+      "time_detail": "July 2022"
+    },
+    {
+      "id": "E012",
+      "title": "5:30 AM",
+      "placeholder": false,
+      "place": [
+        -73.93310704439499,
+        40.697155959801144
+      ],
+      "time": "RECENT_PAST",
       "feeling": "NOSTALGIA",
       "knowing": "REMEMBERED",
       "media": [
         {
-          "type": "text",
-          "text": "Here is placeholder text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
-        }
-      ]
-    },
-    {
-      "id": "E005",
-      "title": "Encounter #5",
-      "placeholder": true,
-      "place": [
-        -73.918,
-        41.081
-      ],
-      "time": "INDETERMINATE",
-      "feeling": "FEAR",
-      "knowing": "UNRESOLVED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
-        }
-      ]
-    },
-    {
-      "id": "E006",
-      "title": "Encounter #6",
-      "placeholder": true,
-      "place": [
-        -74.164,
-        40.738
-      ],
-      "time": "RECENT_PAST",
-      "feeling": "GRIEF",
-      "knowing": "INHERITED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Curabitur pretium tincidunt lacus, nulla gravida orci a odio."
-        },
-        {
           "type": "image",
-          "src": "media/placeholders/placeholder-image.webp",
-          "caption": "Placeholder image",
-          "alt": "A thin horizontal line crossing a pale field."
+          "src": "media/E012/E012_001.webp",
+          "alt": "A quiet city intersection at dawn beneath elevated train tracks."
         }
-      ]
-    },
-    {
-      "id": "E007",
-      "title": "Encounter #7",
-      "placeholder": true,
-      "place": [
-        -73.842,
-        40.682
       ],
-      "time": "PRESENT",
-      "feeling": "JOY",
-      "knowing": "WITNESSED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Integer in mauris eu nibh euismod gravida."
-        },
-        {
-          "type": "audio",
-          "src": "media/placeholders/placeholder-audio.mp3",
-          "caption": "Placeholder audio"
-        }
-      ]
-    },
-    {
-      "id": "E008",
-      "title": "Encounter #8",
-      "placeholder": true,
-      "place": [
-        -73.954,
-        40.821
-      ],
-      "time": "DISTANT_FUTURE",
-      "feeling": "FEAR",
-      "knowing": "IMAGINED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue."
-        },
-        {
-          "type": "video",
-          "src": "media/placeholders/placeholder-video.mp4",
-          "caption": "Placeholder video"
-        }
-      ]
-    },
-    {
-      "id": "E009",
-      "title": "Encounter #9",
-      "placeholder": true,
-      "place": [
-        -73.886,
-        40.641
-      ],
-      "time": "RECENT_PAST",
-      "feeling": "GRIEF",
-      "knowing": "DOCUMENTED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Aliquam erat volutpat, nam dui mi, tincidunt quis, accumsan porttitor."
-        }
-      ]
-    },
-    {
-      "id": "E010",
-      "title": "Encounter #10",
-      "placeholder": true,
-      "place": [
-        -74.052,
-        41.142
-      ],
-      "time": "DISTANT_PAST",
-      "feeling": "JOY",
-      "knowing": "DREAMED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Phasellus ultrices nulla quis nibh, quisque a lectus."
-        }
-      ]
-    },
-    {
-      "id": "E011",
-      "title": "Encounter #11",
-      "placeholder": true,
-      "place": [
-        -73.708,
-        41.048
-      ],
-      "time": "PRESENT",
-      "feeling": "NOSTALGIA",
-      "knowing": "DOCUMENTED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Donec consectetuer ligula vulputate sem tristique cursus."
-        }
-      ]
-    },
-    {
-      "id": "E012",
-      "title": "Encounter #12",
-      "placeholder": true,
-      "place": [
-        -74.218,
-        40.872
-      ],
-      "time": "INDETERMINATE",
-      "feeling": "FEAR",
-      "knowing": "WITNESSED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi."
-        }
-      ]
+      "time_detail": "AUGUST 2022"
     },
     {
       "id": "E013",
-      "title": "Encounter #13",
-      "placeholder": true,
+      "title": "Portal",
+      "placeholder": false,
       "place": [
-        -73.612,
-        40.846
+        -73.90655448633295,
+        40.680513041807124
       ],
-      "time": "NEAR_FUTURE",
-      "feeling": "DESIRE",
-      "knowing": "IMAGINED",
+      "time": "RECENT_PAST",
+      "feeling": "WONDER",
+      "knowing": "REMEMBERED",
       "media": [
         {
-          "type": "text",
-          "text": "Here is placeholder text. Pellentesque fermentum dolor, aliquam quam lectus, facilisis auctor."
+          "type": "image",
+          "src": "media/E013/E013_001.webp",
+          "alt": "Cloudy liquid swirling inside a dark round vessel."
         }
-      ]
+      ],
+      "time_detail": "November 2022"
     },
     {
       "id": "E014",
-      "title": "Encounter #14",
-      "placeholder": true,
+      "title": "That Evening I Uncrossed My Arms",
+      "placeholder": false,
       "place": [
-        -74.104,
-        40.998
+        -73.97955420681295,
+        40.763756652088645
       ],
       "time": "RECENT_PAST",
-      "feeling": "GRIEF",
-      "knowing": "DOCUMENTED",
+      "feeling": "WONDER",
+      "knowing": "REMEMBERED",
       "media": [
         {
-          "type": "text",
-          "text": "Here is placeholder text. Morbi in sem quis dui placerat ornare, pellentesque odio nisi."
+          "type": "image",
+          "src": "media/E014/E014_001.webp",
+          "alt": "Two pairs of arms and hands arranged against an ochre background."
         }
-      ]
-    },
-    {
-      "id": "E015",
-      "title": "Encounter #15",
-      "placeholder": true,
-      "place": [
-        -73.746,
-        40.762
       ],
-      "time": "ATEMPORAL",
-      "feeling": "ANGER",
-      "knowing": "IMAGINED",
-      "media": [
-        {
-          "type": "text",
-          "text": "Here is placeholder text. Maecenas mattis, tortor neque egestas augue, eu vulputate magna eros eu erat."
-        }
-      ]
+      "time_detail": "December 2022"
     }
   ]
 }
