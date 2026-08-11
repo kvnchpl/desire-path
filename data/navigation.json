@@ -312,144 +312,154 @@
       }
     },
     "time": {
-      "threshold": 0.181818,
+      "threshold": 0.3,
       "neighborhoods": {
         "E001": [
           {
-            "id": "E003",
-            "distance": 0.090909,
-            "bridge": false
+            "id": "E005",
+            "distance": 1.0,
+            "bridge": true
           },
           {
-            "id": "E005",
-            "distance": 0.090909,
+            "id": "E003",
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.181818,
+            "distance": 0.2,
+            "bridge": false
+          },
+          {
+            "id": "E008",
+            "distance": 0.3,
             "bridge": false
           }
         ],
         "E002": [
           {
             "id": "E004",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E010",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.181818,
+            "distance": 0.2,
+            "bridge": false
+          },
+          {
+            "id": "E013",
+            "distance": 0.3,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E001",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.090909,
-            "bridge": false
-          },
-          {
-            "id": "E005",
-            "distance": 0.181818,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.181818,
+            "distance": 0.2,
+            "bridge": false
+          },
+          {
+            "id": "E009",
+            "distance": 0.2,
             "bridge": false
           }
         ],
         "E004": [
           {
             "id": "E002",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E010",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           }
         ],
         "E005": [
           {
             "id": "E001",
-            "distance": 0.090909,
+            "distance": 1.0,
+            "bridge": true
+          },
+          {
+            "id": "E002",
+            "distance": 1.0,
             "bridge": false
           },
           {
             "id": "E003",
-            "distance": 0.181818,
-            "bridge": false
-          },
-          {
-            "id": "E007",
-            "distance": 0.272727,
+            "distance": 1.0,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E012",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           }
         ],
         "E007": [
           {
             "id": "E003",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           }
         ],
@@ -466,12 +476,12 @@
           },
           {
             "id": "E007",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           }
         ],
@@ -488,29 +498,29 @@
           },
           {
             "id": "E007",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           }
         ],
         "E010": [
           {
             "id": "E002",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.272727,
+            "distance": 0.3,
             "bridge": false
           }
         ],
@@ -527,232 +537,227 @@
           },
           {
             "id": "E007",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E006",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E006",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           }
         ],
         "E014": [
           {
             "id": "E004",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           }
         ]
       }
     },
     "place+time": {
-      "threshold": 0.275795,
+      "threshold": 0.296452,
       "neighborhoods": {
         "E001": [
           {
             "id": "E003",
-            "distance": 0.122398,
-            "bridge": false
-          },
-          {
-            "id": "E005",
-            "distance": 0.125863,
+            "distance": 0.126944,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.156155,
+            "distance": 0.165246,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.24826,
+            "distance": 0.261897,
             "bridge": false
           }
         ],
         "E002": [
           {
             "id": "E004",
-            "distance": 0.112297,
+            "distance": 0.116843,
             "bridge": false
           },
           {
             "id": "E010",
-            "distance": 0.1585,
+            "distance": 0.163045,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.22233,
+            "distance": 0.235967,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.272029,
+            "distance": 0.28112,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E007",
-            "distance": 0.078217,
+            "distance": 0.082763,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.122398,
-            "bridge": false
-          },
-          {
-            "id": "E005",
-            "distance": 0.127485,
+            "distance": 0.126944,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.257545,
+            "distance": 0.266636,
+            "bridge": false
+          },
+          {
+            "id": "E011",
+            "distance": 0.296452,
             "bridge": false
           }
         ],
         "E004": [
           {
             "id": "E002",
-            "distance": 0.112297,
+            "distance": 0.116843,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.115638,
+            "distance": 0.124729,
             "bridge": false
           },
           {
             "id": "E010",
-            "distance": 0.182422,
+            "distance": 0.191513,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.225662,
+            "distance": 0.243844,
             "bridge": false
           }
         ],
         "E005": [
           {
-            "id": "E001",
-            "distance": 0.125863,
+            "id": "E014",
+            "distance": 0.51234,
+            "bridge": true
+          },
+          {
+            "id": "E007",
+            "distance": 0.515337,
             "bridge": false
           },
           {
             "id": "E003",
-            "distance": 0.127485,
-            "bridge": false
-          },
-          {
-            "id": "E007",
-            "distance": 0.1517,
+            "distance": 0.536575,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E012",
-            "distance": 0.146215,
+            "distance": 0.150761,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.165684,
+            "distance": 0.174775,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.200375,
+            "distance": 0.20492,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.242576,
+            "distance": 0.251667,
             "bridge": false
           }
         ],
         "E007": [
           {
             "id": "E003",
-            "distance": 0.078217,
-            "bridge": false
-          },
-          {
-            "id": "E005",
-            "distance": 0.1517,
+            "distance": 0.082763,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.156155,
+            "distance": 0.165246,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.216116,
+            "distance": 0.220661,
+            "bridge": false
+          },
+          {
+            "id": "E014",
+            "distance": 0.263582,
             "bridge": false
           }
         ],
@@ -760,11 +765,11 @@
           {
             "id": "E011",
             "distance": 0.281307,
-            "bridge": true
+            "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.382715,
+            "distance": 0.38726,
             "bridge": false
           },
           {
@@ -776,7 +781,7 @@
         "E009": [
           {
             "id": "E012",
-            "distance": 0.107004,
+            "distance": 0.111549,
             "bridge": false
           },
           {
@@ -786,41 +791,36 @@
           },
           {
             "id": "E007",
-            "distance": 0.216116,
+            "distance": 0.220661,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.229781,
+            "distance": 0.243418,
             "bridge": false
           }
         ],
         "E010": [
           {
             "id": "E002",
-            "distance": 0.1585,
+            "distance": 0.163045,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.182422,
+            "distance": 0.191513,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.274467,
+            "distance": 0.297195,
             "bridge": false
           }
         ],
         "E011": [
           {
-            "id": "E008",
-            "distance": 0.281307,
-            "bridge": true
-          },
-          {
             "id": "E012",
-            "distance": 0.104971,
+            "distance": 0.109517,
             "bridge": false
           },
           {
@@ -830,68 +830,78 @@
           },
           {
             "id": "E006",
-            "distance": 0.165684,
+            "distance": 0.174775,
+            "bridge": false
+          },
+          {
+            "id": "E013",
+            "distance": 0.235929,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E011",
-            "distance": 0.104971,
+            "distance": 0.109517,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.107004,
+            "distance": 0.111549,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.146215,
+            "distance": 0.150761,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.159473,
+            "distance": 0.168564,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E004",
-            "distance": 0.115638,
+            "distance": 0.124729,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.159473,
+            "distance": 0.168564,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.200375,
+            "distance": 0.20492,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.222293,
+            "distance": 0.235929,
             "bridge": false
           }
         ],
         "E014": [
           {
+            "id": "E005",
+            "distance": 0.51234,
+            "bridge": true
+          },
+          {
             "id": "E007",
-            "distance": 0.240855,
+            "distance": 0.263582,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.272029,
+            "distance": 0.28112,
             "bridge": false
           },
           {
-            "id": "E006",
-            "distance": 0.281608,
+            "id": "E004",
+            "distance": 0.288959,
             "bridge": false
           }
         ]
@@ -1484,139 +1494,139 @@
       }
     },
     "time+feeling": {
-      "threshold": 0.272728,
+      "threshold": 0.3,
       "neighborhoods": {
         "E001": [
           {
-            "id": "E005",
-            "distance": 0.420455,
-            "bridge": true
-          },
-          {
             "id": "E003",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.136363,
+            "distance": 0.15,
+            "bridge": false
+          },
+          {
+            "id": "E011",
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E002": [
           {
+            "id": "E005",
+            "distance": 0.675,
+            "bridge": true
+          },
+          {
             "id": "E010",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.181818,
-            "bridge": false
-          },
-          {
-            "id": "E004",
-            "distance": 0.470454,
+            "distance": 0.2,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E007",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.165909,
+            "distance": 0.175,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.165909,
+            "distance": 0.175,
             "bridge": false
           }
         ],
         "E004": [
           {
             "id": "E014",
-            "distance": 0.220454,
+            "distance": 0.225,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.265909,
+            "distance": 0.275,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.402272,
+            "distance": 0.425,
             "bridge": false
           }
         ],
         "E005": [
           {
-            "id": "E001",
-            "distance": 0.420455,
+            "id": "E002",
+            "distance": 0.675,
             "bridge": true
           },
           {
             "id": "E006",
-            "distance": 0.447728,
+            "distance": 0.675,
             "bridge": false
           },
           {
-            "id": "E012",
-            "distance": 0.452272,
+            "id": "E010",
+            "distance": 0.675,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E012",
-            "distance": 0.345454,
+            "distance": 0.35,
             "bridge": true
           },
           {
             "id": "E002",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E010",
-            "distance": 0.227272,
+            "distance": 0.25,
             "bridge": false
           }
         ],
         "E007": [
           {
             "id": "E003",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           }
         ],
@@ -1633,12 +1643,12 @@
           },
           {
             "id": "E007",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           }
         ],
@@ -1655,29 +1665,29 @@
           },
           {
             "id": "E007",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E010": [
           {
             "id": "E002",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.227272,
+            "distance": 0.25,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.515909,
+            "distance": 0.525,
             "bridge": false
           }
         ],
@@ -1694,217 +1704,217 @@
           },
           {
             "id": "E007",
-            "distance": 0.120454,
+            "distance": 0.125,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E006",
-            "distance": 0.345454,
+            "distance": 0.35,
             "bridge": true
           },
           {
             "id": "E008",
-            "distance": 0.270454,
+            "distance": 0.275,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.270454,
+            "distance": 0.275,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.270454,
+            "distance": 0.275,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E014",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E014": [
           {
             "id": "E013",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           }
         ]
       }
     },
     "place+time+feeling": {
-      "threshold": 0.314786,
+      "threshold": 0.332968,
       "neighborhoods": {
         "E001": [
           {
-            "id": "E005",
-            "distance": 0.333909,
-            "bridge": true
-          },
-          {
             "id": "E003",
-            "distance": 0.131599,
+            "distance": 0.134629,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.154103,
+            "distance": 0.160164,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.165507,
+            "distance": 0.174598,
+            "bridge": false
+          },
+          {
+            "id": "E011",
+            "distance": 0.225185,
             "bridge": false
           }
         ],
         "E002": [
           {
+            "id": "E005",
+            "distance": 0.572991,
+            "bridge": true
+          },
+          {
             "id": "E010",
-            "distance": 0.105666,
+            "distance": 0.108697,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.212583,
-            "bridge": false
-          },
-          {
-            "id": "E004",
-            "distance": 0.358198,
+            "distance": 0.224704,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E007",
-            "distance": 0.052145,
+            "distance": 0.055175,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.131599,
+            "distance": 0.134629,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.221697,
+            "distance": 0.227757,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.241574,
+            "distance": 0.247635,
             "bridge": false
           }
         ],
         "E004": [
           {
             "id": "E013",
-            "distance": 0.193758,
+            "distance": 0.199819,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.306276,
+            "distance": 0.309306,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.314627,
+            "distance": 0.329778,
             "bridge": false
           }
         ],
         "E005": [
           {
-            "id": "E001",
-            "distance": 0.333909,
+            "id": "E002",
+            "distance": 0.572991,
             "bridge": true
           },
           {
-            "id": "E003",
-            "distance": 0.401656,
+            "id": "E006",
+            "distance": 0.573328,
             "bridge": false
           },
           {
-            "id": "E007",
-            "distance": 0.4178,
+            "id": "E010",
+            "distance": 0.591081,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E010",
-            "distance": 0.182978,
+            "distance": 0.19813,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.212583,
+            "distance": 0.224704,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.297477,
+            "distance": 0.300507,
             "bridge": false
           }
         ],
         "E007": [
           {
             "id": "E003",
-            "distance": 0.052145,
+            "distance": 0.055175,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.154103,
+            "distance": 0.160164,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.194077,
+            "distance": 0.197107,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.21057,
+            "distance": 0.225722,
             "bridge": false
           }
         ],
@@ -1921,7 +1931,7 @@
           },
           {
             "id": "E013",
-            "distance": 0.301208,
+            "distance": 0.310299,
             "bridge": false
           }
         ],
@@ -1933,34 +1943,34 @@
           },
           {
             "id": "E013",
-            "distance": 0.153188,
+            "distance": 0.162279,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.165507,
+            "distance": 0.174598,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.194077,
+            "distance": 0.197107,
             "bridge": false
           }
         ],
         "E010": [
           {
             "id": "E002",
-            "distance": 0.105666,
+            "distance": 0.108697,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.182978,
+            "distance": 0.19813,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.404948,
+            "distance": 0.411009,
             "bridge": false
           }
         ],
@@ -1972,7 +1982,7 @@
           },
           {
             "id": "E013",
-            "distance": 0.148195,
+            "distance": 0.157286,
             "bridge": false
           },
           {
@@ -1981,74 +1991,74 @@
             "bridge": false
           },
           {
-            "id": "E001",
-            "distance": 0.216094,
+            "id": "E012",
+            "distance": 0.223011,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E011",
-            "distance": 0.219981,
+            "distance": 0.223011,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.221336,
+            "distance": 0.224366,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.256315,
+            "distance": 0.262376,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.297477,
+            "distance": 0.300507,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E011",
-            "distance": 0.148195,
+            "distance": 0.157286,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.153188,
+            "distance": 0.162279,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.193758,
+            "distance": 0.199819,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.205203,
+            "distance": 0.208234,
             "bridge": false
           }
         ],
         "E014": [
           {
             "id": "E013",
-            "distance": 0.205203,
+            "distance": 0.208234,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.21057,
+            "distance": 0.225722,
             "bridge": false
           },
           {
             "id": "E009",
-            "distance": 0.242141,
+            "distance": 0.254262,
             "bridge": false
           },
           {
-            "id": "E001",
-            "distance": 0.260824,
+            "id": "E003",
+            "distance": 0.279489,
             "bridge": false
           }
         ]
@@ -2646,154 +2656,154 @@
       }
     },
     "time+knowing": {
-      "threshold": 0.236364,
+      "threshold": 0.25,
       "neighborhoods": {
         "E001": [
           {
-            "id": "E005",
-            "distance": 0.320455,
-            "bridge": true
-          },
-          {
             "id": "E003",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.181818,
+            "distance": 0.2,
+            "bridge": false
+          },
+          {
+            "id": "E008",
+            "distance": 0.25,
             "bridge": false
           }
         ],
         "E002": [
           {
             "id": "E004",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.190909,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.236364,
+            "distance": 0.25,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E001",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.190909,
+            "distance": 0.2,
             "bridge": false
           }
         ],
         "E004": [
           {
             "id": "E014",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.181818,
+            "distance": 0.2,
             "bridge": false
           }
         ],
         "E005": [
           {
-            "id": "E001",
-            "distance": 0.320455,
+            "id": "E009",
+            "distance": 0.5,
             "bridge": true
           },
           {
-            "id": "E009",
-            "distance": 0.181818,
+            "id": "E010",
+            "distance": 0.5,
             "bridge": false
           },
           {
-            "id": "E003",
-            "distance": 0.365909,
+            "id": "E001",
+            "distance": 0.775,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E008",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E007": [
           {
+            "id": "E009",
+            "distance": 0.325,
+            "bridge": true
+          },
+          {
             "id": "E003",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.090909,
-            "bridge": false
-          },
-          {
-            "id": "E008",
-            "distance": 0.145455,
+            "distance": 0.1,
             "bridge": false
           }
         ],
@@ -2805,51 +2815,51 @@
           },
           {
             "id": "E006",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E009": [
           {
+            "id": "E007",
+            "distance": 0.325,
+            "bridge": true
+          },
+          {
             "id": "E010",
-            "distance": 0.318182,
+            "distance": 0.35,
             "bridge": true
           },
           {
             "id": "E005",
-            "distance": 0.181818,
-            "bridge": false
-          },
-          {
-            "id": "E007",
-            "distance": 0.320455,
-            "bridge": false
+            "distance": 0.5,
+            "bridge": true
           }
         ],
         "E010": [
           {
             "id": "E009",
-            "distance": 0.318182,
+            "distance": 0.35,
             "bridge": true
           },
           {
             "id": "E004",
-            "distance": 0.365909,
+            "distance": 0.375,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.411363,
+            "distance": 0.425,
             "bridge": false
           }
         ],
@@ -2861,232 +2871,232 @@
           },
           {
             "id": "E006",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E007",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E003",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E014",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.090909,
+            "distance": 0.1,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.145455,
+            "distance": 0.15,
             "bridge": false
           }
         ],
         "E014": [
           {
             "id": "E004",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.045455,
+            "distance": 0.05,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.136363,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.190909,
+            "distance": 0.2,
             "bridge": false
           }
         ]
       }
     },
     "place+time+knowing": {
-      "threshold": 0.258241,
+      "threshold": 0.27306,
       "neighborhoods": {
         "E001": [
           {
             "id": "E003",
-            "distance": 0.081599,
+            "distance": 0.084629,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.104103,
+            "distance": 0.110164,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.215328,
+            "distance": 0.227449,
             "bridge": false
           }
         ],
         "E002": [
           {
             "id": "E004",
-            "distance": 0.141531,
-            "bridge": false
-          },
-          {
-            "id": "E006",
-            "distance": 0.212583,
+            "distance": 0.144562,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.214887,
+            "distance": 0.223978,
+            "bridge": false
+          },
+          {
+            "id": "E006",
+            "distance": 0.224704,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.248019,
+            "distance": 0.25408,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E007",
-            "distance": 0.052145,
+            "distance": 0.055175,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.081599,
+            "distance": 0.084629,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.20413,
+            "distance": 0.213221,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.211307,
+            "distance": 0.229489,
             "bridge": false
           }
         ],
         "E004": [
           {
+            "id": "E010",
+            "distance": 0.311009,
+            "bridge": true
+          },
+          {
             "id": "E013",
-            "distance": 0.077092,
+            "distance": 0.083152,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.141531,
+            "distance": 0.144562,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.150441,
-            "bridge": false
-          },
-          {
-            "id": "E014",
-            "distance": 0.189609,
+            "distance": 0.162563,
             "bridge": false
           }
         ],
         "E005": [
           {
             "id": "E009",
-            "distance": 0.245041,
+            "distance": 0.457163,
+            "bridge": true
+          },
+          {
+            "id": "E010",
+            "distance": 0.474414,
             "bridge": false
           },
           {
-            "id": "E001",
-            "distance": 0.267242,
-            "bridge": false
-          },
-          {
-            "id": "E003",
-            "distance": 0.268323,
+            "id": "E014",
+            "distance": 0.524893,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E011",
-            "distance": 0.110456,
+            "distance": 0.116517,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.164143,
+            "distance": 0.167174,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.20025,
+            "distance": 0.20328,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.212583,
+            "distance": 0.224704,
             "bridge": false
           }
         ],
         "E007": [
           {
             "id": "E003",
-            "distance": 0.052145,
+            "distance": 0.055175,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.104103,
+            "distance": 0.110164,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.16057,
+            "distance": 0.175722,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.183863,
+            "distance": 0.189924,
             "bridge": false
           }
         ],
@@ -3098,58 +3108,58 @@
           },
           {
             "id": "E006",
-            "distance": 0.266999,
+            "distance": 0.27306,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.32181,
+            "distance": 0.32484,
             "bridge": false
           }
         ],
         "E009": [
           {
-            "id": "E010",
-            "distance": 0.297743,
+            "id": "E005",
+            "distance": 0.457163,
             "bridge": true
           },
           {
-            "id": "E005",
-            "distance": 0.245041,
+            "id": "E012",
+            "distance": 0.2577,
             "bridge": false
           },
           {
-            "id": "E012",
-            "distance": 0.254669,
+            "id": "E010",
+            "distance": 0.318955,
             "bridge": false
           }
         ],
         "E010": [
           {
-            "id": "E009",
-            "distance": 0.297743,
+            "id": "E004",
+            "distance": 0.311009,
             "bridge": true
           },
           {
-            "id": "E004",
-            "distance": 0.304948,
+            "id": "E009",
+            "distance": 0.318955,
             "bridge": false
           },
           {
             "id": "E002",
-            "distance": 0.372333,
+            "distance": 0.375363,
             "bridge": false
           }
         ],
         "E011": [
           {
             "id": "E006",
-            "distance": 0.110456,
+            "distance": 0.116517,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.136647,
+            "distance": 0.139678,
             "bridge": false
           },
           {
@@ -3159,73 +3169,73 @@
           },
           {
             "id": "E013",
-            "distance": 0.214862,
+            "distance": 0.223953,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E013",
-            "distance": 0.106315,
+            "distance": 0.112376,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.136647,
+            "distance": 0.139678,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.150441,
+            "distance": 0.162563,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.164143,
+            "distance": 0.167174,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E004",
-            "distance": 0.077092,
+            "distance": 0.083152,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.106315,
+            "distance": 0.112376,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.20025,
+            "distance": 0.20328,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.205203,
+            "distance": 0.208234,
             "bridge": false
           }
         ],
         "E014": [
           {
             "id": "E007",
-            "distance": 0.16057,
+            "distance": 0.175722,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.189609,
+            "distance": 0.192639,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.205203,
+            "distance": 0.208234,
             "bridge": false
           },
           {
             "id": "E003",
-            "distance": 0.211307,
+            "distance": 0.229489,
             "bridge": false
           }
         ]
@@ -3808,134 +3818,134 @@
         "E001": [
           {
             "id": "E003",
-            "distance": 0.080303,
+            "distance": 0.083333,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.110606,
+            "distance": 0.116667,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           }
         ],
         "E002": [
           {
             "id": "E010",
-            "distance": 0.29697,
+            "distance": 0.3,
             "bridge": true
           },
           {
             "id": "E006",
-            "distance": 0.121212,
+            "distance": 0.133333,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.380303,
+            "distance": 0.383333,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E007",
-            "distance": 0.030303,
+            "distance": 0.033333,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.080303,
+            "distance": 0.083333,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.177273,
+            "distance": 0.183333,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.177273,
+            "distance": 0.183333,
             "bridge": false
           }
         ],
         "E004": [
           {
             "id": "E014",
-            "distance": 0.14697,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.177273,
+            "distance": 0.183333,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.304545,
+            "distance": 0.316667,
             "bridge": false
           }
         ],
         "E005": [
           {
-            "id": "E009",
-            "distance": 0.371212,
+            "id": "E010",
+            "distance": 0.45,
             "bridge": true
           },
           {
-            "id": "E010",
-            "distance": 0.45,
+            "id": "E009",
+            "distance": 0.583333,
             "bridge": false
           },
           {
-            "id": "E001",
-            "distance": 0.463636,
+            "id": "E012",
+            "distance": 0.666667,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E012",
-            "distance": 0.29697,
+            "distance": 0.3,
             "bridge": true
           },
           {
             "id": "E002",
-            "distance": 0.121212,
+            "distance": 0.133333,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.327273,
+            "distance": 0.333333,
             "bridge": false
           }
         ],
         "E007": [
           {
             "id": "E003",
-            "distance": 0.030303,
+            "distance": 0.033333,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.110606,
+            "distance": 0.116667,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.14697,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.14697,
+            "distance": 0.15,
             "bridge": false
           }
         ],
@@ -3947,29 +3957,24 @@
           },
           {
             "id": "E007",
-            "distance": 0.14697,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           }
         ],
         "E009": [
           {
-            "id": "E005",
-            "distance": 0.371212,
-            "bridge": true
-          },
-          {
             "id": "E007",
-            "distance": 0.263636,
+            "distance": 0.266667,
             "bridge": false
           },
           {
@@ -3986,17 +3991,17 @@
         "E010": [
           {
             "id": "E002",
-            "distance": 0.29697,
+            "distance": 0.3,
             "bridge": true
-          },
-          {
-            "id": "E006",
-            "distance": 0.418182,
-            "bridge": false
           },
           {
             "id": "E005",
             "distance": 0.45,
+            "bridge": true
+          },
+          {
+            "id": "E006",
+            "distance": 0.433333,
             "bridge": false
           }
         ],
@@ -4008,222 +4013,222 @@
           },
           {
             "id": "E007",
-            "distance": 0.14697,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E006",
-            "distance": 0.29697,
+            "distance": 0.3,
             "bridge": true
           },
           {
             "id": "E007",
-            "distance": 0.210606,
+            "distance": 0.216667,
             "bridge": false
           },
           {
             "id": "E013",
-            "distance": 0.210606,
+            "distance": 0.216667,
             "bridge": false
           },
           {
             "id": "E003",
-            "distance": 0.240909,
+            "distance": 0.25,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E014",
-            "distance": 0.030303,
+            "distance": 0.033333,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.157576,
+            "distance": 0.166667,
             "bridge": false
           },
           {
-            "id": "E007",
-            "distance": 0.171212,
+            "id": "E004",
+            "distance": 0.183333,
             "bridge": false
           }
         ],
         "E014": [
           {
             "id": "E013",
-            "distance": 0.030303,
+            "distance": 0.033333,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.14697,
+            "distance": 0.15,
             "bridge": false
           },
           {
             "id": "E008",
-            "distance": 0.187879,
+            "distance": 0.2,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.187879,
+            "distance": 0.2,
             "bridge": false
           }
         ]
       }
     },
     "place+time+feeling+knowing": {
-      "threshold": 0.279543,
+      "threshold": 0.285331,
       "neighborhoods": {
         "E001": [
           {
             "id": "E003",
-            "distance": 0.098699,
+            "distance": 0.100972,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.115577,
+            "distance": 0.120123,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.195618,
+            "distance": 0.211527,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.212071,
+            "distance": 0.218889,
             "bridge": false
           }
         ],
         "E002": [
           {
             "id": "E006",
-            "distance": 0.159437,
+            "distance": 0.168528,
             "bridge": false
           },
           {
             "id": "E010",
-            "distance": 0.27925,
+            "distance": 0.281523,
             "bridge": false
           },
           {
             "id": "E004",
-            "distance": 0.318649,
+            "distance": 0.320921,
             "bridge": false
           }
         ],
         "E003": [
           {
             "id": "E007",
-            "distance": 0.039109,
+            "distance": 0.041382,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.098699,
+            "distance": 0.100972,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.195981,
+            "distance": 0.209617,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.231181,
+            "distance": 0.235726,
             "bridge": false
           }
         ],
         "E004": [
           {
             "id": "E013",
-            "distance": 0.145319,
+            "distance": 0.149864,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.229707,
+            "distance": 0.23198,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.250331,
+            "distance": 0.259422,
             "bridge": false
           }
         ],
         "E005": [
           {
-            "id": "E009",
-            "distance": 0.371281,
+            "id": "E010",
+            "distance": 0.443311,
             "bridge": true
           },
           {
-            "id": "E001",
-            "distance": 0.387932,
+            "id": "E009",
+            "distance": 0.530372,
             "bridge": false
           },
           {
-            "id": "E003",
-            "distance": 0.438742,
+            "id": "E014",
+            "distance": 0.58117,
             "bridge": false
           }
         ],
         "E006": [
           {
             "id": "E002",
-            "distance": 0.159437,
+            "distance": 0.168528,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.273108,
+            "distance": 0.27538,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.282842,
+            "distance": 0.287388,
             "bridge": false
           }
         ],
         "E007": [
           {
             "id": "E003",
-            "distance": 0.039109,
+            "distance": 0.041382,
             "bridge": false
           },
           {
             "id": "E001",
-            "distance": 0.115577,
+            "distance": 0.120123,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.157927,
+            "distance": 0.169291,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.219567,
+            "distance": 0.22184,
             "bridge": false
           }
         ],
@@ -4235,24 +4240,19 @@
           },
           {
             "id": "E013",
-            "distance": 0.275906,
+            "distance": 0.282724,
             "bridge": false
           },
           {
-            "id": "E001",
-            "distance": 0.35178,
+            "id": "E007",
+            "distance": 0.355797,
             "bridge": false
           }
         ],
         "E009": [
           {
-            "id": "E005",
-            "distance": 0.371281,
-            "bridge": true
-          },
-          {
             "id": "E013",
-            "distance": 0.252391,
+            "distance": 0.259209,
             "bridge": false
           },
           {
@@ -4262,24 +4262,29 @@
           },
           {
             "id": "E001",
-            "distance": 0.26163,
+            "distance": 0.268448,
+            "bridge": false
+          },
+          {
+            "id": "E007",
+            "distance": 0.285331,
             "bridge": false
           }
         ],
         "E010": [
           {
+            "id": "E005",
+            "distance": 0.443311,
+            "bridge": true
+          },
+          {
             "id": "E002",
-            "distance": 0.27925,
+            "distance": 0.281523,
             "bridge": false
           },
           {
             "id": "E006",
-            "distance": 0.337234,
-            "bridge": false
-          },
-          {
-            "id": "E009",
-            "distance": 0.423307,
+            "distance": 0.348598,
             "bridge": false
           }
         ],
@@ -4291,83 +4296,83 @@
           },
           {
             "id": "E013",
-            "distance": 0.161146,
-            "bridge": false
-          },
-          {
-            "id": "E001",
-            "distance": 0.212071,
+            "distance": 0.167965,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.214985,
+            "distance": 0.217258,
+            "bridge": false
+          },
+          {
+            "id": "E001",
+            "distance": 0.218889,
             "bridge": false
           }
         ],
         "E012": [
           {
             "id": "E013",
-            "distance": 0.192237,
+            "distance": 0.196782,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.214985,
-            "bridge": false
-          },
-          {
-            "id": "E004",
-            "distance": 0.250331,
+            "distance": 0.217258,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.250397,
+            "distance": 0.254943,
+            "bridge": false
+          },
+          {
+            "id": "E004",
+            "distance": 0.259422,
             "bridge": false
           }
         ],
         "E013": [
           {
             "id": "E004",
-            "distance": 0.145319,
+            "distance": 0.149864,
             "bridge": false
           },
           {
             "id": "E014",
-            "distance": 0.153902,
+            "distance": 0.156175,
             "bridge": false
           },
           {
             "id": "E011",
-            "distance": 0.161146,
+            "distance": 0.167965,
             "bridge": false
           },
           {
             "id": "E012",
-            "distance": 0.192237,
+            "distance": 0.196782,
             "bridge": false
           }
         ],
         "E014": [
           {
             "id": "E013",
-            "distance": 0.153902,
+            "distance": 0.156175,
             "bridge": false
           },
           {
             "id": "E007",
-            "distance": 0.157927,
-            "bridge": false
-          },
-          {
-            "id": "E001",
-            "distance": 0.195618,
+            "distance": 0.169291,
             "bridge": false
           },
           {
             "id": "E003",
-            "distance": 0.195981,
+            "distance": 0.209617,
+            "bridge": false
+          },
+          {
+            "id": "E001",
+            "distance": 0.211527,
             "bridge": false
           }
         ]
@@ -4412,8 +4417,7 @@
       "a_to_b": true,
       "b_to_a": true,
       "near": [
-        "place",
-        "time"
+        "place"
       ]
     },
     {
@@ -4443,6 +4447,7 @@
       "a_to_b": true,
       "b_to_a": true,
       "near": [
+        "time",
         "feeling",
         "knowing"
       ]
@@ -4454,6 +4459,7 @@
       "b_to_a": true,
       "near": [
         "place",
+        "time",
         "feeling"
       ]
     },
@@ -4470,6 +4476,7 @@
       "a_to_b": true,
       "b_to_a": true,
       "near": [
+        "time",
         "feeling",
         "knowing"
       ]
@@ -4589,6 +4596,7 @@
       "b_to_a": true,
       "near": [
         "place",
+        "time",
         "knowing"
       ]
     },
@@ -4617,8 +4625,7 @@
       "a_to_b": true,
       "b_to_a": true,
       "near": [
-        "place",
-        "time"
+        "place"
       ]
     },
     {
@@ -4671,6 +4678,7 @@
       "a_to_b": true,
       "b_to_a": true,
       "near": [
+        "time",
         "knowing"
       ]
     },
@@ -4701,6 +4709,7 @@
       "a_to_b": false,
       "b_to_a": true,
       "near": [
+        "time",
         "knowing"
       ]
     },
@@ -5018,6 +5027,7 @@
       "a_to_b": true,
       "b_to_a": true,
       "near": [
+        "time",
         "feeling",
         "knowing"
       ]
@@ -5068,6 +5078,7 @@
       "b_to_a": true,
       "near": [
         "place",
+        "time",
         "feeling"
       ]
     },
@@ -5103,7 +5114,9 @@
       "b": "E014",
       "a_to_b": true,
       "b_to_a": false,
-      "near": []
+      "near": [
+        "time"
+      ]
     },
     {
       "a": "E011",
@@ -5123,6 +5136,7 @@
       "b_to_a": true,
       "near": [
         "place",
+        "time",
         "feeling",
         "knowing"
       ]
@@ -5154,6 +5168,7 @@
       "a_to_b": true,
       "b_to_a": true,
       "near": [
+        "time",
         "knowing"
       ]
     },
