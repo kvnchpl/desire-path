@@ -1,27 +1,15 @@
-id,title,latitude,longitude,time,feeling,knowing,text,media
-E001,NOW,40.74977880092658,-73.94778112451282,2015-07,WONDER,REMEMBERED,"i had no idea what i was getting into
-the enticing cover of night
-no photos
-joys, sorrows fresh
-off the bus
-the ship
-my jailbreak, my destiny
-now
-control is a fickle thing
-while running away
-suitcase in hand determined towards the sun",
-E002,Comedown,40.71169024194265,-73.91978921725324,2023-07,FEAR,WITNESSED,"walking back from basement, stunned
-a giant bird on the sidewalk
-shot dead on a quiet morning",
-E003,Pocha,40.747717174083554,-73.98638042188962,2018-09,JOY,REMEMBERED,,"[{""type"":""image"",""src"":""media/E003/E003_001.webp"",""alt"":""A drink served inside a hollowed pineapple on a restaurant table.""},{""type"":""audio"",""src"":""media/E003/E003_002.webm""}]"
-E004,The Fallen Angel,40.686362490039905,-73.91629352004429,2023-05,DESIRE,REMEMBERED,,"[{""type"":""image"",""src"":""media/E004/E004_001.webp"",""alt"":""A crying-eye tattoo above a person's ankle.""}]"
-E005,Once on This Island,40.76161705478796,-73.98508135848202,INDETERMINATE,GRIEF,IMAGINED,,"[{""type"":""image"",""src"":""media/E005/E005_001.webp"",""alt"":""Colorful clothing hanging from a sidewalk display behind a metal fence.""},{""type"":""text"",""text"":""she died with both hands grasping the gate\nloves unrequited beyond\nwithin herself\nafter hours, days\ni hoped she would dust herself off\nturn around\nbegin love anew\nshe became a tree instead""}]"
-E006,Silver Screen,40.69115320561556,-73.9831149218619,2022-10,FEAR,WITNESSED,,"[{""type"":""image"",""src"":""media/E006/E006_001.webp"",""alt"":""A blurred film image of two figures surrounded by bright light.""}]"
-E007,Prank,40.75865200857649,-73.97843403151761,2018-12,JOY,REMEMBERED,,"[{""type"":""video"",""src"":""media/E007/E007_001.webm""}]"
-E008,Summer Alone,40.573267283089734,-73.97801913852027,2022-07,WONDER,WITNESSED,,"[{""type"":""video"",""src"":""media/E008/E008_001.webm""}]"
-E009,Before I Heard the Echos,40.71564391497664,-73.91407843990517,2022-07,WONDER,IMAGINED,,"[{""type"":""image"",""src"":""media/E009/E009_001.webp"",""alt"":""A person moving through a narrow hallway illuminated by red lights.""},{""type"":""text"",""text"":""echoes of wata igarashi""}]"
-E010,I Thought This Would Be The End of Everything,40.68290545053948,-73.96204431792508,2025-07,FEAR,IMAGINED,,"[{""type"":""video"",""src"":""media/E010/E010_001.webm""}]"
-E011,Lying in Wait,40.67825168968213,-73.94962003007824,2022-07,WONDER,WITNESSED,,"[{""type"":""image"",""src"":""media/E011/E011_001.webp"",""alt"":""A street drain surrounded by scattered red berries and debris.""}]"
-E012,5:30 AM,40.697155959801144,-73.93310704439499,2022-08,NOSTALGIA,REMEMBERED,,"[{""type"":""image"",""src"":""media/E012/E012_001.webp"",""alt"":""A quiet city intersection at dawn beneath elevated train tracks.""}]"
-E013,Portal,40.680513041807124,-73.90655448633295,2022-11,WONDER,REMEMBERED,,"[{""type"":""image"",""src"":""media/E013/E013_001.webp"",""alt"":""Cloudy liquid swirling inside a dark round vessel.""}]"
-E014,That Evening I Uncrossed My Arms,40.763756652088645,-73.97955420681295,2022-12,WONDER,REMEMBERED,,"[{""type"":""image"",""src"":""media/E014/E014_001.webp"",""alt"":""Two pairs of arms and hands arranged against an ochre background.""}]"
+id,title,latitude,longitude,time,feeling,knowing,media
+E001,NOW,40.74977880092658,-73.94778112451282,2015-07,WONDER,REMEMBERED,"[{""type"":""text"",""text"":""i had no idea what i was getting into\nthe enticing cover of night\nno photos\njoys, sorrows fresh\noff the bus\nthe ship\nmy jailbreak, my destiny\nnow\ncontrol is a fickle thing\nwhile running away\nsuitcase in hand determined towards the sun""}]"
+E002,Comedown,40.71169024194265,-73.91978921725324,2023-07,FEAR,WITNESSED,"[{""type"":""text"",""text"":""walking back from basement, stunned\na giant bird on the sidewalk\nshot dead on a quiet morning""}]"
+E003,Pocha,40.747717174083554,-73.98638042188962,2018-09,JOY,REMEMBERED,"[{""type"":""image"",""src"":""media/E003/E003_001.webp"",""alt"":""A drink served inside a hollowed pineapple on a restaurant table.""},{""type"":""audio"",""src"":""media/E003/E003_002.webm""}]"
+E004,The Fallen Angel,40.686362490039905,-73.91629352004429,2023-05,DESIRE,REMEMBERED,"[{""type"":""image"",""src"":""media/E004/E004_001.webp"",""alt"":""A crying-eye tattoo above a person's ankle.""}]"
+E005,Once on This Island,40.76161705478796,-73.98508135848202,INDETERMINATE,GRIEF,IMAGINED,"[{""type"":""image"",""src"":""media/E005/E005_001.webp"",""alt"":""Colorful clothing hanging from a sidewalk display behind a metal fence.""},{""type"":""text"",""text"":""she died with both hands grasping the gate\nloves unrequited beyond\nwithin herself\nafter hours, days\ni hoped she would dust herself off\nturn around\nbegin love anew\nshe became a tree instead""}]"
+E006,Silver Screen,40.69115320561556,-73.9831149218619,2022-10,FEAR,WITNESSED,"[{""type"":""image"",""src"":""media/E006/E006_001.webp"",""alt"":""A blurred film image of two figures surrounded by bright light.""}]"
+E007,Prank,40.75865200857649,-73.97843403151761,2018-12,JOY,REMEMBERED,"[{""type"":""video"",""src"":""media/E007/E007_001.webm""}]"
+E008,Summer Alone,40.573267283089734,-73.97801913852027,2022-07,WONDER,WITNESSED,"[{""type"":""video"",""src"":""media/E008/E008_001.webm""}]"
+E009,Before I Heard the Echos,40.71564391497664,-73.91407843990517,2022-07,WONDER,IMAGINED,"[{""type"":""image"",""src"":""media/E009/E009_001.webp"",""alt"":""A person moving through a narrow hallway illuminated by red lights.""},{""type"":""text"",""text"":""echoes of wata igarashi""}]"
+E010,I Thought This Would Be The End of Everything,40.68290545053948,-73.96204431792508,2025-07,FEAR,IMAGINED,"[{""type"":""video"",""src"":""media/E010/E010_001.webm""}]"
+E011,Lying in Wait,40.67825168968213,-73.94962003007824,2022-07,WONDER,WITNESSED,"[{""type"":""image"",""src"":""media/E011/E011_001.webp"",""alt"":""A street drain surrounded by scattered red berries and debris.""}]"
+E012,5:30 AM,40.697155959801144,-73.93310704439499,2022-08,NOSTALGIA,REMEMBERED,"[{""type"":""image"",""src"":""media/E012/E012_001.webp"",""alt"":""A quiet city intersection at dawn beneath elevated train tracks.""}]"
+E013,Portal,40.680513041807124,-73.90655448633295,2022-11,WONDER,REMEMBERED,"[{""type"":""image"",""src"":""media/E013/E013_001.webp"",""alt"":""Cloudy liquid swirling inside a dark round vessel.""}]"
+E014,That Evening I Uncrossed My Arms,40.763756652088645,-73.97955420681295,2022-12,WONDER,REMEMBERED,"[{""type"":""image"",""src"":""media/E014/E014_001.webp"",""alt"":""Two pairs of arms and hands arranged against an ochre background.""}]"

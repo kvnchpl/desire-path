@@ -118,8 +118,7 @@ These files are authored configuration:
 | `time` | Text | Month in `YYYY-MM` form, or `INDETERMINATE` / `ATEMPORAL` |
 | `feeling` | Category | One supported Feeling value |
 | `knowing` | Category | One supported Knowing value |
-| `text` | Text | Primary prose or poetry; multiline cells are preserved |
-| `media` | JSON array | Optional additional image, audio, video, or text objects |
+| `media` | JSON array | Ordered text, image, audio, and video objects; leave blank when an encounter has no content |
 
 The exporter converts the two coordinate columns into `place: [longitude, latitude]` for the website. Every coordinate committed to this repository must be considered public. Generalize, displace, or omit private and withheld locations before saving the CSV.
 
@@ -151,17 +150,19 @@ Supported Knowing values:
 
 ### Media
 
-Put an encounter's primary written content directly in the `text` column. Line breaks and repeated spaces are preserved, including multiline poetry. A spreadsheet application will quote a multiline cell correctly when it saves the CSV.
+The `media` column accepts a JSON array of ordered `text`, `image`, `audio`, or `video` objects. Written content, including an encounter's only content, must use a text object:
 
-The optional `media` column accepts a JSON array of additional `text`, `image`, `audio`, or `video` objects. Leave it blank when the encounter only has written content. In a spreadsheet cell, an image value looks like:
+```json
+[{"type":"text","text":"first line\nsecond line"}]
+```
+
+JSON uses `\n` for line breaks inside text strings. In a spreadsheet cell, CSV escaping doubles each JSON quotation mark; a spreadsheet application normally handles this when saving the file. An image value looks like:
 
 ```json
 [{"type":"image","src":"media/E016/image.jpg","alt":"brief image description"}]
 ```
 
-Audio and video use the same structure with `"type":"audio"` or `"type":"video"` and a relative `src`. Every informative image requires `alt`. Any media object may include an optional `caption`.
-
-For unusual cases that require several text blocks in a specific order, leave the primary `text` column blank and put the complete ordered sequence in `media`:
+Audio and video use the same structure with `"type":"audio"` or `"type":"video"` and a relative `src`. Every informative image requires `alt`. Any media object may include an optional `caption`. Place multiple objects in their intended display order:
 
 ```json
 [{"type":"image","src":"media/E016/image.jpg","alt":"brief image description"},{"type":"text","text":"text after the image"}]

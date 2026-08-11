@@ -19,7 +19,7 @@ ENCOUNTERS_OUTPUT = ROOT / "data" / "encounters.json"
 NAVIGATION_OUTPUT = ROOT / "data" / "navigation.json"
 REQUIRED_COLUMNS = {
     "id", "title", "longitude", "latitude",
-    "time", "feeling", "knowing", "text", "media",
+    "time", "feeling", "knowing", "media",
 }
 
 
@@ -68,10 +68,7 @@ def export_encounters() -> dict:
             if not encounter_id:
                 raise ValueError(f"{context}: id is required")
             title = row["title"].strip() or "Untitled"
-            media = []
-            if row["text"]:
-                media.append({"type": "text", "text": row["text"]})
-            media.extend(parse_media(row["media"], context))
+            media = parse_media(row["media"], context)
             encounter = {
                 "id": encounter_id,
                 "title": title,
