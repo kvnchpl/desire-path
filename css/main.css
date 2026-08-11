@@ -54,7 +54,7 @@ input {
 
 .landscape {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(15rem, 20rem);
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, 25rem);
   height: 100vh;
   height: 100dvh;
   min-height: 100vh;
@@ -590,6 +590,18 @@ input[name="dimension"][value="knowing"] {
   .map {
     height: 100%;
     min-height: 0;
+  }
+
+  .reset-view {
+    min-height: 1.75rem;
+    padding-inline: 0.35rem;
+    font-size: 0.62rem;
+  }
+
+  .reset-view::before {
+    position: absolute;
+    inset: -0.5rem;
+    content: "";
   }
 
   .interface {
