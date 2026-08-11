@@ -113,7 +113,6 @@ These files are authored configuration:
 |---|---|---|
 | `id` | Text | Stable and unique, such as `E016`; never reuse or change an assigned ID |
 | `title` | Text | Optional human-readable title; “Untitled” is used when omitted |
-| `placeholder` | Boolean | `true` for provisional material; `false` for reviewed, publishable material |
 | `latitude` | Number | Latitude in decimal degrees, from `-90` to `90` |
 | `longitude` | Number | Longitude in decimal degrees, from `-180` to `180` |
 | `time` | Text | Month in `YYYY-MM` form, or `INDETERMINATE` / `ATEMPORAL` |

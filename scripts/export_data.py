@@ -18,18 +18,9 @@ SOURCE = ROOT / "data" / "encounters.csv"
 ENCOUNTERS_OUTPUT = ROOT / "data" / "encounters.json"
 NAVIGATION_OUTPUT = ROOT / "data" / "navigation.json"
 REQUIRED_COLUMNS = {
-    "id", "title", "placeholder", "longitude", "latitude",
+    "id", "title", "longitude", "latitude",
     "time", "feeling", "knowing", "text", "media",
 }
-
-
-def boolean(value: str, context: str) -> bool:
-    normalized = value.strip().lower()
-    if normalized == "true":
-        return True
-    if normalized == "false":
-        return False
-    raise ValueError(f"{context}: placeholder must be true or false")
 
 
 def coordinate(value: str, name: str, context: str) -> float:
@@ -84,7 +75,6 @@ def export_encounters() -> dict:
             encounter = {
                 "id": encounter_id,
                 "title": title,
-                "placeholder": boolean(row["placeholder"], context),
                 "place": [
                     coordinate(row["longitude"], "longitude", context),
                     coordinate(row["latitude"], "latitude", context),
@@ -96,14 +86,10 @@ def export_encounters() -> dict:
             }
             encounters.append(encounter)
 
-    all_placeholders = all(encounter["placeholder"] for encounter in encounters)
     public_export = {
         "generated": True,
         "generated_from": "data/encounters.csv",
-        "placeholder": all_placeholders,
     }
-    if all_placeholders:
-        public_export["notice"] = "All encounters and coordinates in this prototype are placeholders."
     public_export["encounters"] = encounters
     return public_export
 

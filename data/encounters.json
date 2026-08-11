@@ -1,12 +1,10 @@
 {
   "generated": true,
   "generated_from": "data/encounters.csv",
-  "placeholder": false,
   "encounters": [
     {
       "id": "E001",
       "title": "NOW",
-      "placeholder": false,
       "place": [
         -73.94778112451282,
         40.74977880092658
@@ -24,7 +22,6 @@
     {
       "id": "E002",
       "title": "Comedown",
-      "placeholder": false,
       "place": [
         -73.91978921725324,
         40.71169024194265
@@ -42,7 +39,6 @@
     {
       "id": "E003",
       "title": "Pocha",
-      "placeholder": false,
       "place": [
         -73.98638042188962,
         40.747717174083554
@@ -65,7 +61,6 @@
     {
       "id": "E004",
       "title": "The Fallen Angel",
-      "placeholder": false,
       "place": [
         -73.91629352004429,
         40.686362490039905
@@ -84,7 +79,6 @@
     {
       "id": "E005",
       "title": "Once on This Island",
-      "placeholder": false,
       "place": [
         -73.98508135848202,
         40.76161705478796
@@ -107,7 +101,6 @@
     {
       "id": "E006",
       "title": "Silver Screen",
-      "placeholder": false,
       "place": [
         -73.9831149218619,
         40.69115320561556
@@ -126,7 +119,6 @@
     {
       "id": "E007",
       "title": "Prank",
-      "placeholder": false,
       "place": [
         -73.97843403151761,
         40.75865200857649
@@ -144,7 +136,6 @@
     {
       "id": "E008",
       "title": "Summer Alone",
-      "placeholder": false,
       "place": [
         -73.97801913852027,
         40.573267283089734
@@ -162,7 +153,6 @@
     {
       "id": "E009",
       "title": "Before I Heard the Echos",
-      "placeholder": false,
       "place": [
         -73.91407843990517,
         40.71564391497664
@@ -185,7 +175,6 @@
     {
       "id": "E010",
       "title": "I Thought This Would Be The End of Everything",
-      "placeholder": false,
       "place": [
         -73.96204431792508,
         40.68290545053948
@@ -203,7 +192,6 @@
     {
       "id": "E011",
       "title": "Lying in Wait",
-      "placeholder": false,
       "place": [
         -73.94962003007824,
         40.67825168968213
@@ -222,7 +210,6 @@
     {
       "id": "E012",
       "title": "5:30 AM",
-      "placeholder": false,
       "place": [
         -73.93310704439499,
         40.697155959801144
@@ -241,7 +228,6 @@
     {
       "id": "E013",
       "title": "Portal",
-      "placeholder": false,
       "place": [
         -73.90655448633295,
         40.680513041807124
@@ -260,7 +246,6 @@
     {
       "id": "E014",
       "title": "That Evening I Uncrossed My Arms",
-      "placeholder": false,
       "place": [
         -73.97955420681295,
         40.763756652088645
