@@ -86,6 +86,13 @@ function readableCategory(value) {
   return value.replaceAll("_", " ").toLowerCase();
 }
 
+function readableTime(value) {
+  if (!/^\d{4}-\d{2}$/.test(value)) return readableCategory(value);
+  const [year, month] = value.split("-").map(Number);
+  return new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" })
+    .format(new Date(Date.UTC(year, month - 1)));
+}
+
 function readablePlace([longitude, latitude]) {
   const northSouth = latitude >= 0 ? "n" : "s";
   const eastWest = longitude >= 0 ? "e" : "w";
@@ -132,7 +139,7 @@ async function start() {
       ["title", current.title.toUpperCase()],
       ["id", current.id],
       ["place", readablePlace(current.place)],
-      ["time", `${readableCategory(current.time)}${current.time_detail ? ` (${current.time_detail})` : ""}`],
+      ["time", readableTime(current.time)],
       ["feeling", readableCategory(current.feeling)],
       ["knowing", readableCategory(current.knowing)],
     ];

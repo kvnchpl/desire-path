@@ -12,15 +12,25 @@ ROOT = Path(__file__).resolve().parents[1]
 FEELING_DISTANCES_PATH = ROOT / "data" / "feeling-distances.json"
 KNOWING_DISTANCES_PATH = ROOT / "data" / "knowing-distances.json"
 
-TIME_POSITIONS = [
-    "DISTANT_PAST",
-    "RECENT_PAST",
-    "PRESENT",
-    "NEAR_FUTURE",
-    "DISTANT_FUTURE",
-    "INDETERMINATE",
-    "ATEMPORAL",
-]
+SPECIAL_TIMES = {"INDETERMINATE", "ATEMPORAL"}
+
+
+def time_positions(encounters: list[dict]) -> dict[str, float]:
+    """Place dated encounters on an empirical timeline.
+
+    Ranking the distinct month values keeps the Time dimension useful when
+    most encounters occupy a narrow portion of a much longer chronology.
+    Encounters at the same authored time intentionally remain coincident.
+    """
+    authored = sorted({encounter["time"] for encounter in encounters if encounter["time"] not in SPECIAL_TIMES})
+    denominator = max(len(authored) - 1, 1)
+    return {value: index / denominator for index, value in enumerate(authored)}
+
+
+def time_distance(left: str, right: str, positions: dict[str, float]) -> float:
+    if left in SPECIAL_TIMES or right in SPECIAL_TIMES:
+        return 0.0 if left == right else 1.0
+    return abs(positions[left] - positions[right])
 
 
 def haversine(a: list[float], b: list[float]) -> float:
@@ -48,10 +58,11 @@ def calculate(encounters: list[dict]) -> list[dict]:
         for a, b in combinations(encounters, 2)
     }
     maximum_place = max(raw_places.values(), default=1.0) or 1.0
+    normalized_times = time_positions(encounters)
     pairs = []
     for a, b in combinations(encounters, 2):
         pair_id = (a["id"], b["id"])
-        time_position = abs(TIME_POSITIONS.index(a["time"]) - TIME_POSITIONS.index(b["time"])) / (len(TIME_POSITIONS) - 1)
+        time_position = time_distance(a["time"], b["time"], normalized_times)
         pairs.append(
             {
                 "a": pair_id[0],

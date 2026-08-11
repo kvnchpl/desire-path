@@ -11,7 +11,7 @@
         -73.94778112451282,
         40.74977880092658
       ],
-      "time": "RECENT_PAST",
+      "time": "2015-07",
       "feeling": "WONDER",
       "knowing": "REMEMBERED",
       "media": [
@@ -19,8 +19,7 @@
           "type": "text",
           "text": "i had no idea what i was getting into\nthe enticing cover of night\nno photos\njoys, sorrows fresh\noff the bus\nthe ship\nmy jailbreak, my destiny\nnow\ncontrol is a fickle thing\nwhile running away\nsuitcase in hand determined towards the sun"
         }
-      ],
-      "time_detail": "July 2015"
+      ]
     },
     {
       "id": "E002",
@@ -30,7 +29,7 @@
         -73.91978921725324,
         40.71169024194265
       ],
-      "time": "RECENT_PAST",
+      "time": "2023-07",
       "feeling": "FEAR",
       "knowing": "WITNESSED",
       "media": [
@@ -38,8 +37,7 @@
           "type": "text",
           "text": "walking back from basement, stunned\na giant bird on the sidewalk\nshot dead on a quiet morning"
         }
-      ],
-      "time_detail": "Summer 2023?"
+      ]
     },
     {
       "id": "E003",
@@ -49,7 +47,7 @@
         -73.98638042188962,
         40.747717174083554
       ],
-      "time": "RECENT_PAST",
+      "time": "2018-09",
       "feeling": "JOY",
       "knowing": "REMEMBERED",
       "media": [
@@ -62,8 +60,7 @@
           "type": "audio",
           "src": "media/E003/E003_002.webm"
         }
-      ],
-      "time_detail": "September 2018"
+      ]
     },
     {
       "id": "E004",
@@ -73,7 +70,7 @@
         -73.91629352004429,
         40.686362490039905
       ],
-      "time": "RECENT_PAST",
+      "time": "2023-05",
       "feeling": "DESIRE",
       "knowing": "REMEMBERED",
       "media": [
@@ -82,8 +79,7 @@
           "src": "media/E004/E004_001.webp",
           "alt": "A crying-eye tattoo above a person's ankle."
         }
-      ],
-      "time_detail": "May 2023"
+      ]
     },
     {
       "id": "E005",
@@ -93,7 +89,7 @@
         -73.98508135848202,
         40.76161705478796
       ],
-      "time": "DISTANT_PAST",
+      "time": "1850-07",
       "feeling": "GRIEF",
       "knowing": "IMAGINED",
       "media": [
@@ -106,8 +102,7 @@
           "type": "text",
           "text": "she died with both hands grasping the gate\nloves unrequited beyond\nwithin herself\nafter hours, days\ni hoped she would dust herself off\nturn around\nbegin love anew\nshe became a tree instead"
         }
-      ],
-      "time_detail": "Mid 1800s"
+      ]
     },
     {
       "id": "E006",
@@ -117,7 +112,7 @@
         -73.9831149218619,
         40.69115320561556
       ],
-      "time": "RECENT_PAST",
+      "time": "2022-10",
       "feeling": "FEAR",
       "knowing": "WITNESSED",
       "media": [
@@ -126,8 +121,7 @@
           "src": "media/E006/E006_001.webp",
           "alt": "A blurred film image of two figures surrounded by bright light."
         }
-      ],
-      "time_detail": "OCTOBER 2022"
+      ]
     },
     {
       "id": "E007",
@@ -137,7 +131,7 @@
         -73.97843403151761,
         40.75865200857649
       ],
-      "time": "RECENT_PAST",
+      "time": "2018-12",
       "feeling": "JOY",
       "knowing": "REMEMBERED",
       "media": [
@@ -145,8 +139,7 @@
           "type": "video",
           "src": "media/E007/E007_001.webm"
         }
-      ],
-      "time_detail": "December 2018"
+      ]
     },
     {
       "id": "E008",
@@ -156,7 +149,7 @@
         -73.97801913852027,
         40.573267283089734
       ],
-      "time": "RECENT_PAST",
+      "time": "2022-07",
       "feeling": "WONDER",
       "knowing": "WITNESSED",
       "media": [
@@ -164,8 +157,7 @@
           "type": "video",
           "src": "media/E008/E008_001.webm"
         }
-      ],
-      "time_detail": "July 2022"
+      ]
     },
     {
       "id": "E009",
@@ -175,7 +167,7 @@
         -73.91407843990517,
         40.71564391497664
       ],
-      "time": "RECENT_PAST",
+      "time": "2022-07",
       "feeling": "WONDER",
       "knowing": "IMAGINED",
       "media": [
@@ -188,8 +180,7 @@
           "type": "text",
           "text": "wata igarashi"
         }
-      ],
-      "time_detail": "July 2022"
+      ]
     },
     {
       "id": "E010",
@@ -199,7 +190,7 @@
         -73.96204431792508,
         40.68290545053948
       ],
-      "time": "RECENT_PAST",
+      "time": "2025-07",
       "feeling": "FEAR",
       "knowing": "IMAGINED",
       "media": [
@@ -207,8 +198,7 @@
           "type": "video",
           "src": "media/E010/E010_001.webm"
         }
-      ],
-      "time_detail": "July 2025"
+      ]
     },
     {
       "id": "E011",
@@ -218,7 +208,7 @@
         -73.94962003007824,
         40.67825168968213
       ],
-      "time": "RECENT_PAST",
+      "time": "2022-07",
       "feeling": "WONDER",
       "knowing": "WITNESSED",
       "media": [
@@ -227,8 +217,7 @@
           "src": "media/E011/E011_001.webp",
           "alt": "A street drain surrounded by scattered red berries and debris."
         }
-      ],
-      "time_detail": "July 2022"
+      ]
     },
     {
       "id": "E012",
@@ -238,7 +227,7 @@
         -73.93310704439499,
         40.697155959801144
       ],
-      "time": "RECENT_PAST",
+      "time": "2022-08",
       "feeling": "NOSTALGIA",
       "knowing": "REMEMBERED",
       "media": [
@@ -247,8 +236,7 @@
           "src": "media/E012/E012_001.webp",
           "alt": "A quiet city intersection at dawn beneath elevated train tracks."
         }
-      ],
-      "time_detail": "AUGUST 2022"
+      ]
     },
     {
       "id": "E013",
@@ -258,7 +246,7 @@
         -73.90655448633295,
         40.680513041807124
       ],
-      "time": "RECENT_PAST",
+      "time": "2022-11",
       "feeling": "WONDER",
       "knowing": "REMEMBERED",
       "media": [
@@ -267,8 +255,7 @@
           "src": "media/E013/E013_001.webp",
           "alt": "Cloudy liquid swirling inside a dark round vessel."
         }
-      ],
-      "time_detail": "November 2022"
+      ]
     },
     {
       "id": "E014",
@@ -278,7 +265,7 @@
         -73.97955420681295,
         40.763756652088645
       ],
-      "time": "RECENT_PAST",
+      "time": "2022-12",
       "feeling": "WONDER",
       "knowing": "REMEMBERED",
       "media": [
@@ -287,8 +274,7 @@
           "src": "media/E014/E014_001.webp",
           "alt": "Two pairs of arms and hands arranged against an ochre background."
         }
-      ],
-      "time_detail": "December 2022"
+      ]
     }
   ]
 }

@@ -5,16 +5,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 DIMENSIONS = ("place", "time", "feeling", "knowing")
 MEDIA_TYPES = {"text", "image", "audio", "video"}
-TIME_VALUES = {
-    "DISTANT_PAST", "RECENT_PAST", "PRESENT", "NEAR_FUTURE",
-    "DISTANT_FUTURE", "INDETERMINATE", "ATEMPORAL",
-}
+SPECIAL_TIME_VALUES = {"INDETERMINATE", "ATEMPORAL"}
+MONTH_PATTERN = re.compile(r"^\d{4}-(?:0[1-9]|1[0-2])$")
 FEELING_VALUES = {"JOY", "DESIRE", "WONDER", "NOSTALGIA", "GRIEF", "FEAR", "ANGER"}
 KNOWING_VALUES = {
     "WITNESSED", "REMEMBERED", "INHERITED", "DOCUMENTED",
@@ -59,17 +58,15 @@ def validate(
             ids.add(encounter_id)
         if not isinstance(encounter.get("title"), str) or not encounter["title"].strip():
             errors.append(f"encounter {index} must have a title")
+        time = encounter.get("time")
+        if not isinstance(time, str) or (time not in SPECIAL_TIME_VALUES and not MONTH_PATTERN.fullmatch(time)):
+            errors.append(f"encounter {index} time must be YYYY-MM, INDETERMINATE, or ATEMPORAL")
         for field, supported in (
-            ("time", TIME_VALUES),
             ("feeling", FEELING_VALUES),
             ("knowing", KNOWING_VALUES),
         ):
             if encounter.get(field) not in supported:
                 errors.append(f"encounter {index} has an invalid {field} value")
-        if "time_detail" in encounter and (
-            not isinstance(encounter["time_detail"], str) or not encounter["time_detail"].strip()
-        ):
-            errors.append(f"encounter {index} time_detail must be nonempty text when present")
         place = encounter.get("place")
         if not isinstance(place, list) or len(place) != 2 or not all(type(value) in (int, float) for value in place):
             errors.append(f"encounter {index} must have a numeric [longitude, latitude] place")

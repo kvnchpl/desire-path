@@ -116,8 +116,7 @@ These files are authored configuration:
 | `placeholder` | Boolean | `true` for provisional material; `false` for reviewed, publishable material |
 | `latitude` | Number | Latitude in decimal degrees, from `-90` to `90` |
 | `longitude` | Number | Longitude in decimal degrees, from `-180` to `180` |
-| `time` | Category | One supported Time value |
-| `time_detail` | Text | Optional specific date, season, or other temporal note |
+| `time` | Text | Month in `YYYY-MM` form, or `INDETERMINATE` / `ATEMPORAL` |
 | `feeling` | Category | One supported Feeling value |
 | `knowing` | Category | One supported Knowing value |
 | `text` | Text | Primary prose or poetry; multiline cells are preserved |
@@ -125,15 +124,11 @@ These files are authored configuration:
 
 The exporter converts the two coordinate columns into `place: [longitude, latitude]` for the website. Every coordinate committed to this repository must be considered public. Generalize, displace, or omit private and withheld locations before saving the CSV.
 
-Supported Time values:
-
-- `DISTANT_PAST`
-- `RECENT_PAST`
-- `PRESENT`
-- `NEAR_FUTURE`
-- `DISTANT_FUTURE`
-- `INDETERMINATE`
-- `ATEMPORAL`
+The exporter ranks the archive's distinct `YYYY-MM` values across the occupied
+timeline from `0` to `1`. This preserves equality for simultaneous encounters
+while preventing a dense period from collapsing into one broad category.
+`INDETERMINATE` and `ATEMPORAL` each coincide with themselves and receive the
+maximum distance from dated encounters and from one another.
 
 Supported Feeling values:
 

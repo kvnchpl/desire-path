@@ -19,7 +19,7 @@ ENCOUNTERS_OUTPUT = ROOT / "data" / "encounters.json"
 NAVIGATION_OUTPUT = ROOT / "data" / "navigation.json"
 REQUIRED_COLUMNS = {
     "id", "title", "placeholder", "longitude", "latitude",
-    "time", "feeling", "knowing", "text", "media", "time_detail",
+    "time", "feeling", "knowing", "text", "media",
 }
 
 
@@ -94,8 +94,6 @@ def export_encounters() -> dict:
                 "knowing": row["knowing"].strip(),
                 "media": media,
             }
-            if row["time_detail"].strip():
-                encounter["time_detail"] = row["time_detail"].strip()
             encounters.append(encounter)
 
     all_placeholders = all(encounter["placeholder"] for encounter in encounters)
