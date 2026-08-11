@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "export:data": "python3 scripts/export_data.py",
+    "normalize:media": "python3 scripts/normalize_media.py",
     "test": "python3 scripts/check_data.py",
     "serve": "python3 -m http.server 8080"
   }

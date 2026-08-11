@@ -175,6 +175,23 @@ For unusual cases that require several text blocks in a specific order, leave th
 
 Media paths must be safe, relative paths that resolve to committed public files. Never commit sensitive, withheld, or unpublished media.
 
+Before adding media paths to the CSV, create compact web copies with:
+
+```sh
+npm run normalize:media
+```
+
+This replaces supported files below `media/` in place, preserving encounter
+subdirectories while changing filename extensions where necessary. Images become
+WebP (under 500 KB), audio becomes Opus in a WebM container (under 1 MB), and video
+becomes VP9/Opus WebM (under 2 MB). Placeholder media is skipped. The encoder favors
+smaller files over fidelity and strips metadata. A source is removed only after its
+normalized replacement succeeds. To retain the originals, pass a separate output
+directory, such as `-- --output-dir media-normalized`.
+
+The utility requires `ffmpeg` and `ffprobe`. On macOS with Homebrew, install both
+with `brew install ffmpeg`.
+
 ### Export and navigation
 
 `npm run export:data` performs the complete publishing pipeline:
