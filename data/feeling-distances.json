@@ -1,7 +1,6 @@
 {
-  "placeholder": true,
-  "description": "Provisional semantic distances between Feeling categories. 0 is nearest; 1 is farthest.",
-  "basis": "Editorial placeholder model considering valence, activation, and relational orientation, with manual adjustments for distinct Feeling families.",
+  "description": "Current semantic distance schema for Feeling categories. 0 is nearest; 1 is farthest.",
+  "basis": "The schema considers valence, activation, and relational orientation, with manual adjustments for distinct Feeling families.",
   "identical": 0.0,
   "default": 0.9,
   "pairs": [

@@ -1,7 +1,6 @@
 {
-  "placeholder": true,
-  "description": "Provisional semantic distances between ways of knowing. 0 is nearest; 1 is farthest.",
-  "basis": "Editorial placeholder model considering directness of evidence, transmission, construction, and temporal orientation.",
+  "description": "Current semantic distance schema for Knowing categories. 0 is nearest; 1 is farthest.",
+  "basis": "The schema considers directness of evidence, transmission, construction, and temporal orientation.",
   "identical": 0.0,
   "default": 0.9,
   "pairs": [

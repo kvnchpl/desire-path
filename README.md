@@ -81,8 +81,8 @@ These files are authored configuration:
 
 - `data/encounters.csv` — encounter content, categories, and coordinates
 - `data/settings.json` — initial encounter, percentile, 3–4 neighborhood limits, and map settings
-- `data/feeling-distances.json` — the 21 Feeling category pairs
-- `data/knowing-distances.json` — the 21 Knowing category pairs
+- `data/feeling-distances.json` — the current semantic distance schema for all 21 Feeling category pairs
+- `data/knowing-distances.json` — the current semantic distance schema for all 21 Knowing category pairs
 
 `data/coastline.geojson` is a clipped Natural Earth coastline extract used as geographic context. Natural Earth data is public domain.
 
