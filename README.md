@@ -229,4 +229,6 @@ vendor/leaflet/             locally hosted presentation dependency
 
 DESIRE PATH does not yet declare a project license. Until one is selected, no permission is granted to copy, modify, or redistribute the project’s original code, documentation, data, or media.
 
+...
+
 Third-party components retain their own licenses. The locally vendored Leaflet dependency is covered by `vendor/leaflet/LICENSE`. Natural Earth coastline data is public domain.
